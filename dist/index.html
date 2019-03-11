@@ -14,7 +14,6 @@
   <section class="main-section" id="main-container">
   </section>
   <section>
-    Test asd asd
     <svg role="img">
       <use xlink:href="svg/sprite.svg#logo"/>
     </svg>
@@ -116,7 +115,7 @@
         for (float y=0.0;y<height;y++) {
           for (float x=0.0;x<width;x++) {
 
-            vec2 ref = vec2( x + 0.5, y + 0.5 ) / resolution.xy;
+            vec2 ref = vec2(  0.5, 0.5 ) / resolution.xy;
             birdPosition = texture2D( texturePosition, ref ).xyz;
 
             dir = birdPosition - selfPosition;
@@ -136,7 +135,7 @@
               f = (separationThresh / percent - 1.0) * delta;
               velocity -= normalize(dir) * f;
 
-            } else if ( percent < alignmentThresh ) { // high
+            }  else if ( percent < alignmentThresh ) { // high
 
               // Alignment - fly the same direction
               float threshDelta = alignmentThresh - separationThresh;

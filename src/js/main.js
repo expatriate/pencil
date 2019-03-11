@@ -270,11 +270,11 @@ function ready() {
       side: THREE.DoubleSide
     });
 
-    birdMesh = new THREE.Mesh(this.geometry, material);
-    birdMesh.rotation.y = Math.PI / 2;
-    birdMesh.matrixAutoUpdate = false;
-    birdMesh.updateMatrix();
-    this.scene.add(birdMesh);
+    this.birdMesh = new THREE.Mesh(this.geometry, material);
+    this.birdMesh.rotation.y = Math.PI / 2;
+    this.birdMesh.matrixAutoUpdate = false;
+    this.birdMesh.updateMatrix();
+    this.scene.add(this.birdMesh);
 
   }
 

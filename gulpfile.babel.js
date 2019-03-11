@@ -105,7 +105,7 @@ const compileScripts = () => {
         'vendor/*.js', './src/js/main.js'])
         .pipe($.concat('main.js'))
         .pipe($.babel(babelOptions))
-        .pipe(terser())
+        //.pipe(terser())
         .pipe(gulp.dest('dist/js'))
         .pipe($.size({title: 'Scripts'}))
         .pipe(browserSync.stream());
