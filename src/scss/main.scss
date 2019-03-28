@@ -1,9 +1,6 @@
 
 body, html {
     height: 100%;
-    background: #aabbcc;
-    color: $color-white;
-    font-size: 20px!important;
 }
 
 svg {
@@ -12,4 +9,18 @@ svg {
 *{
   outline: none;
 }
+
+.section {
+  height: 100vh;
+  background-color: #aabbcc;
+  
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;  /* IE 10+ */
+  &::-webkit-scrollbar {
+    width: 0px;
+    background: transparent; /* Chrome/Safari/Webkit */
+  }
+}
+
+
 

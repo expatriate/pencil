@@ -11,13 +11,75 @@
     <title>Test</title>
 </head>
 <body>
-  <section class="main-section" id="main-container">
-  </section>
-  <section>
+  <div id="fullscreen-containers" class="slide-container">
+    <section class="section slide-page section-main">
+      <div class="bg">
+      </div>
+      <div id="particles-mainview">
+      </div>
+      <div class="section__wrapper">
+        <h1 class="main-title">
+          <span>от эскиза</span> до свершения
+        </h1>
+      </div>
+    </section>
+    <section class="section slide-page">
+      <div class="section__wrapper">
+        <div class="section__wrapper" id="particles-subview">
+        </div>
+       <!--  <svg role="img">
+          <use xlink:href="svg/sprite.svg#logo"/>
+        </svg> -->
+      </div>
+    </section>
+    <section class="section slide-page">
+      <div class="section__wrapper">
+        1
+      </div>
+    </section>
+    <section class="section slide-page">
+      <div class="section__wrapper">
+        1
+      </div>
+    </section>
+    <section class="section slide-page">
+      <div class="section__wrapper">
+        1
+      </div>
+    </section>
+    <section class="section slide-page">
+      <div class="section__wrapper">
+        1
+      </div>
+    </section>
+    <section class="section slide-page">
+      <div class="section__wrapper">
+        1
+      </div>
+    </section>
+    <section class="section slide-page">
+      <div class="section__wrapper">
+        1
+      </div>
+    </section>
+    <section class="section slide-page">
+      <div class="section__wrapper">
+        1
+      </div>
+    </section>
+    <section class="section slide-page">
+      <div class="section__wrapper">
+        ALALALLAA
+      </div>
+    </section>
+  </div>
+  <!-- <section class="main-section" id="main-container">
+  </section> -->
+<!--   <section style="height: 1800px;">
     <svg role="img">
       <use xlink:href="svg/sprite.svg#logo"/>
     </svg>
-  </section>
+  </section> -->
 
     <script id="fragmentShaderVelocity" type="x-shader/x-fragment">
       
@@ -30,6 +92,8 @@
       uniform float cohesionDistance; //
       uniform float freedomFactor;
       uniform vec3 predator;
+
+      uniform float scrolltop;
 
       const float width = resolution.x;
       const float height = resolution.y;
@@ -105,7 +169,7 @@
 
 
         // Attract flocks to the center
-        vec3 central = vec3( 0., 0., 0. );
+        vec3 central = vec3( 0., -scrolltop * 0.25, 0. );
         dir = selfPosition - central;
         dist = length( dir );
 
@@ -175,7 +239,93 @@
         gl_FragColor = vec4( velocity, 1.0 );
 
       }
+    </script>
+    <script id="fragmentShaderVelocity_moving" type="x-shader/x-fragment">
+      
 
+      uniform float time;
+      uniform float testing;
+      uniform float delta; // about 0.016
+      uniform float seperationDistance; // 20
+      uniform float alignmentDistance; // 40
+      uniform float cohesionDistance; //
+      uniform float freedomFactor;
+      //uniform vec3 predator;
+
+      uniform float scrolltopy;
+      uniform float scrolltopx;
+
+      const float width = resolution.x;
+      const float height = resolution.y;
+
+      const float PI = 3.141592653589793;
+      const float PI_2 = PI * 2.0;
+      // const float VISION = PI * 0.55;
+
+      float zoneRadius = 20.0;
+      float zoneRadiusSquared = 10.0;
+
+      float separationThresh = 0.1;
+      float alignmentThresh = 0.1;
+
+      const float UPPER_BOUNDS = BOUNDS;
+      const float LOWER_BOUNDS = -UPPER_BOUNDS;
+
+      const float SPEED_LIMIT = 7.0;
+
+      float rand(vec2 co){
+        return fract(sin(dot(co.xy ,vec2(12.9898,78.233))) * 43758.5453);
+      }
+
+      void main() {
+
+        zoneRadius = seperationDistance + alignmentDistance + cohesionDistance * 0.0;
+        separationThresh = seperationDistance / zoneRadius * 0.001;
+        alignmentThresh = ( seperationDistance + alignmentDistance ) / zoneRadius;
+        zoneRadiusSquared = zoneRadius * zoneRadius;
+
+
+        vec2 uv = gl_FragCoord.xy / resolution.xy;
+        vec3 birdPosition, birdVelocity;
+
+        vec3 selfPosition = texture2D( texturePosition, uv ).xyz;
+        vec3 selfVelocity = texture2D( textureVelocity, uv ).xyz;
+
+        float dist;
+        vec3 dir; // direction
+        float distSquared;
+
+        float seperationSquared = seperationDistance * seperationDistance;
+        float cohesionSquared = cohesionDistance * cohesionDistance;
+
+        float f;
+        float percent;
+
+        vec3 velocity = selfVelocity;
+
+        float limit = SPEED_LIMIT;
+
+        // Attract flocks to the center
+        vec3 central = vec3( -scrolltopx, -scrolltopy, 0. );
+        dir = selfPosition - central;
+        dist = length( dir );
+
+        dir.y *= 2.5;
+        velocity -= normalize( dir ) * delta * 6.;
+
+
+
+        // this make tends to fly around than down or up
+        if (velocity.y > 0.) velocity.y *= (1. - 0.7 * delta);
+
+        // Speed Limits
+        if ( length( velocity ) > limit ) {
+          velocity = normalize( velocity ) * limit * 1.0;
+        }
+
+        gl_FragColor = vec4( velocity, 0.1 );
+
+      }
     </script>
     <script id="fragmentShaderPosition" type="x-shader/x-fragment">
       
@@ -198,7 +348,28 @@
         gl_FragColor = vec4( position + velocity * delta * 15. , phase );
 
       }
+    </script>
+    <script id="fragmentShaderPosition_moving" type="x-shader/x-fragment">
+      
+      uniform float time;
+      uniform float delta;
 
+      void main() {
+
+        vec2 uv = gl_FragCoord.xy / resolution.xy;
+        vec4 tmpPos = texture2D( texturePosition, uv );
+        vec3 position = tmpPos.xyz;
+        vec3 velocity = texture2D( textureVelocity, uv ).xyz;
+
+        float phase = tmpPos.w;
+
+        phase = mod( ( phase + delta +
+          length( velocity.xz ) * delta * 3. +
+          max( velocity.y, 0.0 ) * delta * 6. ), 62.83 );
+
+        gl_FragColor = vec4( position + velocity * delta * 15. , phase );
+
+      }
     </script>
     <script type="x-shader/x-vertex" id="birdVS">
       
@@ -226,7 +397,7 @@
 
         if ( birdVertex == 4.0 || birdVertex == 7.0 ) {
           // flap wings
-          newPosition.y = sin( tmpPos.w ) * 5.;
+          //newPosition.y = sin( tmpPos.w ) * 5.;
         }
 
         newPosition = mat3( modelMatrix ) * newPosition;
@@ -263,6 +434,24 @@
           0     , 0    , 1
         );
 
+        /* mat3 matScale = mat3(
+          scale, 0, 0,
+          0, scale, 0,
+          0, 0, scale
+        );
+
+        mat3 maty =  mat3(
+          1, 0, 0,
+          0, 1, 0,
+          0, 0, 1
+        );
+
+        mat3 matz =  mat3(
+          1, 0, 0,
+          0, 1, 0,
+          0, 0, 1
+        ); */
+
         newPosition =  matScale * maty * matz * newPosition;
         newPosition += pos;
 
@@ -271,7 +460,6 @@
         vColor = vec4( birdColor, 1.0 );
         gl_Position = projectionMatrix *  viewMatrix  * vec4( newPosition, 1.0 );
       }
-
     </script>
     <script type="x-shader/x-fragment" id="birdFS">
       
@@ -285,12 +473,13 @@
         // Fake colors for now
         float z2 = 0.1 + ( 1000. - z ) / 1000. * vColor.x;
         gl_FragColor = vec4( z2, z2, z2, 1. );
-        gl_FragColor = vec4( 1.0, 0.0, 0.0, 1. );
+        //gl_FragColor = vec4( 0.0, 0.0, 0.0, 1. );
 
       }
-
     </script>
   <script src="js/vendor.min.js"></script>
+  <script src="js/particles.js"></script>
+  <script src="js/particles_moving.js"></script>
   <script src="js/main.js"></script>
 </body>
 </html>
