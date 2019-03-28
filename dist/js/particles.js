@@ -1,4 +1,4 @@
-var Birds_moving = function (container, width) {
+var Birds = function (container, width) {
     var t = this;
     t.container = container;
     t.playing = false;
@@ -28,7 +28,7 @@ var Birds_moving = function (container, width) {
     t.BIRDS = t.WIDTH*t.WIDTH;
 
     // Custom Geometry - using 3 triangles each. No UVs, no normals currently.
-    THREE.BirdGeometry_moving = function () {
+    THREE.BirdGeometry = function () {
 
       var triangles = t.BIRDS * 3;
       var points = triangles * 3;
@@ -87,7 +87,8 @@ var Birds_moving = function (container, width) {
         var y = ~~(i / t.WIDTH) / t.WIDTH;
 
         var c = new THREE.Color(
-          0x00ffff
+          0x444444 +
+          ~~(v / 9) / t.BIRDS * 0x666666
         );
 
         birdColors.array[v * 3 + 0] = c.r;
@@ -101,10 +102,10 @@ var Birds_moving = function (container, width) {
 
       }
 
-      this.scale(0.3, 0.3, 0.3);
+      this.scale(0.2, 0.2, 0.2);
     };
 
-    THREE.BirdGeometry_moving.prototype = Object.create(THREE.BufferGeometry.prototype);
+    THREE.BirdGeometry.prototype = Object.create(THREE.BufferGeometry.prototype);
 
     t.container;
     t.camera, t.scene, t.renderer, t.geometry;
@@ -113,13 +114,11 @@ var Birds_moving = function (container, width) {
     t.windowHalfX = window.innerWidth / 2;
     t.windowHalfY = window.innerHeight / 2;
 
-    t.BOUNDS = 10;
+    t.BOUNDS = 800;
     t.BOUNDS_HALF = t.BOUNDS / 2
     t.last = performance.now();
 
-    t.lastDelta = 1;
-
-    t.SCROLLBOUNDS = window.window.pageYOffset;
+    //t.SCROLLBOUNDS = window.window.pageYOffset;
 
     t.gpuCompute;
     t.velocityVariable;
@@ -132,14 +131,14 @@ var Birds_moving = function (container, width) {
     // t.startAnimation();
   }
 
-  Birds_moving.prototype.setBirdNumber = function (n) {
+  Birds.prototype.setBirdNumber = function (n) {
     var n = ~~(n/3);
 
     this.BIRDS = n;
     this.container.innerHTML = '';
     this.init();
 
-    /*if(n < 100) {
+    if(n < 100) {
       $('#particles-mainview canvas').css({
         filter: 'grayscale(0)',
       });
@@ -148,14 +147,13 @@ var Birds_moving = function (container, width) {
       $('#particles-mainview canvas').css({
         filter: 'grayscale(100%)',
       });
-    }   */
+    }   
   }
 
-  Birds_moving.prototype.init = function () {
+  Birds.prototype.init = function () {
 
-    this.camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 1, 3000);
+    this.camera = new THREE.PerspectiveCamera(90, window.innerWidth / window.innerHeight, 1, 3000);
     this.camera.position.z = 350;
-    this.camera.setCenter
 
     this.scene = new THREE.Scene();
 
@@ -165,7 +163,7 @@ var Birds_moving = function (container, width) {
     this.renderer.setClearColor(this.scene.fog.color);
     this.renderer.setPixelRatio(window.devicePixelRatio);
 
-    this.renderer.setSize($('#particles-subview').width(), $('#particles-subview').height());
+    this.renderer.setSize(window.innerWidth, window.innerHeight);
     this.container.appendChild(this.renderer.domElement);
 
     this.initComputeRenderer();
@@ -191,7 +189,7 @@ var Birds_moving = function (container, width) {
 
   }
 
-  Birds_moving.prototype.initComputeRenderer = function() {
+  Birds.prototype.initComputeRenderer = function() {
 
     this.gpuCompute = new GPUComputationRenderer(this.WIDTH, this.WIDTH, this.renderer);
 
@@ -200,8 +198,8 @@ var Birds_moving = function (container, width) {
     this.fillPositionTexture(dtPosition);
     this.fillVelocityTexture(dtVelocity);
 
-    this.velocityVariable = this.gpuCompute.addVariable("textureVelocity", document.getElementById('fragmentShaderVelocity_moving').textContent, dtVelocity);
-    this.positionVariable = this.gpuCompute.addVariable("texturePosition", document.getElementById('fragmentShaderPosition_moving').textContent, dtPosition);
+    this.velocityVariable = this.gpuCompute.addVariable("textureVelocity", document.getElementById('fragmentShaderVelocity').textContent, dtVelocity);
+    this.positionVariable = this.gpuCompute.addVariable("texturePosition", document.getElementById('fragmentShaderPosition').textContent, dtPosition);
 
     this.gpuCompute.setVariableDependencies(this.velocityVariable, [this.positionVariable, this.velocityVariable]);
     this.gpuCompute.setVariableDependencies(this.positionVariable, [this.positionVariable, this.velocityVariable]);
@@ -218,12 +216,10 @@ var Birds_moving = function (container, width) {
     this.velocityUniforms.alignmentDistance = {value: 1.0};
     this.velocityUniforms.cohesionDistance = {value: 1.0};
     this.velocityUniforms.freedomFactor = {value: 1.0};
-    //this.velocityUniforms.predator = {value: new THREE.Vector3()};
+    this.velocityUniforms.predator = {value: new THREE.Vector3()};
     this.velocityVariable.material.defines.BOUNDS = this.BOUNDS.toFixed(2);
 
-    this.velocityUniforms.scrolltopy = {value: -250.0};
-    this.velocityUniforms.scrolltopx = {value: -250.0};
-    
+    this.velocityUniforms.scrolltop = {value: window.innerHeight/2};//{value: window.window.pageYOffset};
 
     this.velocityVariable.wrapS = THREE.RepeatWrapping;
     this.velocityVariable.wrapT = THREE.RepeatWrapping;
@@ -237,13 +233,13 @@ var Birds_moving = function (container, width) {
 
   }
 
-  Birds_moving.prototype.initBirds = function() {
+  Birds.prototype.initBirds = function() {
 
-    this.geometry = new THREE.BirdGeometry_moving();
+    this.geometry = new THREE.BirdGeometry();
 
     // For Vertex and Fragment
     this.birdUniforms = {
-      color: {value: new THREE.Color(0x000000)},
+      color: {value: new THREE.Color(0xff2200)},
       texturePosition: {value: null},
       textureVelocity: {value: null},
       time: {value: 1.0},
@@ -262,19 +258,18 @@ var Birds_moving = function (container, width) {
     this.birdMesh.rotation.y = Math.PI / 2;
     this.birdMesh.matrixAutoUpdate = false;
     this.birdMesh.updateMatrix();
-    //this.birdMesh.position.set(-500, -500, 0);
     this.scene.add(this.birdMesh);
 
   }
 
-  Birds_moving.prototype.fillPositionTexture = function (texture) {
+  Birds.prototype.fillPositionTexture = function (texture) {
 
     var theArray = texture.image.data;
 
     for (var k = 0, kl = theArray.length; k < kl; k += 4) {
 
-      var x = 250;//Math.random() * this.BOUNDS - this.BOUNDS_HALF;
-      var y = 250;//Math.random() * this.BOUNDS - this.BOUNDS_HALF;
+      var x = Math.random() * this.BOUNDS - this.BOUNDS_HALF;
+      var y = Math.random() * this.BOUNDS - this.BOUNDS_HALF;
       var z = Math.random() * this.BOUNDS - this.BOUNDS_HALF;
 
       theArray[k + 0] = x;
@@ -286,7 +281,7 @@ var Birds_moving = function (container, width) {
 
   }
 
-  Birds_moving.prototype.fillVelocityTexture = function (texture) {
+  Birds.prototype.fillVelocityTexture = function (texture) {
 
     var theArray = texture.image.data;
 
@@ -306,10 +301,10 @@ var Birds_moving = function (container, width) {
   }
 
 
-  Birds_moving.prototype.onWindowResize = function () {
+  Birds.prototype.onWindowResize = function () {
 
-    this.windowHalfX = window.innerWidth / 10;
-    this.windowHalfY = window.innerHeight / 10;
+    this.windowHalfX = window.innerWidth / 2;
+    this.windowHalfY = window.innerHeight / 2;
 
     this.camera.aspect = window.innerWidth / window.innerHeight;
     this.camera.updateProjectionMatrix();
@@ -318,7 +313,7 @@ var Birds_moving = function (container, width) {
 
   }
 
-  Birds_moving.prototype.onDocumentMouseMove = function (event) {
+  Birds.prototype.onDocumentMouseMove = function (event) {
 
     if (typeof event.touches === 'object'
     && event.touches.length === 1) {
@@ -336,12 +331,8 @@ var Birds_moving = function (container, width) {
 
   }
 
-  Birds_moving.prototype.startfading = function () {
-    this.fading = true;
-  }
-
   //
-  Birds_moving.prototype.startAnimation = function () {
+  Birds.prototype.startAnimation = function () {
     if(this.playing === true)
       return;
 
@@ -352,7 +343,7 @@ var Birds_moving = function (container, width) {
     this.animate();
   }
 
-  Birds_moving.prototype.stopAnimation = function () {
+  Birds.prototype.stopAnimation = function () {
     if(this.playing === false)
       return;
 
@@ -361,7 +352,7 @@ var Birds_moving = function (container, width) {
     console.log('STOP BIRDS');
   }
 
-  Birds_moving.prototype.animate = function () {
+  Birds.prototype.animate = function () {
     var t = this;
 
     if(this.playing === false)
@@ -374,7 +365,7 @@ var Birds_moving = function (container, width) {
     this.render();
   }
 
-  Birds_moving.prototype.render = function () {
+  Birds.prototype.render = function () {
 
     var now = performance.now();
     var delta = (now - this.last) / 1000;
@@ -388,27 +379,14 @@ var Birds_moving = function (container, width) {
     this.velocityUniforms.delta.value = delta;
     this.birdUniforms.time.value = now;
     this.birdUniforms.delta.value = delta;
-    if (this.lastDelta < this.last) {
-      if(this.velocityUniforms.scrolltopy.value < 0) {
-        this.velocityUniforms.scrolltopy.value = this.velocityUniforms.scrolltopy.value + 50;
-        this.velocityUniforms.scrolltopx.value = this.velocityUniforms.scrolltopx.value + 80;
-        this.lastDelta = this.last + 1000;
-      }
-      if(this.velocityUniforms.scrolltopy.value == 0) {
-        this.velocityUniforms.scrolltopy.value += 1;
-        $('#particles-subview').delay(800).animate({'opacity': 0.0}, 1000);
-      }
-      if(this.velocityUniforms.scrolltopy.value == 50) {
-        //this.stopAnimation();
-        //this.velocityUniforms.scrolltopx.value = this.velocityUniforms.scrolltopx.value * -1;
-        //$('#particles-subview').animate({'opacity': 1}, 800);
-      }
 
-      /*if(this.velocityUniforms.scrolltopy.value > 0) {
-        this.velocityUniforms.scrolltopx.value = this.velocityUniforms.scrolltopx.value - 50;
-      }*/
+    //console.log(this.velocityUniforms)
+    this.velocityUniforms.predator.value.set(0.5 * this.mouseX / this.windowHalfX, -0.5 * this.mouseY / this.windowHalfY, 0);
+    this.velocityUniforms.scrolltop.value = 0// window.window.pageYOffset;
 
-    }
+
+    this.mouseX = 10000;
+    this.mouseY = 10000;
 
     this.gpuCompute.compute();
 

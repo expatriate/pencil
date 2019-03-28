@@ -395,7 +395,8 @@ var Birds_moving = function (container, width) {
         this.lastDelta = this.last + 1000;
       }
       if(this.velocityUniforms.scrolltopy.value == 0) {
-        $('#particles-subview').animate({'opacity': 0.0}, 1000);
+        this.velocityUniforms.scrolltopy.value += 1;
+        $('#particles-subview').delay(800).animate({'opacity': 0.0}, 1000);
       }
       if(this.velocityUniforms.scrolltopy.value == 50) {
         //this.stopAnimation();
