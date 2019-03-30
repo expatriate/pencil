@@ -102,8 +102,8 @@ const compileScripts = () => {
     gulp.src('./src/js/vendor.min.js')
         .pipe(gulp.dest('dist/js'));
     return gulp.src([
-        'vendor/*.js', './src/js/main.js'])
-        .pipe($.concat('main.js'))
+        'vendor/*.js', './src/js/*.js'])
+        //.pipe($.concat('main.js'))
         .pipe($.babel(babelOptions))
         //.pipe(terser())
         .pipe(gulp.dest('dist/js'))

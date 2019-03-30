@@ -320,14 +320,12 @@ var Birds = function (container, width) {
     if (typeof event.touches === 'object'
     && event.touches.length === 1) {
       event.preventDefault();
-    console.log('IF', event)
 
       this.mouseX = event.touches[0].pageX - this.windowHalfX;
       this.mouseY = event.touches[0].pageY - this.windowHalfY;
 
     }
     else {
-      console.log('ELSE', event)
 
       this.mouseX = event.clientX - this.windowHalfX;
       this.mouseY = event.clientY - this.windowHalfY;
@@ -342,7 +340,6 @@ var Birds = function (container, width) {
 
     this.playing = true;
 
-    console.log('START BIRDS');
 
     this.animate();
   }
@@ -353,7 +350,6 @@ var Birds = function (container, width) {
 
     this.playing = false;
   
-    console.log('STOP BIRDS');
   }
 
   Birds.prototype.animate = function () {
@@ -386,24 +382,9 @@ var Birds = function (container, width) {
 
     this.velocityUniforms.predator.value.set(0.5 * this.mouseX / this.windowHalfX, -0.5 * this.mouseY / this.windowHalfY, 0);
 
-    //console.log(this.velocityUniforms)
     this.velocityUniforms.scrolltop.value = 0// window.window.pageYOffset;
     if (parseInt(this.last/1000) > this.prev || this.prevcounter != 0) {
       
-      /*var event = new MouseEvent(
-          'mousemove',
-          { 
-            bubbles: false, 
-            cancelable: false, 
-            clientX: 0, 
-            clientY: 0, 
-            screenX: 0,
-            screenY:0
-          }
-        );
-      document.dispatchEvent(event);*/
-      // Line (*) is equivalent to:
-      //console.log(e)
       if (parseInt(this.last/1000) > this.prev) {
         this.prev += 20;
       }
@@ -416,10 +397,7 @@ var Birds = function (container, width) {
 
       this.mouseX = 0;
       this.mouseY = 0;
-      console.log(parseInt(this.last/1000), this.prev, this.prevcounter, this.mouseX, this.mouseY)
     } else {
-      console.log(parseInt(this.last/1000), this.prev, this.prevcounter, this.mouseX, this.mouseY)
-    //console.log(this.mouseX, this.mouseY, this.prevcounter)
 
     this.mouseX = 10000;
     this.mouseY = 10000;

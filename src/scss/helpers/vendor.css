@@ -379,6 +379,7 @@ th {
   height: 100%;
   overflow: hidden;
   position: relative;
+  z-index: 1;
 }
 .slide-container .slide-page {
   position: absolute;
