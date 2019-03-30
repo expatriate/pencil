@@ -14,7 +14,7 @@ function ready() {
   //init();
   var particles = new Birds($('#particles-mainview')[0]);
   particles.startAnimation();
-  particles.setBirdNumber(1500);
+  particles.setBirdNumber(1000);
 
 
   particlesToCenter = new Birds_moving($('#particles-subview')[0]);

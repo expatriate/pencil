@@ -87,8 +87,8 @@ var Birds = function (container, width) {
         var y = ~~(i / t.WIDTH) / t.WIDTH;
 
         var c = new THREE.Color(
-          0x444444 +
-          ~~(v / 9) / t.BIRDS * 0x666666
+          0xCCCCCC +
+          ~~(v / 9) / t.BIRDS * 0xAAAAAA
         );
 
         birdColors.array[v * 3 + 0] = c.r;
@@ -126,6 +126,8 @@ var Birds = function (container, width) {
     t.positionUniforms;
     t.velocityUniforms;
     t.birdUniforms;
+    t.prev = 0;
+    t.pevcounter = 0;
 
     t.init();
     // t.startAnimation();
@@ -152,8 +154,8 @@ var Birds = function (container, width) {
 
   Birds.prototype.init = function () {
 
-    this.camera = new THREE.PerspectiveCamera(90, window.innerWidth / window.innerHeight, 1, 3000);
-    this.camera.position.z = 350;
+    this.camera = new THREE.PerspectiveCamera(100, window.innerWidth / window.innerHeight, 1, 3000);
+    this.camera.position.z = 250;
 
     this.scene = new THREE.Scene();
 
@@ -170,6 +172,7 @@ var Birds = function (container, width) {
 
     var t = this;
     var onmove = function (e) {
+      
       t.onDocumentMouseMove.call(t,e);
     }
     var onresize = function (e) {
@@ -291,7 +294,7 @@ var Birds = function (container, width) {
       var y = Math.random() - 0.5;
       var z = Math.random() - 0.5;
 
-      theArray[k + 0] = x * 10;
+      theArray[k + 0] = x * 5;
       theArray[k + 1] = y * 10;
       theArray[k + 2] = z * 10;
       theArray[k + 3] = 1;
@@ -314,17 +317,18 @@ var Birds = function (container, width) {
   }
 
   Birds.prototype.onDocumentMouseMove = function (event) {
-
     if (typeof event.touches === 'object'
     && event.touches.length === 1) {
-
       event.preventDefault();
+    console.log('IF', event)
 
       this.mouseX = event.touches[0].pageX - this.windowHalfX;
       this.mouseY = event.touches[0].pageY - this.windowHalfY;
 
     }
     else {
+      console.log('ELSE', event)
+
       this.mouseX = event.clientX - this.windowHalfX;
       this.mouseY = event.clientY - this.windowHalfY;
     }
@@ -380,13 +384,52 @@ var Birds = function (container, width) {
     this.birdUniforms.time.value = now;
     this.birdUniforms.delta.value = delta;
 
-    //console.log(this.velocityUniforms)
     this.velocityUniforms.predator.value.set(0.5 * this.mouseX / this.windowHalfX, -0.5 * this.mouseY / this.windowHalfY, 0);
-    this.velocityUniforms.scrolltop.value = 0// window.window.pageYOffset;
 
+    //console.log(this.velocityUniforms)
+    this.velocityUniforms.scrolltop.value = 0// window.window.pageYOffset;
+    if (parseInt(this.last/1000) > this.prev || this.prevcounter != 0) {
+      
+      /*var event = new MouseEvent(
+          'mousemove',
+          { 
+            bubbles: false, 
+            cancelable: false, 
+            clientX: 0, 
+            clientY: 0, 
+            screenX: 0,
+            screenY:0
+          }
+        );
+      document.dispatchEvent(event);*/
+      // Line (*) is equivalent to:
+      //console.log(e)
+      if (parseInt(this.last/1000) > this.prev) {
+        this.prev += 20;
+      }
+      if (this.prevcounter < 30) {
+        this.prevcounter += 1;
+      }
+      else {
+        this.prevcounter = 0;
+      }
+
+      this.mouseX = 0;
+      this.mouseY = 0;
+      console.log(parseInt(this.last/1000), this.prev, this.prevcounter, this.mouseX, this.mouseY)
+    } else {
+      console.log(parseInt(this.last/1000), this.prev, this.prevcounter, this.mouseX, this.mouseY)
+    //console.log(this.mouseX, this.mouseY, this.prevcounter)
 
     this.mouseX = 10000;
     this.mouseY = 10000;
+    }
+
+
+
+    
+
+
 
     this.gpuCompute.compute();
 
@@ -395,4 +438,5 @@ var Birds = function (container, width) {
 
     this.renderer.render(this.scene, this.camera);
 
+    
   }
