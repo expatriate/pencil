@@ -71,6 +71,14 @@
       <div class="section__wrapper">
         <div class="section__wrapper" id="particles-subview">
         </div>
+        <div class="light-box">
+          <div id="light1">
+          </div>
+          <div id="light2">
+          </div>
+          <div id="light3">
+          </div>
+        </div>
        <!--  <svg role="img">
           <use xlink:href="svg/sprite.svg#logo"/>
         </svg> -->
@@ -306,7 +314,7 @@
       const float PI_2 = PI * 2.0;
       // const float VISION = PI * 0.55;
 
-      float zoneRadius = 20.0;
+      float zoneRadius = 10.0;
       float zoneRadiusSquared = 10.0;
 
       float separationThresh = 0.1;
@@ -315,7 +323,7 @@
       const float UPPER_BOUNDS = BOUNDS;
       const float LOWER_BOUNDS = -UPPER_BOUNDS;
 
-      const float SPEED_LIMIT = 7.0;
+      const float SPEED_LIMIT = 8.0;
 
       float rand(vec2 co){
         return fract(sin(dot(co.xy ,vec2(12.9898,78.233))) * 43758.5453);
@@ -409,9 +417,9 @@
 
         phase = mod( ( phase + delta +
           length( velocity.xz ) * delta * 3. +
-          max( velocity.y, 0.0 ) * delta * 6. ), 62.83 );
+          max( velocity.y, 0.0 ) * delta * 6. ), 2.83 );
 
-        gl_FragColor = vec4( position + velocity * delta * 15. , phase );
+        gl_FragColor = vec4( position + velocity * delta * 20. , phase );
 
       }
     </script>
@@ -523,6 +531,8 @@
     </script>
   <script src="js/vendor.min.js"></script>
   <script src="js/particles.js"></script>
+  <script src="js/FeedbackRenderer.js"></script>
+  <script src="js/TouchTrailShader.js"></script>
   <script src="js/particles_moving.js"></script>
   <script src="js/main.js"></script>
 </body>

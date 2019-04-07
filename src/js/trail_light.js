@@ -1,0 +1,159 @@
+window.requestAnimationFrame = (function(){
+      return window.requestAnimationFrame  ||
+        window.webkitRequestAnimationFrame ||
+        window.mozRequestAnimationFrame    ||
+        window.oRequestAnimationFrame      ||
+        window.msRequestAnimationFrame     ||
+        function(callback){
+        window.setTimeout(callback, 1000 / 60)
+      }
+      })()
+      Math.clamp = function( val, min, max ){
+        return Math.max( Math.min( val, max ), min )
+      }
+      if ( ! Detector.webgl ) Detector.addGetWebGLMessage()
+      var container, stats
+      var camera, scene, renderer
+      var uniforms, feedback
+      var width, height, offsetX, offsetY
+      var touchActive, touches
+      var size
+      init()
+      animate()
+      function init (){
+        stats = new Stats()
+        stats.setMode( 0 )
+        stats.domElement.style.position = 'absolute'
+        stats.domElement.style.left = '0px'
+        stats.domElement.style.top = '0px'
+        
+        document.body.appendChild( stats.domElement )
+        touches = []
+        touchActive = false
+        container = document.getElementById( 'container' )
+        size = 512
+        renderer = new THREE.WebGLRenderer()
+        resizeHandler()
+        camera = new THREE.OrthographicCamera( -width / 2, width / 2, height / 2, -height / 2, 1, 10000 )
+        camera.position.z = 18
+        scene = new THREE.Scene()
+        feedback = new FeedbackRenderer( {
+          renderer: renderer,
+          uniforms: TouchTrailShader.uniforms,
+          vertexShader: TouchTrailShader.vertexShader,
+          fragmentShader: TouchTrailShader.fragmentShader
+        } )
+        var mesh = new THREE.Mesh( 
+          new THREE.PlaneBufferGeometry( size, size, 50, 50 ), 
+          new THREE.MeshBasicMaterial( { map: feedback.texture } ) 
+        )
+        scene.add( mesh )
+        container.appendChild( renderer.domElement )
+        window.addEventListener( 'resize', resizeHandler, false )
+      }
+      function resizeHandler (){
+        width = window.innerWidth
+        height = window.innerHeight
+        offsetX = Math.min( ( width - size ) * .5, width )
+        offsetY = Math.min( ( height - size ) * .5, height )
+        if ( camera ){
+          camera.left = -width / 2
+          camera.right = width / 2
+          camera.top = height / 2
+          camera.bottom = -height / 2
+          camera.updateProjectionMatrix()
+        }
+        renderer.setSize( width, height )
+      }
+      
+      function animate (){
+        stats.begin()
+        render()
+        requestAnimationFrame( animate )
+        stats.end()
+      }
+      function render(){
+        feedback.render()
+        renderer.render( scene, camera )
+      }
+      container.addEventListener( 'mousedown', function ( event ) {
+        event.preventDefault()
+        touchActive = true
+        feedback.uniforms.uTouchArray.value[ 0 ].set( 
+          Math.clamp( ( event.x - offsetX ) / size, 0, 1 ), 
+          1 - Math.clamp( ( event.y - offsetY ) / size, 0, 1 ) 
+        )
+        feedback.material.uniforms.uActiveTouchCount.value = 1
+      })
+      
+      window.addEventListener( 'mouseup', function ( event ) {
+        event.preventDefault()
+        touchActive = false
+        feedback.material.uniforms.uActiveTouchCount.value = 0
+      }, false )
+      container.addEventListener( 'mousemove', function ( event ) {
+        event.preventDefault()
+        if ( touchActive ){
+          feedback.uniforms.uTouchArray.value[ 0 ].set( 
+            Math.clamp( ( event.x - offsetX ) / size, 0, 1 ), 
+            1 - Math.clamp( ( event.y - offsetY ) / size, 0, 1 ) 
+          )
+        
+        }
+      }, false )
+      //touch events
+      function updateTouchUniforms () {
+        var 
+        i = 0,
+        touch
+        for ( var t in touches ){
+          touch = touches[ t ]
+          feedback.material.uniforms.uTouchArray.value[ i ].set( 
+            Math.clamp( ( touch.x - offsetX ) / size, 0, 1 ), 
+            1 - Math.clamp( ( touch.y - offsetY ) / size, 0, 1 ) 
+          )
+          i++
+        
+        }
+        feedback.material.uniforms.uActiveTouchCount.value = i
+        touchActive = ( i > 0 ) ? true : false
+      }
+      container.addEventListener( 'touchstart', function ( event ) {
+        event.preventDefault()
+        var touch
+        for ( var i = 0, len = event.changedTouches.length; i < len; i++ ) {
+          touch = event.changedTouches[ i ]
+          touches[ touch.identifier ] = { id: touch.identifier, x: touch.clientX, y: touch.clientY }
+        }
+        updateTouchUniforms()
+      }, false )
+      container.addEventListener( 'touchend', function ( event ) {
+        event.preventDefault()
+        var removedTouches = []
+        for ( var i = 0, len = event.changedTouches.length; i < len; i++ ) {
+          touch = event.changedTouches[ i ]
+          if ( touches[ touch.identifier ] ){
+            removedTouches.push( touch.identifier )
+          }
+        }
+        for ( var i = 0, len = removedTouches.length; i < len; i++ ) {
+          delete touches[ removedTouches[ i ] ]
+        
+        }
+        updateTouchUniforms()
+      }, false )
+      container.addEventListener( 'touchmove', function ( event ) {
+        event.preventDefault()
+        for ( var i = 0, len = event.changedTouches.length; i < len; i++ ) {
+          touch = event.changedTouches[ i ]
+          
+          if ( touches[ touch.identifier ] ){
+          
+            touches[ touch.identifier ].x = touch.clientX
+            touches[ touch.identifier ].y = touch.clientY
+          
+          }
+        }
+        updateTouchUniforms()
+        
+      }, false )

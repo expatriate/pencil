@@ -153,8 +153,8 @@ var Birds_moving = function (container, width) {
 
   Birds_moving.prototype.init = function () {
 
-    this.camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 1, 3000);
-    this.camera.position.z = 350;
+    this.camera = new THREE.PerspectiveCamera(100, window.innerWidth / window.innerHeight, 1, 3000);
+    this.camera.position.z = 250;
     this.camera.setCenter
 
     this.scene = new THREE.Scene();
@@ -221,8 +221,8 @@ var Birds_moving = function (container, width) {
     //this.velocityUniforms.predator = {value: new THREE.Vector3()};
     this.velocityVariable.material.defines.BOUNDS = this.BOUNDS.toFixed(2);
 
-    this.velocityUniforms.scrolltopy = {value: -250.0};
-    this.velocityUniforms.scrolltopx = {value: -250.0};
+    this.velocityUniforms.scrolltopy = {value: - 400.0};
+    this.velocityUniforms.scrolltopx = {value: - 400.0};
     
 
     this.velocityVariable.wrapS = THREE.RepeatWrapping;
@@ -273,8 +273,8 @@ var Birds_moving = function (container, width) {
 
     for (var k = 0, kl = theArray.length; k < kl; k += 4) {
 
-      var x = 250;//Math.random() * this.BOUNDS - this.BOUNDS_HALF;
-      var y = 250;//Math.random() * this.BOUNDS - this.BOUNDS_HALF;
+      var x = 450;//Math.random() * this.BOUNDS - this.BOUNDS_HALF;
+      var y = 450;//Math.random() * this.BOUNDS - this.BOUNDS_HALF;
       var z = Math.random() * this.BOUNDS - this.BOUNDS_HALF;
 
       theArray[k + 0] = x;
@@ -391,12 +391,13 @@ var Birds_moving = function (container, width) {
     if (this.lastDelta < this.last) {
       if(this.velocityUniforms.scrolltopy.value < 0) {
         this.velocityUniforms.scrolltopy.value = this.velocityUniforms.scrolltopy.value + 50;
-        this.velocityUniforms.scrolltopx.value = this.velocityUniforms.scrolltopx.value + 80;
-        this.lastDelta = this.last + 1000;
+        this.velocityUniforms.scrolltopx.value = this.velocityUniforms.scrolltopx.value + 70;
+        this.lastDelta = this.last + 500;
       }
       if(this.velocityUniforms.scrolltopy.value == 0) {
         this.velocityUniforms.scrolltopy.value += 1;
         $('#particles-subview').delay(800).animate({'opacity': 0.0}, 1000);
+        $('.light-box').delay(1200).animate({'opacity': 1}, 1000);
       }
       if(this.velocityUniforms.scrolltopy.value == 50) {
         //this.stopAnimation();

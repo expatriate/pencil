@@ -22,6 +22,82 @@ svg {
     background: transparent; /* Chrome/Safari/Webkit */
   }
 }
+.light-box {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  left: 490px;
+  top: 46%;
+  z-index: 999;
+  opacity: 0;
 
+  div {
+    width: 5px;
+    height: 5px;
+    background: #aa0000;
+  }
+}
+#light1 {
+  margin: 30px;
+  border-radius: 50%;
+  box-shadow: 0px 0px 30px 20px #8efeee;
+  animation: glow1 3s linear infinite alternate,
+             rotating 5s linear infinite;
+  position: absolute;
+  opacity: 0.6;
+  left: 0px;
+  top: 0px;
+
+}
+#light2 {
+  margin: 30px;
+  border-radius: 50%;
+  box-shadow: 0px 0px 30px 20px #8fbcfd;
+  animation: glow2 3s linear infinite alternate,
+             rotating 3s linear infinite;
+  position: absolute;
+  opacity: 0.6;
+  left: 40px;
+  top: 0px;
+}
+#light3 {
+  margin: 30px;
+  border-radius: 50%;
+  box-shadow: 0px 0px 30px 20px #dffede;
+  animation: glow3 3s linear infinite alternate,
+             rotating 4s linear infinite;
+  position: absolute;
+  opacity: 0.6;
+  left: 20px;
+  top: 30px;
+}
+
+@keyframes rotating {
+  from {
+    transform: rotate(0deg) translateX(20px) rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg) translateX(20px) rotate(-360deg);
+  }
+}
+
+@keyframes glow1{
+  to {
+    box-shadow: 0px 0px 150px 90px #8efeee;
+    opacity: 1;
+  }
+}
+@keyframes glow2{
+  to {
+    box-shadow: 0px 0px 150px 90px #8fbcfd;
+    opacity: 1;
+  }
+}
+@keyframes glow3{
+  to {
+    box-shadow: 0px 0px 150px 90px #dffede;
+    opacity: 1;
+  }
+}
 
 
