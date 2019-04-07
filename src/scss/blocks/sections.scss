@@ -103,6 +103,19 @@
   }
 }
 
+.main-title__small {
+  text-align: left;
+  font-size: 64px;
+  font-family: 'MuseoSansCyrl';
+  font-weight: 300;
+  margin: 0;
+  pointer-events: none;
+
+  span {
+    color: #e12125;
+  }
+}
+
 .wrapper {
   max-width: 1600px;
   margin: 0 auto;

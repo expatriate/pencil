@@ -17,7 +17,7 @@ function ready() {
   particles.setBirdNumber(1000);
 
 
-  particlesToCenter = new Birds_moving($('#particles-subview')[0]);
+  //particlesToCenter = new Birds_moving($('#particles-subview')[0]);
   
 
   //animate();
@@ -38,8 +38,8 @@ function ready() {
           particles.startAnimation();
         }
         if (target == 2) {
-          particlesToCenter.startAnimation();
-          particlesToCenter.setBirdNumber(512);
+          //particlesToCenter.startAnimation();
+          //particlesToCenter.setBirdNumber(512);
         }
       },
       after: function(origin,direction,target){
