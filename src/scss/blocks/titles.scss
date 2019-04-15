@@ -1,0 +1,55 @@
+.main-title {
+  text-align: left;
+  font-size: 76px;
+  font-family: 'MuseoSansCyrl';
+  font-weight: 300;
+  margin: 0;
+  pointer-events: none;
+
+  &__centered {
+    text-align: center;
+  }
+
+  span {
+    color: #e12125;
+  }
+}
+
+.main-title__small {
+  text-align: left;
+  font-size: 64px;
+  font-family: 'MuseoSansCyrl';
+  font-weight: 300;
+  margin: 0;
+  pointer-events: none;
+
+  span {
+    color: #e12125;
+  }
+}
+
+
+.small {
+  font-size: 20px;
+}
+
+.medium {
+  font-size: 30px;
+}
+
+.title-under {
+  font-size: 160px;
+  line-height: 1;
+  font-family: 'MuseoSansCyrl';
+  font-weight: 300;
+  position: absolute;
+  opacity: 0.1;
+  align-self: center;
+  top: 32%;
+}
+
+.sub-title {
+  font-size: 60px;
+  font-family: 'MuseoSansCyrl';
+  font-weight: 300;
+}
