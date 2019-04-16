@@ -24,7 +24,7 @@ function ready() {
 
   //window.addEventListener('scroll', onWindowScroll, false );
 
-  var slidepage = new slidePage({
+  /*var slidepage = new slidePage({
       slideContainer: '.slide-container',
       slidePages: '.slide-page',
       page: 1,
@@ -52,8 +52,35 @@ function ready() {
       },
    });
 
-  window.slidepage = slidepage;
+  window.slidepage = slidepage;*/
 
+  $(function() {
+    $.scrollify({
+      section : '.section',
+      setHeights: false,
+      touchScroll: false,
+      //interstitialSection: '.section__fullsize',
+      before: function(index, sections) {
+        if (index < 6 && index >= 2) {
+          $('#fixed-title').addClass('fixed')
+        } else {
+          $('#fixed-title').removeClass('fixed')
+        }
+        $('body').find('.section:eq('+index+')').addClass('not-animated');
+        console.log('before', index)
+      },
+      after: function (index, sections) {
+        console.log('after', index)
+        startAnimation(index);
+      }
+    });
+  });
+
+}
+
+
+function startAnimation(index) {
+  $('body').find('.section:eq('+index+')').addClass('animated').removeClass('not-animated');
 }
 
 /*function onWindowScroll(e) {
@@ -100,5 +127,5 @@ function ready() {
   if (windowWidth < customHeight) {
     customHeight = windowWidth;
   }
-  $('#stage').css({width: customHeight, height: customHeight})
+  //$('#stage').css({width: customHeight, height: customHeight})
 }

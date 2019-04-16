@@ -130,7 +130,7 @@ Birds.prototype.init = function () {
   });
   this.renderer.setClearColor(this.scene.fog.color);
   this.renderer.setPixelRatio(window.devicePixelRatio);
-  this.renderer.setSize(window.innerWidth, window.innerHeight);
+  this.renderer.setSize($('#particles-mainview').width(), window.innerHeight);
   this.container.appendChild(this.renderer.domElement);
   this.initComputeRenderer();
   var t = this;
@@ -277,7 +277,7 @@ Birds.prototype.onWindowResize = function () {
   this.windowHalfY = window.innerHeight / 2;
   this.camera.aspect = window.innerWidth / window.innerHeight;
   this.camera.updateProjectionMatrix();
-  this.renderer.setSize(window.innerWidth, window.innerHeight);
+  this.renderer.setSize($('#particles-mainview').width(), window.innerHeight);
 };
 
 Birds.prototype.onDocumentMouseMove = function (event) {

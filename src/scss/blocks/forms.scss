@@ -1,0 +1,12 @@
+.form-text {
+  border: 0;
+  border-bottom: 1px solid #f1f1f2;
+  font-size: 30px;
+  padding: 18px 0px;
+  margin: 16px 0px;
+  color: #d0d0d0;
+}
+
+.form-text + .form-text {
+  margin-left: 64px;
+}

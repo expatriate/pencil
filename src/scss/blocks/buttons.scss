@@ -1,0 +1,23 @@
+.button__wrapper {
+  
+  &.centered {
+    align-self: center;
+  }
+
+  &.padds {
+    padding: 120px 0px;
+  }
+  &.smallpadds {
+    padding: 56px 0px;
+  }
+}
+
+.btn-wide {
+  padding: 32px 140px;
+  background-color: transparent;
+  font-size: 40px;
+  width: 100%;
+  color: #000000;
+  border: 2px solid;
+  border-image: linear-gradient(45deg, #dbf8fa, #ebf4fb, #f8f7f3) 1;
+}

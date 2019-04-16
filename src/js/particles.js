@@ -165,7 +165,7 @@ var Birds = function (container, width) {
     this.renderer.setClearColor(this.scene.fog.color);
     this.renderer.setPixelRatio(window.devicePixelRatio);
 
-    this.renderer.setSize(window.innerWidth, window.innerHeight);
+    this.renderer.setSize($('#particles-mainview').width(), window.innerHeight);
     this.container.appendChild(this.renderer.domElement);
 
     this.initComputeRenderer();
@@ -312,7 +312,7 @@ var Birds = function (container, width) {
     this.camera.aspect = window.innerWidth / window.innerHeight;
     this.camera.updateProjectionMatrix();
 
-    this.renderer.setSize(window.innerWidth, window.innerHeight);
+    this.renderer.setSize($('#particles-mainview').width(), window.innerHeight);
 
   }
 
