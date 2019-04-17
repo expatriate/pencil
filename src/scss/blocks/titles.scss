@@ -10,7 +10,7 @@
     text-align: center;
   }
 
-  span {
+  .filled {
     color: #e12125;
   }
 }
@@ -23,7 +23,7 @@
   margin: 0;
   pointer-events: none;
 
-  span {
+  .filled {
     color: #e12125;
   }
 
@@ -56,7 +56,9 @@
 }
 
 .sub-title {
-  
+  font-size: 56px;
+  font-family: 'MuseoSansCyrl';
+  font-weight: 300;
 }
 
 #fixed-title {

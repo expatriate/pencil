@@ -72,17 +72,19 @@
     height: 120px;
   }
 
-  &-content {
-    flex-direction: column;
-    display: flex;
-    flex: 1;
-    
-    height: 100%;
+  &__full {
+    .section-content {
+      justify-content: space-around;
+    }
+    .section__wrapper {
+      height: 100%;
+    }
   }
 
   &__fixed {
     .section-content {
-      justify-content: space-around;
+      padding-bottom: 10%;
+      //justify-content: space-around;
     }
     .section__wrapper {
       height: 100%;
@@ -105,6 +107,18 @@
     height: auto;
   }
 
+}
+
+.section-content {
+  flex-direction: column;
+  display: flex;
+  flex: 1;
+  
+  height: 100%;
+
+  &__content-bottom {
+    justify-content: flex-end;
+  }
 }
 
 .section-main {

@@ -5,6 +5,7 @@
 
 var scrollFlag = true, lastScrollPos = 0, particles, particlesToCenter, particlesFromCenter;
 var screenHeight = window.window.innerHeight;
+var viewportBlocks;
 
 document.addEventListener("DOMContentLoaded", ready);
 
@@ -54,6 +55,8 @@ function ready() {
 
   window.slidepage = slidepage;*/
 
+  initAnimationBlocks();
+
   $(function() {
     $.scrollify({
       section : '.section',
@@ -71,7 +74,7 @@ function ready() {
       },
       after: function (index, sections) {
         console.log('after', index)
-        startAnimation(index);
+        //startAnimation(index);
       }
     });
   });
@@ -79,10 +82,30 @@ function ready() {
 }
 
 
-function startAnimation(index) {
+/*function startAnimation(index) {
   $('body').find('.section:eq('+index+')').addClass('animated').removeClass('not-animated');
-}
+}*/
 
+function initAnimationBlocks() {
+  viewportBlocks = $('.js-viewport-block')
+
+  viewportBlocks.viewportChecker({
+    repeat: false,
+    callbackFunction: function callbackFunction(elem, action) {
+      $(elem).find('.js-anim-image').each(function(index, item) {
+        setTimeout(() => {
+          $(item).addClass('js-anim-title-done')
+        }, 300 * index);
+      });
+
+      $(elem).find('.js-anim-title, .js-anim-text, .js-anim-block').each(function(index, item) {
+        setTimeout(() => {
+          $(item).addClass('js-anim-title-done')
+        }, 200 * index);
+      });
+    }
+  });
+}
 /*function onWindowScroll(e) {
   if (!scrollFlag) {
     console.log('DISABLED', e)
