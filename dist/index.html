@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta charset="utf-8">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.2/TweenMax.min.js"></script>
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/sprite.css">
 
@@ -295,9 +296,10 @@
               </article>
             </div>
           </div>
-          <div class="block-news__image js-anim-image">
-            <img src="img/krim.jpg">
-          </div>
+          <a href="#">
+            <div class="block-news__image js-anim-image js-hover-1" data-first="img/krim.jpg" data-second="img/krim1.jpg">
+            </div>
+          </a>
         </div>
         <div class="section__wrapper">
           <div class="section-content">
@@ -342,9 +344,10 @@
               </article>
             </div>
           </div>
-          <div class="block-news__image js-anim-image">
-            <img src="img/goldenwindow.jpg">
-          </div>
+          <a href="#">
+            <div class="block-news__image js-anim-image js-hover-2" data-first="img/goldenwindow.jpg" data-second="img/goldenwindow1.jpg">
+            </div>
+          </a>
         </div>
         <div class="section__wrapper">
           <div class="section-content">
@@ -386,9 +389,10 @@
               </article>
             </div>
           </div>
-          <div class="block-news__image js-anim-image">
-            <img src="img/rehau.jpg">
-          </div>
+          <a href="#">
+            <div class="block-news__image js-anim-image js-hover-3" data-first="img/rehau.jpg" data-second="img/rehau1.jpg">
+            </div>
+          </a>
         </div>
         <div class="section__wrapper">
           <div class="section-content">
@@ -431,9 +435,10 @@
               </article>
             </div>
           </div>
-          <div class="block-news__image js-anim-image">
-            <img src="img/landrover.jpg">
-          </div>
+          <a href="#">
+            <div class="block-news__image js-anim-image js-hover-4" data-first="img/landrover.jpg" data-second="img/landrover1.jpg">
+            </div>
+          </a>
         </div>
         <div class="section__wrapper">
           <div class="section-content">
@@ -924,6 +929,8 @@
       }
     </script>
   <script src="js/vendor.min.js"></script>
+  <script src="js/imagesloaded.pkgd.min.js"></script>
+  <script src="js/hover.js"></script>
   <script src="js/particles.js"></script>
   <script src="js/main.js"></script>
 </body>

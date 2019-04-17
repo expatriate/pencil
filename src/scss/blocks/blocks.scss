@@ -104,6 +104,7 @@
     &__image {
       right: 0;
       top:0;
+      z-index: 9;
 
       img {
         object-fit: cover;
@@ -125,6 +126,7 @@
       &__image {
         left: 0;
         top: 0;
+        z-index: 9;
 
         img {
           object-fit: cover;

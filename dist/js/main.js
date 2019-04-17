@@ -57,6 +57,8 @@ function ready() {
 
   initAnimationBlocks();
 
+  initImagesHover();
+
   $(function() {
     $.scrollify({
       section : '.section',
@@ -85,6 +87,32 @@ function ready() {
 /*function startAnimation(index) {
   $('body').find('.section:eq('+index+')').addClass('animated').removeClass('not-animated');
 }*/
+function initImagesHover() {
+  var hover1 = new hoverEffect({
+    parent: document.querySelector('.js-hover-1'),
+    image1: $('.js-hover-1').data('first'),
+    image2: $('.js-hover-1').data('second'),
+    displacementImage: 'img/distortion.jpg'
+  });
+  var hover2 = new hoverEffect({
+    parent: document.querySelector('.js-hover-2'),
+    image1: $('.js-hover-2').data('first'),
+    image2: $('.js-hover-2').data('second'),
+    displacementImage: 'img/distortion.jpg'
+  });
+  var hover3 = new hoverEffect({
+    parent: document.querySelector('.js-hover-3'),
+    image1: $('.js-hover-3').data('first'),
+    image2: $('.js-hover-3').data('second'),
+    displacementImage: 'img/distortion.jpg'
+  });
+  var hover4 = new hoverEffect({
+    parent: document.querySelector('.js-hover-4'),
+    image1: $('.js-hover-4').data('first'),
+    image2: $('.js-hover-4').data('second'),
+    displacementImage: 'img/distortion.jpg'
+  });
+}
 
 function initAnimationBlocks() {
   viewportBlocks = $('.js-viewport-block')
