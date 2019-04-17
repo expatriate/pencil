@@ -45,7 +45,6 @@
   &__image {
     width: 50%;
     height: 100%;
-    background-color: #aabbcc;
     position: absolute;
   }
 
@@ -104,6 +103,12 @@
     &__image {
       right: 0;
       top:0;
+
+      img {
+        object-fit: cover;
+        width: 100%;
+        height: 100%;
+      }
     }
   }
   .block-image-caption {
@@ -119,6 +124,12 @@
       &__image {
         left: 0;
         top: 0;
+
+        img {
+          object-fit: cover;
+          width: 100%;
+          height: 100%;
+        }
       }
     }
     .block-image-caption {
@@ -144,10 +155,17 @@
   margin-bottom: 120px;
 
   &__item {
-    width: calc(25% - 10px);
+    width: calc(25% - 20px);
     height: 200px;
-    background-color: #abc;
-    margin: 0px 10px 10px 0px;
+    //background-color: #abc;
+    margin: 0px 20px 20px 0px;
+
+
+    img {
+      object-fit: contain;
+      width: 100%;
+      height: 100%;
+    }
   }
 }
 
@@ -166,5 +184,94 @@
   .row {
     display: flex;
     flex-direction: row;
+  }
+}
+
+.block-footer {
+  width: 100%;
+  margin: 120px 0px 64px 0px;
+
+  .row {
+    display: flex;
+    flex-direction: row;
+    flex: 1;
+    align-items: center;
+    width: 100%;
+    margin-top: 32px;
+
+    .col:first-child {
+      flex: 6;
+    }
+    .col:last-child {
+      flex: 4;
+    }
+  }
+  .col {
+    display: flex;
+    flex-direction: column;
+  }
+
+
+  &__logo {
+    padding: 18px;
+  }
+
+
+  &__nav {
+    width: 60%;
+    overflow: hidden;
+
+    a {
+      font-size: 25px;
+      color: #5b5b5b;
+      text-decoration: none;
+      margin-right: 18px;
+      white-space: nowrap;
+      position: relative;
+
+      &:before {
+        content: '|';
+        position: absolute;
+        left: -14px;
+        font-size: 25px;
+        color: #5b5b5b;
+      }
+    }
+
+    &-wrapper {
+      max-width: 60%;  
+    }
+  }
+
+
+  &__info {
+    padding: 32px 18px;
+    flex: 1;
+    align-self: flex-start;
+
+    span, a {
+      display: block;
+      font-size: 25px;
+      color: #5b5b5b;
+      text-decoration: none;
+    }
+
+    svg {
+      width: 40px;
+      height: 40px;
+    }
+  }
+
+
+  &__socials {
+    flex-direction: row;
+    display: flex;
+    padding: 18px 0px;
+
+    svg {
+      width: 40px;
+      height: 40px;
+      margin-right: 18px; 
+    }
   }
 }
