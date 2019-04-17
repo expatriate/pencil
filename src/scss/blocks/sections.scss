@@ -7,12 +7,7 @@
   /* display: flex;
   flex-direction: column;
   */
-  scrollbar-width: none; 
-  -ms-overflow-style: none;  
-  &::-webkit-scrollbar {
-    width: 0px;
-    background: transparent; 
-  } 
+  
 
   &:nth-child(1) {
     background: #ffffff
@@ -56,6 +51,10 @@
       position: relative;
       z-index: 2;
     }
+
+    &-main {
+      padding-bottom: 120px;
+    }
   }
 
   &__wrapper-top {
@@ -67,9 +66,21 @@
   }
   &__wrapper-bottom {
     display: flex;
-    position: relative;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    flex-direction: column;
     z-index: 2;
-    height: 120px;
+
+    a {
+      color: #333;
+      font-size: 24px;
+      margin-bottom: 120px;
+    }
+
+    .scroller {
+      margin-bottom: 24px;
+    }
   }
 
   &__full {

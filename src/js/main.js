@@ -92,6 +92,8 @@ function initAnimationBlocks() {
   viewportBlocks.viewportChecker({
     repeat: false,
     callbackFunction: function callbackFunction(elem, action) {
+
+      console.log($(elem).find('.js-anim-image'))
       $(elem).find('.js-anim-image').each(function(index, item) {
         setTimeout(() => {
           $(item).addClass('js-anim-title-done')
