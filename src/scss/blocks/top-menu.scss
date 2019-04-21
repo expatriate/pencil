@@ -12,6 +12,38 @@
     font-family: 'MuseoSansCyrl';
     font-size: 16px;
     color: #000000;
+    transition: all ease 0.5s;
+
+    span {
+      position: relative;
+      display: block;
+      margin-top: 2px;
+      width: 0%;
+      height: 1px;
+    }
+
+    &.nothovered {
+      opacity: 0.3;
+      transition: all ease 0.5s;
+      cursor: pointer;
+    }
+
+    &.hovered {
+      opacity: 1;
+      transition: all ease 0.5s;
+      cursor: pointer;
+
+      span {
+        position: relative;
+        display: block;
+        margin-top: 2px;
+        width: 0%;
+        height: 1px;
+        background: #333333;
+        animation: lineanimation 0.4s linear normal;
+        animation-fill-mode: both;
+      }
+    }
   }
 
 }
@@ -36,4 +68,14 @@
     margin-right: 14px;
   }
 
+}
+
+
+@keyframes lineanimation {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 100%;
+  }
 }

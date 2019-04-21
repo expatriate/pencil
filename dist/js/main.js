@@ -59,23 +59,67 @@ function ready() {
 
   initImagesHover();
 
+  initMenuHover();
+
   $(function() {
     $.scrollify({
       section : '.section',
       setHeights: false,
-      touchScroll: false,
+      touchScroll: true,
+      //scrollbars: false,
+      standardScrollElements: true,
       //interstitialSection: '.section__fullsize',
       before: function(index, sections) {
         if (index < 6 && index >= 2) {
-          $('#fixed-title').addClass('fixed')
+          var fixedtitle = $('.main-title__fixed');
+          if (!fixedtitle.hasClass('animated')) {
+            fixedtitle.animate({opacity: 1}, 600, function() {
+              fixedtitle.addClass('animated')
+            });
+          }
         } else {
-          $('#fixed-title').removeClass('fixed')
+          var fixedtitle = $('.main-title__fixed');
+          if (fixedtitle.hasClass('animated')) {
+            fixedtitle.animate({opacity: 0}, 200, function() {
+              fixedtitle.removeClass('animated')
+            });
+          }
         }
-        $('body').find('.section:eq('+index+')').addClass('not-animated');
+        if (index < 6) {
+          
+
+          $.scrollify.setOptions({
+            //scrollbars: false
+          });
+          $.scrollify.update()
+          //$.scrollify.disable()
+        } else {
+          //$.scrollify.destroy();
+
+        }
+        //$('body').find('.section:eq('+index+')').addClass('not-animated');
+        var lightbox = $('body').find('.section:eq('+index+')').find('.light-box__small');
+        var title = $('body').find('.section:eq('+index+')').find('.title-under');
+        if (!lightbox.hasClass('animated')) {
+          lightbox.animate({opacity: 0.4}, 4000, function() {
+            lightbox.addClass('animated')
+          });
+        }
+        if (!title.hasClass('animated')) {
+          title.delay(1000).animate({opacity: 0.1}, 2000, function() {
+            title.addClass('animated')
+          });
+        }
         console.log('before', index)
       },
       after: function (index, sections) {
-        console.log('after', index)
+        console.log('after', index);
+        if (index == 6) {
+          $.scrollify.setOptions({
+            scrollbars: true
+          });
+          $.scrollify.update();
+        }
         //startAnimation(index);
       }
     });
@@ -92,25 +136,37 @@ function initImagesHover() {
     parent: document.querySelector('.js-hover-1'),
     image1: $('.js-hover-1').data('first'),
     image2: $('.js-hover-1').data('second'),
-    displacementImage: 'img/distortion.jpg'
+    intensity: 0.2,
+    speedin: 1.6,
+    speedout: 1.8,
+    displacementImage: 'img/distortion.png'
   });
   var hover2 = new hoverEffect({
     parent: document.querySelector('.js-hover-2'),
     image1: $('.js-hover-2').data('first'),
     image2: $('.js-hover-2').data('second'),
-    displacementImage: 'img/distortion.jpg'
+    intensity: 0.2,
+    speedin: 1.6,
+    speedout: 1.8,
+    displacementImage: 'img/distortion.png'
   });
   var hover3 = new hoverEffect({
     parent: document.querySelector('.js-hover-3'),
     image1: $('.js-hover-3').data('first'),
     image2: $('.js-hover-3').data('second'),
-    displacementImage: 'img/distortion.jpg'
+    intensity: 0.2,
+    speedin: 1.6,
+    speedout: 1.8,
+    displacementImage: 'img/distortion.png'
   });
   var hover4 = new hoverEffect({
     parent: document.querySelector('.js-hover-4'),
     image1: $('.js-hover-4').data('first'),
     image2: $('.js-hover-4').data('second'),
-    displacementImage: 'img/distortion.jpg'
+    intensity: 0.2,
+    speedin: 1.6,
+    speedout: 1.8,
+    displacementImage: 'img/distortion.png'
   });
 }
 
@@ -135,6 +191,30 @@ function initAnimationBlocks() {
       });
     }
   });
+}
+
+function initMenuHover() {
+
+  $('.top-menu__item').hover(function(e) {
+    $('.top-menu__item').removeClass('hovered').addClass('nothovered');
+    $(e.target).removeClass('nothovered').addClass('hovered')
+  });
+
+  $('.top-menu').hover(function(e) {
+  }, function() {
+    $('.top-menu__item').removeClass('hovered').removeClass('nothovered');
+  });
+
+  $('.block-footer__nav-item').hover(function(e) {
+    $('.block-footer__nav-item').removeClass('hovered').addClass('nothovered');
+    $(e.target).removeClass('nothovered').addClass('hovered')
+  });
+
+  $('.block-footer__nav-wrapper').hover(function(e) {
+  }, function() {
+    $('.block-footer__nav-item').removeClass('hovered').removeClass('nothovered');
+  });
+
 }
 /*function onWindowScroll(e) {
   if (!scrollFlag) {
