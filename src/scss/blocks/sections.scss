@@ -37,6 +37,15 @@
     position: relative;
     z-index: 2;
 
+    @include screen($desktop, $desktop-wide) {
+      max-width: 1480px;
+    }
+
+    @include screen($tablet, $desktop) {
+      max-width: 1024px;
+      padding: 0px 24px; 
+    }
+
     &-centered {
       justify-content: center;
       align-items: center;
@@ -76,6 +85,11 @@
       color: #333;
       font-size: 24px;
       margin-bottom: 120px;
+
+      @include screen($tablet, $desktop) {
+        font-size: 18px;
+        margin-bottom: 100px;
+      }
     }
 
     .scroller {

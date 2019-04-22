@@ -28,7 +28,7 @@
   &__text {
     margin-top: 40px;
     font-weight: 300;
-    font-size: 30px;
+    font-size: 20px;
   }
 
 }
@@ -42,6 +42,11 @@
   min-height: 540px;
   padding: 0px 90px;
 
+  @include screen($tablet, $desktop) {
+    padding: 0px 45px;
+    min-height: 320px;
+  }
+
   &__image {
     width: 50%;
     height: 100%;
@@ -53,15 +58,29 @@
     font-weight: 300;
     padding-top: 32px;
     margin-bottom: 56px;
+
+    @include screen($tablet, $desktop) {
+      font-size: 38px;
+      padding-top: 24px;
+      margin-bottom: 36px;
+    }
   }
 
   &__subtitle {
     font-size: 26px;
     margin: 16px 0px;
+
+    @include screen($tablet, $desktop) {
+      font-size: 22px;
+    }
   }
 
   &__text {
     font-size: 18px;
+
+    @include screen($tablet, $desktop) {
+      font-size: 16px;
+    }
 
     &:last-child {
       padding-bottom: 32px;
@@ -83,6 +102,10 @@
     font-size: 17px;
     color: #afafaf;
     position: relative;
+
+    @include screen($tablet, $desktop) {
+      font-size: 14px;
+    }
 
     &:before {
       content: 'ᴼᴼ';
@@ -194,6 +217,10 @@
   width: 100%;
   margin: 120px 0px 64px 0px;
 
+  @include screen($tablet, $desktop) {
+    margin: 80px 0px 32px 0px;
+  }
+
   .row {
     display: flex;
     flex-direction: row;
@@ -224,6 +251,10 @@
     width: 60%;
     overflow: hidden;
 
+    @include screen($tablet, $desktop) {
+      width: 50%;
+    }
+
     &-item {
       font-size: 25px;
       color: #5b5b5b;
@@ -232,6 +263,10 @@
       white-space: nowrap;
       position: relative;
       transition: all ease 0.5s;
+
+      @include screen($tablet, $desktop) {
+        font-size: 18px;
+      }
 
       span {
         position: relative;
@@ -247,6 +282,10 @@
         left: -14px;
         font-size: 25px;
         color: #5b5b5b;
+
+        @include screen($tablet, $desktop) {
+          font-size: 18px;
+        }
       }
 
       &.nothovered {
@@ -284,11 +323,19 @@
     flex: 1;
     align-self: flex-start;
 
+    @include screen($tablet, $desktop) {
+      padding: 24px 12px;
+    }
+
     span, a {
       display: block;
       font-size: 25px;
       color: #5b5b5b;
       text-decoration: none;
+
+      @include screen($tablet, $desktop) {
+        font-size: 18px;
+      }
     }
 
     svg {

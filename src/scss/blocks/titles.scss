@@ -6,6 +6,10 @@
   margin: 0;
   pointer-events: none;
 
+  @include screen($tablet, $desktop) {
+    font-size: 48px;
+  }
+
   &__centered {
     text-align: center;
   }
@@ -15,6 +19,17 @@
     top: 48px;
     width: 100%;
     opacity: 0;
+    display: block;
+    max-width: 1600px;
+
+    @include screen($desktop, $desktop-wide) {
+      max-width: 1480px;
+    }
+
+    @include screen($tablet, $desktop) {
+      max-width: 1024px;
+    }
+
   }
 
   .filled {
@@ -30,6 +45,10 @@
   margin: 0;
   pointer-events: none;
 
+  @include screen($tablet, $desktop) {
+    font-size: 36px;
+  }
+
   .filled {
     color: #e12125;
   }
@@ -42,10 +61,18 @@
 
 .small {
   font-size: 20px;
+
+  @include screen($tablet, $desktop) {
+    font-size: 16px;
+  }
 }
 
 .medium {
   font-size: 30px;
+
+  @include screen($tablet, $desktop) {
+    font-size: 22px
+  }
 }
 
 .title-under {
@@ -59,11 +86,20 @@
   text-align: center;
   top: 24%;
 
+  @include screen($tablet, $desktop) {
+    top: 26%;
+    font-size: 120px;
+  }
+
 
 }
 
 .sub-title {
-  font-size: 56px;
+  font-size: 46px;
   font-family: 'MuseoSansCyrl';
   font-weight: 300;
+
+  @include screen($tablet, $desktop) {
+    font-size: 34px;
+  }
 }
