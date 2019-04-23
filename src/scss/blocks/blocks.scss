@@ -6,6 +6,11 @@
   position: relative;
   z-index: 3;
 
+  @include screen(0, $mobile) {
+    flex-direction: column;
+    margin-top: 64px;
+  }
+
 
   &--pad-left {
     
@@ -18,6 +23,10 @@
 
   &__half {
     width: 50%;
+
+    @include screen(0, $mobile) {
+      width: 100%;
+    }
   }
 }
 
@@ -29,6 +38,15 @@
     margin-top: 40px;
     font-weight: 300;
     font-size: 20px;
+    @include screen(0, $mobile) {
+      margin-top: 16px;
+      padding-left: 24px;
+      font-size: 18px;
+    }
+  }
+
+  @include screen(0, $mobile) {
+    margin-top: 16px;
   }
 
 }
@@ -46,11 +64,21 @@
     padding: 0px 45px;
     min-height: 320px;
   }
+  @include screen(0, $mobile) {
+    width: 100%;
+    padding: 0px;
+  }
 
   &__image {
     width: 50%;
     height: 100%;
     position: absolute;
+
+    @include screen(0, $mobile) {
+      width: 100%;
+      min-height: 320px;
+      position: relative;
+    }
   }
 
   &__title {
@@ -64,6 +92,11 @@
       padding-top: 24px;
       margin-bottom: 36px;
     }
+    @include screen(0, $mobile) {
+      font-size: 36px;
+      padding-top: 24px;
+      margin-bottom: 36px;
+    }
   }
 
   &__subtitle {
@@ -73,12 +106,18 @@
     @include screen($tablet, $desktop) {
       font-size: 22px;
     }
+    @include screen(0, $mobile) {
+      font-size: 20px;
+    }
   }
 
   &__text {
     font-size: 18px;
 
     @include screen($tablet, $desktop) {
+      font-size: 16px;
+    }
+    @include screen(0, $mobile) {
       font-size: 16px;
     }
 
@@ -106,6 +145,11 @@
     @include screen($tablet, $desktop) {
       font-size: 14px;
     }
+    @include screen(0, $mobile) {
+      font-size: 14px;
+      margin-left: 32px;
+      width: 80%;
+    }
 
     &:before {
       content: 'ᴼᴼ';
@@ -116,6 +160,10 @@
       font-size: 18px;
       color: #afafaf;
     }
+  }
+
+  @include screen(0, $mobile) {
+    width: 100%;
   }
 }
 
@@ -165,6 +213,10 @@
 
   & + &, & + &-inverted, &-inverted + & {
     margin-top: 120px;
+
+    @include screen(0, $mobile) {
+      margin-top: 64px;
+    }
   }
 }
 
@@ -192,6 +244,15 @@
       width: 100%;
       height: 100%;
     }
+
+    @include screen(0, $mobile) {
+      width: calc(50% - 20px);
+      height: 120px;
+    }
+  }
+
+  @include screen(0, $mobile) {
+    margin-bottom: 64px;
   }
 }
 
@@ -203,6 +264,10 @@
   flex-direction: column;
   max-width: 60%;
 
+  @include screen(0, $mobile) {
+    max-width: 100%;
+  }
+
   input {
     flex: 1
   }
@@ -210,6 +275,10 @@
   .row {
     display: flex;
     flex-direction: row;
+
+    @include screen(0, $mobile) {
+      flex-direction: column;
+    }
   }
 }
 
@@ -220,6 +289,9 @@
   @include screen($tablet, $desktop) {
     margin: 80px 0px 32px 0px;
   }
+  @include screen(0, $mobile) {
+    margin: 32px 0px 32px 0px;
+  }
 
   .row {
     display: flex;
@@ -228,6 +300,11 @@
     align-items: center;
     width: 100%;
     margin-top: 32px;
+
+    @include screen(0, $mobile) {
+      flex-direction: column;
+      margin-top: 0px;
+    }
 
     .col:first-child {
       flex: 6;
@@ -239,6 +316,9 @@
   .col {
     display: flex;
     flex-direction: column;
+    @include screen(0, $mobile) {
+      width: 100%;
+    }
   }
 
 
@@ -254,6 +334,9 @@
     @include screen($tablet, $desktop) {
       width: 50%;
     }
+    @include screen(0, $mobile) {
+      display: none;
+    }
 
     &-item {
       font-size: 25px;
@@ -265,6 +348,9 @@
       transition: all ease 0.5s;
 
       @include screen($tablet, $desktop) {
+        font-size: 18px;
+      }
+      @include screen(0, $mobile) {
         font-size: 18px;
       }
 
@@ -282,10 +368,18 @@
         left: -14px;
         font-size: 25px;
         color: #5b5b5b;
+        transition: all 0.2s linear;
 
         @include screen($tablet, $desktop) {
           font-size: 18px;
         }
+        @include screen(0, $mobile) {
+          font-size: 18px;
+        }
+      }
+
+      &:hover:before {
+        opacity: 0.2;
       }
 
       &.nothovered {
@@ -326,6 +420,10 @@
     @include screen($tablet, $desktop) {
       padding: 24px 12px;
     }
+    @include screen(0, $mobile) {
+      padding: 24px 12px;
+    }
+
 
     span, a {
       display: block;
@@ -334,6 +432,9 @@
       text-decoration: none;
 
       @include screen($tablet, $desktop) {
+        font-size: 18px;
+      }
+      @include screen(0, $mobile) {
         font-size: 18px;
       }
     }

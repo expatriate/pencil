@@ -6,9 +6,17 @@
 
   &.padds {
     padding: 120px 0px;
+
+    @include screen(0, $mobile) {
+      padding: 32px 0px;
+    }
   }
   &.smallpadds {
     padding: 56px 0px;
+
+    @include screen(0, $mobile) {
+      padding: 16px 0px;
+    }
   }
 }
 
@@ -26,6 +34,10 @@
   @include screen($tablet, $desktop) {
     font-size: 24px;
     padding: 24px 96px;
+  }
+  @include screen(0, $mobile) {
+    padding: 16px 32px;
+    font-size: 24px;
   }
 
   &:hover {

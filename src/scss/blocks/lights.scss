@@ -7,6 +7,16 @@
   z-index: -1;
   opacity: 0.4;
 
+  @include screen(0, $mobile) {
+    display: none;
+
+    &:nth-child(1) {
+      display: block;
+      left: 0;
+      opacity: 0.2!important
+    }
+  }
+
   /* div {
     width: 5px;
     height: 5px;

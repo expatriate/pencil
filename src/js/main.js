@@ -62,67 +62,72 @@ function ready() {
   initMenuHover();
 
   $(function() {
-    $.scrollify({
-      section : '.section',
-      setHeights: false,
-      touchScroll: true,
-      //scrollbars: false,
-      standardScrollElements: true,
-      //interstitialSection: '.section__fullsize',
-      before: function(index, sections) {
-        if (index < 6 && index >= 2) {
-          var fixedtitle = $('.main-title__fixed');
-          if (!fixedtitle.hasClass('animated')) {
-            fixedtitle.animate({opacity: 1}, 600, function() {
-              fixedtitle.addClass('animated')
+
+    let width = window.innerWidth;
+    if (width > 768) {
+      $.scrollify({
+        section : '.section',
+        setHeights: false,
+        touchScroll: true,
+        //scrollbars: false,
+        standardScrollElements: true,
+        //interstitialSection: '.section__fullsize',
+        before: function(index, sections) {
+          if (index < 6 && index >= 2) {
+            var fixedtitle = $('.main-title__fixed');
+            if (!fixedtitle.hasClass('animated')) {
+              fixedtitle.animate({opacity: 1}, 600, function() {
+                fixedtitle.addClass('animated')
+              });
+            }
+          } else {
+            var fixedtitle = $('.main-title__fixed');
+            if (fixedtitle.hasClass('animated')) {
+              fixedtitle.animate({opacity: 0}, 200, function() {
+                fixedtitle.removeClass('animated')
+              });
+            }
+          }
+          if (index < 6) {
+            
+
+            $.scrollify.setOptions({
+              //scrollbars: false
+            });
+            $.scrollify.update()
+            //$.scrollify.disable()
+          } else {
+            //$.scrollify.destroy();
+
+          }
+          //$('body').find('.section:eq('+index+')').addClass('not-animated');
+          var lightbox = $('body').find('.section:eq('+index+')').find('.light-box__small');
+          var title = $('body').find('.section:eq('+index+')').find('.title-under');
+          if (!lightbox.hasClass('animated')) {
+            lightbox.animate({opacity: 0.4}, 4000, function() {
+              lightbox.addClass('animated')
             });
           }
-        } else {
-          var fixedtitle = $('.main-title__fixed');
-          if (fixedtitle.hasClass('animated')) {
-            fixedtitle.animate({opacity: 0}, 200, function() {
-              fixedtitle.removeClass('animated')
+          if (!title.hasClass('animated')) {
+            title.delay(1000).animate({opacity: 0.02}, 2000, function() {
+              title.addClass('animated')
             });
           }
+          console.log('before', index)
+        },
+        after: function (index, sections) {
+          console.log('after', index);
+          if (index == 6) {
+            $.scrollify.setOptions({
+              scrollbars: true
+            });
+            $.scrollify.update();
+          }
+          //startAnimation(index);
         }
-        if (index < 6) {
-          
+      });
+    }
 
-          $.scrollify.setOptions({
-            //scrollbars: false
-          });
-          $.scrollify.update()
-          //$.scrollify.disable()
-        } else {
-          //$.scrollify.destroy();
-
-        }
-        //$('body').find('.section:eq('+index+')').addClass('not-animated');
-        var lightbox = $('body').find('.section:eq('+index+')').find('.light-box__small');
-        var title = $('body').find('.section:eq('+index+')').find('.title-under');
-        if (!lightbox.hasClass('animated')) {
-          lightbox.animate({opacity: 0.4}, 4000, function() {
-            lightbox.addClass('animated')
-          });
-        }
-        if (!title.hasClass('animated')) {
-          title.delay(1000).animate({opacity: 0.02}, 2000, function() {
-            title.addClass('animated')
-          });
-        }
-        console.log('before', index)
-      },
-      after: function (index, sections) {
-        console.log('after', index);
-        if (index == 6) {
-          $.scrollify.setOptions({
-            scrollbars: true
-          });
-          $.scrollify.update();
-        }
-        //startAnimation(index);
-      }
-    });
   });
 
 }

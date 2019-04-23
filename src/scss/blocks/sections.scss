@@ -7,6 +7,12 @@
   /* display: flex;
   flex-direction: column;
   */
+
+  @include screen(0, $mobile) {
+    height: auto;
+    overflow: visible;
+    margin-bottom: 32px;
+  }
   
 
   &:nth-child(1) {
@@ -46,6 +52,10 @@
       padding: 0px 24px; 
     }
 
+    @include screen(0, $mobile) {
+      max-width: 768px;
+    }
+
     &-centered {
       justify-content: center;
       align-items: center;
@@ -63,6 +73,9 @@
 
     &-main {
       padding-bottom: 120px;
+      @include screen(0, $mobile) {
+        height: 100%!important;
+      }
     }
   }
 
@@ -110,9 +123,16 @@
     .section-content {
       padding-bottom: 10%;
       //justify-content: space-around;
+      @include screen(0, $mobile) {
+        padding-bottom: 0;
+      }
     }
     .section__wrapper {
       height: 100%;
+
+      @include screen(0, $mobile) {
+        height: auto;
+      }
     }
   }
 
@@ -126,6 +146,14 @@
       font-family: 'MuseoSansCyrl';
     }
 
+
+    @include screen(0, $mobile) {
+      flex-direction: column;
+      div {
+        margin-right: 20px;
+        margin-bottom: 32px;
+      }
+    }
   }
 
   &__fullsize {
@@ -144,6 +172,10 @@
 
   &__content-bottom {
     justify-content: flex-end;
+  }
+
+  @include screen(0, $mobile) {
+    padding: 0px 12px;
   }
 }
 
@@ -178,5 +210,9 @@
 .section-portfolio {
   h2 {
     padding-bottom: 120px;
+
+    @include screen(0, $mobile) {
+      padding-bottom: 0px;
+    }
   }
 }

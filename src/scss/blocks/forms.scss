@@ -9,8 +9,14 @@
   @include screen($tablet, $desktop) {
     font-size: 24px;
   }
+  @include screen(0, $mobile) {
+    font-size: 18px;
+  }
 }
 
 .form-text + .form-text {
   margin-left: 64px;
+  @include screen(0, $mobile) {
+    margin-left: 0px;
+  }
 }

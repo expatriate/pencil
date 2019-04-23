@@ -27,6 +27,15 @@ svg {
   width: 38px;
   height: 65px;
   background-image: url('../img/mouse.png');
+
+  @include screen(0, $mobile) {
+    background-image: url('../img/hand-gestures.png');
+    width: 48px;
+    height: 48px;
+    background-size: contain;
+  }
+
+  
 }
 
 
