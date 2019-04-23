@@ -9,7 +9,6 @@
   &__item {
     text-decoration: none;
     cursor: pointer;
-    font-family: 'MuseoSansCyrl';
     font-size: 16px;
     color: #000000;
     transition: all ease 0.5s;
@@ -64,8 +63,6 @@
   cursor: pointer;
   &__title {
     font-size: 18px;
-    font-family: 'MuseoSansCyrl';
-    font-weight: 300;
     line-height: 1;
   }
   &__img {

@@ -1,7 +1,6 @@
 
 body, html {
   height: 100%;
-  font-family: 'MuseoSansCyrl';
   scrollbar-width: none; 
   -ms-overflow-style: none;  
   &::-webkit-scrollbar {
@@ -16,6 +15,8 @@ svg {
 *{
   outline: none;
   box-sizing: border-box;
+  font-family: 'MuseoSansCyrl';
+  font-weight: 300;
 }
 
 .spacer {

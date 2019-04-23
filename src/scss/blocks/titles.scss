@@ -1,8 +1,6 @@
 .main-title {
   text-align: left;
   font-size: 76px;
-  font-family: 'MuseoSansCyrl';
-  font-weight: 300;
   margin: 0;
   pointer-events: none;
 
@@ -51,8 +49,6 @@
 .main-title__small {
   text-align: left;
   font-size: 56px;
-  font-family: 'MuseoSansCyrl';
-  font-weight: 300;
   margin: 0;
   pointer-events: none;
 
@@ -101,8 +97,6 @@
 .title-under {
   font-size: 160px;
   line-height: 1;
-  font-family: 'MuseoSansCyrl';
-  font-weight: 300;
   position: absolute;
   opacity: 0;
   align-self: center;
@@ -124,8 +118,6 @@
 
 .sub-title {
   font-size: 46px;
-  font-family: 'MuseoSansCyrl';
-  font-weight: 300;
 
   @include screen($tablet, $desktop) {
     font-size: 34px;
