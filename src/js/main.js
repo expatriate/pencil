@@ -192,7 +192,7 @@ function initAnimationBlocks() {
       $(elem).find('.js-anim-title, .js-anim-text, .js-anim-block').each(function(index, item) {
         setTimeout(() => {
           $(item).addClass('js-anim-title-done')
-        }, 200 * index);
+        }, 100 * index);
       });
     }
   });

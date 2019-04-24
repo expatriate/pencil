@@ -3,7 +3,10 @@
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <svg version="1.1" id="Слой_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 width="30px" height="37px" viewBox="0 0 30 37" enable-background="new 0 0 30 37" xml:space="preserve">
-<path fill="none" stroke="#6C7B8A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="
-	M29,15.318C29,26.454,15,36,15,36S1,26.454,1,15.318C1,7.411,7.268,1,15,1C22.732,1,29,7.411,29,15.318z"/>
-<ellipse fill="none" stroke="#6C7B8A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" cx="15" cy="15.318" rx="4.667" ry="4.773"/>
+<path fill="#6C7B8A" d="M15,37c-0.197,0-0.394-0.058-0.563-0.174C13.847,36.424,0,26.85,0,15.318C0,6.872,6.729,0,15,0
+	c8.271,0,15,6.872,15,15.318c0,11.532-13.848,21.106-14.437,21.508C15.394,36.942,15.197,37,15,37z M15,2C7.832,2,2,7.975,2,15.318
+	c0,9.231,10.435,17.545,13,19.449c2.565-1.903,13-10.218,13-19.449C28,7.975,22.168,2,15,2z"/>
+<path fill="#6C7B8A" d="M15,21.091c-3.125,0-5.667-2.59-5.667-5.773S11.875,9.545,15,9.545s5.667,2.59,5.667,5.773
+	S18.125,21.091,15,21.091z M15,11.545c-2.022,0-3.667,1.692-3.667,3.773s1.645,3.773,3.667,3.773c2.022,0,3.667-1.692,3.667-3.773
+	S17.022,11.545,15,11.545z"/>
 </svg>

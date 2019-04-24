@@ -35,15 +35,16 @@
       opacity: 1;
       transition: all ease 0.5s;
       cursor: pointer;
+      overflow: hidden;
 
       span {
         position: relative;
         display: block;
         margin-top: 2px;
-        width: 0%;
+        width: 100%;
         height: 1px;
         background: #333333;
-        animation: lineanimation 0.4s linear normal;
+        animation: lineanimation 0.33s ease-out normal;
         animation-fill-mode: both;
       }
     }
@@ -77,10 +78,10 @@
 
 @keyframes lineanimation {
   0% {
-    width: 0;
+    transform: translateX(-100%);
   }
   100% {
-    width: 100%;
+    transform: translateX(0);
   }
 }
 

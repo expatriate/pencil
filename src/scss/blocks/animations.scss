@@ -8,8 +8,8 @@
 
 .js-anim-title{
   opacity: 0;
-  transform-origin: 50% 50%;
-  transform: perspective(700px) rotateY(20deg) scale(1.1);
+  transform-origin: 40% 50%;
+  transform: perspective(450px) rotateY(6deg) scale(1.05);
   //perspective: 250px;
   //  -webkit-perspective: 250px
 }
@@ -17,21 +17,21 @@
   display: block;
 }
 
-.js-anim-title-done {
+/* .js-anim-title-done {
   opacity: 1;
   transition: all 1.2s ease-in;
   //transform: rotateY(0deg) translateX(0px) scale(1);
   //transform-origin: 50% 50%;
   //perspective: 50px;
   transform: perspective(0px) rotateY(0deg) scale(1);
-}
+} */
 
 .js-anim-image, .js-anim-text, .js-anim-block, .js-anim-image {
   opacity: 0;
 }
 .js-anim-title-done {
+  transition: all 1.8s ease-out;
   opacity: 1;
-  transition: all 1.2s ease-in;
   //transform: rotateY(0deg) translateX(0px) scale(1);
   //transform-origin: 50% 50%;
   //perspective: 50px;
