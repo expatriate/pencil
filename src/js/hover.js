@@ -79,7 +79,7 @@ var hoverEffect = function(opts) {
 
     var renderer = new THREE.WebGLRenderer({
         antialias: false,
-        // alpha: true
+        alpha: true
     });
 
     renderer.setPixelRatio(window.devicePixelRatio);
@@ -91,9 +91,31 @@ var hoverEffect = function(opts) {
     //     renderer.setTexture2D(t, 0);
     // };
 
+    var ratio, elWidth, elHeight;
+
     var loader = new THREE.TextureLoader();
     loader.crossOrigin = "";
-    var texture1 = loader.load(image1);
+    var texture1 = loader.load(image1,
+         function (texture) {
+        ratio = texture.image.width/texture.image.height;
+        elWidth = texture.image.width;
+        elHeight = texture.image.height;
+
+        var elOffsetWidth = parent.offsetWidth;
+        var elOffsetHeight = parent.offsetHeight;
+        if (ratio > 1) {
+            elOffsetHeight = parent.offsetWidth/ratio
+            console.log(elOffsetHeight)
+        }
+
+        var geometry = new THREE.PlaneBufferGeometry(
+            parent.offsetWidth,
+            elOffsetHeight,
+            1
+        );
+        var object = new THREE.Mesh(geometry, mat);
+        scene.add(object);
+    });
     var texture2 = loader.load(image2);
 
     var disp = loader.load(dispImage);
@@ -120,13 +142,6 @@ var hoverEffect = function(opts) {
         opacity: 1.0
     });
 
-    var geometry = new THREE.PlaneBufferGeometry(
-        parent.offsetWidth,
-        parent.offsetHeight,
-        1
-    );
-    var object = new THREE.Mesh(geometry, mat);
-    scene.add(object);
 
     var addEvents = function(){
         var evtIn = "mouseenter";

@@ -26,10 +26,10 @@
   transform: perspective(0px) rotateY(0deg) scale(1);
 } */
 
-.js-anim-image, .js-anim-text, .js-anim-block, .js-anim-image {
+.js-anim-image, .js-anim-text, .js-anim-block, .js-anim-image, .js-anim-flex {
   opacity: 0;
 }
-.js-anim-title-done {
+.js-anim-done {
   transition: all 1.8s ease-out;
   opacity: 1;
   //transform: rotateY(0deg) translateX(0px) scale(1);

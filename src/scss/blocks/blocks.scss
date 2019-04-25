@@ -80,6 +80,23 @@
     }
   }
 
+  &-1 {
+    background: url('/img/block1bg.jpg') center no-repeat;
+    background-size: contain;
+  }
+  &-2 {
+    background: url('/img/block2bg.jpg') center no-repeat;
+    background-size: contain;
+  }
+  &-3 {
+    background: url('/img/block3bg.jpg') center no-repeat;
+    background-size: contain;
+  }
+  &-4 {
+    background: url('/img/block4bg.jpg') center no-repeat;
+    background-size: contain;
+  }
+
   &__title {
     font-size: 54px;
     padding-top: 32px;
@@ -227,14 +244,13 @@
 .block-leaders {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
   margin-bottom: 120px;
 
   &__item {
-    width: calc(25% - 20px);
+    width: calc(16.5%);
     height: 200px;
     //background-color: #abc;
-    margin: 0px 20px 20px 0px;
+    //margin: 0px 45px 45px 0px;
 
 
     img {
@@ -457,7 +473,6 @@
       width: 40px;
       height: 40px;
       margin-right: 18px; 
-      fill: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg'><linearGradient id='grad'><stop offset='0%' stop-color='%23DEDA41'/><stop offset='100%' stop-color='%234ED9E9'/></linearGradient></svg>#grad") grey;
     }
   }
 }

@@ -185,13 +185,13 @@ function initAnimationBlocks() {
       console.log($(elem).find('.js-anim-image'))
       $(elem).find('.js-anim-image').each(function(index, item) {
         setTimeout(() => {
-          $(item).addClass('js-anim-title-done')
+          $(item).addClass('js-anim-done')
         }, 300 * index);
       });
 
-      $(elem).find('.js-anim-title, .js-anim-text, .js-anim-block').each(function(index, item) {
+      $(elem).find('.js-anim-title, .js-anim-text, .js-anim-block, .js-anim-flex').each(function(index, item) {
         setTimeout(() => {
-          $(item).addClass('js-anim-title-done')
+          $(item).addClass('js-anim-done')
         }, 100 * index);
       });
     }
