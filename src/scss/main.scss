@@ -25,16 +25,16 @@ svg {
 }
 
 .scroller {
-  width: 38px;
-  height: 65px;
-  background-image: url('../img/mouse.png');
+  background: #e12125;
+  width: 1px;
+  height: 72px;
 
-  @include screen(0, $mobile) {
-    background-image: url('../img/hand-gestures.png');
-    width: 48px;
+  /* @include screen(0, $mobile) {
+    background: #e12125;
+    width: 2px;
     height: 48px;
     background-size: contain;
-  }
+  } */
 
   
 }

@@ -96,17 +96,27 @@
 
     a {
       color: #333;
-      font-size: 24px;
-      margin-bottom: 120px;
+      font-size: 16px;
+      margin-bottom: 80px;
+      text-decoration: none;
+      border-bottom: 1px solid #666;
+      line-height: 1.5;
 
-      @include screen($tablet, $desktop) {
+      @include screen($tablet, $desktop-1) {
         font-size: 18px;
         margin-bottom: 100px;
+      }
+      @include screen($desktop-1, $desktop) {
+        font-size: 16px;
+        margin-bottom: 90px;
+      }  
+      @include screen(0, $mobile) {
+        font-size: 20px;
       }
     }
 
     .scroller {
-      margin-bottom: 24px;
+      //margin-bottom: 24px;
     }
   }
 
@@ -120,6 +130,9 @@
   }
 
   &__fixed {
+
+    justify-content: center;
+
     .section-content {
       padding-bottom: 10%;
       //justify-content: space-around;
@@ -129,6 +142,16 @@
     }
     .section__wrapper {
       height: 100%;
+
+      @include screen(0, $mobile) {
+        height: auto;
+      }
+    }
+  }
+
+  &__fixed:not(.section-main) {
+    .section__wrapper {
+      max-height: 760px;
 
       @include screen(0, $mobile) {
         height: auto;
@@ -148,9 +171,42 @@
 
     @include screen(0, $mobile) {
       flex-direction: column;
+      align-items: normal;
       div {
         margin-right: 20px;
         margin-bottom: 32px;
+      }
+
+      div.small {
+       margin-bottom: 16px; 
+       margin-right: 0px;
+      }
+    }
+    @include screen($mobile, $tablet) {
+      .medium {
+        flex: 1;
+        margin-right: 0px;
+      }
+      .container-small {
+        flex: 1;
+        margin-right: 0px;
+
+        .small {
+          margin-right: 0;
+          margin-bottom: 14px;
+        }
+      }
+    }
+
+    @include screen($tablet, $desktop) {
+      div {
+        margin-right: 50px;
+      }
+      .container-small {
+        margin-right: 0px;
+        div {
+          margin-right: 0px;
+        }
       }
     }
   }
@@ -174,7 +230,7 @@
   }
 
   @include screen(0, $mobile) {
-    padding: 0px 12px;
+    padding: 0px 32px;
   }
 }
 
@@ -198,6 +254,13 @@
     height: 100%;
     z-index: 1
   }
+
+}
+
+.section__mobile__pad {
+  @include screen(0, $mobile) {
+    margin-bottom: 164px;
+  }
 }
 
 .section-third {
@@ -208,10 +271,13 @@
 
 .section-portfolio {
   h2 {
-    padding-bottom: 120px;
+    padding-bottom: 80px;
 
     @include screen(0, $mobile) {
       padding-bottom: 0px;
+    }
+    @include screen($mobile, $tablet) {
+      padding-bottom: 64px;
     }
   }
 }

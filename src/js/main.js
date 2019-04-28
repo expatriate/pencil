@@ -13,10 +13,6 @@ function ready() {
   //console.log(window.innerWidth, window.innerHeight)
 
   //init();
-  var particles = new Birds($('#particles-mainview')[0]);
-  particles.startAnimation();
-  particles.setBirdNumber(728);
-
 
   //particlesToCenter = new Birds_moving($('#particles-subview')[0]);
   
@@ -65,6 +61,12 @@ function ready() {
 
     let width = window.innerWidth;
     if (width > 768) {
+
+      var particles = new Birds($('#particles-mainview')[0]);
+      particles.startAnimation();
+      particles.setBirdNumber(728);
+
+  
       $.scrollify({
         section : '.section',
         setHeights: false,

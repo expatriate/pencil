@@ -14,7 +14,12 @@
   }
   @include screen($tablet, $desktop-1) {
     max-width: 1024px;
+    padding: 0px 36px;
   }
+  @include screen(0, $mobile) {
+    padding: 32px;
+  }
+
 
   &__projects {
     background: #f5c536;
