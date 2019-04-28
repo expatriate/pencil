@@ -15,7 +15,7 @@ function ready() {
   //init();
   var particles = new Birds($('#particles-mainview')[0]);
   particles.startAnimation();
-  particles.setBirdNumber(1000);
+  particles.setBirdNumber(728);
 
 
   //particlesToCenter = new Birds_moving($('#particles-subview')[0]);
@@ -184,13 +184,13 @@ function initAnimationBlocks() {
 
       console.log($(elem).find('.js-anim-image'))
       $(elem).find('.js-anim-image').each(function(index, item) {
-        setTimeout(() => {
+        setTimeout(function() {
           $(item).addClass('js-anim-done')
         }, 300 * index);
       });
 
       $(elem).find('.js-anim-title, .js-anim-text, .js-anim-block, .js-anim-flex').each(function(index, item) {
-        setTimeout(() => {
+        setTimeout(function() {
           $(item).addClass('js-anim-done')
         }, 100 * index);
       });

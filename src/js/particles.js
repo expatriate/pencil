@@ -114,7 +114,7 @@ var Birds = function (container, width) {
     t.windowHalfX = window.innerWidth / 2;
     t.windowHalfY = window.innerHeight / 2;
 
-    t.BOUNDS = 800;
+    t.BOUNDS = 150; // радиус изаначльного значения
     t.BOUNDS_HALF = t.BOUNDS / 2
     t.last = performance.now();
 
