@@ -134,7 +134,7 @@
     justify-content: center;
 
     .section-content {
-      padding-bottom: 10%;
+      padding-bottom: 5%;
       //justify-content: space-around;
       @include screen(0, $mobile) {
         padding-bottom: 0;
