@@ -138,6 +138,11 @@ function ready() {
         e.preventDefault();
         $.scrollify.move($(this).data('link'));
       });
+
+      $('.backtoptop').on('click', function(e) {
+        e.preventDefault();
+        $.scrollify.move($(this).data('link'));
+      });
     }
 
   });
