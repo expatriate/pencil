@@ -65,7 +65,6 @@ function ready() {
       var particles = new Birds($('#particles-mainview')[0]);
       particles.startAnimation();
       particles.setBirdNumber(728);
-
   
       $.scrollify({
         section : '.section',
@@ -75,6 +74,11 @@ function ready() {
         standardScrollElements: true,
         //interstitialSection: '.section__fullsize',
         before: function(index, sections) {
+
+          $('.right-nav').find('.right-nav__item').removeClass('active');
+          $($('.right-nav').find('.right-nav__item')[index]).addClass('active');
+
+
           if (index < 6 && index >= 2) {
             var fixedtitle = $('.main-title__fixed');
             if (!fixedtitle.hasClass('animated')) {
@@ -127,6 +131,12 @@ function ready() {
           }
           //startAnimation(index);
         }
+      });
+
+
+      $('.right-nav__item').on('click', function(e) {
+        e.preventDefault();
+        $.scrollify.move($(this).data('link'));
       });
     }
 

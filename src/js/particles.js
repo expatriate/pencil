@@ -173,7 +173,7 @@ var Birds = function (container, width) {
     var t = this;
     var onmove = function (e) {
       
-      t.onDocumentMouseMove.call(t,e);
+      //t.onDocumentMouseMove.call(t,e);
     }
     var onresize = function (e) {
       t.onWindowResize.call(t,e);
