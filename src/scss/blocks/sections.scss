@@ -236,6 +236,7 @@
     justify-content: flex-end;
   }
 
+
   @include screen(0, $mobile) {
     padding: 0px 32px;
   }

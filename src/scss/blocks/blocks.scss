@@ -382,7 +382,10 @@
     padding: 18px;
 
     svg {
-      fill: #e12125
+      fill: #e12125;
+      @include screen(0, $mobile-1) {
+        width: 120px;
+      }
     }
   }
 
