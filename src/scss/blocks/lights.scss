@@ -34,7 +34,7 @@
     animation: glow1 10s linear infinite,
                rotating 10s linear infinite;
     position: absolute;
-    border-radius: 50px;
+    border-radius: 80px;
     opacity: 1;
     left: 100px;
     top: 0px;
@@ -79,86 +79,86 @@
 
 @keyframes glow1{
   0%, 100% {
-    box-shadow: 0px 0px 160px 140px #8bc34a;
+    box-shadow: 0px 0px 180px 160px #8bc34a;
     opacity: 0.8;
   }
   15% {
-    box-shadow: 0px 0px 160px 140px #00bcd4;
+    box-shadow: 0px 0px 180px 160px #00bcd4;
     opacity: 0.8;
   }
   30% {
-    box-shadow: 0px 0px 160px 140px #3f51b5;
+    box-shadow: 0px 0px 180px 160px #3f51b5;
     opacity: 0.8;
   }
   45% {
-    box-shadow: 0px 0px 160px 140px #9c27b0;
+    box-shadow: 0px 0px 180px 160px #9c27b0;
     opacity: 0.4;
   }
   55% {
-    box-shadow: 0px 0px 160px 140px #f44336;
+    box-shadow: 0px 0px 180px 160px #f44336;
     opacity: 0.4;
   }
   65% {
-    box-shadow: 0px 0px 160px 140px #ff9800;
+    box-shadow: 0px 0px 180px 160px #ff9800;
     opacity: 0.8;
   }
   80% {
-    box-shadow: 0px 0px 160px 140px #ffeb3b;
+    box-shadow: 0px 0px 180px 160px #ffeb3b;
     opacity: 0.8;
   }
 }
 @keyframes glow2{
   0%, 100% {
-    box-shadow: 0px 0px 160px 140px #ffeb3b;
+    box-shadow: 0px 0px 180px 160px #ffeb3b;
   }
   15% {
-    box-shadow: 0px 0px 160px 140px #8bc34a;
+    box-shadow: 0px 0px 180px 160px #8bc34a;
   }
   30% {
-    box-shadow: 0px 0px 160px 140px #00bcd4;
+    box-shadow: 0px 0px 180px 160px #00bcd4;
   }
   45% {
-    box-shadow: 0px 0px 160px 140px #3f51b5;
+    box-shadow: 0px 0px 180px 160px #3f51b5;
   }
   60% {
-    box-shadow: 0px 0px 160px 140px #9c27b0;
+    box-shadow: 0px 0px 180px 160px #9c27b0;
     opacity: 0.4;
   }
   70% {
-    box-shadow: 0px 0px 160px 140px #f44336;
+    box-shadow: 0px 0px 180px 160px #f44336;
     opacity: 0.4;
   }
   85% {
-    box-shadow: 0px 0px 160px 140px #ff9800;
+    box-shadow: 0px 0px 180px 160px #ff9800;
   }
 }
 @keyframes glow3{
   0%, 100% {
-    box-shadow: 0px 0px 160px 140px #00bcd4;
+    box-shadow: 0px 0px 180px 160px #00bcd4;
     opacity: 0.8;
   }
   15% {
-    box-shadow: 0px 0px 160px 140px #3f51b5;
+    box-shadow: 0px 0px 180px 160px #3f51b5;
     opacity: 0.8;
   }
   30% {
-    box-shadow: 0px 0px 160px 140px #9c27b0;
+    box-shadow: 0px 0px 180px 160px #9c27b0;
     opacity: 0.4;
   }
   40% {
-    box-shadow: 0px 0px 160px 140px #f44336;
+    box-shadow: 0px 0px 180px 160px #f44336;
     opacity: 0.4;
   }
   55% {
-    box-shadow: 0px 0px 160px 140px #ff9800;
+    box-shadow: 0px 0px 180px 160px #ff9800;
     opacity: 0.8;
   }
   70% {
-    box-shadow: 0px 0px 160px 140px #ffeb3b;
+    box-shadow: 0px 0px 180px 160px #ffeb3b;
     opacity: 0.8;
   }
   85% {
-    box-shadow: 0px 0px 160px 140px #8bc34a;
+    box-shadow: 0px 0px 180px 160px #8bc34a;
     opacity: 0.8;
   }
 }

@@ -14,7 +14,7 @@
 
   &--pad-left {
     
-    justify-content: flex-end;
+    //justify-content: flex-end;
   }
 
   &--mg-top {
@@ -26,6 +26,16 @@
 
     @include screen(0, $mobile) {
       width: 100%;
+    }
+  }
+
+  &__half--left {
+    width: 50%;
+    /* display: flex;
+    align-self: flex-start; */
+
+    @include screen(0, $mobile) {
+      display: none;
     }
   }
 }
@@ -85,7 +95,7 @@
     }
   }
 
-  &-1 {
+  /* &-1 {
     background: url('../img/block1bg.jpg') center no-repeat;
     background-size: contain;
     
@@ -101,7 +111,7 @@
   &-4 {
     background: url('../img/block4bg.jpg') center no-repeat;
     background-size: contain;
-  }
+  } */
 
   @include screen($mobile, $tablet) {
     &-1, &-2, &-3, &-4 {
@@ -119,10 +129,15 @@
       padding-top: 24px;
       margin-bottom: 36px;
     }
-    @include screen(0, $mobile) {
+    @include screen($mobile-1, $mobile) {
       font-size: 36px;
       padding-top: 24px;
       margin-bottom: 36px;
+    }
+    @include screen(0, $mobile-1) {
+      font-size: 28px;
+      padding-top: 18px;
+      margin-bottom: 24px;
     }
   }
 
@@ -465,8 +480,11 @@
     @include screen($tablet, $desktop) {
       padding: 24px 12px;
     }
-    @include screen(0, $mobile) {
+    @include screen($mobile-1, $mobile) {
       padding: 24px 12px;
+    }
+    @include screen(0, $mobile-1) {
+      padding: 12px 12px;
     }
 
 
@@ -479,8 +497,11 @@
       @include screen($tablet, $desktop) {
         font-size: 18px;
       }
-      @include screen(0, $mobile) {
+      @include screen($mobile-1, $mobile) {
         font-size: 18px;
+      }
+      @include screen(0, $mobile-1) {
+        font-size: 14px;
       }
     }
 
@@ -524,10 +545,15 @@
       height: 40px;
       margin-right: 18px; 
 
-      @include screen(0, $mobile) {
+      @include screen($mobile-1, $mobile) {
         width: 64px;
         height: 64px;
         margin: 24px;
+      }
+      @include screen(0, $mobile-1) {
+        margin: 12px;
+        width: 48px;
+        height: 48px;
       }
     }
   }

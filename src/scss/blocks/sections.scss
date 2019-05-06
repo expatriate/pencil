@@ -54,6 +54,7 @@
 
     @include screen(0, $mobile) {
       max-width: 768px;
+      overflow: hidden;
     }
 
     &-centered {
@@ -110,8 +111,11 @@
         font-size: 14px;
         margin-bottom: 90px;
       }  
-      @include screen(0, $mobile) {
+      @include screen($mobile-1, $mobile) {
         font-size: 20px;
+      }
+      @include screen(0, $mobile-1) {
+        font-size: 14px;
       }
     }
 
@@ -131,13 +135,16 @@
 
   &__fixed {
 
-    justify-content: center;
+    
+
 
     .section-content {
-      padding-bottom: 5%;
+      align-items: center;
+      justify-content: center;
+      margin-top: 5%;
       //justify-content: space-around;
       @include screen(0, $mobile) {
-        padding-bottom: 0;
+        margin-top: 0;
       }
     }
     .section__wrapper {
@@ -264,14 +271,17 @@
 }
 
 .section__mobile__pad {
-  @include screen(0, $mobile) {
+  @include screen($mobile-1, $mobile) {
     margin-bottom: 164px;
+  }
+  @include screen(0, $mobile-1) {
+    margin-bottom: 64px;
   }
 }
 
 .section-third {
   .title-under {
-    top: 28%;
+    //top: 28%;
   }
 }
 
