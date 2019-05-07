@@ -53,7 +53,7 @@ function ready() {
 
   initAnimationBlocks();
 
-  initImagesHover();
+  
 
   initMenuHover();
 
@@ -61,6 +61,8 @@ function ready() {
 
     let width = window.innerWidth;
     if (width > 768) {
+
+      initImagesHover();
 
       var particles = new Birds($('#particles-mainview')[0]);
       particles.startAnimation();
