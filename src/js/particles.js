@@ -171,17 +171,17 @@ var Birds = function (container, width) {
     this.initComputeRenderer();
 
     var t = this;
-    var onmove = function (e) {
+    /*var onmove = function (e) {
       
-      //t.onDocumentMouseMove.call(t,e);
-    }
+      t.onDocumentMouseMove.call(t,e);
+    }*/
     var onresize = function (e) {
       t.onWindowResize.call(t,e);
     }   
 
-    document.addEventListener('mousemove', onmove, false);
+    /*document.addEventListener('mousemove', onmove, false);
     document.addEventListener('touchstart', onmove, false);
-    document.addEventListener('touchmove', onmove, false);
+    document.addEventListener('touchmove', onmove, false);*/
 
     //
 
@@ -316,7 +316,7 @@ var Birds = function (container, width) {
 
   }
 
-  Birds.prototype.onDocumentMouseMove = function (event) {
+  /*Birds.prototype.onDocumentMouseMove = function (event) {
     if (typeof event.touches === 'object'
     && event.touches.length === 1) {
       event.preventDefault();
@@ -331,7 +331,7 @@ var Birds = function (container, width) {
       this.mouseY = event.clientY - this.windowHalfY;
     }
 
-  }
+  }*/
 
   //
   Birds.prototype.startAnimation = function () {

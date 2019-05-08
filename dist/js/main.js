@@ -2,71 +2,90 @@
 //var container = document.getElementById('main-container');
 //var distance = 400;
 
+function isNotMsie() {
+  var ua = window.navigator.userAgent;
+  var msie = ua.indexOf("MSIE ");
+  var isIE11 = !!window.MSInputMethodContext && !!document.documentMode;
+
+  if (msie > 0 || isIE11) {
+    console.log(false)
+    return false
+  }
+  console.log(true)
+  return true;
+}
+
+if (isNotMsie()) {
+  /*if (!('createImageBitmap' in window)) {
+    window.createImageBitmap = async function (data) {
+      return new Promise((resolve,reject) => {
+        let dataURL;
+        if (data instanceof Blob) {
+          dataURL = URL.createObjectURL(data);
+        } else if (data instanceof ImageData) {
+          const canvas = document.createElement('canvas');
+          const ctx = canvas.getContext('2d');
+          canvas.width = data.width;
+          canvas.height = data.height;
+          ctx.putImageData(data,0,0);
+          dataURL = canvas.toDataURL();
+        } else {
+          throw new Error('createImageBitmap does not handle the provided image source type');
+        }
+        const img = document.createElement('img');
+        img.addEventListener('load',function () {
+          resolve(this);
+        });
+        img.src = dataURL;
+      });
+    };
+  }*/
+
+
+}
 
 var scrollFlag = true, lastScrollPos = 0, particles, particlesToCenter, particlesFromCenter;
 var screenHeight = window.window.innerHeight;
 var viewportBlocks;
 
+
 document.addEventListener("DOMContentLoaded", ready);
 
 function ready() {
-  //console.log(window.innerWidth, window.innerHeight)
-
-  //init();
-
-  //particlesToCenter = new Birds_moving($('#particles-subview')[0]);
-  
-
-  //animate();
-
-  //window.addEventListener('scroll', onWindowScroll, false );
-
-  /*var slidepage = new slidePage({
-      slideContainer: '.slide-container',
-      slidePages: '.slide-page',
-      page: 1,
-      refresh: true,
-      dragMode: false,
-
-      // Events
-      before: function(origin,direction,target){
-        console.log(target)
-        if (target == 1) {
-          particles.startAnimation();
-        }
-        if (target == 2) {
-          //particlesToCenter.startAnimation();
-          //particlesToCenter.setBirdNumber(512);
-        }
-      },
-      after: function(origin,direction,target){
-        if (target !== 1) {
-          particles.stopAnimation();
-        }
-        if (target == 2) {
-          //particlesToCenter.stopAnimation();
-        }
-      },
-   });
-
-  window.slidepage = slidepage;*/
 
   initAnimationBlocks();
 
-  
-
   initMenuHover();
+
+  svg4everybody();
 
   $(function() {
 
     let width = window.innerWidth;
+
+    if (width <= 1024) {
+      $('.mobile-menu').on('click', function() {
+        $('html').addClass('overflow');
+        $('.top-menu').addClass('opened');
+        $('.mobile-menu').addClass('hidden');
+      });
+
+      $('.close').on('click', function() {
+        $('html').removeClass('overflow');
+        $('.top-menu').removeClass('opened');
+        $('.mobile-menu').removeClass('hidden');
+      });
+    }
+
     if (width > 768) {
 
       initImagesHover();
 
-      var particles = new Birds($('#particles-mainview')[0]);
-      particles.startAnimation();
-      particles.setBirdNumber(728);
+      if (isNotMsie()) {
+        var particles = new Birds($('#particles-mainview')[0]);
+        particles.startAnimation();
+        particles.setBirdNumber(728);
+      }
   
       $.scrollify({
         section : '.section',

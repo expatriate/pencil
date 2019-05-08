@@ -34,8 +34,10 @@
   &__fixed {
     position: fixed;
     top: 48px;
+    left: 128px;
     width: 100%;
     opacity: 0;
+    margin: 0 auto;
     display: block;
     max-width: 1600px;
 
@@ -45,7 +47,12 @@
 
     @include screen($tablet, $desktop) {
       max-width: 1024px;
+      
       top: 64px;
+    }
+
+    @include screen($mobile, $tablet) {
+      left: 18px;
     }
 
     @include screen(0, $mobile) {
