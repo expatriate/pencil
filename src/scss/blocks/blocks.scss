@@ -8,9 +8,8 @@
 
   @include screen(0, $mobile) {
     flex-direction: column;
-    margin-top: 64px;
   }
-  @include screen(0, $tablet) {
+  @include screen($mobile, $tablet) {
     flex-direction: column;
     margin-top: 64px;
   }

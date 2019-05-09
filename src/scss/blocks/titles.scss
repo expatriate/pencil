@@ -54,7 +54,15 @@
       top: 64px;
     }
 
-    @include screen(0, $tablet) {
+    @include screen(0, $mobile) {
+      position: relative;
+      opacity: 1;
+      top: 0px;
+      left: 0px;
+      margin-bottom: 48px!important;
+    }
+
+    @include screen($mobile, $tablet) {
       position: relative;
       opacity: 1;
       top: 0px;
