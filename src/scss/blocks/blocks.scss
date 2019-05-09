@@ -384,6 +384,14 @@
       }
     }
 
+    &.row__tablet__row {
+      @include screen($mobile, $tablet) {
+        flex-direction: row;
+        margin-top: 0px;
+      }
+    }
+    
+
     .col:first-child {
       flex: 6;
     }
@@ -537,7 +545,7 @@
     }
 
     &__fullsize {
-      @include screen(0, $tablet) {
+      @include screen(0, $mobile) {
         width: 100%;
         align-items: center;
         text-align: center;
@@ -546,6 +554,19 @@
 
         span {
           font-size:24px;
+        }
+      }
+
+      @include screen($mobile, $tablet) {
+        width: 100%;
+        //align-items: center;
+        //text-align: center;
+        margin: 0px;
+        padding-top: 64px;
+
+        span {
+          font-size:18px;
+          text-align: left;
         }
       }
     }
@@ -557,7 +578,7 @@
     display: flex;
     padding: 18px 0px;
 
-    @include screen(0, $tablet) {
+    @include screen(0, $mobile) {
       display: flex;
       justify-content: center;
       width: 100%;
@@ -566,20 +587,36 @@
 
     }
 
+    @include screen($mobile, $tablet) {
+      display: flex;
+      justify-content: left;
+      width: 100%;
+      //align-items: center;
+      //text-align: center;
+
+    }
+
     svg {
       width: 40px;
       height: 40px;
       margin-right: 18px; 
+
 
       @include screen($mobile-1, $mobile) {
         width: 64px;
         height: 64px;
         margin: 24px;
       }
+
       @include screen(0, $mobile-1) {
         margin: 12px;
         width: 48px;
         height: 48px;
+      }
+      @include screen($mobile, $tablet) {
+        width: 40px;
+        height: 40px;
+        margin: 0px 12px 0px 0px; 
       }
     }
   }

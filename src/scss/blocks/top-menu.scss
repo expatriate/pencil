@@ -137,6 +137,10 @@
 
       .logo__title {
         font-size: 12px;
+
+        @include screen($mobile, $desktop) {
+          font-size: 21px;
+        }
       }
     }
   }
@@ -184,6 +188,7 @@
 .mobile-menu {
   display: none;
   position: fixed;
+  z-index: 9999;
   right: 38px;
   top: 38px;
   width: 36px;

@@ -34,17 +34,22 @@ function ready() {
 
   $(function() {
 
-    let width = window.innerWidth;
+    var width = window.innerWidth;
+    var lastOffset = 0;
 
     if (width <= 1024) {
       $('.mobile-menu').on('click', function() {
+        lastOffset = window.pageYOffset;
         $('html').addClass('overflow');
+        $('body').css({'position': 'fixed', 'margin-top': -lastOffset});
         $('.top-menu').addClass('opened');
         $('.mobile-menu').addClass('hidden');
       });
 
       $('.close').on('click', function() {
         $('html').removeClass('overflow');
+        $('body').removeAttr('style');
+        window.scrollTo(0, lastOffset)
         $('.top-menu').removeClass('opened');
         $('.mobile-menu').removeClass('hidden');
       });
