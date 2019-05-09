@@ -14,9 +14,9 @@
   }
   @include screen($tablet, $desktop-1) {
     max-width: 1024px;
-    padding: 0px 36px;
+    padding: 0px 0px 0px 36px;
   }
-  @include screen($mobile-1, $mobile) {
+  @include screen($mobile-1, $tablet) {
     padding: 32px 0px 32px 32px;
   }
   @include screen(0, $mobile-1) {

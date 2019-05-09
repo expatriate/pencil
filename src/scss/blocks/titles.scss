@@ -7,6 +7,10 @@
   @include screen($tablet, $desktop) {
     font-size: 48px;
   }
+  @include screen($mobile, $tablet) {
+    font-size: 36px;
+    margin-bottom: 24px; 
+  }
   @include screen($mobile-1, $mobile) {
     font-size: 42px;
     margin: 32px 0px 48px 0px;
@@ -47,18 +51,14 @@
 
     @include screen($tablet, $desktop) {
       max-width: 1024px;
-      
       top: 64px;
     }
 
-    @include screen($mobile, $tablet) {
-      left: 18px;
-    }
-
-    @include screen(0, $mobile) {
+    @include screen(0, $tablet) {
       position: relative;
       opacity: 1;
       top: 0px;
+      left: 0px;
     }
 
   }
@@ -76,6 +76,10 @@
 
   @include screen($tablet, $desktop) {
     font-size: 36px;
+  }
+  @include screen($mobile, $tablet) {
+    font-size: 48px;
+    margin-bottom: 24px; 
   }
   @include screen($mobile-1, $mobile) {
     font-size: 48px;
@@ -134,15 +138,20 @@
   opacity: 0;
   align-self: center;
   text-align: center;
-  margin-top: 100px;
+  margin-top: 160px;
+  width: 40px;
 
-  @include screen($tablet, $desktop) {
-    top: 26%;
+  @include screen($tablet, $desktop-1) {
+    //top: 26%;
+    font-size: 96px;
+  }
+  @include screen($desktop-1, $desktop) {
+    //top: 26%;
     font-size: 120px;
   }
 
   @include screen(0, $mobile) {
-    top: 28%;
+    //top: 28%;
     font-size: 48px;
   }
 

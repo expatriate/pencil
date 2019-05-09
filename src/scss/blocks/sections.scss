@@ -13,6 +13,11 @@
     overflow: visible;
     margin-bottom: 32px;
   }
+  @include screen(0, $tablet) {
+    height: auto;
+    overflow: visible;
+    margin-bottom: 64px;
+  }
   
 
   &:nth-child(1) {
@@ -47,15 +52,15 @@
       max-width: 1480px;
     }
 
+    @include screen(0, $tablet) {
+      max-width: 768px;
+      //overflow: hidden;
+    }
     @include screen($tablet, $desktop) {
       max-width: 1024px;
       padding: 0px 24px; 
     }
 
-    @include screen(0, $mobile) {
-      max-width: 768px;
-      overflow: hidden;
-    }
 
     &-centered {
       justify-content: center;
@@ -74,7 +79,7 @@
 
     &-main {
       padding-bottom: 120px;
-      @include screen(0, $mobile) {
+      @include screen(0, $tablet) {
         height: 100%!important;
       }
     }
@@ -143,14 +148,14 @@
       justify-content: center;
       margin-top: 5%;
       //justify-content: space-around;
-      @include screen(0, $mobile) {
+      @include screen(0, $tablet) {
         margin-top: 0;
       }
     }
     .section__wrapper {
       height: 100%;
 
-      @include screen(0, $mobile) {
+      @include screen(0, $tablet) {
         height: auto;
       }
     }
@@ -160,7 +165,7 @@
     .section__wrapper {
       max-height: 760px;
 
-      @include screen(0, $mobile) {
+      @include screen(0, $tablet) {
         height: auto;
       }
     }
@@ -189,21 +194,20 @@
        margin-right: 0px;
       }
     }
-    @include screen($mobile, $tablet) {
-      .medium {
-        flex: 1;
-        margin-right: 0px;
-      }
-      .container-small {
-        flex: 1;
-        margin-right: 0px;
+     @include screen($mobile, $tablet) {
 
-        .small {
-          margin-right: 0;
-          margin-bottom: 14px;
-        }
+      flex-direction: column;
+      align-items: normal;
+      div {
+        margin-right: 20px;
+        margin-bottom: 48px;
       }
-    }
+
+      div.small {
+       margin-bottom: 32px; 
+       margin-right: 0px;
+      }
+    } 
 
     @include screen($tablet, $desktop) {
       div {
@@ -237,7 +241,7 @@
   }
 
 
-  @include screen(0, $mobile) {
+  @include screen(0, $tablet) {
     padding: 0px 32px;
   }
 }
@@ -290,11 +294,8 @@
   h2 {
     padding-bottom: 80px;
 
-    @include screen(0, $mobile) {
+    @include screen(0, $tablet) {
       padding-bottom: 0px;
-    }
-    @include screen($mobile, $tablet) {
-      padding-bottom: 64px;
     }
   }
 }

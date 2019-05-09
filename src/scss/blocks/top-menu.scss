@@ -83,12 +83,29 @@
     a {
       color: #ffffff;
       margin-bottom: 16px;
-      font-size: 22px;
+      font-size: 24px;
+
+    }
+    @include screen($mobile, $tablet) {
+      a {
+        font-size: 24px;
+      }
+    }
+    @include screen($mobile-1, $mobile) {
+      a {
+        font-size: 18px;
+      }
+    }
+    @include screen(0, $mobile-1) {
+      a {
+        font-size: 14px;
+      }
     }
 
     .close {
       display: block;
       position: fixed;
+      cursor: pointer;
       top: 36px;
       right: 36px;
       width: 36px;
@@ -116,7 +133,7 @@
       flex-direction: row;
       align-items: center;
       color: #ffffff;
-      margin-bottom: 48px;
+      margin-bottom: 24px;
 
       .logo__title {
         font-size: 12px;
@@ -171,9 +188,11 @@
   top: 38px;
   width: 36px;
   height: 36px;
+  cursor: pointer;
 
   @include screen(0, $tablet) {
-    display: inline-block;
+    display: flex;
+    flex-direction: row
   }
 
   &.hidden {
@@ -181,14 +200,61 @@
   }
 
   .bar1, .bar2, .bar3 {
-    width: 33px;
-    height: 2px;
-    background-color: #666;
-    margin-bottom:10px; 
+    width: 8px;
+    height: 8px;
+    margin: 12px 6px 0px 0px;
+    border-radius: 8px;
+    background-color: #666; 
     transition: 0.4s;
+  }
+
+  .bar3 {
+    margin-right: 0px;
   }
 }
 
+
+.mobile-info {
+  display: none;
+  width: 100%;
+  @include screen(0, $tablet) {
+    display: flex;
+    flex-direction: row;
+    flex: 1;
+    align-items: flex-end;
+  }
+
+  &__wrapper {
+    display: flex;
+    width: 100%;
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    svg {
+      width: 36px;
+      height: 36px; 
+      margin-bottom: 8px;
+
+      @include screen(0, $mobile-1) {
+        display: none;
+      }
+    }
+
+    span, a {
+      text-decoration: none;
+      color: #fff;
+      margin-bottom: 8px;
+
+      @include screen(0, $mobile-1) {
+        font-size: 14px;
+      }
+    }
+    margin-bottom: 16px;
+  }
+}
 
 
 

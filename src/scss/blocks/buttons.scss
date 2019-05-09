@@ -48,7 +48,7 @@
     font-size: 24px;
     padding: 24px 96px;
   }
-  @include screen(0, $mobile) {
+  @include screen(0, $tablet) {
     padding: 16px 32px;
     font-size: 24px;
   }
