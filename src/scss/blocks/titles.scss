@@ -76,6 +76,30 @@
   }
 }
 
+.main-subtitle {
+  font-size: 32px;
+  margin: 0;
+  pointer-events: none;
+  margin-top: 12px;
+
+  @include screen($tablet, $desktop) {
+    font-size: 28px;
+  }
+  @include screen($mobile, $tablet) {
+    font-size: 24px;
+  }
+  @include screen($mobile-1, $mobile) {
+    font-size: 22px;
+  }
+  @include screen(0, $mobile-1) {
+    font-size: 18px;
+  }
+
+  &.mobile-centered {
+    text-align: center;
+  }
+}
+
 .main-title__small {
   text-align: left;
   font-size: 56px;

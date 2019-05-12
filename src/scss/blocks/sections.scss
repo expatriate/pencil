@@ -2,11 +2,17 @@
   display: flex;
   flex-direction: column;
   height: 100%;
+  background: #ffffff;
   //overflow: hidden;
   
   /* display: flex;
   flex-direction: column;
   */
+
+  transition: background 1.1s ease;
+  &.fading {
+    background: rgba(0,0,0,1);
+  }
 
   @include screen(0, $mobile) {
     height: auto;
@@ -20,7 +26,7 @@
   }
   
 
-  &:nth-child(1) {
+ /*  &:nth-child(1) {
     background: #ffffff
   }
   &:nth-child(2) {
@@ -38,7 +44,7 @@
   &:nth-child(6) {
     background: #ffffff;
     //height: 200vh!important;
-  }
+  } */
 
   &__wrapper {
     display: flex;
@@ -79,6 +85,7 @@
 
     &-main {
       padding-bottom: 120px;
+      flex-direction: column;
       @include screen(0, $tablet) {
         height: 100%!important;
       }

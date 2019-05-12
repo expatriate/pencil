@@ -1,34 +1,12 @@
-//var renderer, scene, camera, distance, raycaster, projector;
-//var container = document.getElementById('main-container');
-//var distance = 400;
-
-function isNotMsie() {
-  var ua = window.navigator.userAgent;
-  var msie = ua.indexOf("MSIE ");
-  var isIE11 = !!window.MSInputMethodContext && !!document.documentMode;
-
-  if (msie > 0 || isIE11) {
-    return false
-  }
-  return true;
-}
-
 var scrollFlag = true, lastScrollPos = 0, particles, particlesToCenter, particlesFromCenter, direction = 0, lastIndex = 0;
 var screenHeight = window.window.innerHeight;
 var viewportBlocks;
-
 
 document.addEventListener("DOMContentLoaded", ready);
 
 function ready() {
 
   initAnimationBlocks();
-
-  initMenuHover();
-
-  svg4everybody();
-
-  objectFitImages();
 
   $(function() {
 
@@ -54,14 +32,6 @@ function ready() {
     }
 
     if (width > 1024) {
-
-      initImagesHover();
-
-      if (isNotMsie()) {
-        particles = new Birds($('#particles-mainview')[0]);
-        particles.startAnimation();
-        particles.setBirdNumber(728);
-      }
   
       $.scrollify({
         section : '.section',
@@ -101,7 +71,7 @@ function ready() {
 
 
           // анимируем проявление фиксированного заголовка
-          if (index < 6 && index >= 2) {
+          if (index < 4 && index >= 1) {
             var fixedtitle = $('.main-title__fixed');
             if (!fixedtitle.hasClass('animated')) {
               fixedtitle.animate({opacity: 1}, 600, function() {
@@ -147,13 +117,6 @@ function ready() {
 
           // убираем анимированный элемент 
           $('.fading').removeClass('fading');
-
-          if (index >= 2) {
-            particles.stopAnimation();
-          } else if (!particles.playing){
-            particles.startAnimation();
-          }
-          //startAnimation(index);
         }
       });
 
@@ -170,51 +133,7 @@ function ready() {
     }
 
   });
-
-}
-
-
-/*function startAnimation(index) {
-  $('body').find('.section:eq('+index+')').addClass('animated').removeClass('not-animated');
-}*/
-function initImagesHover() {
-  var hover1 = new hoverEffect({
-    parent: document.querySelector('.js-hover-1'),
-    image1: $('.js-hover-1').data('first'),
-    image2: $('.js-hover-1').data('second'),
-    intensity: 0.2,
-    speedin: 1.6,
-    speedout: 1.8,
-    displacementImage: 'img/distortion.png'
-  });
-  var hover2 = new hoverEffect({
-    parent: document.querySelector('.js-hover-2'),
-    image1: $('.js-hover-2').data('first'),
-    image2: $('.js-hover-2').data('second'),
-    intensity: 0.2,
-    speedin: 1.6,
-    speedout: 1.8,
-    displacementImage: 'img/distortion.png'
-  });
-  var hover3 = new hoverEffect({
-    parent: document.querySelector('.js-hover-3'),
-    image1: $('.js-hover-3').data('first'),
-    image2: $('.js-hover-3').data('second'),
-    intensity: 0.2,
-    speedin: 1.6,
-    speedout: 1.8,
-    displacementImage: 'img/distortion.png'
-  });
-  var hover4 = new hoverEffect({
-    parent: document.querySelector('.js-hover-4'),
-    image1: $('.js-hover-4').data('first'),
-    image2: $('.js-hover-4').data('second'),
-    intensity: 0.2,
-    speedin: 1.6,
-    speedout: 1.8,
-    displacementImage: 'img/distortion.png'
-  });
-}
+};
 
 function initAnimationBlocks() {
   viewportBlocks = $('.js-viewport-block');
@@ -242,74 +161,4 @@ function initAnimationBlocks() {
       }, timeout)
     }
   });
-}
-
-function initMenuHover() {
-
-  $('.top-menu__item').hover(function(e) {
-    $('.top-menu__item').removeClass('hovered').addClass('nothovered');
-    $(e.target).removeClass('nothovered').addClass('hovered')
-  });
-
-  $('.top-menu').hover(function(e) {
-  }, function() {
-    $('.top-menu__item').removeClass('hovered').removeClass('nothovered');
-  });
-
-  $('.block-footer__nav-item').hover(function(e) {
-    $('.block-footer__nav-item').removeClass('hovered').addClass('nothovered');
-    $(e.target).removeClass('nothovered').addClass('hovered')
-  });
-
-  $('.block-footer__nav-wrapper').hover(function(e) {
-  }, function() {
-    $('.block-footer__nav-item').removeClass('hovered').removeClass('nothovered');
-  });
-
-}
-/*function onWindowScroll(e) {
-  if (!scrollFlag) {
-    console.log('DISABLED', e)
-    e.preventDefault();
-  }
-
-  if (window.pageYOffset <= screenHeight && scrollFlag && lastScrollPos < window.pageYOffset) {
-
-    window.scrollTo({
-        top: screenHeight,
-        behavior: "smooth"
-    });
-
-    scrollFlag = false;
-  }
-
-  if (window.pageYOffset <= screenHeight && scrollFlag && lastScrollPos > window.pageYOffset) {
-    window.scrollTo({
-        top: 0,
-        behavior: "smooth"
-    });
-
-    scrollFlag = false;
-  }
-
-  if (window.pageYOffset == screenHeight || window.pageYOffset == 0) {
-    scrollFlag = true
-  }
-  
-  lastScrollPos = window.pageYOffset
-}
-*/
-
-
-
-
- function onWindowResize() {
-
-  var customHeight = $(window).height();
-  var windowWidth = $(window).width();
-
-  if (windowWidth < customHeight) {
-    customHeight = windowWidth;
-  }
-  //$('#stage').css({width: customHeight, height: customHeight})
 }

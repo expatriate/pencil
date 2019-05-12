@@ -26,7 +26,16 @@
     height: 5px;
     background: #000000;
   } */
+
+  &__small {
+    left: 42%;
+    top: 50%;
+    opacity: 0;
+  }
+
+  opacity: 0;
 }
+
 .light-box, .light-box__small {
   .light1 {
     margin: 20px 10px;
@@ -185,12 +194,4 @@ html {
       //animation-delay: 6s;
     }
   }
-}
-
-
-.light-box__small {
-
-  left: 42%;
-  top: 50%;
-  opacity: 0;
 }

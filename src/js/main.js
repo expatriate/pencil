@@ -8,14 +8,12 @@ function isNotMsie() {
   var isIE11 = !!window.MSInputMethodContext && !!document.documentMode;
 
   if (msie > 0 || isIE11) {
-    console.log(false)
     return false
   }
-  console.log(true)
   return true;
 }
 
-var scrollFlag = true, lastScrollPos = 0, particles, particlesToCenter, particlesFromCenter;
+var scrollFlag = true, lastScrollPos = 0, particles, particlesToCenter, particlesFromCenter, direction = 0, lastIndex = 0;
 var screenHeight = window.window.innerHeight;
 var viewportBlocks;
 
@@ -60,7 +58,7 @@ function ready() {
       initImagesHover();
 
       if (isNotMsie()) {
-        var particles = new Birds($('#particles-mainview')[0]);
+        particles = new Birds($('#particles-mainview')[0]);
         particles.startAnimation();
         particles.setBirdNumber(728);
       }
@@ -69,15 +67,40 @@ function ready() {
         section : '.section',
         setHeights: false,
         touchScroll: true,
+        scrollSpeed: 1100,
+        //overflowScroll: false,
         //scrollbars: false,
+
+        //scrollbars: false,
+        easing: "easeOutExpo",
         standardScrollElements: true,
         //interstitialSection: '.section__fullsize',
         before: function(index, sections) {
 
-          $('.right-nav').find('.right-nav__item').removeClass('active');
-          $($('.right-nav').find('.right-nav__item')[index]).addClass('active');
+          if (lastIndex > index) {
+            direction = -1
+          } else {
+            direction = 1
+          }
+          lastIndex = index;
+
+          // переход
+          // движение вниз
+          if (direction > 0) {
+            $(sections[index - 1]).addClass('fading');
+          }
+          // движение вверх
+          if (direction < 0) {
+            $(sections[index + 1]).addClass('fading');
+          }
+
+          // возвращаем анимированные элементы в начальное положение
+          $(sections[index]).find('.js-anim-done').removeClass('js-anim-done');
+          $(sections[index]).find('.title-under').removeAttr('style').removeClass('animated');
+          $(sections[index]).find('.light-box__small, .light-box').removeAttr('style').removeClass('animated');
 
 
+          // анимируем проявление фиксированного заголовка
           if (index < 6 && index >= 2) {
             var fixedtitle = $('.main-title__fixed');
             if (!fixedtitle.hasClass('animated')) {
@@ -93,21 +116,12 @@ function ready() {
               });
             }
           }
-          if (index < 6) {
-            
 
-            $.scrollify.setOptions({
-              //scrollbars: false
-            });
-            $.scrollify.update()
-            //$.scrollify.disable()
-          } else {
-            //$.scrollify.destroy();
 
-          }
-          //$('body').find('.section:eq('+index+')').addClass('not-animated');
-          var lightbox = $('body').find('.section:eq('+index+')').find('.light-box__small');
+          // анимируем проявление элементов
+          var lightbox = $('body').find('.section:eq('+index+')').find('.light-box__small, .light-box');
           var title = $('body').find('.section:eq('+index+')').find('.title-under');
+
           if (!lightbox.hasClass('animated')) {
             lightbox.animate({opacity: 0.4}, 4000, function() {
               lightbox.addClass('animated')
@@ -118,20 +132,26 @@ function ready() {
               title.addClass('animated')
             });
           }
+
+          // анимируем правое меню
           if (!$('.right-nav').hasClass('visible') && index > 0) {
             $('.right-nav').addClass('visible').animate({'opacity': 1}, 500);
           } else if (index == 0){
             $('.right-nav').removeClass('visible').animate({'opacity': 0}, 500);
           }
-          console.log('before', index)
+          $('.right-nav').find('.right-nav__item').removeClass('active');
+          $($('.right-nav').find('.right-nav__item')[index]).addClass('active');
+
         },
         after: function (index, sections) {
-          console.log('after', index);
-          if (index == 6) {
-            $.scrollify.setOptions({
-              scrollbars: true
-            });
-            $.scrollify.update();
+
+          // убираем анимированный элемент 
+          $('.fading').removeClass('fading');
+
+          if (index >= 2) {
+            particles.stopAnimation();
+          } else if (!particles.playing){
+            particles.startAnimation();
           }
           //startAnimation(index);
         }
@@ -197,24 +217,29 @@ function initImagesHover() {
 }
 
 function initAnimationBlocks() {
-  viewportBlocks = $('.js-viewport-block')
+  viewportBlocks = $('.js-viewport-block');
 
   viewportBlocks.viewportChecker({
-    repeat: false,
+    repeat: true,
     callbackFunction: function callbackFunction(elem, action) {
+      var timeout = $(elem).data('timeout') || 0;
+      if (window.innerWidth <= 1024) {
+        timeout = 0;
+      }
+      setTimeout(function() {
+        //console.log($(elem).find('.js-anim-image'))
+        $(elem).find('.js-anim-image').each(function(index, item) {
+          setTimeout(function() {
+            $(item).addClass('js-anim-done')
+          }, 300 * index);
+        });
 
-      console.log($(elem).find('.js-anim-image'))
-      $(elem).find('.js-anim-image').each(function(index, item) {
-        setTimeout(function() {
-          $(item).addClass('js-anim-done')
-        }, 300 * index);
-      });
-
-      $(elem).find('.js-anim-title, .js-anim-text, .js-anim-block, .js-anim-flex').each(function(index, item) {
-        setTimeout(function() {
-          $(item).addClass('js-anim-done')
-        }, 100 * index);
-      });
+        $(elem).find('.js-anim-title, .js-anim-text, .js-anim-block, .js-anim-flex').each(function(index, item) {
+          setTimeout(function() {
+            $(item).addClass('js-anim-done')
+          }, 100 * index);
+        });
+      }, timeout)
     }
   });
 }

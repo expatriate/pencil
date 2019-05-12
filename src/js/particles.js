@@ -24,7 +24,7 @@ var Birds = function (container, width) {
     });*/
 
     /* TEXTURE t.WIDTH FOR SIMULATION */
-    t.WIDTH = width || 32;
+    t.WIDTH = width || 64;
     t.BIRDS = t.WIDTH*t.WIDTH;
 
     // Custom Geometry - using 3 triangles each. No UVs, no normals currently.
@@ -114,7 +114,7 @@ var Birds = function (container, width) {
     t.windowHalfX = window.innerWidth / 2;
     t.windowHalfY = window.innerHeight / 2;
 
-    t.BOUNDS = 150; // радиус изаначльного значения
+    t.BOUNDS = 180; // радиус изаначльного значения
     t.BOUNDS_HALF = t.BOUNDS / 2
     t.last = performance.now();
 
