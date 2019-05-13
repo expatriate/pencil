@@ -1,0 +1,97 @@
+extends ../components/layouts/default
+
+include ../components/top-header/top-header
+include ../components/feedback/feedback
+include ../components/footer/footer
+
+block head
+    - var pageTitle = 'Выездные мероприятия';
+block content
+
+
+  // Первый экран
+  section.section.section__fixed.section__mobile__pad.section-main.js-viewport-block
+    +b.section__wrapper-top
+      +top-header()
+    +b.section__wrapper.section__wrapper-centered.section__wrapper-main
+      h1.main-title.js-anim-title.mobile-centered
+        span.filled Выездные 
+        | мероприятия для&nbsp;бизнеса
+    +b.section__wrapper-bottom.section__wrapper-centered.section__wrapper-absolute
+      a(href="#") Оставить заявку
+      +b.scroller
+
+  // Второй экран
+  section.section.section__fixed.section-third.js-viewport-block(data-timeout="1100")
+    +b.section__wrapper
+      +b.section-content
+        h2.main-title__small.main-title__fixed
+          span.filled Выездные 
+          |мероприятия &#8212; наша суперсила
+        +b.block.block--pad-left
+          +b.block__half--left
+            +b.block__half--left
+              +b.title-under capacity
+              +b.sub-title.js-anim-title Могущество координации
+            +b.light-box.light-box__small
+              div.light1
+              div.light2
+              div.light3
+          +b.block__half
+            +b.opts-container
+              +e.__text.js-anim-text Менеджер устранит любые сложности, предложит самые разумные варианты развития событий. Для загранпоездок подбираем опытного тревел-координатора. А главное — всегда оперативное решение любых вопросов.
+
+  // Третий экран
+  section.section.section__fixed.section-third.js-viewport-block(data-timeout="1100")
+    +b.section__wrapper
+      +b.section-content
+        +b.block.block--pad-left
+          +b.block__half--left
+            +b.block__half--left
+              +b.title-under freshness
+              +b.sub-title.js-anim-title Свежесть идей
+            +b.light-box.light-box__small
+              div.light1
+              div.light2
+              div.light3
+          +b.block__half
+            +b.opts-container
+              +e.__text.js-anim-text Богатый партнерский бэкграунд как в России так и за рубежом. Планетарный охват организации выездных форматов: от шале на гористых склонах  до поразительных подводных гостиниц.
+
+  // Четвертый экран
+  section.section.section__fixed.section-third.js-viewport-block(data-timeout="1100")
+    +b.section__wrapper
+      +b.section-content
+        +b.block.block--pad-left
+          +b.block__half--left
+            +b.block__half--left
+              +b.title-under pleasure
+              +b.sub-title.js-anim-title Максимальное удовольствие
+            +b.light-box.light-box__small
+              div.light1
+              div.light2
+              div.light3
+          +b.block__half
+            +b.opts-container
+              +e.__text.js-anim-text Кейтеринг исключительного качества: вкусные, ароматные и всегда свежие блюда. Наивысший уровень заботы о вкусовых ощущениях  и оригинальное  меню для событий любых форматов.
+
+  // Пятый экран
+  section.section.section__fullsize.section-portfolio
+    +b.section__wrapper.js-viewport-block
+      +b.section-content
+        h2.main-title__small.main-title__small--mgtop
+          span.js-anim-title
+            span.filled Комплексные 
+            |или частичные решения
+
+    // Обратная связь
+    +feedback()
+
+    // Футер с меню
+    +footer()
+
+      
+block footer
+
+    script(src='js/outdoorActivities.js')
+    

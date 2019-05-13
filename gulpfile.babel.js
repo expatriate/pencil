@@ -5,6 +5,8 @@ import cleanCSS from 'gulp-clean-css';
 import terser from 'gulp-terser';
 import svgSprite from 'gulp-svg-sprite';
 import del from 'del';
+const pug = require('gulp-pug');
+const htmlbeautify = require('gulp-html-beautify');
 
 const $ = gulpLoadPlugins();
 const reload = browserSync.reload;
@@ -104,7 +106,7 @@ const compileScripts = () => {
     return gulp.src([
         'vendor/*.js', './src/js/*.js'])
         //.pipe($.concat('main.js'))
-        .pipe($.babel(babelOptions))
+        //.pipe($.babel(babelOptions))
         //.pipe(terser())
         .pipe(gulp.dest('dist/js'))
         .pipe($.size({title: 'Scripts'}))
@@ -132,6 +134,7 @@ function watchFiles() {
     gulp.watch('./src/js/*.js', compileScripts);
     gulp.watch('./src/img/svg/*', compileSvg);
     gulp.watch('./src/*.html', browserSyncReload);
+    gulp.watch(['./src/templates/pages/*.pug', './src/templates/components/**/*.pug', './src/templates/pages/**/*.pug'], pugPages);
 }
 
 
@@ -140,7 +143,7 @@ const startServer = (done) => {
         //notify: false,
         //logPrefix: 'WSK',
         //scrollElementMapping: ['main', '.mdl-layout'],
-        server: './src',
+        server: './dist',
         //watch: true,
         port: 3000
     });
@@ -150,7 +153,19 @@ const startServer = (done) => {
 
 const clear = (done) => {
     del.sync(['dist/*'])
-    done()
+    done();
+}
+
+const pugPages = (done) => {
+    var options = {
+        indentSize: 2
+    };
+    gulp.src('./src/templates/pages/*.pug')
+        .pipe(pug())
+        .pipe(htmlbeautify(options))
+        .pipe(gulp.dest('dist/'));
+    browserSync.reload();
+    done();
 }
 
 const copy = (done) => {
@@ -163,13 +178,13 @@ const copy = (done) => {
 const compile = gulp.series(compileStyles, compileScripts)
 compile.description = 'compile all sources'
 
-const serve = gulp.series(clear, compile, optimizeImages, copy, compileSvg, startServer)
+const serve = gulp.series(clear, compile, optimizeImages, copy, compileSvg, pugPages, startServer)
 serve.description = 'serve compiled source on local server at port 3000'
 
 /*const watch = gulp.parallel(watchScripts, watchStyles, watchSvg)
 watch.description = 'watch for changes to all source'*/
 
-const build = gulp.series(clear, compile, optimizeImages, copy, compileSvg)
+const build = gulp.series(clear, compile, optimizeImages, copy, compileSvg, pugPages)
 build.description = 'craft build'
 
 const defaultTasks = gulp.series(serve, watchFiles)
@@ -184,6 +199,7 @@ export {
   compileSvgIconsDist,
   compileSvgSass,
   serve,
+  pugPages,
   copy,
   optimizeImages,
   //watch,

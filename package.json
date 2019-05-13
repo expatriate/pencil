@@ -57,6 +57,8 @@
   },
   "dependencies": {
     "fullpage.js": "^3.0.4",
+    "gulp-html-beautify": "^1.0.1",
+    "gulp-pug": "^4.0.1",
     "node-sass": "^4.11.0",
     "swiper": "^4.5.0"
   }

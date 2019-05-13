@@ -178,42 +178,50 @@ function ready() {
   $('body').find('.section:eq('+index+')').addClass('animated').removeClass('not-animated');
 }*/
 function initImagesHover() {
-  var hover1 = new hoverEffect({
-    parent: document.querySelector('.js-hover-1'),
-    image1: $('.js-hover-1').data('first'),
-    image2: $('.js-hover-1').data('second'),
-    intensity: 0.2,
-    speedin: 1.6,
-    speedout: 1.8,
-    displacementImage: 'img/distortion.png'
-  });
-  var hover2 = new hoverEffect({
-    parent: document.querySelector('.js-hover-2'),
-    image1: $('.js-hover-2').data('first'),
-    image2: $('.js-hover-2').data('second'),
-    intensity: 0.2,
-    speedin: 1.6,
-    speedout: 1.8,
-    displacementImage: 'img/distortion.png'
-  });
-  var hover3 = new hoverEffect({
-    parent: document.querySelector('.js-hover-3'),
-    image1: $('.js-hover-3').data('first'),
-    image2: $('.js-hover-3').data('second'),
-    intensity: 0.2,
-    speedin: 1.6,
-    speedout: 1.8,
-    displacementImage: 'img/distortion.png'
-  });
-  var hover4 = new hoverEffect({
-    parent: document.querySelector('.js-hover-4'),
-    image1: $('.js-hover-4').data('first'),
-    image2: $('.js-hover-4').data('second'),
-    intensity: 0.2,
-    speedin: 1.6,
-    speedout: 1.8,
-    displacementImage: 'img/distortion.png'
-  });
+  if (document.querySelector('.js-hover-1')) {
+    var hover1 = new hoverEffect({
+      parent: document.querySelector('.js-hover-1'),
+      image1: $('.js-hover-1').data('first'),
+      image2: $('.js-hover-1').data('second'),
+      intensity: 0.2,
+      speedin: 1.6,
+      speedout: 1.8,
+      displacementImage: 'img/distortion.png'
+    });
+  }
+  if (document.querySelector('.js-hover-2')) {
+    var hover2 = new hoverEffect({
+      parent: document.querySelector('.js-hover-2'),
+      image1: $('.js-hover-2').data('first'),
+      image2: $('.js-hover-2').data('second'),
+      intensity: 0.2,
+      speedin: 1.6,
+      speedout: 1.8,
+      displacementImage: 'img/distortion.png'
+    });
+  }
+  if (document.querySelector('.js-hover-3')) {
+    var hover3 = new hoverEffect({
+      parent: document.querySelector('.js-hover-3'),
+      image1: $('.js-hover-3').data('first'),
+      image2: $('.js-hover-3').data('second'),
+      intensity: 0.2,
+      speedin: 1.6,
+      speedout: 1.8,
+      displacementImage: 'img/distortion.png'
+    });
+  }
+  if (document.querySelector('.js-hover-4')) {
+    var hover4 = new hoverEffect({
+      parent: document.querySelector('.js-hover-4'),
+      image1: $('.js-hover-4').data('first'),
+      image2: $('.js-hover-4').data('second'),
+      intensity: 0.2,
+      speedin: 1.6,
+      speedout: 1.8,
+      displacementImage: 'img/distortion.png'
+    });
+  }
 }
 
 function initAnimationBlocks() {
