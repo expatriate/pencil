@@ -43,6 +43,7 @@
     opacity: 0;
     margin: 0 auto;
     display: block;
+    z-index: 1;
     max-width: 1600px;
 
     @include screen($desktop, $desktop-wide) {
@@ -164,27 +165,37 @@
 }
 
 .title-under {
-  font-size: 160px;
-  line-height: 1;
-  //position: absolute;
   opacity: 0;
-  align-self: center;
-  text-align: center;
+  span {
+    font-size: 160px;
+    line-height: 1.1;
+    //position: absolute;
+    font-weight: 300;
+    align-self: center;
+    text-align: center;
+  }
+  position: relative;
   margin-top: 160px;
-  width: 40px;
+  //width: 40px;
 
   @include screen($tablet, $desktop-1) {
     //top: 26%;
-    font-size: 96px;
+    span {
+      font-size: 96px;
+    }
   }
   @include screen($desktop-1, $desktop) {
     //top: 26%;
-    font-size: 120px;
+    span {
+      font-size: 120px;
+    }
   }
 
   @include screen(0, $mobile) {
     //top: 28%;
-    font-size: 48px;
+    span {
+      font-size: 48px;
+    }
   }
 
 

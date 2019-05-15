@@ -128,7 +128,7 @@ function ready() {
             });
           }
           if (!title.hasClass('animated')) {
-            title.delay(1000).animate({opacity: 0.02}, 2000, function() {
+            title.delay(1000).animate({opacity: 0.2}, 2000, function() {
               title.addClass('animated')
             });
           }

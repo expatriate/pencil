@@ -1,4 +1,6 @@
 .button__wrapper {
+
+  display: flex;
   
   &.centered {
     align-self: center;
@@ -59,4 +61,19 @@
       opacity: 0;
     }
   }
+}
+
+
+.button {
+
+  /* position: relative;
+  padding: 5px;
+  border: double 4px transparent;
+  border-radius: 80px;
+  
+  background-image: linear-gradient(white, white), radial-gradient(circle at top left, #f00,#3020ff);
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
+ */
+
 }

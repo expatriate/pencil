@@ -47,11 +47,30 @@
       display: none;
     }
   }
+
+  &__half-relative {
+    display: flex;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+
+    .title-under {
+      margin-top: 0px;
+      font-size: 140px;
+      font-weight: 500;
+    }
+
+    .sub-title {
+      margin-top: 24px;
+      white-space: nowrap;
+    }
+  }
 }
 
 
 .opts-container {
   margin-top: 80px;
+  max-width: 70%;
 
   &__text {
     margin-top: 40px;
@@ -61,6 +80,10 @@
       padding-left: 24px;
       font-size: 18px;
     }
+  }
+
+  &__mgtop {
+    margin-top: 120px;
   }
 
   @include screen(0, $tablet) {
