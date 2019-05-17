@@ -64,7 +64,7 @@
   left: 0;
   background-image: inherit;
   background-size: cover;
-  animation:maskedtext 10s infinite ease-in;
+  animation:maskedtext 15s infinite ease-in;
 }
 
 .masked-text:after {
@@ -80,7 +80,25 @@
 .masked-text-1 {
   background-image:url('../img/maskbg.jpg');
   background-size: cover;
-  animation: maskedtext 10s infinite ease-in;
+  animation: maskedtext 15s infinite ease-in;
+}
+
+@keyframes maskedtext {
+  0% {
+    background-position: top;
+  }
+  50% {
+    background-position: bottom;
+  }
+  100% {
+    background-position: top;
+  }
+}
+
+.masked-text-2 {
+  background-image:url('../img/maskbg.jpg');
+  background-size: cover;
+  animation: maskedtext 15s infinite ease-in;
 }
 
 @keyframes maskedtext {

@@ -130,7 +130,7 @@ function browserSyncReload(done) {
 }
 
 function watchFiles() {
-    gulp.watch(['./src/scss/*.{scss, css}', './src/scss/**/*.{scss, css}'], compileStyles);
+    gulp.watch(['./src/scss/*.{scss, css}', './src/scss/**/*.{scss, css}', './src/scss/helpers/*.css'], compileStyles);
     gulp.watch('./src/js/*.js', compileScripts);
     gulp.watch('./src/img/svg/*', compileSvg);
     gulp.watch('./src/*.html', browserSyncReload);
@@ -170,6 +170,7 @@ const pugPages = (done) => {
 
 const copy = (done) => {
     gulp.src(['./src/*.html']).pipe(gulp.dest('dist'));
+    gulp.src(['./src/img/swiper/*.svg']).pipe(gulp.dest('dist/img/swiper/'));
     gulp.src(['./src/*.png', './src/*.png']).pipe(gulp.dest('dist/'));
     gulp.src(['./src/fonts/*']).pipe(gulp.dest('dist/fonts'));
     done()
