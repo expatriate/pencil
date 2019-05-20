@@ -4,7 +4,7 @@ var mySwiper = new Swiper ('.simpleslider__container', {
   direction: 'horizontal',
   effect: 'fade',
   dynamicBullets: true,
-  loop: true,
+  //loop: true,
 
 
   // If we need pagination
@@ -14,7 +14,7 @@ var mySwiper = new Swiper ('.simpleslider__container', {
   },
 
   autoplay: {
-    delay: 10000,
+    delay: 20000,
   },
 
   // Navigation arrows
@@ -23,24 +23,33 @@ var mySwiper = new Swiper ('.simpleslider__container', {
     prevEl: '.swiper-button-prev',
   },
 
-  // And if we need scrollbar
-  scrollbar: {
-    el: '.swiper-scrollbar',
-  },
 
   on: {
     init: function () {
     },
     autoplay: function () {
-      $('.swiper-pagination-bullet-active').text(mySwiper.activeIndex);
+      $('.swiper-pagination-bullet-active').text(mySwiper.activeIndex + 1);
 
       var time = new Date().getTime()
       sliderTimeout = setTimeout(function() {
         console.log((new Date().getTime() - time)/ 100);
-      }, 10000);
+      }, 20000);
     },
     slideChange: function () {
-      $('.swiper-pagination-bullet-active').text(this.activeIndex);
+      $('.swiper-pagination-bullet-active').text(this.activeIndex + 1);
+      $('swiper-pagination-bullet').html('');
+      /*setTimeout(function() {
+        $('.swiper-pagination-bullet-active').pietimer({
+          timerSeconds: 10,
+          color: '#234',
+          fill: false,
+          showPercentage: false,
+          callback: function() {
+            alert("yahoo, timer is done!");
+            //$('#timer').pietimer('reset');
+          }
+        });
+      }, 100)*/
     },
     autoplayStart: function () {
       $('.swiper-pagination-bullet-active').text('1');
@@ -48,7 +57,7 @@ var mySwiper = new Swiper ('.simpleslider__container', {
       var time = new Date().getTime()
       sliderTimeout = setTimeout(function() {
         console.log((new Date().getTime() - time)/ 100);
-      }, 10000);
+      }, 20000);
     }
   },
 

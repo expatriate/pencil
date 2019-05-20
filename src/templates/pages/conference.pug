@@ -1,0 +1,145 @@
+extends ../components/layouts/default
+
+include ../components/top-header/top-header
+include ../components/feedback/feedback
+include ../components/simpleslider/simpleslider
+include ../components/footer/footer
+
+block head
+    - var pageTitle = 'Конференции';
+block content
+
+
+  // Первый экран
+  section.section.section__fixed.section__mobile__pad.section-main.js-viewport-block
+    +b.section__wrapper-top
+      +top-header()
+    +b.section__wrapper.section__wrapper-centered.section__wrapper-main
+      h1.main-title.js-anim-title.mobile-centered
+        span.filled Организация 
+        | конференций
+      h2.main-subtitle.js-anim-title
+        | Новые партнеры, перспективные контракты, свежие идеи
+    +b.section__wrapper-bottom.section__wrapper-centered.section__wrapper-absolute
+      +b.button__wrapper.centered
+        button.btn-middle.js-anim-block Оставить заявку
+      +b.scroller
+
+  // Второй экран
+  section.section.section__fixed.section-float.js-viewport-block(data-timeout="1100")
+    +b.section__wrapper
+      +b.section-content
+        h2.main-title__small.main-title__fixed
+          span.filled Каждая 
+          |конференция как последняя
+        +b.block.block--pad-left
+          +b.block__half--left
+            +b.title-under
+              span.masked-text.masked-text-1 emotions
+            +b.light-box.light-box__small
+              div.light1
+              div.light2
+              div.light3
+          +b.block__half
+            +b.sub-title.js-anim-title Важны эмоции
+            +b.opts-container
+              +e.__text.js-anim-text Конференция — не просто кучка докладчиков. Каждого важно правильно расположить и связать между собой. Успешная конференция — это тщательно спланированное впечатление, она как любимый плейлист, в котором каждая песня имеет свое значение и порядок.
+
+  // Третий экран
+  section.section.section__fixed.section-float.js-viewport-block(data-timeout="1100")
+    +b.section__wrapper
+      +b.section-content
+        +b.block.block--pad-left
+          +b.block__half--left
+            +b.title-under
+              span.masked-text.masked-text-1 business
+            +b.light-box.light-box__small
+              div.light1
+              div.light2
+              div.light3
+          +b.block__half
+            +b.sub-title.js-anim-title Конференции - это бизнес
+            +b.opts-container
+              +e.__text.js-anim-text Рискованность конференций очевидна и к каждой относимся как личному краткосрочному бизнесу. Оцениваем необходимость реализации конференций, просчитываем фиксированные и плавающие затраты. Мощный аналитический бэкграунд точно определяет стоимость затрат и способы сделать конференцию прибыльной.
+
+  // Четвертый экран
+  section.section.section__fixed.section-float.js-viewport-block(data-timeout="1100")
+    +b.section__wrapper
+      +b.section-content
+        +b.block.block--pad-left
+          +b.block__half--left
+            +b.title-under
+              span.masked-text.masked-text-1 success
+            +b.light-box.light-box__small
+              div.light1
+              div.light2
+              div.light3
+          +b.block__half
+            +b.sub-title.js-anim-title Успех сокрыт в привычном
+            +b.opts-container
+              +e.__text.js-anim-text Привыкайте к такой микрофлоре конференций, где докладчики захотят находиться и слушать других докладчиков, получив максимум удовольствия. Облегчаем и совершенствуем когнитивные потоки, и укрепляем силу взаимодействия людей.
+    +b.button__wrapper.centered
+      button.btn-middle.js-anim-block Узнать стоимость
+
+  // Пятый экран
+  section.section.section__fullsize.section-portfolio
+    +b.section__wrapper.js-viewport-block
+      +b.section-content
+        h2.main-title__small.main-title__small--mgtop
+          span.js-anim-title
+            span.filled Комплексные 
+            |или частичные решения
+    +b.wide.js-viewport-block
+      +b.section__wrapper-wide.__row
+        +b.wide__item.wide__lime.js-anim-block
+          +b.wide__content 
+            +b.wide__image
+              img(src="img/ou-image1.png")
+            +b.sub-title.js-anim-title Все сделаем сами
+            +b.wide__text.js-anim-text Для амбициозных и масштабных идей. Планируем все заранее, тщательно прописываем детали. Фокусируемся на процессе и итоговом результате.
+            +b.button__wrapper
+              button.btn-middle Обсудить стоимость
+        +b.wide__item.wide__purple.js-anim-block
+          +b.wide__content
+            +b.wide__image
+              img(src="img/ou-image2.png")
+            +b.sub-title.js-anim-title Частичное вовлечение
+            +b.wide__text.js-anim-text Дополним любые наработки свежими идеями и решениями в рамках бюджета. Соблюдаем заданный ритм и требования к  итоговому результату,  даже если уже распланирована значимая часть мероприятия.
+            +b.button__wrapper
+              button.btn-middle Обсудить стоимость
+      +b.section__wrapper-wide.__col
+        +b.wide__item.wide__green.js-anim-block
+          +b.wide__content
+            +b.wide__image
+              img(src="img/ou-image3.png")
+            +b.sub-title.js-anim-title Минимальное сопровождение
+            +b.wide__container
+              +b.wide__text.js-anim-text Сопровождаем, координируем, оснащаем конференции. Подключимся  к  реализации 
+              +b.wide__text.js-anim-text технической части , полиграфии. Поработаем со спикерами, оформим пропуски и райдеры.
+            +b.button__wrapper.centered
+              button.btn-middle Обсудить стоимость
+
+
+    +b.section__wrapper.js-viewport-block
+      +b.section-content
+        h2.main-title__small.main-title__small--mgtop
+          span.js-anim-title
+            span.filled Ключевые 
+            |факты о выездных мероприятиях
+
+    +simpleslider.js-simple-slider()
+    
+    // Обратная связь
+    +feedback()
+
+    // Футер с меню
+    +footer()
+
+      
+block footer
+    script(src='js/right-nav.js')
+    script(src='js/common.js')
+
+    script(src='js/simpleSlider.js')
+    script(src='js/outdoorActivities.js')
+    

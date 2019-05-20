@@ -78,22 +78,27 @@
 }
 
 .main-subtitle {
-  font-size: 32px;
+  font-size: 18px;
   margin: 0;
   pointer-events: none;
   margin-top: 12px;
 
-  @include screen($tablet, $desktop) {
-    font-size: 28px;
-  }
-  @include screen($mobile, $tablet) {
-    font-size: 24px;
+  @include screen(0, $mobile-1) {
+    font-size: 12px;
+    margin-top: 0px;
+    padding: 0px 36px;
+    text-align: center;
   }
   @include screen($mobile-1, $mobile) {
-    font-size: 22px;
+    font-size: 14px;
+    padding: 0px 36px;
+    text-align: center;
   }
-  @include screen(0, $mobile-1) {
-    font-size: 18px;
+  @include screen($mobile, $tablet) {
+    font-size: 16px;
+  }
+  @include screen($tablet, $desktop) {
+    font-size: 28px;
   }
 
   &.mobile-centered {

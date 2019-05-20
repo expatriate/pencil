@@ -21,11 +21,12 @@ block content
       h2.main-subtitle.js-anim-title
         | Изучайте, обозревайте, наслаждайтесь
     +b.section__wrapper-bottom.section__wrapper-centered.section__wrapper-absolute
-      a(href="#") Оставить заявку
+      +b.button__wrapper.centered
+        button.btn-middle.js-anim-block Оставить заявку
       +b.scroller
 
   // Второй экран
-  section.section.section__fixed.section-third.js-viewport-block(data-timeout="1100")
+  section.section.section__fixed.section-float.js-viewport-block(data-timeout="1100")
     +b.section__wrapper
       +b.section-content
         h2.main-title__small.main-title__fixed
@@ -45,7 +46,7 @@ block content
               +e.__text.js-anim-text Менеджер устранит любые сложности, предложит самые разумные варианты развития событий. Для загранпоездок подбираем опытного тревел-координатора. А главное — всегда оперативное решение любых вопросов.
 
   // Третий экран
-  section.section.section__fixed.section-third.js-viewport-block(data-timeout="1100")
+  section.section.section__fixed.section-float.js-viewport-block(data-timeout="1100")
     +b.section__wrapper
       +b.section-content
         +b.block.block--pad-left
@@ -62,7 +63,7 @@ block content
               +e.__text.js-anim-text Богатый партнерский бэкграунд как в России так и за рубежом. Планетарный охват организации выездных форматов: от шале на гористых склонах  до поразительных подводных гостиниц.
 
   // Четвертый экран
-  section.section.section__fixed.section-third.js-viewport-block(data-timeout="1100")
+  section.section.section__fixed.section-float.js-viewport-block(data-timeout="1100")
     +b.section__wrapper
       +b.section-content
         +b.block.block--pad-left
@@ -77,6 +78,8 @@ block content
             +b.sub-title.js-anim-title Максимальное удовольствие
             +b.opts-container
               +e.__text.js-anim-text Кейтеринг исключительного качества: вкусные, ароматные и всегда свежие блюда. Наивысший уровень заботы о вкусовых ощущениях  и оригинальное  меню для событий любых форматов.
+    +b.button__wrapper.centered
+      button.btn-middle.js-anim-block Получить консультацию
 
   // Пятый экран
   section.section.section__fullsize.section-portfolio
@@ -88,30 +91,33 @@ block content
             |или частичные решения
     +b.wide.js-viewport-block
       +b.section__wrapper-wide.__row
-        +b.wide__item.wide__blue
+        +b.wide__item.wide__blue.js-anim-block
           +b.wide__content 
             +b.wide__image
+              img(src="img/ou-image1.png")
             +b.sub-title.js-anim-title Все сделаем сами
             +b.wide__text.js-anim-text Глубокое планирование всех этапов выездного мероприятия. Определяем формат, концепцию,  тайминг-сценарий, прописываем детали и запускаем процесс подготовки события.
             +b.button__wrapper
-              +b.button Обсудить детали
-        +b.wide__item.wide__yellow
+              button.btn-middle Обсудить детали
+        +b.wide__item.wide__yellow.js-anim-block
           +b.wide__content
             +b.wide__image
-            +b.sub-title.js-anim-title Выездное мероприятие как&nbsp;часть&nbsp;тимбилдинга
+              img(src="img/ou-image2.png")
+            +b.sub-title.js-anim-title Выездное мероприятие как&nbsp;часть тимбилдинга
             +b.wide__text.js-anim-text Выездные тимбилдинги — идеальный способ для насыщенной передачи новых знаний и укрепления неформальных отношений коллектива.
             +b.button__wrapper
-              +b.button Дополнить мероприятие выездом
+              button.btn-middle Дополнить мероприятие выездом
       +b.section__wrapper-wide.__col
-        +b.wide__item.wide__green
+        +b.wide__item.wide__green.js-anim-block
           +b.wide__content
             +b.wide__image
+              img(src="img/ou-image3.png")
             +b.sub-title.js-anim-title Выездное мероприятие как часть исследования
             +b.wide__container
               +b.wide__text.js-anim-text Формат идеально подходит для крупных компаний, которые работают с производством, добычей, обработкой не только в России, но и за рубежом. Выездные мероприятия помогут ознакомиться с особенностями стран-партнеров,
               +b.wide__text.js-anim-text прочувствовать менталитет и изучить культурное наследие. Собранные данные снижают риски и количество неточностей в реализации задач бизнеса..
-            +b.button__wrapper
-              +b.button Заказать консультацию
+            +b.button__wrapper.centered
+              button.btn-middle Заказать консультацию
 
 
     +b.section__wrapper.js-viewport-block
@@ -121,7 +127,7 @@ block content
             span.filled Ключевые 
             |факты о выездных мероприятиях
 
-    +simpleslider.js-simple-slider()
+    +simpleslider.js-simple-slider.js-anim-block()
     
     // Обратная связь
     +feedback()
@@ -131,7 +137,9 @@ block content
 
       
 block footer
+    script(src='js/right-nav.js')
+    script(src='js/common.js')
 
-    script(src='js/outdoorActivities.js')
     script(src='js/simpleSlider.js')
+    script(src='js/outdoorActivities.js')
     

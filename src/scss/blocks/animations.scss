@@ -48,6 +48,13 @@
   -moz-text-fill-color: transparent;
   text-fill-color: transparent;
   opacity: 1!important;
+
+  @include screen(0, $mobile) {
+    text-fill-color: #000;
+    -ms-text-fill-color: #000;
+    -webkit-text-fill-color: #000;
+    -moz-text-fill-color: #000;
+  }
 }
 
 .masked-text:before,
@@ -65,6 +72,10 @@
   background-image: inherit;
   background-size: cover;
   animation:maskedtext 15s infinite ease-in;
+
+  @include screen(0, $mobile) {
+    display: none;
+  }
 }
 
 .masked-text:after {
@@ -75,12 +86,21 @@
   bottom: 0;
   left: 0;
   background-color: #ffffff;
+
+  @include screen(0, $mobile) {
+    display: none;
+  }
 }
 
 .masked-text-1 {
-  background-image:url('../img/maskbg.jpg');
-  background-size: cover;
+  background-image: url('../img/maskbg.jpg');
+  //background-size: cover;
   animation: maskedtext 15s infinite ease-in;
+
+  @include screen(0, $mobile) {
+    animation: none;
+    background-image: none;
+  }
 }
 
 @keyframes maskedtext {
@@ -97,8 +117,13 @@
 
 .masked-text-2 {
   background-image:url('../img/maskbg.jpg');
-  background-size: cover;
+  //background-size: cover;
   animation: maskedtext 15s infinite ease-in;
+
+  @include screen(0, $mobile) {
+    animation: none;
+    background-image: none;
+  }
 }
 
 @keyframes maskedtext {

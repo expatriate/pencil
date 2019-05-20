@@ -17,19 +17,19 @@ mixin top-header()
         +b.logo__title 
           |Карандаш<br>
           |агентство событий
-      a.top-menu__item 
+      a.top-menu__item(href="conference.html")
         |Конференции
         span
-      a.top-menu__item 
+      a.top-menu__item(href="exhibitions.html")
         |Выставки
         span
-      a.top-menu__item 
+      a.top-menu__item(href="team_buildings.html")
         |Тимбилдинги
         span
-      a.top-menu__item(href="/outdoor_activities.html")
+      a.top-menu__item(href="outdoor_activities.html")
         |Выездные мероприятия
         span
-      a.top-menu__item 
+      a.top-menu__item(href="special_business.html")
         |Корпоративы
         span
       a.top-menu__item 
@@ -64,12 +64,4 @@ mixin top-header()
             span Адрес:
             span Москва, Ленинградский пр.,
             span д. 26, стр.1, офис 5
-    nav.right-nav
-        +b.right-nav__wrapper
-          a.right-nav__item.active(href="#1" data-link="0")
-          a.right-nav__item(href="#2" data-link="1")
-          a.right-nav__item(href="#3" data-link="2")
-          a.right-nav__item(href="#4" data-link="3")
-          a.right-nav__item(href="#5" data-link="4")
-          a.right-nav__item(href="#6" data-link="5")
-          a.right-nav__item.line(href="#7" data-link="6")
+    nav.right-nav#js-right-nav

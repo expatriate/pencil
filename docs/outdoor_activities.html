@@ -35,7 +35,7 @@
                         </svg>
                         <div class="logo__title"> Карандаш<br>
                             агентство событий</div>
-                    </div><a class="top-menu__item"> Конференции<span></span></a><a class="top-menu__item"> Выставки<span></span></a><a class="top-menu__item"> Тимбилдинги<span></span></a><a class="top-menu__item" href="/outdoor_activities.html">Выездные мероприятия<span></span></a><a class="top-menu__item"> Корпоративы<span></span></a><a class="top-menu__item"> Соц. проекты<span></span></a><a class="top-menu__item"> Продакшн<span></span></a>
+                    </div><a class="top-menu__item" href="conference.html">Конференции<span></span></a><a class="top-menu__item" href="exhibitions.html">Выставки<span></span></a><a class="top-menu__item" href="team_buildings.html">Тимбилдинги<span></span></a><a class="top-menu__item" href="outdoor_activities.html">Выездные мероприятия<span></span></a><a class="top-menu__item" href="special_business.html">Корпоративы<span></span></a><a class="top-menu__item"> Соц. проекты<span></span></a><a class="top-menu__item"> Продакшн<span></span></a>
                     <div class="close"></div>
                     <div class="mobile-info">
                         <div class="mobile-info__wrapper">
@@ -61,20 +61,19 @@
                         </div>
                     </div>
                 </nav>
-                <nav class="right-nav">
-                    <div class="right-nav__wrapper"><a class="right-nav__item active" href="#1" data-link="0"></a><a class="right-nav__item" href="#2" data-link="1"></a><a class="right-nav__item" href="#3" data-link="2"></a><a class="right-nav__item" href="#4" data-link="3"></a><a class="right-nav__item" href="#5" data-link="4"></a><a class="right-nav__item" href="#6" data-link="5"></a><a class="right-nav__item line" href="#7" data-link="6"></a></div>
-                </nav>
+                <nav class="right-nav" id="js-right-nav"></nav>
             </div>
         </div>
         <div class="section__wrapper section__wrapper-centered section__wrapper-main">
             <h1 class="main-title js-anim-title mobile-centered"><span class="filled">Выездные </span>мероприятия для&nbsp;бизнеса</h1>
             <h2 class="main-subtitle js-anim-title">Изучайте, обозревайте, наслаждайтесь</h2>
         </div>
-        <div class="section__wrapper-bottom section__wrapper-centered section__wrapper-absolute"><a href="#">Оставить заявку</a>
+        <div class="section__wrapper-bottom section__wrapper-centered section__wrapper-absolute">
+            <div class="button__wrapper centered"><button class="btn-middle js-anim-block">Оставить заявку</button></div>
             <div class="scroller"></div>
         </div>
     </section><!-- Второй экран-->
-    <section class="section section__fixed section-third js-viewport-block" data-timeout="1100">
+    <section class="section section__fixed section-float js-viewport-block" data-timeout="1100">
         <div class="section__wrapper">
             <div class="section-content">
                 <h2 class="main-title__small main-title__fixed"><span class="filled">Выездные </span>мероприятия &#8212; наша суперсила</h2>
@@ -97,7 +96,7 @@
             </div>
         </div>
     </section><!-- Третий экран-->
-    <section class="section section__fixed section-third js-viewport-block" data-timeout="1100">
+    <section class="section section__fixed section-float js-viewport-block" data-timeout="1100">
         <div class="section__wrapper">
             <div class="section-content">
                 <div class="block block--pad-left">
@@ -119,7 +118,7 @@
             </div>
         </div>
     </section><!-- Четвертый экран-->
-    <section class="section section__fixed section-third js-viewport-block" data-timeout="1100">
+    <section class="section section__fixed section-float js-viewport-block" data-timeout="1100">
         <div class="section__wrapper">
             <div class="section-content">
                 <div class="block block--pad-left">
@@ -140,6 +139,7 @@
                 </div>
             </div>
         </div>
+        <div class="button__wrapper centered"><button class="btn-middle js-anim-block">Получить консультацию</button></div>
     </section><!-- Пятый экран-->
     <section class="section section__fullsize section-portfolio">
         <div class="section__wrapper js-viewport-block">
@@ -149,39 +149,33 @@
         </div>
         <div class="wide js-viewport-block">
             <div class="section__wrapper-wide wide__row">
-                <div class="wide__item wide__blue">
+                <div class="wide__item wide__blue js-anim-block">
                     <div class="wide__content">
-                        <div class="wide__image"></div>
+                        <div class="wide__image"><img src="img/ou-image1.png"></div>
                         <div class="sub-title js-anim-title">Все сделаем сами</div>
                         <div class="wide__text js-anim-text">Глубокое планирование всех этапов выездного мероприятия. Определяем формат, концепцию, тайминг-сценарий, прописываем детали и запускаем процесс подготовки события.</div>
-                        <div class="button__wrapper">
-                            <div class="button">Обсудить детали</div>
-                        </div>
+                        <div class="button__wrapper"><button class="btn-middle">Обсудить детали</button></div>
                     </div>
                 </div>
-                <div class="wide__item wide__yellow">
+                <div class="wide__item wide__yellow js-anim-block">
                     <div class="wide__content">
-                        <div class="wide__image"></div>
-                        <div class="sub-title js-anim-title">Выездное мероприятие как&nbsp;часть&nbsp;тимбилдинга</div>
+                        <div class="wide__image"><img src="img/ou-image2.png"></div>
+                        <div class="sub-title js-anim-title">Выездное мероприятие как&nbsp;часть тимбилдинга</div>
                         <div class="wide__text js-anim-text">Выездные тимбилдинги — идеальный способ для насыщенной передачи новых знаний и укрепления неформальных отношений коллектива.</div>
-                        <div class="button__wrapper">
-                            <div class="button">Дополнить мероприятие выездом</div>
-                        </div>
+                        <div class="button__wrapper"><button class="btn-middle">Дополнить мероприятие выездом</button></div>
                     </div>
                 </div>
             </div>
             <div class="section__wrapper-wide wide__col">
-                <div class="wide__item wide__green">
+                <div class="wide__item wide__green js-anim-block">
                     <div class="wide__content">
-                        <div class="wide__image"></div>
+                        <div class="wide__image"><img src="img/ou-image3.png"></div>
                         <div class="sub-title js-anim-title">Выездное мероприятие как часть исследования</div>
                         <div class="wide__container">
                             <div class="wide__text js-anim-text">Формат идеально подходит для крупных компаний, которые работают с производством, добычей, обработкой не только в России, но и за рубежом. Выездные мероприятия помогут ознакомиться с особенностями стран-партнеров,</div>
                             <div class="wide__text js-anim-text">прочувствовать менталитет и изучить культурное наследие. Собранные данные снижают риски и количество неточностей в реализации задач бизнеса..</div>
                         </div>
-                        <div class="button__wrapper">
-                            <div class="button">Заказать консультацию</div>
-                        </div>
+                        <div class="button__wrapper centered"><button class="btn-middle">Заказать консультацию</button></div>
                     </div>
                 </div>
             </div>
@@ -191,7 +185,7 @@
                 <h2 class="main-title__small main-title__small--mgtop"><span class="js-anim-title"><span class="filled">Ключевые </span>факты о выездных мероприятиях</span></h2>
             </div>
         </div>
-        <div class="section__wrapper js-viewport-block js-simple-slider">
+        <div class="section__wrapper js-viewport-block js-simple-slider js-anim-block">
             <div class="simpleslider">
                 <div class="simpleslider__container swiper-container">
                     <div class="simpleslider__wrapper swiper-wrapper">
@@ -335,8 +329,10 @@
         </div>
     </section>
     <script src="js/vendor.min.js"></script>
-    <script src="js/outdoorActivities.js"></script>
+    <script src="js/right-nav.js"></script>
+    <script src="js/common.js"></script>
     <script src="js/simpleSlider.js"></script>
+    <script src="js/outdoorActivities.js"></script>
 </body>
 
 </html>

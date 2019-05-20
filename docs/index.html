@@ -36,7 +36,7 @@
                         </svg>
                         <div class="logo__title"> Карандаш<br>
                             агентство событий</div>
-                    </div><a class="top-menu__item"> Конференции<span></span></a><a class="top-menu__item"> Выставки<span></span></a><a class="top-menu__item"> Тимбилдинги<span></span></a><a class="top-menu__item" href="/outdoor_activities.html">Выездные мероприятия<span></span></a><a class="top-menu__item"> Корпоративы<span></span></a><a class="top-menu__item"> Соц. проекты<span></span></a><a class="top-menu__item"> Продакшн<span></span></a>
+                    </div><a class="top-menu__item" href="conference.html">Конференции<span></span></a><a class="top-menu__item" href="exhibitions.html">Выставки<span></span></a><a class="top-menu__item" href="team_buildings.html">Тимбилдинги<span></span></a><a class="top-menu__item" href="outdoor_activities.html">Выездные мероприятия<span></span></a><a class="top-menu__item" href="special_business.html">Корпоративы<span></span></a><a class="top-menu__item"> Соц. проекты<span></span></a><a class="top-menu__item"> Продакшн<span></span></a>
                     <div class="close"></div>
                     <div class="mobile-info">
                         <div class="mobile-info__wrapper">
@@ -62,9 +62,7 @@
                         </div>
                     </div>
                 </nav>
-                <nav class="right-nav">
-                    <div class="right-nav__wrapper"><a class="right-nav__item active" href="#1" data-link="0"></a><a class="right-nav__item" href="#2" data-link="1"></a><a class="right-nav__item" href="#3" data-link="2"></a><a class="right-nav__item" href="#4" data-link="3"></a><a class="right-nav__item" href="#5" data-link="4"></a><a class="right-nav__item" href="#6" data-link="5"></a><a class="right-nav__item line" href="#7" data-link="6"></a></div>
-                </nav>
+                <nav class="right-nav" id="js-right-nav"></nav>
             </div>
         </div>
         <div class="section__wrapper section__wrapper-centered section__wrapper-main">
@@ -99,7 +97,7 @@
             </div>
         </div>
     </section><!-- Третий экран-->
-    <section class="section section__fixed section-third js-viewport-block" data-timeout="1100">
+    <section class="section section__fixed section-float js-viewport-block" data-timeout="1100">
         <div class="section__wrapper">
             <div class="section-content">
                 <h2 class="main-title__small main-title__fixed"><span class="filled">Неисчерпаемый </span>запас новых идей и ярких решений для&nbsp;самых амбициозных целей</h2>
@@ -124,7 +122,7 @@
             </div>
         </div>
     </section><!-- Четверный экран-->
-    <section class="section section__fixed section-third js-viewport-block" data-timeout="1100">
+    <section class="section section__fixed section-float js-viewport-block" data-timeout="1100">
         <div class="section__wrapper">
             <div class="section-content">
                 <div class="block block--pad-left">
@@ -148,7 +146,7 @@
             </div>
         </div>
     </section><!-- Пятый экран-->
-    <section class="section section__fixed section-third js-viewport-block" data-timeout="1100">
+    <section class="section section__fixed section-float js-viewport-block" data-timeout="1100">
         <div class="section__wrapper">
             <div class="section-content">
                 <div class="block block--pad-left">
@@ -172,7 +170,7 @@
             </div>
         </div>
     </section><!-- Шестой экран-->
-    <section class="section section__fixed section-third js-viewport-block" data-timeout="1100">
+    <section class="section section__fixed section-float js-viewport-block" data-timeout="1100">
         <div class="section__wrapper">
             <div class="section-content">
                 <div class="block block--pad-left">
@@ -459,6 +457,8 @@
         </div>
     </section>
     <script src="js/vendor.min.js"></script>
+    <script src="js/right-nav.js"></script>
+    <script src="js/common.js"></script>
     <script src="js/imagesloaded.pkgd.min.js"></script>
     <script src="js/hover.js"></script>
     <script src="js/particles.js"></script>

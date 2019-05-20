@@ -3,6 +3,25 @@
   width: 100%;
   padding: 0px 64px;
   //background: #333;
+  margin-bottom: 64px;
+
+  @include screen(0, $mobile) {
+    padding: 0px;
+    height: 320px;
+  }
+
+  @include screen($mobile, $tablet) {
+    padding: 0px 32px;
+    height: 360px;
+  }
+
+  @include screen($tablet, $desktop) {
+    max-width: 100%;
+    font-size: 20px;
+    padding: 0px 72px;
+    margin-bottom: 24px;
+    height: 360px;
+  }
 
   &__slide {
     width: 100%;
@@ -31,6 +50,29 @@
       font-size: 180px;
       text-transform: uppercase;
       font-weight: 300;
+
+      @include screen(0, $mobile) {
+        font-size: 36px;
+        display: block;
+        align-self: flex-start;
+        width: 100%;
+      }
+      @include screen($mobile, $tablet) {
+        width: 100%;
+        font-size: 100px;
+      }
+      @include screen($tablet, $desktop) {
+        width: 100%;
+        font-size: 120px;
+      }
+    }
+
+   @include screen(0, $mobile) {
+      display: block;
+      align-self: flex-start;
+      margin-left: 36px;
+      margin-bottom: 12px;
+      width: 100%;
     }
   }
 
@@ -39,6 +81,26 @@
     margin: 0 auto;
     text-align: center;
     font-size: 24px;
+
+    @include screen(0, $mobile) {
+      max-width: 100%;
+      font-size: 18px;
+      padding: 0px 36px;
+      text-align: left;
+      margin-bottom: 24px;
+    }
+    @include screen($mobile, $tablet) {
+      max-width: 100%;
+      font-size: 24px;
+      padding: 0px 72px;
+      margin-bottom: 24px;
+    }
+    @include screen($tablet, $desktop) {
+      max-width: 100%;
+      font-size: 20px;
+      padding: 0px 96px;
+      margin-bottom: 24px;
+    }
   }
 
   &__content {
@@ -55,12 +117,20 @@
     background-image: url('../img/swiper/prev.svg');
     width: 48px;
     background-size: 100%;
+
+    @include screen(0, $mobile) {
+      display: none;
+    }
   }
 
   .swiper-button-next {
     background-image: url('../img/swiper/next.svg');
     width: 48px;
     background-size: 100%;
+
+    @include screen(0, $mobile) {
+      display: none;
+    }
   }
 
   .swiper-pagination {

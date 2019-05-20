@@ -72,13 +72,22 @@
   margin-top: 80px;
   max-width: 70%;
 
+  @include screen(0, $mobile) {
+    max-width: 100%;
+  }
+
   &__text {
     margin-top: 40px;
     font-size: 20px;
+
     @include screen(0, $tablet) {
       margin-top: 16px;
       padding-left: 24px;
       font-size: 18px;
+    }
+
+    &.italic {
+      font-style: italic;
     }
   }
 

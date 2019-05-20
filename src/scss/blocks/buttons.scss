@@ -1,6 +1,7 @@
 .button__wrapper {
 
   display: flex;
+  background-color: inherit;
   
   &.centered {
     align-self: center;
@@ -60,6 +61,54 @@
     &:before {
       opacity: 0;
     }
+  }
+}
+
+.btn-middle {
+  margin: 36px 0px 16px 0px;
+  position: relative;
+  display:inline-block;
+  background-image: linear-gradient(16deg, #feb770, #e370b4);
+  padding:16px 64px;
+  line-height:30px;
+  text-align: center;
+  color: #030303;
+  border-radius: 30px;
+  font-weight: 300;
+  overflow: hidden;
+  font-size: 24px;
+  z-index:0;
+  background-color: inherit;
+
+  border: 0;
+
+  @include screen(0, $mobile) {
+    padding: 12px 32px;
+    font-size: 18px;
+  }
+  @include screen($mobile, $tablet) {
+    padding: 12px 32px;
+    font-size: 18px;
+  }
+  @include screen($tablet, $desktop) {
+    padding: 12px 32px;
+    font-size: 18px;
+  }
+  
+  
+  &:before {
+    content: '';
+    position: absolute;
+    /* specify the value of border width here */
+    top: 2px;
+    right: 2px;
+    bottom: 2px;
+    left: 2px;
+
+    background-color: inherit;
+    border-radius: 28px;
+    box-sizing: border-box;
+    z-index: -1;
   }
 }
 

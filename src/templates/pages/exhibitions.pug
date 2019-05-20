@@ -1,0 +1,117 @@
+extends ../components/layouts/default
+
+include ../components/top-header/top-header
+include ../components/feedback/feedback
+include ../components/simpleslider/simpleslider
+include ../components/footer/footer
+
+block head
+    - var pageTitle = 'Размещение стендов';
+block content
+
+
+  // Первый экран
+  section.section.section__fixed.section__mobile__pad.section-main.js-viewport-block
+    +b.section__wrapper-top
+      +top-header()
+    +b.section__wrapper.section__wrapper-centered.section__wrapper-main
+      h1.main-title.js-anim-title.mobile-centered
+        span.filled Размещение 
+        | стендов
+      h2.main-subtitle.js-anim-title
+        | Стратегический выбор победителей
+    +b.section__wrapper-bottom.section__wrapper-centered.section__wrapper-absolute
+      +b.button__wrapper.centered
+        button.btn-middle.js-anim-block Оставить заявку
+      +b.scroller
+
+  // Второй экран
+  section.section.section__fixed.section-float.js-viewport-block(data-timeout="1100")
+    +b.section__wrapper
+      +b.section-content
+        h2.main-title__small.main-title__fixed
+          span.filled Идеальная 
+          |тактика присутствия
+        +b.block.block--pad-left
+          +b.block__half--left
+            +b.title-under
+              span.masked-text.masked-text-1 expanse
+            +b.light-box.light-box__small
+              div.light1
+              div.light2
+              div.light3
+          +b.block__half
+            +b.sub-title.js-anim-title Внутри и снаружи
+            +b.opts-container
+              +e.__text.js-anim-text Разработка  визуальных шедевров и фантастических интерактивные механик взаимодействия с целевой аудиторией Коллаборации с дополненной реальностью и цифровыми форматами взаимодействия стенда с человеком. Продуманная тактика присутствия на выставке очарует и закрепит за вашим стендом не только широкие массы, но  и отдельных элитных гостей.
+
+  // Третий экран
+  section.section.section__fixed.section-float.js-viewport-block(data-timeout="1100")
+    +b.section__wrapper
+      +b.section-content
+        +b.block.block--pad-left
+          +b.block__half--left
+            +b.title-under
+              span.masked-text.masked-text-1 success
+            +b.light-box.light-box__small
+              div.light1
+              div.light2
+              div.light3
+          +b.block__half
+            +b.sub-title.js-anim-title Ради самого важного
+            +b.opts-container
+              +e.__text.js-anim-text Продуманный стенд показывает отношение к целевой аудитории, его запомнят и оценят. Стенд, который не только отвечает всем современным тенденциям рынка, но и превосходит их — окупает себя за несколько месяцев, формируя нагрузку отдела продаж компании на много недель вперед.
+    +b.button__wrapper.centered
+      button.btn-middle.js-anim-block Получить консультацию
+
+  // Четвертый экран
+  section.section.section__fullsize.section-portfolio
+    +b.section__wrapper.js-viewport-block
+      +b.section-content
+        h2.main-title__small.main-title__small--mgtop
+          span.js-anim-title
+            span.filled Комплексные 
+            |или частичные решения
+    +b.wide.js-viewport-block
+      +b.section__wrapper-wide.__row
+        +b.wide__item.wide__lime.js-anim-block
+          +b.wide__content 
+            +b.wide__image
+              img(src="img/ou-image1.png")
+            +b.sub-title.js-anim-title Все сделаем сами
+            +b.wide__text.js-anim-text От разработки концепции до демонтажа всех конструкций. Организуем выступления спикера компании, поможем с координацией и всей необходимой оснасткой.
+            +b.button__wrapper
+              button.btn-middle Получить консультацию
+        +b.wide__item.wide__purple.js-anim-block
+          +b.wide__content
+            +b.wide__image
+              img(src="img/ou-image2.png")
+            +b.sub-title.js-anim-title Возьмем на себя некоторые заботы
+            +b.wide__text.js-anim-text Подключаемся и в случаях, когда требуется только стенд, или только минимальное сопровождение выставочного цикла.
+            +b.button__wrapper
+              button.btn-middle Получить консультацию
+
+
+    +b.section__wrapper.js-viewport-block
+      +b.section-content
+        h2.main-title__small.main-title__small--mgtop
+          span.js-anim-title
+            span.filled Ключевые 
+            |факты о выездных мероприятиях
+
+    +simpleslider.js-simple-slider.js-anim-block()
+    
+    // Обратная связь
+    +feedback()
+
+    // Футер с меню
+    +footer()
+
+      
+block footer
+    script(src='js/right-nav.js')
+    script(src='js/common.js')
+
+    script(src='js/simpleSlider.js')
+    script(src='js/outdoorActivities.js')
+    

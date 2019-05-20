@@ -134,7 +134,7 @@ function watchFiles() {
     gulp.watch('./src/js/*.js', compileScripts);
     gulp.watch('./src/img/svg/*', compileSvg);
     gulp.watch('./src/*.html', browserSyncReload);
-    gulp.watch(['./src/templates/pages/*.pug', './src/templates/components/**/*.pug', './src/templates/pages/**/*.pug'], pugPages);
+    gulp.watch(['./src/templates/pages/*.pug', './src/templates/components/**/*.pug'], pugPages);
 }
 
 
