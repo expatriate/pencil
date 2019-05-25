@@ -1,0 +1,56 @@
+.achievments {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 48px 0px;
+
+  @include screen(0, $mobile) {
+    padding: 36px 0px;
+    flex-direction: column;
+  }
+  @include screen($mobile, $tablet) {
+    padding: 36px 0px;
+  }
+
+  &__item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-right: 24px; 
+
+    @include screen(0, $mobile) {
+      margin: 0px; 
+      width: 100%;
+      margin-bottom: 24px;
+    }
+
+    img {
+      height: 90px;
+      width: 100px;
+      object-fit: contain;
+
+      @include screen(0, $mobile) {
+        height: 60px;
+        width: 70px;
+      }
+    }
+  }
+
+  &__descr {
+    padding: 24px;
+    max-width: 180px;
+
+    @include screen(0, $mobile) {
+      max-width: auto;
+      padding: 0px 12px 0px 12px;
+    }
+
+    span {
+      display: block;
+
+      &.filled {
+        color: #e12125;
+      }
+    }
+  }
+}

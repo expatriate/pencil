@@ -1,0 +1,144 @@
+extends ../components/layouts/default
+
+include ../components/top-header/top-header
+include ../components/feedback/feedback
+include ../components/simpleslider/simpleslider
+include ../components/breadcrumbs/breadcrumbs
+include ../components/footer/footer
+
+include ../components/achievments/achievments
+
+block head
+    - var pageTitle = 'Конференции';
+block content
+
+
+  section.section.section__fullsize.section-portfolio.js-viewport-block-first
+    +b.section__wrapper-top.js-anim-block
+      +top-header()
+    +b.section__wrapper.js-anim-block
+      +breadcrumbs()
+    +b.section__wrapper
+      +b.light-box
+        div.light1
+        div.light2
+        div.light3
+      +b.section__wrapper
+        +b.section-content
+          h1.main-title.pads.splitted.js-anim-title
+            span.filled Мероприятия 
+            | наших клиентов занимают первые места в рейтингах и номинациях
+    +b.section__wrapper.js-viewport-block
+      +b.section-content.js-anim-block
+        +achievments()
+    +b.section__wrapper.js-viewport-block
+      +b.section-content
+        +b.tabs
+          +b.tabs-head.js-anim-block
+            +e.wrapper
+              a.tabs-head__item.active(data-href="conference") Конференции
+                span
+              a.tabs-head__item(data-href="exhibitions") Выставки
+                span
+              a.tabs-head__item(data-href="team_buildings") Тимбилдинги
+                span
+              a.tabs-head__item(data-href="outdoor_activities") Выездные мероприятия
+                span
+              a.tabs-head__item(data-href="special_business") Корпоративы
+                span
+              a.tabs-head__item(data-href="social_projects") Соц. Проекты
+                span
+              a.tabs-head__item(data-href="production") Продакшн
+                span
+          +b.tabs-content.js-anim-block
+            +e.__item.active(data-item="conference")
+              +b.grid
+                a.grid__item(style='background-image: url("/img/sample.jpg")', href="#")
+                  +e.__img
+                    img(src="/img/event1.png")
+                    img(src="/img/event1.png")
+                    img(src="/img/event1.png")
+                  +e.__title Азбука профессий
+                  +e.__descr
+                    +e.__subtitle Цели проекта
+                    +e.__text Оказать влияние на формирование профессионального сознания у молодого поколения полуострова Крым.
+                a.grid__item(style='background-image: url("/img/sample.jpg")', href="#")
+                  +e.__img
+                  +e.__title Премия «Золотое окно»
+                  +e.__descr
+                    +e.__subtitle Цели проекта
+                    +e.__text Проведение ежегодной премии «Золотое окно» в рамках выставки Fensterbau Frontale (Нюрнберг, Германия). Повышение культуры... ...сервиса обслуживания клиентов, компетенции консультантов при продаже окон.
+                a.grid__item(style='background-image: url("/img/sample.jpg")', href="#")
+                  +e.__img
+                    img(src="/img/event1.png")
+                  +e.__title Стенд Rehau
+                  +e.__descr
+                    +e.__subtitle Цели проекта
+                    +e.__text Презентация нового модельного ряда оконных систем REHAU
+                a.grid__item(style='background-image: url("/img/sample.jpg")', href="#")
+                  +e.__img
+                  +e.__title Отельно-маркетинговая конференция
+                  +e.__descr
+                    +e.__subtitle Цели проекта
+                    +e.__text Конференция для отельеров России
+                a.grid__item(style='background-image: url("/img/sample.jpg")', href="#")
+                  +e.__img
+                  +e.__title Конференция блока экономики и финансов Норникеля
+                  +e.__descr
+                    +e.__subtitle Цели проекта
+                    +e.__text Применение целостного идейного подхода  к   мероприятию в рамках концепции «Революция 4.0»
+                //- a.grid__item(style='background-image: url("/img/sample.jpg")', href="#")
+                //-   +e.__img
+                //-   +e.__title 6-я конференция руководителей РНКБ
+                //-   +e.__descr
+                //-     +e.__subtitle Цели проекта
+                //-     +e.__text Презентация нового гимна и логотипа банка 
+              +b.grid-more 
+                +b.button__wrapper.centered.padds.js-anim-block
+                  button.btn-wide Смотреть все проекты  
+            +e.__item(data-item="exhibitions")
+              +b.grid
+                a.grid__item(style='background-image: url("/img/sample.jpg")', href="#")
+                  +e.__img
+                    img(src="/img/event1.png")
+                    img(src="/img/event1.png")
+                    img(src="/img/event1.png")
+                  +e.__title Азбука профессий
+                  +e.__descr
+                    +e.__subtitle Цели проекта
+                    +e.__text Оказать влияние на формирование профессионального сознания у молодого поколения полуострова Крым.
+              +b.grid-more
+                +b.button__wrapper.centered.padds.js-anim-block
+                  button.btn-wide Смотреть все проекты 
+            +e.__item(data-item="team_buildings")
+              +e.__nulldata
+                +e.__text К сожалению здесь пока нет завершенных проектов
+            +e.__item(data-item="outdoor_activities")
+              +e.__nulldata
+                +e.__text К сожалению здесь пока нет завершенных проектов
+            +e.__item(data-item="special_business")
+              +e.__nulldata
+                +e.__text К сожалению здесь пока нет завершенных проектов
+            +e.__item(data-item="social_projects")
+              +e.__nulldata
+                +e.__text К сожалению здесь пока нет завершенных проектов
+            +e.__item(data-item="production")
+              +e.__nulldata
+                +e.__text К сожалению здесь пока нет завершенных проектов
+
+        
+              
+    
+    
+    // Обратная связь
+    +feedback().js-viewport-block
+
+    // Футер с меню
+    +footer().js-viewport-block
+
+      
+block footer
+    script(src='js/common.js')
+
+    script(src='js/projects.js')
+    

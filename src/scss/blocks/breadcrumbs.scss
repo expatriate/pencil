@@ -1,0 +1,55 @@
+.breadcrumbs {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  margin: 16px 0px;
+  align-items: center;
+
+  @include screen(0, $mobile) {
+    display: none;
+  }
+
+  @include screen($mobile, $tablet) {
+    padding: 0px 24px;
+  }
+
+  .back {
+    background-image: url('../img/swiper/prev.svg');
+    width: 48px;
+    background-size: 100%;
+    display: block;
+    height: 48px;
+    cursor: pointer;
+  }
+
+  &__item {
+    margin-right: 24px;
+    position: relative;
+
+    &:not(:first-child):not(:nth-child(2)) {
+      &:before {
+        content: '•';
+        position: absolute;
+        height: 100%;
+        width: 24px;
+        left: -16px;
+        color: rgba(0,0,0,.2)
+      }
+    }
+
+    a {
+      text-decoration: none;
+      cursor: pointer;
+      font-size: 16px;
+      color: #000;
+      transition: all ease .3s;
+      position: relative;
+      z-index: 10;
+
+      &:hover {
+        color: #e12125;
+        transition: all ease .3s;
+      }
+    }
+  }
+}

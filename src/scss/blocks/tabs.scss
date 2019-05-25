@@ -1,0 +1,328 @@
+.tabs {
+  width: 100%;
+  overflow: hidden;
+}
+
+.tabs-head {
+  
+
+  &__wrapper {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 0px 0px 36px 0px;
+
+    @include screen(0, $mobile) {
+      width: 100%;
+      overflow: auto;
+      flex-direction: row;
+      flex-wrap: wrap;
+    }
+    @include screen($mobile, $tablet) {
+      width: 100%;
+      overflow: auto;
+      flex-direction: row;
+      flex-wrap: wrap;
+    }
+  }
+
+  @include screen(0, $mobile) {
+    width: 100%;
+  }
+
+  &__item {
+    margin-right: 24px;
+    margin-bottom: 8px;
+
+    text-decoration: none;
+    cursor: pointer;
+    font-size: 18px;
+    color: #000000;
+    transition: all ease 0.5s;
+
+    @include screen($tablet, $desktop-1) {
+      font-size: 14px;
+    }
+    @include screen(0, $mobile) {
+      margin-bottom: 12px;
+    }
+
+
+    span {
+      position: relative;
+      display: block;
+      margin-top: 2px;
+      width: 0%;
+      height: 1px;
+    }
+
+    &.nothovered:not(.active) {
+      opacity: 0.3;
+      transition: all ease 0.5s;
+      cursor: pointer;
+    }
+
+    &.active {
+      color: #e12125;
+
+      span {
+        width: 100%;
+        background: #e12125;
+      }
+    }
+
+    &.hovered {
+      opacity: 1;
+      transition: all ease 0.5s;
+      cursor: pointer;
+      overflow: hidden;
+
+      span {
+        position: relative;
+        display: block;
+        margin-top: 2px;
+        width: 100%;
+        height: 1px;
+        background: #333333;
+        animation: lineanimation 0.33s ease-out normal;
+        animation-fill-mode: both;
+      }
+    }
+
+    &.active.hovered {
+      span {
+        background: #e12125;
+        transition: all ease 0.5s;
+      }
+    }
+  }
+}
+
+.tabs-content {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  width: 100%;
+
+  @include screen(0, $mobile) {
+    flex-direction: column;
+  }
+  
+
+  &__item {
+    opacity: 0;
+    display: none;
+    width: 100%;
+    min-height: 320px;
+
+    &.active {
+      opacity: 1;
+      display: block;
+    }
+
+    @include screen(0, $mobile) {
+      min-height: 180px;
+    }
+  }
+
+  &__nulldata {
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+
+    .tabs-content__text {
+      font-size: 32px;
+      max-width: 30%;
+      color: #d8d8d8;
+
+      @include screen(0, $mobile) {
+        max-width: 100%;
+        font-size: 18px;
+      }
+      @include screen($mobile, $tablet) {
+        max-width: 60%;
+        font-size: 24px;
+      }
+      @include screen($tablet, $desktop) {
+        max-width: 70%;
+        font-size: 28px;
+      }
+    }
+  }
+}
+
+.grid-more {
+  flex: 1;
+  height: 100%;
+  display: flex;
+  position: relative;
+  flex-direction: column;
+}
+
+.grid {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+
+  @include screen(0, $mobile) {
+    flex-direction: column;
+  }
+
+
+  &__item {
+    width: 30%;
+    padding: 36px;
+    margin: 16px;
+    background-size: cover;
+    min-height: 640px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    position: relative;
+    cursor: pointer;
+    text-decoration: none;
+
+    &:nth-child(4n), &:first-child {
+      margin-left: 0px;
+    }
+
+    @include screen(0, $mobile-1) {
+      margin: 0px 0px 20px 0px;
+      padding: 12px;
+      width: 100%;
+      min-height: 480px;
+    }
+    @include screen($mobile-1, $tablet) {
+      padding: 24px;
+      margin: 0px 0px 20px 0px;
+      width: 100%;
+    }
+    @include screen($tablet, $desktop) {
+      flex-direction: column;
+      width: 45%;
+      margin: 16px;
+
+      &:nth-child(4n) {
+        margin-left: 16px;
+      }
+
+      &:nth-child(2n+1), &:first-child {
+        margin-left: 0px;
+      }
+    }
+
+    &:before {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      left: 0;
+      top: 0;
+      transition: all ease 0.5s;
+      background-color: rgba(0,0,0,.5);
+      z-index: 1;
+    }
+
+    &:after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      left: 0;
+      top: 0;
+      transition: all ease 0.5s;
+      //background: rgb(196,91,176);
+      background: linear-gradient(90deg, rgba(196,91,176,1) 0%, rgba(121,116,9,1) 50%, rgba(177,44,71,1) 81%, rgba(184,0,255,1) 100%);
+    }
+
+    &:hover:after {
+      transition: all ease 0.5s;
+      opacity: .4;
+      @include screen(0, $tablet) {
+        opacity: 0;
+      }
+    }
+
+    &:hover:before {
+      opacity: 0;
+    }
+  }
+
+  &__title {
+    text-align: left;
+    font-size: 32px;
+    margin: 0;
+    pointer-events: none;
+    margin-bottom: 48px;
+    color: #ffffff;
+    min-height: 80px;
+    z-index: 2;
+
+    @include screen(0, $mobile-1) {
+      font-size: 22px;
+      margin-bottom: 12px;
+    }
+    @include screen($mobile-1, $tablet) {
+      font-size: 28px;
+      margin-bottom: 12px;
+    }
+  }
+
+  &__img {
+    z-index: 2;
+    
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+
+    img {
+      height: 100px;
+      margin-right: 16px;
+      margin-bottom: 18px;
+
+      @include screen(0, $mobile) {
+        height: 60px;
+        margin: 0px 12px 12px 0px;
+      }
+    }
+  }
+
+  &__subtitle {
+    text-align: left;
+    font-size: 22px;
+    margin: 0;
+    pointer-events: none;
+    margin-bottom: 8px;
+    color: #ffffff;
+    z-index: 2;
+
+    @include screen(0, $mobile) {
+      font-size: 18px;
+    }
+  }
+
+  &__descr {
+    height: 86px;
+    z-index: 2;
+    overflow: hidden;
+    @include screen(0, $mobile-1) {
+      height: 160px;
+    }
+    @include screen($mobile-1, $tablet) {
+      height: 100px;
+    }
+  }
+
+  &__text {
+    text-align: left;
+    font-size: 14px;
+    margin: 0;
+    pointer-events: none;
+    color: #ffffff;
+    height: 64px;
+  }
+}

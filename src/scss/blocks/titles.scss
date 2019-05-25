@@ -72,6 +72,21 @@
 
   }
 
+  &.pads {
+    padding: 96px 0px;
+
+    @include screen(0, $mobile) {
+      padding: 0px;
+    }
+  }
+
+  &.splitted {
+    max-width: 80%;
+    @include screen(0, $mobile) {
+      max-width: 100%;
+    }
+  }
+
   .filled {
     color: #e12125;
   }

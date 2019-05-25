@@ -24,7 +24,25 @@ function initMenuHover() {
     $('.block-footer__nav-item').removeClass('hovered').removeClass('nothovered');
   });
 
+  $('.tabs-head__item').hover(function(e) {
+    $('.tabs-head__item').removeClass('hovered').addClass('nothovered');
+    $(e.target).removeClass('nothovered').addClass('hovered')
+  });
+
+  $('.tabs-head').hover(function(e) {
+  }, function() {
+    $('.tabs-head__item').removeClass('hovered').removeClass('nothovered');
+  });
+
 }
+
+// Tabs
+$('.tabs-head__item').on('click', function() {
+  $(this).parent().find('.tabs-head__item.active').removeClass('active');
+  $(this).addClass('active');
+  $(this).parents('.tabs').find('.tabs-content__item.active').removeClass('active');
+  $(this).parents('.tabs').find('.tabs-content__item[data-item="' + this.dataset.href + '"]').addClass('active');
+});
 
 // IS INTERNET EXPLORER
 function isNotMsie() {

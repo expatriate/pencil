@@ -62,9 +62,13 @@
       max-width: 768px;
       //overflow: hidden;
     }
-    @include screen($tablet, $desktop) {
+    @include screen($tablet, $desktop-1) {
       max-width: 1024px;
       padding: 0px 24px; 
+    }
+    @include screen($desktop-1, $desktop) {
+      max-width: 1200px;
+      padding: 0px 12px; 
     }
 
 

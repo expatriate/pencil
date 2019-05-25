@@ -10,8 +10,14 @@
   &.padds {
     padding: 120px 0px;
 
-    @include screen(0, $mobile) {
+    @include screen(0, $mobile-1) {
       padding: 32px 0px;
+    }
+    @include screen($mobile-1, $mobile) {
+      padding: 48px 0px;
+    }
+    @include screen($mobile, $tablet) {
+      padding: 64px 0px;
     }
   }
   &.smallpadds {
