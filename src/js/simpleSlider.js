@@ -1,5 +1,6 @@
 var sliderTimeout;
-var mySwiper = new Swiper ('.simpleslider__container', {
+var simpleSliderContainer = $('.simpleslider__container'); 
+var mySwiper = new Swiper('.simpleslider__container', {
   // Optional parameters
   direction: 'horizontal',
   effect: 'fade',
@@ -28,7 +29,7 @@ var mySwiper = new Swiper ('.simpleslider__container', {
     init: function () {
     },
     autoplay: function () {
-      $('.swiper-pagination-bullet-active').text(mySwiper.activeIndex + 1);
+      simpleSliderContainer.find('.swiper-pagination-bullet-active').text(mySwiper.activeIndex + 1);
 
       var time = new Date().getTime()
       sliderTimeout = setTimeout(function() {
@@ -36,8 +37,8 @@ var mySwiper = new Swiper ('.simpleslider__container', {
       }, 20000);
     },
     slideChange: function () {
-      $('.swiper-pagination-bullet-active').text(this.activeIndex + 1);
-      $('swiper-pagination-bullet').html('');
+      simpleSliderContainer.find('.swiper-pagination-bullet-active').text(this.activeIndex + 1);
+      simpleSliderContainer.find('swiper-pagination-bullet').html('');
       /*setTimeout(function() {
         $('.swiper-pagination-bullet-active').pietimer({
           timerSeconds: 10,
@@ -52,7 +53,7 @@ var mySwiper = new Swiper ('.simpleslider__container', {
       }, 100)*/
     },
     autoplayStart: function () {
-      $('.swiper-pagination-bullet-active').text('1');
+      simpleSliderContainer.find('.swiper-pagination-bullet-active').text('1');
 
       var time = new Date().getTime()
       sliderTimeout = setTimeout(function() {

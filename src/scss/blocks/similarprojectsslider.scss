@@ -1,0 +1,94 @@
+.similarprojectsslider {
+  width: 100%;
+  height: 580px;
+  padding-bottom: 32px;
+  //padding: 0px 64px;
+  //background: #333;
+  //margin-bottom: 64px;
+
+  .swiper-slide {
+    width: 1024px;
+    margin-right: 100px;
+    height: 400px;
+    cursor: pointer;
+    margin-left: 80px;
+  }
+
+  &__container {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 100%;
+
+  }
+  .swiper-container {
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+  }
+
+  &__left {
+    width: 50%;
+    height: 100%;
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+  &__right {
+    width: 50%;
+    height: 100%;
+    padding: 64px;
+  }
+
+  &__title {
+    font-size: 32px;
+    margin-bottom: 32px;
+  }
+
+  &__subtitle {
+    font-size: 20px;
+    margin-bottom: 16px;
+  }
+
+  &__text {
+    font-size: 16px;
+  }
+
+  &__content {
+
+    display: flex;
+    flex-direction: row;
+    background-color: #ffffff;
+    height: 100%;
+  }
+
+  .swiper-pagination {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    left: 0px!important;
+    transform: none!important;
+    width: 100%!important;
+    justify-content: center;
+  }
+
+  .swiper-pagination-bullet {
+    width: 12px;
+    height: 12px;
+    color: rgba(0,0,0,.5);
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .swiper-pagination-bullet-active {
+    width: 64px;
+    height: 64px;
+    border: 2px solid rgba(0,0,0,.2);
+    background-color: transparent;
+  }
+
+}

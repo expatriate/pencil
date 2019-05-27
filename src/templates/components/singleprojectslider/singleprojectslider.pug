@@ -1,0 +1,45 @@
+mixin singleprojectslider()
+  +b.section__wrapper-wide&attributes(attributes)
+    +b.section__wrapper.js-anim-block
+      +b.section-content
+        +b.singleprojectslider
+          +e.text.js-anim-text Предлагаю написать небольшое вступление к фотогалее. Это придает живости мероприятию и предисловие к просмотру фотографий
+          +e.title-container
+            +e.slide-title Самые лучшие моменты мероприятия «Золотое окно»
+            +e.slide-pagination
+          +e.slide-items
+            a.singleprojectslider__slide-item Вручение премии сотрудникам
+              span
+            a.singleprojectslider__slide-item Название фотографии
+              span
+
+    +b.singleprojectslider__image.js-anim-image.js-anim-block
+      +b.singleprojectslider__container
+        +b.__wrapper.swiper-wrapper
+          +b.__slide.swiper-slide
+            +b.__content
+              img(src="img/singleprojmain3.jpg", data-title="Название фотографии")
+          +b.__slide.swiper-slide
+            +b.__content
+              img(src="img/krim.jpg", data-title="Название фотографии")
+          +b.__slide.swiper-slide
+            +b.__content
+              img(src="img/krim1.jpg", data-title="Название фотографии")
+          +b.__slide.swiper-slide
+            +b.__content
+              img(src="img/krim1.jpg", data-title="Ну очень уж длинное название фотографии, которое отображается справа от блока с общим перечнем фотографий")
+          +b.__slide.swiper-slide
+            +b.__content
+              img(src="img/krim1.jpg", data-title="Название фотографии")
+          +b.__slide.swiper-slide
+            +b.__content
+              img(src="img/krim1.jpg", data-title="Название фотографии")
+          +b.__slide.swiper-slide
+            +b.__content
+              img(src="img/krim1.jpg", data-title="Название фотографии")
+          +b.__slide.swiper-slide
+            +b.__content
+              img(src="img/krim1.jpg", data-title="Название фотографии")
+          +b.__slide.swiper-slide
+            +b.__content
+              img(src="img/krim1.jpg", data-title="Название фотографии")

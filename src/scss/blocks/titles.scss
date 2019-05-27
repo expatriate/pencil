@@ -153,6 +153,12 @@
       margin-top: 16px;
     }
   }
+  &--mgbot {
+    margin-bottom: 64px;
+    @include screen(0, $mobile) {
+      margin-bottom: 32px;
+    }
+  }
 }
 
 

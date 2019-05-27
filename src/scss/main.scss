@@ -23,21 +23,6 @@ svg {
   display: flex;
   flex: 1
 }
-
-.scroller {
-  background: #e12125;
-  width: 1px;
-  height: 72px;
-
-  /* @include screen(0, $mobile) {
-    background: #e12125;
-    width: 2px;
-    height: 48px;
-    background-size: contain;
-  } */
-
-  
-}
 .overflow {
   overflow: hidden;
   height: 100%;

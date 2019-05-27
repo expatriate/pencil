@@ -1,0 +1,64 @@
+.geography {
+  
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  &__left {
+    width: 50%;
+    padding: 32px;
+
+    .geography__mark {
+      text-align: center;
+    }
+  }
+
+  &__right {
+    width: 50%;
+    padding: 32px;
+  }
+
+  &__geo {
+    min-height: 480px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__mark {
+    
+    svg {
+      fill: #e11925;
+      width: 28px;
+      height: 28px;
+    }
+  }
+
+  &__text {
+    font-size: 24px;
+    margin-bottom: 4px;
+  }
+  &__info {
+    font-size: 20px;
+    font-weight: 600;
+  }
+  &__title {
+    font-size: 42px;
+    margin-bottom: 24px;
+  }
+  &__place {
+    font-size: 28px;
+    margin-left: 12px;
+  }
+
+  &__placecontainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+}

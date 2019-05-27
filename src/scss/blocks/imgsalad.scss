@@ -1,0 +1,28 @@
+.imgsalad {
+  display: flex;
+  flex-direction: column;
+  padding: 0px 72px 0px 64px;
+  div {
+    margin-top: -50px;
+    position: relative;
+    width: 100%;
+    &:nth-child(even) {
+      img {
+        float: right;
+        width: 45%;
+        height: 320px;
+      }
+    }
+    &:nth-child(odd) {
+      img {
+        width: 60%;
+        float: left;
+
+      }
+    }
+  }
+  img {
+    height: 480px;
+    object-fit: contain;
+  }
+}

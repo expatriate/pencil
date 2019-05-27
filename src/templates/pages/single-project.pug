@@ -1,0 +1,144 @@
+extends ../components/layouts/default
+
+include ../components/top-header/top-header
+include ../components/feedback/feedback
+include ../components/breadcrumbs/breadcrumbs
+include ../components/footer/footer
+
+include ../components/singleprojectslider/singleprojectslider
+include ../components/similarprojectsslider/similarprojectsslider
+
+block head
+    - var pageTitle = 'Проект премии «Золотое окно»';
+block content
+
+
+  // Первый экран
+  section.section.section__fixed.section__mobile__pad.js-viewport-block
+    +b.section__wrapper-top
+      +top-header()
+    +b.section__wrapper.section__wrapper__splited.js-anim-block
+      +breadcrumbs()
+      h1.main-title.js-anim-title
+        span.filled Премия 
+        | «Золотое окно 2017»
+    +b.section__wrapper-wide.js-anim-block(style="background-image:url('img/singleprojmain0.jpg')")
+      +b.section__wrapper-bottom.transparent.section__wrapper-centered.section__wrapper-absolute
+        +b.scroller.round
+
+  // Второй экран
+  section.section.section__fullsize
+    +b.section__wrapper.section__wrapper-sub.js-viewport-block
+      +b.section-content.section-content__row
+        +b.section-half
+          h2.main-title__small.js-anim-title
+              span.filled Цели&nbsp;проекта <br>
+              |премии «Золотое окно»:
+        +b.section-half
+          +b.steps
+            +e.item.js-anim-block
+              +e.num 1
+              +e.text Церемония награждения по итогам 2017
+            +e.item.js-anim-block
+              +e.num 2
+              +e.text Пленарная дискуссия с лидерами отрасли 
+            +e.item.js-anim-block
+              +e.num 3
+              +e.text Аналитика и прогнозы отрасли по итогам 2017 
+            +e.item.js-anim-block
+              +e.num 4
+              +e.text Онлайн голосование в номинации «Приз зрительских симпатий» 
+    +b.section__wrapper.js-viewport-block
+      +b.section-content
+        +b.imgsalad.js-anim-block
+          div
+            img(src="img/design_page.jpg")
+          div
+            img(src="img/design_page.jpg")
+          div
+            img(src="img/design_page.jpg")
+          div
+            img(src="img/design_page.jpg")
+          div
+            img(src="img/design_page.jpg")
+
+    +b.section__wrapper-wide.section__wrapper-wide-sub.js-viewport-block.section__withimage
+      +b.section-content(style="background-image:url('img/singleprojmain1.jpg')").js-anim-block
+        +b.section__wrapper
+          +b.section-content
+            +b.sectionimage
+              +e.title.js-anim-title
+                span.filled Продакшн 
+                |для мероприятия
+              +e.options.js-anim-block
+                +e.subimage
+                  img(src="img/singleprojmain2.png")
+                +e.wrapper
+                  +e.subtext
+                    +e.subtitle Создание уникальных арт-объектов из стекла AGC, фурнитуры ROTO FRANK и профиля REHAU
+                    +e.text Данные материалы используются в производстве оригинального окна и олицетворяют единство компаний-партнеров.
+
+    +b.section__wrapper.section__wrapper-sub.js-viewport-block
+      +b.section-content.padds
+        h2.main-title__small.main-title__small--mgtop.main-title__small--mgbot
+          span.js-anim-title
+            span.filled Аудитория 
+            |и география
+        +b.geography.js-anim-block
+          +e.left
+            +e.geo(style="background-image:url('img/geo1.png')")
+              +e.placemark
+                +e.mark 
+                  svg(role="img")
+                    use(xlink:href="svg/sprite.svg#mark")
+                +e.text Германия Нюрберг
+                +e.info 200 человек
+          +e.right.js-anim-block
+            +e.title Для лидеров оконной отрасли
+            +e.placecontainer
+              +e.mark
+                svg(role="img")
+                  use(xlink:href="svg/sprite.svg#mark")
+              +e.place MESSE NURNBERG NCC 
+
+    +b.section__wrapper.js-viewport-block
+      +b.section-content.padds
+        h2.main-title__small.main-title__small--mgtop.main-title__small--mgbot
+          span.js-anim-title
+            span.filled Фотографии 
+            |мероприятия
+
+    +b.section__wrapper-wide.js-viewport-block
+      +singleprojectslider()
+
+    +b.section__wrapper.section__wrapper-sub.js-viewport-block
+      +b.section-content.white.padds
+        +b.button__wrapper
+          button.btn-middle Обсудить проект
+
+    +b.section__wrapper-wide.gray.js-viewport-block
+      +b.section__wrapper
+        +b.section-content.padds
+          h2.main-title__small.main-title__small--mgtop.main-title__small--mgbot
+            span.js-anim-title Похожие проекты
+        +similarprojectsslider()
+
+
+    // Обратная связь
+    +feedback()
+
+    // Футер с меню
+    +footer()
+
+      
+block footer
+    //script(src='js/right-nav.js')
+    script(src='js/common.js')
+
+    //script(src='js/imagesloaded.pkgd.min.js')
+    //script(src='js/hover.js')
+    //script(src='js/particles.js')
+    script(src='js/singleProject.js')
+    script(src='js/singleProjectSlider.js')
+    script(src='js/similarProjectsSlider.js')
+    
