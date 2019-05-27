@@ -5,9 +5,20 @@
   flex-direction: row;
   align-items: center;
 
+  @include screen(0, $mobile) {
+    flex-direction: column;
+    margin-bottom: 32px;
+  }
+
   &__left {
     width: 50%;
     padding: 32px;
+
+    @include screen(0, $mobile) {
+      width: 100%;
+      padding: 0px;
+      margin-top: 32px;
+    }
 
     .geography__mark {
       text-align: center;
@@ -17,6 +28,12 @@
   &__right {
     width: 50%;
     padding: 32px;
+
+    @include screen(0, $mobile) {
+      width: 100%;
+      padding: 0px;
+      margin-top: 32px;
+    }
   }
 
   &__geo {
@@ -28,6 +45,10 @@
     display: flex;
     align-items: center;
     justify-content: center;
+
+    @include screen(0, $mobile) {
+      min-height: 340px;
+    }
   }
 
   &__mark {
@@ -36,24 +57,42 @@
       fill: #e11925;
       width: 28px;
       height: 28px;
+
+      @include screen(0, $mobile) {
+        width: 20px;
+        height: 20px;
+      }
     }
   }
 
   &__text {
     font-size: 24px;
     margin-bottom: 4px;
+
+    @include screen(0, $mobile) {
+      font-size: 22px;
+    }
   }
   &__info {
     font-size: 20px;
     font-weight: 600;
+    @include screen(0, $mobile) {
+      font-size: 18px;
+    }
   }
   &__title {
     font-size: 42px;
     margin-bottom: 24px;
+    @include screen(0, $mobile) {
+      font-size: 32px;
+    }
   }
   &__place {
     font-size: 28px;
     margin-left: 12px;
+    @include screen(0, $mobile) {
+      font-size: 18px;
+    }
   }
 
   &__placecontainer {

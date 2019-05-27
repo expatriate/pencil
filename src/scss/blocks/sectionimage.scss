@@ -3,12 +3,30 @@
   padding: 64px 0px 0px 0px;
   background-size: 100%;
 
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  flex: 1;
+  
+  height: 100%;
+
   &__title {
 
     font-size: 56px;
     padding-left: 64px;
     color: #ffffff;
     font-weight: 100;
+
+    @include screen($mobile-1, $mobile) {
+      font-size: 48px;
+      margin-bottom: 32px;
+      padding-left: 0px;
+    }
+    @include screen(0, $mobile-1) {
+      font-size: 36px;
+      margin-bottom: 24px;
+      padding-left: 0px;
+    }
 
     .filled {
       color: #e12125;
@@ -19,12 +37,23 @@
     display: flex;
     flex-direction: row;
     padding: 120px 32px 0px 32px ;
+
+    @include screen(0, $mobile) {
+      flex-direction: column;
+      padding: 0px;
+    }
   }
 
   &__subimage {
     width: 40%;
     display: flex;
     justify-content: flex-end;
+
+    @include screen(0, $mobile) {
+      width: 100%;
+      justify-content: center;
+      margin: 32px 0px;
+    }
 
     img {
       height: 400px;
@@ -33,6 +62,14 @@
       position: relative;
       bottom: -40px;
       right: -160px;
+
+      @include screen(0, $mobile) {
+        height: 200px;
+        width: 100%;
+        object-fit: contain;
+        bottom: 0;
+        right: 0;
+      }
     }
   }
 
@@ -41,22 +78,41 @@
     justify-content: flex-end;
     display: flex;
     flex-direction: column;
+
+    @include screen(0, $mobile) {
+      width: 100%;
+      justify-content: center;
+    }
   }
 
   &__subtext {
     border-left: 2px solid #e12125;
     padding: 48px 32px 80px 32px ;
+
+    @include screen(0, $mobile) {
+      padding: 32px 0px 64px 0px;
+      border-left: 0px;
+    }
   }
 
   &__subtitle {
     font-size: 32px;
     color: #ffffff;
     margin-bottom: 24px;
+
+    @include screen(0, $mobile) {
+      font-size: 22px;
+    }
   }
 
   &__text {
     max-width: 80%;
     font-size: 18px;
     color: #ffffff;
+
+    @include screen(0, $mobile) {
+      font-size: 16px;
+      max-width: 100%;
+    }
   }
 }

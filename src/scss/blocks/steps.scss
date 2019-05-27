@@ -9,6 +9,10 @@
     &:not(:last-child) {
       margin-bottom: 36px;
     }
+
+    @include screen(0, $mobile) {
+      max-width: 100%;
+    }
   }
 
   &__num {

@@ -87,6 +87,8 @@
       margin: 0 auto;
       position: relative;
       z-index: 2;
+      background-position: center;
+      background-size: cover;
 
       &.section__withimage {
         margin-top: 64px;
@@ -101,15 +103,25 @@
 
       &-sub {
         margin-bottom: 96px;
+
+        @include screen(0, $mobile) {
+          margin-bottom: 36px;
+        }
       }
     }
 
     &__splited {
       height: auto;
+      @include screen(0, $mobile) {
+        padding: 0px 32px;
+      }
     }
 
     &-sub {
       margin-bottom: 96px;
+      @include screen(0, $mobile) {
+        margin-bottom: 36px;
+      }
     }
 
     &-main {
@@ -133,6 +145,16 @@
     }
     &:last-child {
       padding: 120px 72px 120px 24px;
+    }
+
+    @include screen(0, $mobile) {
+      width: 100%;
+      &:first-child {
+        padding: 32px 0px 0px 0px;
+      }
+      &:last-child {
+        padding: 32px 0px;
+      }
     }
   }
 
@@ -278,6 +300,7 @@
 
   &__fullsize {
     height: auto;
+    overflow: hidden;
   }
 
 }
@@ -301,6 +324,10 @@
   &__row {
     flex-direction: row;
     align-items: center;
+
+    @include screen(0, $mobile) {
+      flex-direction: column;
+    }
   }
 
   @include screen(0, $tablet) {
@@ -309,6 +336,10 @@
 
   &.padds {
     padding-left: 90px;
+
+    @include screen(0, $mobile) {
+      padding-left: 30px;
+    }
   }
 }
 

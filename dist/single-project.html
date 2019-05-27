@@ -16,7 +16,7 @@
 
 <body>
     <!-- Первый экран-->
-    <section class="section section__fixed section__mobile__pad js-viewport-block">
+    <section class="section section__fixed section__mobile__pad section-main js-viewport-block">
         <div class="section__wrapper-top">
             <div class="top-header"><a class="logo" href="/"><svg class="logo__img" role="img">
                         <use xlink:href="svg/sprite.svg#logo"></use>
@@ -108,29 +108,25 @@
             </div>
         </div>
         <div class="section__wrapper js-viewport-block">
-            <div class="section-content">
-                <div class="imgsalad js-anim-block">
-                    <div><img src="img/design_page.jpg"></div>
-                    <div><img src="img/design_page.jpg"></div>
-                    <div><img src="img/design_page.jpg"></div>
-                    <div><img src="img/design_page.jpg"></div>
-                    <div><img src="img/design_page.jpg"></div>
-                </div>
+            <div class="imgsalad js-anim-block">
+                <div><img src="img/design_page.jpg"></div>
+                <div><img src="img/design_page.jpg"></div>
+                <div><img src="img/design_page.jpg"></div>
+                <div><img src="img/design_page.jpg"></div>
+                <div><img src="img/design_page.jpg"></div>
             </div>
         </div>
         <div class="section__wrapper-wide section__wrapper-wide-sub js-viewport-block section__withimage">
             <div class="section-content js-anim-block" style="background-image:url('img/singleprojmain1.jpg')">
                 <div class="section__wrapper">
-                    <div class="section-content">
-                        <div class="sectionimage">
-                            <div class="sectionimage__title js-anim-title"><span class="filled">Продакшн </span>для мероприятия</div>
-                            <div class="sectionimage__options js-anim-block">
-                                <div class="sectionimage__subimage"><img src="img/singleprojmain2.png"></div>
-                                <div class="sectionimage__wrapper">
-                                    <div class="sectionimage__subtext">
-                                        <div class="sectionimage__subtitle">Создание уникальных арт-объектов из стекла AGC, фурнитуры ROTO FRANK и профиля REHAU</div>
-                                        <div class="sectionimage__text">Данные материалы используются в производстве оригинального окна и олицетворяют единство компаний-партнеров.</div>
-                                    </div>
+                    <div class="sectionimage">
+                        <div class="sectionimage__title js-anim-title"><span class="filled">Продакшн </span>для мероприятия</div>
+                        <div class="sectionimage__options js-anim-block">
+                            <div class="sectionimage__subimage"><img src="img/singleprojmain2.png"></div>
+                            <div class="sectionimage__wrapper">
+                                <div class="sectionimage__subtext">
+                                    <div class="sectionimage__subtitle">Создание уникальных арт-объектов из стекла AGC, фурнитуры ROTO FRANK и профиля REHAU</div>
+                                    <div class="sectionimage__text">Данные материалы используются в производстве оригинального окна и олицетворяют единство компаний-партнеров.</div>
                                 </div>
                             </div>
                         </div>
@@ -215,16 +211,17 @@
                                 <div class="singleprojectslider__content"><img src="img/krim1.jpg" data-title="Название фотографии" /></div>
                             </div>
                         </div>
+                        <div class="swiper-pagination swiper-pagination-single"></div>
                     </div>
                 </div>
             </div>
         </div>
         <div class="section__wrapper section__wrapper-sub js-viewport-block">
             <div class="section-content white padds">
-                <div class="button__wrapper"><button class="btn-middle">Обсудить проект</button></div>
+                <div class="button__wrapper mobile-centered"><button class="btn-middle">Обсудить проект</button></div>
             </div>
         </div>
-        <div class="section__wrapper-wide gray js-viewport-block">
+        <div class="section__wrapper-wide section__wrapper-wide-sub gray js-viewport-block">
             <div class="section__wrapper">
                 <div class="section-content padds">
                     <h2 class="main-title__small main-title__small--mgtop main-title__small--mgbot"><span class="js-anim-title">Похожие проекты</span></h2>
@@ -263,7 +260,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="swiper-pagination"></div>
+                        <div class="swiper-pagination swiper-pagination-similar"></div>
                     </div>
                 </div>
             </div>

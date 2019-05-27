@@ -1,5 +1,5 @@
 var sliderTimeout;
-var singleProjectSliderContainer = $('.singleprojectslider__container__container'); 
+var singleProjectSliderContainer = $('.singleprojectslider__container'); 
 var mySingleSwiper = new Swiper('.singleprojectslider__container', {
   // Optional parameters
   direction: 'horizontal',
@@ -9,7 +9,12 @@ var mySingleSwiper = new Swiper('.singleprojectslider__container', {
 
   autoplay: {
     delay: 10000,
-    disableOnInteraction: false
+    disableOnInteraction: true
+  },
+
+  pagination: {
+    el: '.swiper-pagination-single',
+    dynamicBullets: true,
   },
 
   // Navigation arrows
@@ -22,7 +27,8 @@ var mySingleSwiper = new Swiper('.singleprojectslider__container', {
       var counter = $('.singleprojectslider__slide-pagination');
       var slides = '';
       $(this.slides).each(function(index, item) {
-        slides += '<a class="singleprojectslider__slide-item" data-href="' + index + '">' + $(item).find('img').data('title') + '<span></span></a>'
+        slides += '<a class="singleprojectslider__slide-item" data-href="' + index + '">' + $(item).find('img').data('title') + '<span></span></a>';
+        $(item).find('img').parent().append('<div class="singleprojectslider__descr">' + $(item).find('img').data('title') + '</div>')
       });
 
       container.html(slides);
@@ -37,6 +43,7 @@ var mySingleSwiper = new Swiper('.singleprojectslider__container', {
       singleProjectSliderContainer.find('.swiper-pagination-bullet-active').text(mySingleSwiper.activeIndex + 1);
     },
     slideChange: function () {
+      singleProjectSliderContainer.find('.swiper-pagination-bullet-active').text(singleProjectSliderContainer.find('.swiper-pagination-bullet-active').index() + 1);
       $('.singleprojectslider__slide-items').find('span').stop().removeClass('animatable').removeAttr('style');
       var currentSlide = $('.singleprojectslider__slide-item[data-href="'+this.activeIndex+'"]');
       var line = $(currentSlide).find('span');
@@ -46,7 +53,11 @@ var mySingleSwiper = new Swiper('.singleprojectslider__container', {
       var counter = $('.singleprojectslider__slide-pagination');
       counter.text(this.activeIndex + 1)
     },
+    transitionEnd: function () {
+      singleProjectSliderContainer.find('.swiper-pagination-bullet-active').text(singleProjectSliderContainer.find('.swiper-pagination-bullet-active').index() + 1);
+    },
     autoplayStart: function () {
+      singleProjectSliderContainer.find('.swiper-pagination-bullet-active').text(singleProjectSliderContainer.find('.swiper-pagination-bullet-active').index() + 1);
       $('.singleprojectslider__slide-items').find('span').stop().removeClass('animatable').removeAttr('style');
       var currentSlide = $('.singleprojectslider__slide-item[data-href="'+this.activeIndex+'"]');
       var line = $(currentSlide).find('span');

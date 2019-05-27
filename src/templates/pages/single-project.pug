@@ -14,7 +14,7 @@ block content
 
 
   // Первый экран
-  section.section.section__fixed.section__mobile__pad.js-viewport-block
+  section.section.section__fixed.section__mobile__pad.section-main.js-viewport-block
     +b.section__wrapper-top
       +top-header()
     +b.section__wrapper.section__wrapper__splited.js-anim-block
@@ -49,34 +49,32 @@ block content
               +e.num 4
               +e.text Онлайн голосование в номинации «Приз зрительских симпатий» 
     +b.section__wrapper.js-viewport-block
-      +b.section-content
-        +b.imgsalad.js-anim-block
-          div
-            img(src="img/design_page.jpg")
-          div
-            img(src="img/design_page.jpg")
-          div
-            img(src="img/design_page.jpg")
-          div
-            img(src="img/design_page.jpg")
-          div
-            img(src="img/design_page.jpg")
+      +b.imgsalad.js-anim-block
+        div
+          img(src="img/design_page.jpg")
+        div
+          img(src="img/design_page.jpg")
+        div
+          img(src="img/design_page.jpg")
+        div
+          img(src="img/design_page.jpg")
+        div
+          img(src="img/design_page.jpg")
 
     +b.section__wrapper-wide.section__wrapper-wide-sub.js-viewport-block.section__withimage
       +b.section-content(style="background-image:url('img/singleprojmain1.jpg')").js-anim-block
         +b.section__wrapper
-          +b.section-content
-            +b.sectionimage
-              +e.title.js-anim-title
-                span.filled Продакшн 
-                |для мероприятия
-              +e.options.js-anim-block
-                +e.subimage
-                  img(src="img/singleprojmain2.png")
-                +e.wrapper
-                  +e.subtext
-                    +e.subtitle Создание уникальных арт-объектов из стекла AGC, фурнитуры ROTO FRANK и профиля REHAU
-                    +e.text Данные материалы используются в производстве оригинального окна и олицетворяют единство компаний-партнеров.
+          +b.sectionimage
+            +e.title.js-anim-title
+              span.filled Продакшн 
+              |для мероприятия
+            +e.options.js-anim-block
+              +e.subimage
+                img(src="img/singleprojmain2.png")
+              +e.wrapper
+                +e.subtext
+                  +e.subtitle Создание уникальных арт-объектов из стекла AGC, фурнитуры ROTO FRANK и профиля REHAU
+                  +e.text Данные материалы используются в производстве оригинального окна и олицетворяют единство компаний-партнеров.
 
     +b.section__wrapper.section__wrapper-sub.js-viewport-block
       +b.section-content.padds
@@ -113,10 +111,10 @@ block content
 
     +b.section__wrapper.section__wrapper-sub.js-viewport-block
       +b.section-content.white.padds
-        +b.button__wrapper
+        +b.button__wrapper.mobile-centered
           button.btn-middle Обсудить проект
 
-    +b.section__wrapper-wide.gray.js-viewport-block
+    +b.section__wrapper-wide.section__wrapper-wide-sub.gray.js-viewport-block
       +b.section__wrapper
         +b.section-content.padds
           h2.main-title__small.main-title__small--mgtop.main-title__small--mgbot

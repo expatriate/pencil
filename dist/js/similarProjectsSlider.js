@@ -11,7 +11,7 @@ var mySimilarSwiper = new Swiper('.similarprojectsslider__container', {
 
   // If we need pagination
   pagination: {
-    el: '.swiper-pagination',
+    el: '.swiper-pagination-similar',
     dynamicBullets: true,
   },
 
