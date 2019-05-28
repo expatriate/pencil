@@ -204,19 +204,7 @@
 
   }
 
-  &__full {
-    .section-content {
-      justify-content: space-around;
-    }
-    .section__wrapper {
-      height: 100%;
-    }
-  }
-
   &__fixed {
-
-    
-
 
     .section-content {
       align-items: center;
@@ -234,6 +222,15 @@
       @include screen(0, $tablet) {
         height: auto;
       }
+    }
+  }
+
+  &__full {
+    .section-content {
+      justify-content: space-around;
+    }
+    .section__wrapper {
+      height: 100%;
     }
   }
 

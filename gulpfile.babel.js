@@ -134,8 +134,8 @@ function watchFiles() {
     gulp.watch(['./src/scss/*.{scss, css}', './src/scss/**/*.{scss, css}', './src/scss/helpers/*.css', './src/templates/**/*.scss'], compileStyles);
     gulp.watch('./src/js/*.js', compileScripts);
     gulp.watch('./src/img/svg/*', compileSvg);
-    gulp.watch('./src/*.html', browserSyncReload);
     gulp.watch(['./src/templates/pages/*.pug', './src/templates/components/**/*.pug'], pugPages);
+    gulp.watch('./src/*.html', browserSyncReload);
 }
 
 

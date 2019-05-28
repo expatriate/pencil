@@ -19,12 +19,12 @@ function oaReady() {
       setHeights: false,
       touchScroll: true,
       scrollSpeed: 1100,
-      //overflowScroll: false,
+      overflowScroll: true,
       //scrollbars: false,
 
       //scrollbars: false,
       easing: "easeOutExpo",
-      standardScrollElements: true,
+      standardScrollElements: false,
       //interstitialSection: '.section__fullsize',
       before: function(index, sections) {
 
@@ -46,9 +46,9 @@ function oaReady() {
         }
 
         // возвращаем анимированные элементы в начальное положение
-        $(sections[index]).find('.js-anim-done').removeClass('js-anim-done');
+        /*$(sections[index]).find('.js-anim-done').removeClass('js-anim-done');
         $(sections[index]).find('.title-under').removeAttr('style').removeClass('animated');
-        $(sections[index]).find('.light-box__small, .light-box').removeAttr('style').removeClass('animated');
+        $(sections[index]).find('.light-box__small, .light-box').removeAttr('style').removeClass('animated');*/
 
 
         // анимируем проявление фиксированного заголовка
@@ -119,14 +119,15 @@ function initAnimationBlocks() {
   viewportBlocks = $('.js-viewport-block');
 
   viewportBlocks.viewportChecker({
-    repeat: true,
+    offset: '10%',
+    repeat: false,
     callbackFunction: function callbackFunction(elem, action) {
+      console.log(elem)
       var timeout = $(elem).data('timeout') || 0;
       if (window.innerWidth <= 1024) {
         timeout = 0;
       }
       setTimeout(function() {
-        //console.log($(elem).find('.js-anim-image'))
         $(elem).find('.js-anim-image').each(function(index, item) {
           setTimeout(function() {
             $(item).addClass('js-anim-done')
@@ -142,3 +143,7 @@ function initAnimationBlocks() {
     }
   });
 }
+
+$(window).resize(function() {
+  $.scrollify.update();
+});

@@ -1,17 +1,65 @@
 .imgsalad {
-  display: flex;
-  flex-direction: column;
-  padding: 0px 72px 0px 64px;
-  position: relative;
-  flex: 1;
   
-  height: 100%;
 
   @include screen(0, $mobile) {
     padding: 0px;
+
+    .swiper-pagination {
+      
+      flex-direction: row;
+      align-items: center;
+      left: 0px!important;
+      transform: none!important;
+      width: 100%!important;
+      justify-content: center;
+
+      display: none;
+      @include screen(0, $mobile) {
+        display: flex;
+      }
+    }
+
+    .swiper-pagination-bullet {
+      width: 12px;
+      height: 12px;
+      color: rgba(0,0,0,.5);
+      font-size: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .swiper-pagination-bullet-active {
+      width: 64px;
+      height: 64px;
+      border: 2px solid rgba(0,0,0,.2);
+      background-color: transparent;
+    }
+
+    @include screen(0, $mobile) {
+      padding-bottom: 90px;
+    }
   }
 
-  div {
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+    padding: 0px 72px 0px 64px;
+    position: relative;
+    flex: 1;
+    
+    height: 100%;
+    box-sizing: border-box!important;
+
+
+    @include screen(0, $mobile) {
+      box-sizing: content-box!important;
+      flex-direction: row;
+      padding: 0px;
+    }
+  }
+
+  &__slide {
     margin-top: -50px;
     position: relative;
     width: 100%;
@@ -20,6 +68,7 @@
         float: right;
         width: 45%;
         height: 320px;
+        object-fit: cover;
 
         @include screen(0, $mobile) {
           width: 100%;
@@ -32,6 +81,7 @@
       img {
         width: 60%;
         float: left;
+        object-fit: cover;
 
         @include screen(0, $mobile) {
           width: 100%;

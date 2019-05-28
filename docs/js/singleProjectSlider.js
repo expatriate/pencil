@@ -1,5 +1,6 @@
 var sliderTimeout;
 var singleProjectSliderContainer = $('.singleprojectslider__container'); 
+
 var mySingleSwiper = new Swiper('.singleprojectslider__container', {
   // Optional parameters
   direction: 'horizontal',
@@ -68,4 +69,8 @@ var mySingleSwiper = new Swiper('.singleprojectslider__container', {
   },
 
 
+});
+
+$(window).resize(function() {
+  mySingleSwiper.update();
 });

@@ -46,3 +46,7 @@ var mySimilarSwiper = new Swiper('.similarprojectsslider__container', {
 
 
 });
+
+$(window).resize(function() {
+  mySimilarSwiper.update();
+})

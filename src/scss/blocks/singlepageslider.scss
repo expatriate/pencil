@@ -12,6 +12,10 @@
     min-height: auto;
   }
 
+  @include screen($mobile, $tablet) {
+    padding: 0px 32px;
+  }
+
   &__container {
     height: 100%;
     

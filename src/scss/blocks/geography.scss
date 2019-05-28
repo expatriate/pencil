@@ -86,11 +86,17 @@
     @include screen(0, $mobile) {
       font-size: 32px;
     }
+    @include screen($mobile, $tablet) {
+      font-size: 28px;
+    }
   }
   &__place {
     font-size: 28px;
     margin-left: 12px;
     @include screen(0, $mobile) {
+      font-size: 18px;
+    }
+    @include screen($mobile, $tablet) {
       font-size: 18px;
     }
   }

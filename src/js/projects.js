@@ -112,15 +112,15 @@ function initAnimationBlocks() {
   }
 
   viewportBlocks.viewportChecker({
-    repeat: true,
-    offset: '5%',
+    offset: '10%',
+    repeat: false,
     callbackFunction: function callbackFunction(elem, action) {
+      console.log(elem)
       var timeout = $(elem).data('timeout') || 0;
       if (window.innerWidth <= 1024) {
         timeout = 0;
       }
       setTimeout(function() {
-        //console.log($(elem).find('.js-anim-image'))
         $(elem).find('.js-anim-image').each(function(index, item) {
           setTimeout(function() {
             $(item).addClass('js-anim-done')

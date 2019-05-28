@@ -50,16 +50,18 @@ block content
               +e.text Онлайн голосование в номинации «Приз зрительских симпатий» 
     +b.section__wrapper.js-viewport-block
       +b.imgsalad.js-anim-block
-        div
-          img(src="img/design_page.jpg")
-        div
-          img(src="img/design_page.jpg")
-        div
-          img(src="img/design_page.jpg")
-        div
-          img(src="img/design_page.jpg")
-        div
-          img(src="img/design_page.jpg")
+        +e.wrapper.swiper-wrapper
+          +e.slide.swiper-slide
+            img(src="img/design_page.jpg")
+          +e.slide.swiper-slide
+            img(src="img/design_page.jpg")
+          +e.slide.swiper-slide
+            img(src="img/design_page.jpg")
+          +e.slide.swiper-slide
+            img(src="img/design_page.jpg")
+          +e.slide.swiper-slide
+            img(src="img/design_page.jpg")
+        +b.swiper-pagination.swiper-pagination-imgsalad
 
     +b.section__wrapper-wide.section__wrapper-wide-sub.js-viewport-block.section__withimage
       +b.section-content(style="background-image:url('img/singleprojmain1.jpg')").js-anim-block
@@ -137,6 +139,7 @@ block footer
     //script(src='js/hover.js')
     //script(src='js/particles.js')
     script(src='js/singleProject.js')
+    script(src='js/imgsaladProjectSlider.js')
     script(src='js/singleProjectSlider.js')
     script(src='js/similarProjectsSlider.js')
     
