@@ -29,6 +29,7 @@ var mySimilarSwiper = new Swiper('.similarprojectsslider__container', {
 
   on: {
     init: function () {
+      this.autoplay.stop();
     },
     autoplay: function () {
       similarSliderContainer.find('.swiper-pagination-bullet-active').text(mySimilarSwiper.activeIndex + 1);
@@ -43,7 +44,6 @@ var mySimilarSwiper = new Swiper('.similarprojectsslider__container', {
       similarSliderContainer.find('.swiper-pagination-bullet-active').text('1');
     }
   },
-
 
 });
 

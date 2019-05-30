@@ -39,6 +39,8 @@ var mySingleSwiper = new Swiper('.singleprojectslider__container', {
         mySingleSwiper.slideTo($(this).data('href'))
       });
 
+      this.autoplay.stop();
+
     },
     autoplay: function () {
       singleProjectSliderContainer.find('.swiper-pagination-bullet-active').text(mySingleSwiper.activeIndex + 1);

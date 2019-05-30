@@ -1,10 +1,9 @@
-var viewportBlocks, lastIndex, width = window.innerWidth;
+var viewportBlocks, lastIndex, width = window.innerWidth, stopBeforeScroll = 0;
 
 document.addEventListener("DOMContentLoaded", oaReady);
 
 
 var floatSections;
-
 
 function oaReady() {
 
@@ -20,12 +19,9 @@ function oaReady() {
       touchScroll: true,
       scrollSpeed: 1100,
       overflowScroll: true,
-      //scrollbars: false,
-
-      //scrollbars: false,
       easing: "easeOutExpo",
+      updateHash: false,
       standardScrollElements: false,
-      //interstitialSection: '.section__fullsize',
       before: function(index, sections) {
 
         if (lastIndex > index) {
@@ -45,44 +41,14 @@ function oaReady() {
           $(sections[index + 1]).addClass('fading');
         }
 
-        // возвращаем анимированные элементы в начальное положение
-        /*$(sections[index]).find('.js-anim-done').removeClass('js-anim-done');
-        $(sections[index]).find('.title-under').removeAttr('style').removeClass('animated');
-        $(sections[index]).find('.light-box__small, .light-box').removeAttr('style').removeClass('animated');*/
 
-
-        // анимируем проявление фиксированного заголовка
-        if (index < floatSections + 1 && index >= 1) {
-          var fixedtitle = $('.main-title__fixed');
-          if (!fixedtitle.hasClass('animated')) {
-            fixedtitle.animate({opacity: 1}, 600, function() {
-              fixedtitle.addClass('animated')
-            });
-          }
-        } else {
-          var fixedtitle = $('.main-title__fixed');
-          if (fixedtitle.hasClass('animated')) {
-            fixedtitle.animate({opacity: 0}, 200, function() {
-              fixedtitle.removeClass('animated')
-            });
-          }
+        if (index == 0) {
+          // возвращаем анимированные элементы в начальное положение
+          $(sections[0]).find('.js-anim-done').removeClass('js-anim-done');
+          $(sections[0]).find('.title-under').removeAttr('style').removeClass('animated');
+          $(sections[0]).find('.light-box__small, .light-box').removeAttr('style').removeClass('animated');
         }
 
-
-        // анимируем проявление элементов
-        var lightbox = $('body').find('.section:eq('+index+')').find('.light-box__small, .light-box');
-        var title = $('body').find('.section:eq('+index+')').find('.title-under');
-
-        if (!lightbox.hasClass('animated')) {
-          lightbox.animate({opacity: 0.4}, 4000, function() {
-            lightbox.addClass('animated')
-          });
-        }
-        if (!title.hasClass('animated')) {
-          title.delay(1000).animate({opacity: 0.06}, 2000, function() {
-            title.addClass('animated')
-          });
-        }
 
         // анимируем правое меню
         if (!$('.right-nav').hasClass('visible') && index > 0) {
@@ -98,6 +64,24 @@ function oaReady() {
 
         // убираем анимированный элемент 
         $('.fading').removeClass('fading');
+
+        // возвращаем анимированные элементы в начальное положение
+        $(sections[0]).find('.js-anim-done').removeClass('js-anim-done');
+        $(sections[0]).find('.title-under').removeAttr('style').removeClass('animated');
+        $(sections[0]).find('.light-box__small, .light-box').removeAttr('style').removeClass('animated');
+        if (index == 0) {
+          $(sections[0]).find('.js-anim-image').each(function(index, item) {
+            setTimeout(function() {
+              $(item).addClass('js-anim-done')
+            }, 300 * index);
+          });
+
+          $(sections[0]).find('.js-anim-title, .js-anim-text, .js-anim-block, .js-anim-flex').each(function(index, item) {
+            setTimeout(function() {
+              $(item).addClass('js-anim-done')
+            }, 100 * index);
+          });
+        }
       }
     });
 
@@ -111,18 +95,37 @@ function oaReady() {
       e.preventDefault();
       $.scrollify.move($(this).data('link'));
     });
+
+    stopBeforeScroll = $('body').find('.section:not(.section__fixed)').first().offset().top;
   }
 
+  animateFirstBlock();
+
 };
+
+function animateFirstBlock() {
+
+  // анимируем элементы
+  $('.section').first().find('.js-anim-image').each(function(index, item) {
+    setTimeout(function() {
+      $(item).addClass('js-anim-done')
+    }, 300 * index);
+  });
+
+  $('.section').first().find('.js-anim-title, .js-anim-text, .js-anim-block, .js-anim-flex').each(function(index, item) {
+    setTimeout(function() {
+      $(item).addClass('js-anim-done')
+    }, 100 * index);
+  });
+}
 
 function initAnimationBlocks() {
   viewportBlocks = $('.js-viewport-block');
 
   viewportBlocks.viewportChecker({
-    offset: '10%',
+    offset: '5%',
     repeat: false,
     callbackFunction: function callbackFunction(elem, action) {
-      console.log(elem)
       var timeout = $(elem).data('timeout') || 0;
       if (window.innerWidth <= 1024) {
         timeout = 0;
@@ -140,9 +143,26 @@ function initAnimationBlocks() {
           }, 100 * index);
         });
       }, timeout)
+
+      if ($(elem).find('.singleprojectslider')) {
+        mySingleSwiper.autoplay.start();
+      }
+
+      if ($(elem).find('.singleprojectslider')) {
+        mySimilarSwiper.autoplay.start();
+      }
     }
   });
 }
+
+$(window).scroll(function(e) {
+  if (width > 1024) {
+    if (window.pageYOffset < stopBeforeScroll) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
+  }
+});
 
 $(window).resize(function() {
   $.scrollify.update();

@@ -64,6 +64,8 @@ $(window).resize(function() {
       initSliderImgsalad();
     }
   } else {
-    myImgsaladSwiper.destroy(true, true)
+    if (myImgsaladSwiper) {
+      myImgsaladSwiper.destroy(true, true)
+    }
   }
 });

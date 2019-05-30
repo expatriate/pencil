@@ -4,7 +4,7 @@
 
 
 
-var scrollFlag = true, lastScrollPos = 0, particles, particlesToCenter, particlesFromCenter, direction = 0, lastIndex = 0;
+var scrollFlag = true, lastScrollPos = 0, particles, particlesToCenter, particlesFromCenter, direction = 0, lastIndex = 0, width = window.innerWidth, stopBeforeScroll = 0, floatSections;
 var screenHeight = window.window.innerHeight;
 var viewportBlocks;
 
@@ -13,9 +13,9 @@ document.addEventListener("DOMContentLoaded", mainReady);
 
 function mainReady() {
 
-  var width = window.innerWidth;
-
   initAnimationBlocks();
+
+  floatSections = $('.section-float').length;
 
   if (width > 1024) {
 
@@ -33,12 +33,9 @@ function mainReady() {
       touchScroll: true,
       scrollSpeed: 1100,
       overflowScroll: true,
-      //scrollbars: false,
-
-      //scrollbars: false,
+      updateHash: false,
       easing: "easeOutExpo",
       standardScrollElements: false,
-      //interstitialSection: '.section__fullsize',
       before: function(index, sections) {
 
         if (lastIndex > index) {
@@ -47,6 +44,10 @@ function mainReady() {
           direction = 1
         }
         lastIndex = index;
+
+        if (index == 0 && !particles.playing){
+          particles.startAnimation();
+        }
 
         // переход
         // движение вниз
@@ -58,14 +59,16 @@ function mainReady() {
           $(sections[index + 1]).addClass('fading');
         }
 
-        // возвращаем анимированные элементы в начальное положение
-        /*$(sections[index]).find('.js-anim-done').removeClass('js-anim-done');
-        $(sections[index]).find('.title-under').removeAttr('style').removeClass('animated');
-        $(sections[index]).find('.light-box__small, .light-box').removeAttr('style').removeClass('animated');*/
 
+        if (index == 0) {
+          // возвращаем анимированные элементы в начальное положение
+          $(sections[0]).find('.js-anim-done').removeClass('js-anim-done');
+          $(sections[0]).find('.title-under').removeAttr('style').removeClass('animated');
+          $(sections[0]).find('.light-box__small, .light-box').removeAttr('style').removeClass('animated');
+        }
 
         // анимируем проявление фиксированного заголовка
-        if (index < 6 && index >= 2) {
+        if (index < floatSections + 2 && index >= 2) {
           var fixedtitle = $('.main-title__fixed');
           if (!fixedtitle.hasClass('animated')) {
             fixedtitle.animate({opacity: 1}, 600, function() {
@@ -79,22 +82,6 @@ function mainReady() {
               fixedtitle.removeClass('animated')
             });
           }
-        }
-
-
-        // анимируем проявление элементов
-        var lightbox = $('body').find('.section:eq('+index+')').find('.light-box__small, .light-box');
-        var title = $('body').find('.section:eq('+index+')').find('.title-under');
-
-        if (!lightbox.hasClass('animated')) {
-          lightbox.animate({opacity: 0.4}, 4000, function() {
-            lightbox.addClass('animated')
-          });
-        }
-        if (!title.hasClass('animated')) {
-          title.delay(1000).animate({opacity: 0.06}, 2000, function() {
-            title.addClass('animated')
-          });
         }
 
         // анимируем правое меню
@@ -112,12 +99,14 @@ function mainReady() {
         // убираем анимированный элемент 
         $('.fading').removeClass('fading');
 
-        if (index >= 2) {
+        if (index >= 1) {
           particles.stopAnimation();
-        } else if (!particles.playing){
-          particles.startAnimation();
         }
-        //startAnimation(index);
+
+        // анимируем первый экран
+        if (index == 0) {
+          animateFirstBlock()
+        }
       }
     });
 
@@ -131,7 +120,11 @@ function mainReady() {
       e.preventDefault();
       $.scrollify.move($(this).data('link'));
     });
+
+    stopBeforeScroll = $('body').find('.section:not(.section__fixed)').first().offset().top;
   }
+
+  animateFirstBlock();
 }
 
 function initImagesHover() {
@@ -181,6 +174,77 @@ function initImagesHover() {
   }
 }
 
+function animateFirstBlock() {
+
+  // анимируем элементы
+  $('.section').first().find('.js-anim-image').each(function(index, item) {
+    setTimeout(function() {
+      $(item).addClass('js-anim-done')
+    }, 300 * index);
+  });
+
+  $('.section').first().find('.js-anim-title, .js-anim-text, .js-anim-block, .js-anim-flex').each(function(index, item) {
+    setTimeout(function() {
+      $(item).addClass('js-anim-done')
+    }, 100 * index);
+  });
+}
+
+function animateBlock(el) {
+
+  var isFixed = $(el).hasClass('section-float');
+  var isFirst = $(el) == $('.section').first();
+  var isSecond = $(el).hasClass('section__full');
+
+  // анимируем проявление фиксированного заголовка
+  if (isFixed) {
+    var fixedtitle = $('.main-title__fixed');
+    if (!fixedtitle.hasClass('animated')) {
+      fixedtitle.animate({opacity: 1}, 600, function() {
+        fixedtitle.addClass('animated')
+      });
+    }
+  } else {
+    var fixedtitle = $('.main-title__fixed');
+    if (fixedtitle.hasClass('animated')) {
+      fixedtitle.animate({opacity: 0}, 200, function() {
+        fixedtitle.removeClass('animated')
+      });
+    }
+  }
+
+
+  // анимируем проявление элементов
+  var lightbox = $(el).find('.light-box__small, .light-box');
+  var title = $(el).find('.title-under');
+
+  if (!lightbox.hasClass('animated')) {
+    lightbox.animate({opacity: 0.4}, 4000, function() {
+      lightbox.addClass('animated')
+    });
+  }
+  if (!title.hasClass('animated')) {
+    title.delay(1000).animate({opacity: 0.06}, 2000, function() {
+      title.addClass('animated')
+    });
+  }
+
+  // анимируем правое меню
+  if (!$('.right-nav').hasClass('visible') && (isFixed || isSecond) && !isFirst) {
+    $('.right-nav').addClass('visible').animate({'opacity': 1}, 500);
+  } else if (isFirst){
+    $('.right-nav').removeClass('visible').animate({'opacity': 0}, 500);
+  }
+  $('.right-nav').find('.right-nav__item').removeClass('active');
+
+  if (isFixed || isSecond) {
+    $($('.right-nav').find('.right-nav__item')[$('body').find('.section').index($(el))]).addClass('active');
+  }
+  if (!isFirst && !isFixed) {
+    $('.right-nav').find('.right-nav__item').last().addClass('active');
+  }
+}
+
 function initAnimationBlocks() {
   viewportBlocks = $('.js-viewport-block');
 
@@ -188,7 +252,9 @@ function initAnimationBlocks() {
     offset: '10%',
     repeat: false,
     callbackFunction: function callbackFunction(elem, action) {
-      console.log(elem)
+
+      animateBlock(elem)
+
       var timeout = $(elem).data('timeout') || 0;
       if (window.innerWidth <= 1024) {
         timeout = 0;
@@ -209,6 +275,15 @@ function initAnimationBlocks() {
     }
   });
 }
+
+$(window).scroll(function(e) {
+  if (width > 1024) {
+    if (window.pageYOffset < stopBeforeScroll) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
+  }
+});
 
 $(window).resize(function() {
   $.scrollify.update();
