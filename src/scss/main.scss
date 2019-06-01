@@ -6,9 +6,11 @@ body, html {
   &::-webkit-scrollbar {
     width: 0px;
     background: transparent; 
-  } 
+  }
 }
-
+html {
+  margin-right: 0px!important;
+}
 svg {
 }
 

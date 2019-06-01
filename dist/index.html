@@ -66,7 +66,7 @@
             </div>
         </div>
         <div class="section__wrapper section__wrapper-centered section__wrapper-main">
-            <h1 class="main-title js-anim-title mobile-centered"><span class="filled">от&nbsp;эскиза </span>до&nbsp;свершения</h1>
+            <h1 class="main-title js-anim-title mobile-centered" tabindex="0"><span class="filled">от&nbsp;эскиза </span>до&nbsp;свершения</h1>
         </div>
         <div class="section__wrapper-bottom section__wrapper-centered section__wrapper-absolute js-anim-flex"><a href="projects.html">РЕАЛИЗОВАННЫЕ МЕРОПРИЯТИЯ</a>
             <div class="scroller"></div>
@@ -345,10 +345,10 @@
         <div class="section__wrapper js-viewport-block">
             <div class="section-content">
                 <h2 class="main-title__small main-title__small--mgtop js-anim-title">Если остались вопросы, отправляем красивые презентации на вашу почту</h2>
-                <div class="block-feedback">
-                    <div class="row js-anim-block"><input class="form-text" type="text" name="" placeholder="Ваш e-mail" /><input class="form-text" type="text" name="" placeholder="Ваш телефон" /></div>
-                    <div class="button__wrapper smallpadds js-anim-block"><button class="btn-wide">Отправить презентацию</button></div>
-                </div>
+                <form class="block-feedback" data-place="http://localhost:8080">
+                    <div class="row js-anim-block"><input class="form-text" type="text" name="email" required="required" placeholder="Ваш e-mail" /><input class="form-text" type="text" name="phone" required="required" placeholder="Ваш телефон" /></div>
+                    <div class="button__wrapper smallpadds js-anim-block"><button class="btn-wide js-send-form">Отправить презентацию</button></div>
+                </form>
             </div>
         </div><!-- Футер с меню-->
         <div class="section__wrapper">
@@ -450,8 +450,27 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="block-footer__info">&copy; 2019 </div>
+                        <div class="block-footer__info">&copy; 2019</div>
                     </div>
+                </div>
+            </div>
+        </div>
+        <div class="popups">
+            <div class="feedback-popup popup white-popup" id="feedback-popup">
+                <div class="popup-content">
+                    <div class="popup-content__title js-title">Связаться с нами</div>
+                    <div class="popup-content__text js-text">Здесь может быть большое описание попапа с большим количеством информации.</div>
+                    <form class="block-feedback" data-place="http://localhost:8080">
+                        <div class="row"><input class="form-text" type="text" name="email" required="required" placeholder="Ваш e-mail" /><input class="form-text" type="text" name="phone" required="required" placeholder="Ваш телефон" /></div>
+                        <div class="button__wrapper smallpadds"><button class="btn-wide btn-popup js-send-form">Отправить сообщение</button></div>
+                    </form>
+                </div>
+            </div>
+            <div class="success-popup popup white-popup" id="success-popup">
+                <div class="popup-content">
+                    <div class="popup-content__title js-title">Связаться с нами</div>
+                    <div class="popup-content__text js-text">Спасибо за обращение, в ближайшее время мы с Вами свяжемся.</div>
+                    <div class="button__wrapper smallpadds"><button class="btn-wide btn-popup js-success">Понял, принял</button></div>
                 </div>
             </div>
         </div>

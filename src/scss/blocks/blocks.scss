@@ -349,7 +349,15 @@
   }
 
   input {
-    flex: 1
+    flex: 1;
+
+    &.error {
+      border-bottom-color: #c0392b;
+      &::-webkit-input-placeholder {color:#c0392b;}
+      &::-moz-placeholder          {color:#c0392b;}
+      &:-moz-placeholder           {color:#c0392b;}
+      &:-ms-input-placeholder      {color:#c0392b;}
+    }
   }
 
   .row {

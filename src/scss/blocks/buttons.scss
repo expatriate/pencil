@@ -77,6 +77,26 @@
   }
 }
 
+.btn-popup {
+  padding: 16px 64px;
+  font-size: 32px;
+  width: auto;
+
+  &:before {
+    left: -10px;
+    top: -10px;
+    transition: all 0.4s ease;
+    width: 105%;
+    height: 101%;
+  }
+
+  @include screen(0, $mobile) {
+    padding: 12px 32px;
+    font-size: 24px;
+    width: 100%;
+  }
+}
+
 .btn-middle {
   margin: 36px 0px 16px 0px;
   position: relative;

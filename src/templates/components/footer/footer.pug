@@ -1,3 +1,5 @@
+include ../popup/feedback-popup
+
 mixin footer()
   +b.section__wrapper&attributes(attributes)
     +b.section-content
@@ -113,4 +115,6 @@ mixin footer()
             +b.block-footer__info
               div.text Доверьте нам организацию любого вашего мероприятия, и мы не просто придумаем для вас его концепцию, сценарий и подробнейший план, но и идеально реализуем весь проект
         +b.row
-          +b.block-footer__info &copy; 2019    
+          +b.block-footer__info &copy; 2019
+  +b.popups
+    +feedback-popup()

@@ -209,7 +209,7 @@
         </div>
         <div class="section__wrapper section__wrapper-sub js-viewport-block">
             <div class="section-content white padds">
-                <div class="button__wrapper mobile-centered"><button class="btn-middle">Обсудить проект</button></div>
+                <div class="button__wrapper mobile-centered"><button class="btn-middle modal" data-popup="#feedback-popup" data-buttontext="Отправить сообщение" data-title="Обсудить проект" data-text="Здесь может быть большое описание попапа с большим количеством информации.">Обсудить проект</button></div>
             </div>
         </div>
         <div class="section__wrapper-wide section__wrapper-wide-sub gray js-viewport-block">
@@ -259,10 +259,10 @@
         <div class="section__wrapper js-viewport-block">
             <div class="section-content">
                 <h2 class="main-title__small main-title__small--mgtop js-anim-title">Если остались вопросы, отправляем красивые презентации на вашу почту</h2>
-                <div class="block-feedback">
-                    <div class="row js-anim-block"><input class="form-text" type="text" name="" placeholder="Ваш e-mail" /><input class="form-text" type="text" name="" placeholder="Ваш телефон" /></div>
-                    <div class="button__wrapper smallpadds js-anim-block"><button class="btn-wide">Отправить презентацию</button></div>
-                </div>
+                <form class="block-feedback" data-place="http://localhost:8080">
+                    <div class="row js-anim-block"><input class="form-text" type="text" name="email" required="required" placeholder="Ваш e-mail" /><input class="form-text" type="text" name="phone" required="required" placeholder="Ваш телефон" /></div>
+                    <div class="button__wrapper smallpadds js-anim-block"><button class="btn-wide js-send-form">Отправить презентацию</button></div>
+                </form>
             </div>
         </div><!-- Футер с меню-->
         <div class="section__wrapper">
@@ -364,8 +364,27 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="block-footer__info">&copy; 2019 </div>
+                        <div class="block-footer__info">&copy; 2019</div>
                     </div>
+                </div>
+            </div>
+        </div>
+        <div class="popups">
+            <div class="feedback-popup popup white-popup" id="feedback-popup">
+                <div class="popup-content">
+                    <div class="popup-content__title js-title">Связаться с нами</div>
+                    <div class="popup-content__text js-text">Здесь может быть большое описание попапа с большим количеством информации.</div>
+                    <form class="block-feedback" data-place="http://localhost:8080">
+                        <div class="row"><input class="form-text" type="text" name="email" required="required" placeholder="Ваш e-mail" /><input class="form-text" type="text" name="phone" required="required" placeholder="Ваш телефон" /></div>
+                        <div class="button__wrapper smallpadds"><button class="btn-wide btn-popup js-send-form">Отправить сообщение</button></div>
+                    </form>
+                </div>
+            </div>
+            <div class="success-popup popup white-popup" id="success-popup">
+                <div class="popup-content">
+                    <div class="popup-content__title js-title">Связаться с нами</div>
+                    <div class="popup-content__text js-text">Спасибо за обращение, в ближайшее время мы с Вами свяжемся.</div>
+                    <div class="button__wrapper smallpadds"><button class="btn-wide btn-popup js-success">Понял, принял</button></div>
                 </div>
             </div>
         </div>

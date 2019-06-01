@@ -84,4 +84,97 @@ function commonReady() {
       $('.mobile-menu').removeClass('hidden');
     });
   }
+
+  $(document).on('click', '.modal', function(e) {
+
+    $('.form-text').val('');
+    $('.form-text').removeClass('error');
+
+    if (this.dataset.buttontext) {
+      $(this.dataset.popup).find('.js-send-form').text(this.dataset.buttontext)
+    }
+
+    if (this.dataset.title) {
+      $(this.dataset.popup).find('.js-title').text(this.dataset.title)
+    }
+
+    if (this.dataset.text) {
+      $(this.dataset.popup).find('.js-text').text(this.dataset.text)
+    }
+
+    $.magnificPopup.open({
+      items: {
+        src: e.target.dataset.popup,
+        type: 'inline',
+      },
+      callbacks: {
+        beforeOpen: function() {
+          $.scrollify.disable()
+        },
+        elementParse: function(item) {
+          $(item).find('.form-text').val('').removeClass('error');
+        },
+        afterClose: function() {
+          $.scrollify.enable();
+          $('body').focus();
+        },
+      }
+    });
+  });
+
+  $('.js-success').on('click', function(e) {
+    $.magnificPopup.close();
+  });
+
+  $(document).on('click', '.js-send-form', function(e) {
+    e.preventDefault();
+    e.stopPropagation();
+
+    var form = $(this).parents('form')[0];
+    var inputs = $(this).parents('form').find('input');
+    var fd = [];
+    var errors = [];
+
+    inputs.each(function(index, item) {
+      if (!item.value && item.required) {
+        errors.push({
+          el: item,
+          message: 'Это поле обязательно для заполнения'
+        })
+      } else {
+        fd[item.name] = item.value
+      }
+    });
+
+    if (!errors.length) {
+      $.ajax({
+        type: 'POST',
+        url: '/test.php',
+        data: fd,
+        cache : false,
+        processData: false,
+        success: function(data) {
+          $.magnificPopup.close();
+          $.magnificPopup.open({
+            items: {
+              src: '#success-popup',
+              type: 'inline',
+            },
+          });
+        },
+        error: function(data) {
+          $.magnificPopup.close();
+        }
+      })
+    } else {
+      for(var i = 0; i < errors.length; i++) {
+        $(errors[i].el).addClass('error');
+      }
+    }    
+  });
+
+  $(document).on('focusin', '.form-text.error', function() {
+    $(this).removeClass('error');
+  });
+
 };

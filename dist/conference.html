@@ -69,7 +69,7 @@
             <h2 class="main-subtitle js-anim-title">Новые партнеры, перспективные контракты, свежие идеи</h2>
         </div>
         <div class="section__wrapper-bottom section__wrapper-centered section__wrapper-absolute js-anim-flex">
-            <div class="button__wrapper centered"><button class="btn-middle js-anim-block">Оставить заявку</button></div>
+            <div class="button__wrapper centered"><button class="btn-middle js-anim-block modal" data-popup="#feedback-popup" data-buttontext="Отправить сообщение" data-title="Связаться с нами" data-text="Здесь может быть большое описание попапа с большим количеством информации.">Оставить заявку</button></div>
             <div class="scroller"></div>
         </div>
     </section><!-- Второй экран-->
@@ -95,7 +95,7 @@
                 </div>
             </div>
         </div>
-        <div class="button__wrapper centered"><button class="btn-middle js-anim-block">Узнать стоимость</button></div>
+        <div class="button__wrapper centered"><button class="btn-middle js-anim-block modal" data-popup="#feedback-popup" data-buttontext="Отправить сообщение" data-title="Узнать стоимость" data-text="Здесь может быть большое описание попапа с большим количеством информации.">Узнать стоимость</button></div>
     </section><!-- Третий экран-->
     <section class="section section__fixed section-float js-viewport-block" data-timeout="1100">
         <div class="section__wrapper">
@@ -118,7 +118,7 @@
                 </div>
             </div>
         </div>
-        <div class="button__wrapper centered"><button class="btn-middle js-anim-block">Узнать стоимость</button></div>
+        <div class="button__wrapper centered"><button class="btn-middle js-anim-block modal" data-popup="#feedback-popup" data-buttontext="Отправить сообщение" data-title="Узнать стоимость" data-text="Здесь может быть большое описание попапа с большим количеством информации.">Узнать стоимость</button></div>
     </section><!-- Четвертый экран-->
     <section class="section section__fixed section-float js-viewport-block" data-timeout="1100">
         <div class="section__wrapper">
@@ -141,7 +141,7 @@
                 </div>
             </div>
         </div>
-        <div class="button__wrapper centered"><button class="btn-middle js-anim-block">Узнать стоимость</button></div>
+        <div class="button__wrapper centered"><button class="btn-middle js-anim-block modal" data-popup="#feedback-popup" data-buttontext="Отправить сообщение" data-title="Узнать стоимость" data-text="Здесь может быть большое описание попапа с большим количеством информации.">Узнать стоимость</button></div>
     </section><!-- Пятый экран-->
     <section class="section section__fullsize section-portfolio">
         <div class="section__wrapper js-viewport-block">
@@ -156,7 +156,7 @@
                         <div class="wide__image"><img src="img/ou-image1.png"></div>
                         <div class="sub-title js-anim-title">Все сделаем сами</div>
                         <div class="wide__text js-anim-text">Для амбициозных и масштабных идей. Планируем все заранее, тщательно прописываем детали. Фокусируемся на процессе и итоговом результате.</div>
-                        <div class="button__wrapper"><button class="btn-middle">Обсудить стоимость</button></div>
+                        <div class="button__wrapper"><button class="btn-middle modal" data-popup="#feedback-popup" data-buttontext="Отправить сообщение" data-title="Обсудить стоимость" data-text="Здесь может быть большое описание попапа с большим количеством информации.">Обсудить стоимость</button></div>
                     </div>
                 </div>
                 <div class="wide__item wide__purple js-anim-block">
@@ -164,7 +164,7 @@
                         <div class="wide__image"><img src="img/ou-image2.png"></div>
                         <div class="sub-title js-anim-title">Частичное вовлечение</div>
                         <div class="wide__text js-anim-text">Дополним любые наработки свежими идеями и решениями в рамках бюджета. Соблюдаем заданный ритм и требования к итоговому результату, даже если уже распланирована значимая часть мероприятия.</div>
-                        <div class="button__wrapper"><button class="btn-middle">Обсудить стоимость</button></div>
+                        <div class="button__wrapper"><button class="btn-middle modal" data-popup="#feedback-popup" data-buttontext="Отправить сообщение" data-title="Обсудить стоимость" data-text="Здесь может быть большое описание попапа с большим количеством информации.">Обсудить стоимость</button></div>
                     </div>
                 </div>
             </div>
@@ -177,7 +177,7 @@
                             <div class="wide__text js-anim-text">Сопровождаем, координируем, оснащаем конференции. Подключимся к реализации </div>
                             <div class="wide__text js-anim-text">технической части , полиграфии. Поработаем со спикерами, оформим пропуски и райдеры.</div>
                         </div>
-                        <div class="button__wrapper centered"><button class="btn-middle">Обсудить стоимость</button></div>
+                        <div class="button__wrapper centered"><button class="btn-middle modal" data-popup="#feedback-popup" data-buttontext="Отправить сообщение" data-title="Обсудить стоимость" data-text="Здесь может быть большое описание попапа с большим количеством информации.">Обсудить стоимость</button></div>
                     </div>
                 </div>
             </div>
@@ -219,10 +219,10 @@
         <div class="section__wrapper js-viewport-block">
             <div class="section-content">
                 <h2 class="main-title__small main-title__small--mgtop js-anim-title">Если остались вопросы, отправляем красивые презентации на вашу почту</h2>
-                <div class="block-feedback">
-                    <div class="row js-anim-block"><input class="form-text" type="text" name="" placeholder="Ваш e-mail" /><input class="form-text" type="text" name="" placeholder="Ваш телефон" /></div>
-                    <div class="button__wrapper smallpadds js-anim-block"><button class="btn-wide">Отправить презентацию</button></div>
-                </div>
+                <form class="block-feedback" data-place="http://localhost:8080">
+                    <div class="row js-anim-block"><input class="form-text" type="text" name="email" required="required" placeholder="Ваш e-mail" /><input class="form-text" type="text" name="phone" required="required" placeholder="Ваш телефон" /></div>
+                    <div class="button__wrapper smallpadds js-anim-block"><button class="btn-wide js-send-form">Отправить презентацию</button></div>
+                </form>
             </div>
         </div><!-- Футер с меню-->
         <div class="section__wrapper">
@@ -324,8 +324,27 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="block-footer__info">&copy; 2019 </div>
+                        <div class="block-footer__info">&copy; 2019</div>
                     </div>
+                </div>
+            </div>
+        </div>
+        <div class="popups">
+            <div class="feedback-popup popup white-popup" id="feedback-popup">
+                <div class="popup-content">
+                    <div class="popup-content__title js-title">Связаться с нами</div>
+                    <div class="popup-content__text js-text">Здесь может быть большое описание попапа с большим количеством информации.</div>
+                    <form class="block-feedback" data-place="http://localhost:8080">
+                        <div class="row"><input class="form-text" type="text" name="email" required="required" placeholder="Ваш e-mail" /><input class="form-text" type="text" name="phone" required="required" placeholder="Ваш телефон" /></div>
+                        <div class="button__wrapper smallpadds"><button class="btn-wide btn-popup js-send-form">Отправить сообщение</button></div>
+                    </form>
+                </div>
+            </div>
+            <div class="success-popup popup white-popup" id="success-popup">
+                <div class="popup-content">
+                    <div class="popup-content__title js-title">Связаться с нами</div>
+                    <div class="popup-content__text js-text">Спасибо за обращение, в ближайшее время мы с Вами свяжемся.</div>
+                    <div class="button__wrapper smallpadds"><button class="btn-wide btn-popup js-success">Понял, принял</button></div>
                 </div>
             </div>
         </div>

@@ -1,0 +1,60 @@
+.popups {
+  display: none;
+}
+
+.popup {
+  .block-feedback {
+    width: 100%;
+    max-width: 80%;
+
+    @include screen(0, $mobile) {
+      max-width: 100%;
+
+      .form-text {
+        margin: 0px;
+        font-size: 16px;
+      }
+    }
+  }
+  .smallpadds {
+    padding: 32px 0px 0px 0px;
+  }
+  .form-text {
+    font-size: 24px;
+    padding: 12px 0px;
+  }
+}
+
+.white-popup {
+    background: #ffffff;
+    padding: 32px 32px;
+    text-align: left;
+    max-width: 1024px;
+    margin: 40px auto;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    border-radius: 5px;
+}
+
+.popup-content {
+  &__title {
+    font-size: 42px;
+    margin-bottom: 32px;
+
+    @include screen(0, $mobile) {
+      font-size: 32px;
+      margin-bottom: 16px;
+    }
+  }
+
+  &__text {
+    font-size: 20px;
+    margin-bottom: 32px;
+
+    @include screen(0, $mobile) {
+      font-size: 18px;
+      margin-bottom: 16px;
+    }
+  }
+}

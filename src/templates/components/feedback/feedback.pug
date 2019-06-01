@@ -2,9 +2,9 @@ mixin feedback()
   +b.section__wrapper.js-viewport-block&attributes(attributes)
       +b.section-content
         h2.main-title__small.main-title__small--mgtop.js-anim-title Если остались вопросы, отправляем красивые презентации на вашу почту
-        +b.block-feedback
+        form.block-feedback(data-place="http://localhost:8080")
           +b.row.js-anim-block
-            input.form-text(type="text" name="" placeholder="Ваш e-mail")
-            input.form-text(type="text" name="" placeholder="Ваш телефон")
+            input.form-text(type="text" name="email" required placeholder="Ваш e-mail")
+            input.form-text(type="text" name="phone" required placeholder="Ваш телефон")
           +b.button__wrapper.smallpadds.js-anim-block
-            button.btn-wide Отправить презентацию
+            button.btn-wide.js-send-form Отправить презентацию

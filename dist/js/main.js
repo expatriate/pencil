@@ -131,8 +131,8 @@ function initImagesHover() {
   if (document.querySelector('.js-hover-1')) {
     var hover1 = new hoverEffect({
       parent: document.querySelector('.js-hover-1'),
-      image1: $('.js-hover-1').data('first'),
-      image2: $('.js-hover-1').data('second'),
+      image1: document.querySelector('.js-hover-1').dataset.first,
+      image2: document.querySelector('.js-hover-1').dataset.second,
       intensity: 0.2,
       speedin: 1.6,
       speedout: 1.8,
@@ -142,8 +142,8 @@ function initImagesHover() {
   if (document.querySelector('.js-hover-2')) {
     var hover2 = new hoverEffect({
       parent: document.querySelector('.js-hover-2'),
-      image1: $('.js-hover-2').data('first'),
-      image2: $('.js-hover-2').data('second'),
+      image1: document.querySelector('.js-hover-2').dataset.first,
+      image2: document.querySelector('.js-hover-2').dataset.second,
       intensity: 0.2,
       speedin: 1.6,
       speedout: 1.8,
@@ -153,8 +153,8 @@ function initImagesHover() {
   if (document.querySelector('.js-hover-3')) {
     var hover3 = new hoverEffect({
       parent: document.querySelector('.js-hover-3'),
-      image1: $('.js-hover-3').data('first'),
-      image2: $('.js-hover-3').data('second'),
+      image1: document.querySelector('.js-hover-3').dataset.first,
+      image2: document.querySelector('.js-hover-3').dataset.second,
       intensity: 0.2,
       speedin: 1.6,
       speedout: 1.8,
