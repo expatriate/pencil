@@ -32,10 +32,10 @@ function mainReady() {
       setHeights: false,
       touchScroll: true,
       scrollSpeed: 1100,
-      overflowScroll: true,
+      //overflowScroll: true,
       updateHash: false,
+      standardScrollElements: true,
       easing: "easeOutExpo",
-      standardScrollElements: false,
       before: function(index, sections) {
 
         if (lastIndex > index) {
@@ -45,7 +45,7 @@ function mainReady() {
         }
         lastIndex = index;
 
-        if (index == 0 && !particles.playing){
+        if (index == 0 && isNotMsie() && !particles.playing){
           particles.startAnimation();
         }
 
@@ -99,7 +99,7 @@ function mainReady() {
         // убираем анимированный элемент 
         $('.fading').removeClass('fading');
 
-        if (index >= 1) {
+        if (index >= 1 && isNotMsie()) {
           particles.stopAnimation();
         }
 

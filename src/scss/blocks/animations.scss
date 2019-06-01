@@ -40,67 +40,82 @@
   //display: inline-block;
 }
 
+body:not(.ie) {
 
-.masked-text {
-  background-clip: text;
-  -ms-text-fill-color: transparent;
-  -webkit-text-fill-color: transparent;
-  -moz-text-fill-color: transparent;
-  text-fill-color: transparent;
-  opacity: 1!important;
+  .masked-text {
+    background-clip: text;
+    -ms-text-fill-color: transparent;
+    -webkit-text-fill-color: transparent;
+    -moz-text-fill-color: transparent;
+    text-fill-color: transparent;
+    opacity: 1!important;
 
-  @include screen(0, $mobile) {
-    text-fill-color: #000;
-    -ms-text-fill-color: #000;
-    -webkit-text-fill-color: #000;
-    -moz-text-fill-color: #000;
+    @include screen(0, $mobile) {
+      text-fill-color: #000;
+      -ms-text-fill-color: #000;
+      -webkit-text-fill-color: #000;
+      -moz-text-fill-color: #000;
+    }
   }
-}
 
-.masked-text:before,
-.masked-text:after {
-  position: absolute;
-  content: '';
-}
-
-.masked-text:before {
-  z-index: -2;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  background-image: inherit;
-  background-size: cover;
-  animation:maskedtext 15s infinite ease-in;
-
-  @include screen(0, $mobile) {
-    display: none;
+  .masked-text:before,
+  .masked-text:after {
+    position: absolute;
+    content: '';
   }
-}
 
-.masked-text:after {
-  position: absolute;
-  z-index: -1;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  background-color: #ffffff;
 
-  @include screen(0, $mobile) {
-    display: none;
+  .masked-text:before {
+    z-index: -2;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-image: inherit;
+    background-size: cover;
+    animation:maskedtext 15s infinite ease-in;
+
+    @include screen(0, $mobile) {
+      display: none;
+    }
   }
-}
 
-.masked-text-1 {
-  background-image: url('../img/maskbg.jpg');
-  //background-size: cover;
-  animation: maskedtext 15s infinite ease-in;
+  .masked-text:after {
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: #ffffff;
 
-  @include screen(0, $mobile) {
-    animation: none;
-    background-image: none;
+    @include screen(0, $mobile) {
+      display: none;
+    }
   }
+
+  .masked-text-1 {
+    background-image: url('../img/maskbg.jpg');
+    //background-size: cover;
+    animation: maskedtext 15s infinite ease-in;
+
+    @include screen(0, $mobile) {
+      animation: none;
+      background-image: none;
+    }
+  }
+
+  .masked-text-2 {
+    background-image:url('../img/maskbg.jpg');
+    //background-size: cover;
+    animation: maskedtext 15s infinite ease-in;
+
+    @include screen(0, $mobile) {
+      animation: none;
+      background-image: none;
+    }
+  }
+
 }
 
 @keyframes maskedtext {
@@ -112,17 +127,6 @@
   }
   100% {
     background-position: top;
-  }
-}
-
-.masked-text-2 {
-  background-image:url('../img/maskbg.jpg');
-  //background-size: cover;
-  animation: maskedtext 15s infinite ease-in;
-
-  @include screen(0, $mobile) {
-    animation: none;
-    background-image: none;
   }
 }
 

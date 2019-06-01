@@ -50,8 +50,8 @@ var hoverEffect = function(opts) {
     var camera = new THREE.OrthographicCamera(
         parent.offsetWidth / -2,
         parent.offsetWidth / 2,
-        parent.offsetHeight / 2,
-        parent.offsetHeight / -2,
+        700 / 2,
+        700 / -2,
         1,
         1000
     );
@@ -65,7 +65,7 @@ var hoverEffect = function(opts) {
 
     renderer.setPixelRatio(window.devicePixelRatio);
     renderer.setClearColor(0xffffff, 0.0);
-    renderer.setSize(parent.offsetWidth, parent.offsetHeight);
+    renderer.setSize(parent.offsetWidth, 700);
     parent.appendChild(renderer.domElement);
 
     // var addToGPU = function(t) {
@@ -83,12 +83,12 @@ var hoverEffect = function(opts) {
         elHeight = texture.image.height;
 
         var elOffsetWidth = parent.offsetWidth;
-        var elOffsetHeight = parent.offsetHeight;
+        var elOffsetHeight = 700;
         if (ratio > 1) {
             elOffsetHeight = parent.offsetWidth/ratio
             console.log(elOffsetHeight)
         }
-
+        //renderer.setSize(parent.offsetWidth, elOffsetHeight);
         var geometry = new THREE.PlaneBufferGeometry(
             parent.offsetWidth,
             elOffsetHeight,

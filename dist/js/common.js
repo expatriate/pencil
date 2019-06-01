@@ -51,6 +51,7 @@ function isNotMsie() {
   var isIE11 = !!window.MSInputMethodContext && !!document.documentMode;
 
   if (msie > 0 || isIE11) {
+    $('body').addClass('ie');
     return false
   }
   return true;
@@ -64,6 +65,8 @@ function fixStartMarkup() {
 }
 
 function commonReady() {
+
+  isNotMsie();
 
   // Markup start
   fixStartMarkup();
