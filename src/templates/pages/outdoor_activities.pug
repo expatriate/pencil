@@ -9,11 +9,11 @@ block head
     - var pageTitle = 'Выездные мероприятия';
 block content
 
+  // Хедер
+  +top-header()
 
   // Первый экран
   section.section.section__fixed.section__mobile__pad.section-main
-    +b.section__wrapper-top
-      +top-header()
     +b.section__wrapper.section__wrapper-centered.section__wrapper-main
       h1.main-title.js-anim-title.mobile-centered
         span.filled Выездные 
@@ -136,8 +136,8 @@ block content
     // Обратная связь
     +feedback()
 
-    // Футер с меню
-    +footer()
+  // Футер с меню
+  +footer()
 
       
 block footer

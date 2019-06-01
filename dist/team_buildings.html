@@ -15,10 +15,10 @@
 </head>
 
 <body>
-    <!-- Первый экран-->
-    <section class="section section__fixed section__mobile__pad section-main">
+    <!-- Хедер-->
+    <div class="top-header" id="header">
         <div class="section__wrapper-top">
-            <div class="top-header"><a class="logo" href="/"><svg class="logo__img" role="img">
+            <div class="top-header__container"><a class="logo" href="/"><svg class="logo__img" role="img">
                         <use xlink:href="svg/sprite.svg#logo"></use>
                     </svg>
                     <div class="logo__title"> Карандаш<br>
@@ -64,6 +64,8 @@
                 <nav class="right-nav" id="js-right-nav"></nav>
             </div>
         </div>
+    </div><!-- Первый экран-->
+    <section class="section section__fixed section__mobile__pad section-main">
         <div class="section__wrapper section__wrapper-centered section__wrapper-main">
             <h1 class="main-title js-anim-title mobile-centered"><span class="filled">Кадры </span>решают</h1>
             <h2 class="main-subtitle js-anim-title">Критерий успешного бизнеса &#8212; сплоченный и дружный коллектив </h2>
@@ -234,131 +236,131 @@
                     <div class="button__wrapper smallpadds js-anim-block"><button class="btn-wide js-send-form">Отправить презентацию</button></div>
                 </form>
             </div>
-        </div><!-- Футер с меню-->
-        <div class="section__wrapper">
-            <div class="section-content">
-                <div class="block-footer">
-                    <div class="row">
-                        <div class="block-footer__nav">
-                            <div class="block-footer__nav-wrapper"><a class="block-footer__nav-item" href="#"> Конференции<span></span></a><a class="block-footer__nav-item" href="#"> Выставки<span></span></a><a class="block-footer__nav-item" href="#"> Тимбилдинги<span></span></a><a class="block-footer__nav-item" href="#"> Выездные мероприятия<span></span></a><a class="block-footer__nav-item" href="#"> Корпоративы<span></span></a><a class="block-footer__nav-item" href="#"> Соц. проекты<span></span></a><a class="block-footer__nav-item" href="#"> Продакшн<span></span></a></div>
-                        </div>
-                        <div class="block-footer__logo"><a class="backtoptop" href="#" data-link="0"><svg role="img">
-                                    <use xlink:href="svg/sprite.svg#pencil-footer-logo"></use>
-                                </svg></a></div>
+        </div>
+    </section><!-- Футер с меню-->
+    <div class="section__wrapper" id="footer">
+        <div class="section-content">
+            <div class="block-footer">
+                <div class="row">
+                    <div class="block-footer__nav">
+                        <div class="block-footer__nav-wrapper"><a class="block-footer__nav-item" href="#"> Конференции<span></span></a><a class="block-footer__nav-item" href="#"> Выставки<span></span></a><a class="block-footer__nav-item" href="#"> Тимбилдинги<span></span></a><a class="block-footer__nav-item" href="#"> Выездные мероприятия<span></span></a><a class="block-footer__nav-item" href="#"> Корпоративы<span></span></a><a class="block-footer__nav-item" href="#"> Соц. проекты<span></span></a><a class="block-footer__nav-item" href="#"> Продакшн<span></span></a></div>
                     </div>
-                    <div class="row">
-                        <div class="col">
-                            <div class="row row__mobile__row">
-                                <div class="block-footer__info"><svg role="img">
-                                        <linearGradient id="SVGID_1_4" gradientUnits="userSpaceOnUse" x1="0.1719" y1="16.707" x2="32.4775" y2="16.707">
-                                            <stop offset="0.006" style="stop-color:#F8E18B"></stop>
-                                            <stop offset="1" style="stop-color:#65E1BB"></stop>
-                                        </linearGradient>
-                                        <path fill="url(#SVGID_1_4)" d="M28.43,32.891c-0.121,0-0.242-0.006-0.365-0.017c-4.84-0.526-9.539-2.197-13.604-4.835c-3.773-2.398-7.041-5.667-9.442-9.446c-2.644-4.079-4.315-8.799-4.83-13.641C0.085,3.808,0.464,2.68,1.228,1.843c0.765-0.838,1.854-1.319,2.987-1.319h4.571c2.034,0,3.756,1.496,4.038,3.48c0.184,1.394,0.524,2.761,1.013,4.073c0.553,1.471,0.196,3.147-0.912,4.268l-1.392,1.391c1.929,3.149,4.58,5.8,7.729,7.729l1.389-1.388c1.113-1.103,2.813-1.466,4.271-0.917c1.309,0.488,2.676,0.83,4.063,1.013c2.048,0.289,3.545,2.056,3.492,4.11v4.546c0.006,1.133-0.473,2.228-1.31,2.995C30.417,32.514,29.445,32.891,28.43,32.891z M8.817,2.524H4.215c-0.572,0-1.123,0.243-1.509,0.667C2.319,3.614,2.127,4.185,2.179,4.756c0.479,4.516,2.043,8.933,4.522,12.758c2.25,3.539,5.305,6.596,8.84,8.844c3.811,2.473,8.208,4.035,12.721,4.526c0.043,0.005,0.104,0.007,0.166,0.007c0.516,0,1.008-0.19,1.387-0.539c0.422-0.389,0.664-0.94,0.662-1.517v-4.576c0.025-1.063-0.731-1.958-1.764-2.104c-1.527-0.2-3.043-0.577-4.492-1.12c-0.74-0.275-1.601-0.093-2.16,0.462l-1.934,1.932c-0.318,0.318-0.813,0.383-1.201,0.162c-3.969-2.258-7.261-5.549-9.518-9.518C9.185,13.68,9.252,13.188,9.57,12.87l1.936-1.935c0.557-0.563,0.737-1.41,0.457-2.156c-0.542-1.456-0.919-2.97-1.121-4.503C10.702,3.281,9.83,2.524,8.817,2.524z"></path>
-                                    </svg><span>Телефон:</span><span><a href="tel:84995530545">+7 499 553 05 45</a></span></div>
-                                <div class="block-footer__info"><svg role="img">
-                                        <linearGradient id="SVGID_1_5" gradientUnits="userSpaceOnUse" x1="11.6294" y1="11.2896" x2="21.7112" y2="21.3713">
-                                            <stop offset="0" style="stop-color:#F8E18B"></stop>
-                                            <stop offset="1" style="stop-color:#65E1BB"></stop>
-                                        </linearGradient>
-                                        <path fill="url(#SVGID_1_5)" d="M16.67,23.462c-3.933,0-7.132-3.198-7.132-7.132c0-3.933,3.199-7.132,7.132-7.132c3.934,0,7.132,3.199,7.132,7.132C23.802,20.264,20.604,23.462,16.67,23.462z M16.67,11.198c-2.83,0-5.132,2.302-5.132,5.132s2.302,5.132,5.132,5.132s5.132-2.302,5.132-5.132S19.5,11.198,16.67,11.198z"></path>
-                                        <linearGradient id="SVGID_2_5" gradientUnits="userSpaceOnUse" x1="5.1216" y1="4.77" x2="28.1295" y2="27.7779">
-                                            <stop offset="0" style="stop-color:#EFE18B"></stop>
-                                            <stop offset="1" style="stop-color:#65E1BB"></stop>
-                                        </linearGradient>
-                                        <path fill="url(#SVGID_2_5)" d="M16.668,32.678c-3.674,0-7.343-1.246-10.366-3.732C0.408,24.104-1.349,15.942,2.028,9.101c3.377-6.84,10.92-10.406,18.354-8.673C27.813,2.162,33,8.701,33,16.33v1.531c0,3.089-2.512,5.602-5.598,5.602c-3.088,0-5.603-2.512-5.603-5.6V16.33c0-0.552,0.447-1,1-1c0.554,0,1,0.448,1,1v1.533c0,1.984,1.615,3.6,3.603,3.6c1.981,0,3.598-1.615,3.598-3.602V16.33c0-6.694-4.555-12.433-11.073-13.955c-6.52-1.52-13.142,1.609-16.106,7.612C0.858,15.99,2.4,23.15,7.572,27.4c5.172,4.248,12.499,4.375,17.811,0.306c0.439-0.335,1.066-0.252,1.402,0.187s0.253,1.065-0.186,1.401C23.648,31.553,20.156,32.678,16.668,32.678z"></path>
-                                    </svg><span>E-mail:</span><span><a href="mailto:info@a-pencil.ru">Info@a-pencil.ru</a></span></div>
-                            </div>
-                            <div class="row row__tablet__row">
-                                <div class="block-footer__info"><svg role="img">
-                                        <linearGradient id="SVGID_1_6" gradientUnits="userSpaceOnUse" x1="3.894" y1="4.9966" x2="26.1071" y2="27.2097">
-                                            <stop offset="0" style="stop-color:#F8E18B"></stop>
-                                            <stop offset="1" style="stop-color:#65E1BB"></stop>
-                                        </linearGradient>
-                                        <path fill="url(#SVGID_1_6)" d="M15,37c-0.197,0-0.394-0.059-0.563-0.174C13.847,36.424,0,26.85,0,15.318C0,6.872,6.729,0,15,0c8.271,0,15,6.872,15,15.318c0,11.532-13.848,21.106-14.438,21.508C15.394,36.941,15.197,37,15,37zM15,2C7.832,2,2,7.975,2,15.318c0,9.231,10.435,17.545,13,19.45c2.564-1.903,13-10.219,13-19.45C28,7.975,22.168,2,15,2z"></path>
-                                        <linearGradient id="SVGID_2_6" gradientUnits="userSpaceOnUse" x1="10.957" y1="11.2754" x2="19.0432" y2="19.3615">
-                                            <stop offset="0" style="stop-color:#EFE18B"></stop>
-                                            <stop offset="1" style="stop-color:#A1E1BB"></stop>
-                                        </linearGradient>
-                                        <path fill="url(#SVGID_2_6)" d="M15,21.091c-3.125,0-5.667-2.59-5.667-5.773S11.875,9.545,15,9.545s5.667,2.59,5.667,5.773S18.125,21.091,15,21.091zM15,11.545c-2.022,0-3.667,1.692-3.667,3.773s1.645,3.773,3.667,3.773c2.021,0,3.667-1.692,3.667-3.773S17.021,11.545,15,11.545z"></path>
-                                    </svg><span>Адрес:</span><span>Москва, Ленинградский пр.,</span><span>д. 26, стр.1, офис 5</span></div>
-                                <div class="block-footer__info block-footer__info__fullsize"><span>Следите за новостями:</span>
-                                    <div class="block-footer__socials"><a href="https://www.facebook.com/aPencilMsc" target="_blank"><svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 33 33">
-                                                <linearGradient id="SVGID_1_8" gradientUnits="userSpaceOnUse" x1="537.2754" y1="807.5439" x2="558.3666" y2="841.2969" gradientTransform="matrix(1 0 0 1 -531.3203 -807.9199)">
-                                                    <stop offset="0" style="stop-color:#F7D77A"></stop>
-                                                    <stop offset="0.719" style="stop-color:#98DEA4"></stop>
-                                                    <stop offset="0.997" style="stop-color:#CB5E89"></stop>
-                                                </linearGradient>
-                                                <path fill="url(#SVGID_1_8)" d="M25.5,33h-18C3.364,33,0,29.636,0,25.5v-18C0,3.364,3.364,0,7.5,0h18C29.637,0,33,3.364,33,7.5v18C33,29.636,29.637,33,25.5,33z M7.5,2C4.467,2,2,4.467,2,7.5v18C2,28.532,4.467,31,7.5,31h18c3.032,0,5.5-2.468,5.5-5.5v-18C31,4.467,28.532,2,25.5,2H7.5z"></path>
-                                                <linearGradient id="SVGID_2_8" gradientUnits="userSpaceOnUse" x1="544.5049" y1="819.1299" x2="553.8195" y2="828.4445" gradientTransform="matrix(1 0 0 1 -531.3203 -807.9199)">
-                                                    <stop offset="0" style="stop-color:#F8E18B"></stop>
-                                                    <stop offset="1" style="stop-color:#779437"></stop>
-                                                </linearGradient>
-                                                <path fill="url(#SVGID_2_8)" d="M21.172,13.424h-3.061v-2.233c0-0.685,0.709-0.844,1.039-0.844c0.328,0,1.978,0,1.978,0V7.335l-2.265-0.012c-3.09,0-3.796,2.247-3.796,3.687v2.415h-2.242v3.104h2.242c0,3.985,0,8.382,0,8.382h3.044c0,0,0-4.44,0-8.382h2.588L21.172,13.424z"></path>
-                                            </svg></a><a href="https://www.instagram.com/karandash_eventagency" target="_blank"><svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 33 33">
-                                                <linearGradient id="SVGID_1_9" gradientUnits="userSpaceOnUse" x1="267.6133" y1="-357.4111" x2="296.7074" y2="-385.507" gradientTransform="matrix(1 0 0 -1 -265.6602 -354.96)">
-                                                    <stop offset="0" style="stop-color:#ACEBD7"></stop>
-                                                    <stop offset="0.1205" style="stop-color:#ADE7D8"></stop>
-                                                    <stop offset="0.2394" style="stop-color:#AFDBD9"></stop>
-                                                    <stop offset="0.3578" style="stop-color:#B4C7DC"></stop>
-                                                    <stop offset="0.4758" style="stop-color:#B9ACE0"></stop>
-                                                    <stop offset="0.5926" style="stop-color:#C188E4"></stop>
-                                                    <stop offset="0.6465" style="stop-color:#C575E7"></stop>
-                                                    <stop offset="1" style="stop-color:#DD99CA"></stop>
-                                                </linearGradient>
-                                                <path fill="url(#SVGID_1_9)" d="M25.5,33h-18C3.364,33,0,29.636,0,25.5v-18C0,3.364,3.364,0,7.5,0h18C29.637,0,33,3.364,33,7.5v18C33,29.636,29.637,33,25.5,33z M7.5,2C4.467,2,2,4.467,2,7.5v18C2,28.532,4.467,31,7.5,31h18c3.032,0,5.5-2.468,5.5-5.5v-18C31,4.467,28.532,2,25.5,2H7.5z"></path>
-                                                <linearGradient id="SVGID_2_9" gradientUnits="userSpaceOnUse" x1="282.2266" y1="-364.1919" x2="282.2266" y2="-378.5933" gradientTransform="matrix(1 0 0 -1 -265.6602 -354.96)">
-                                                    <stop offset="0" style="stop-color:#A1E6E3"></stop>
-                                                    <stop offset="1" style="stop-color:#C3A7C6"></stop>
-                                                </linearGradient>
-                                                <path fill="url(#SVGID_2_9)" d="M16.569,23.633c-1.924,0-3.733-0.749-5.093-2.109c-2.201-2.198-2.739-5.545-1.341-8.328c1.231-2.445,3.696-3.964,6.431-3.964c0.352,0,0.708,0.026,1.057,0.078c3.161,0.471,5.6,2.909,6.066,6.067c0.457,3.079-1.105,6.087-3.889,7.488C18.805,23.366,17.686,23.633,16.569,23.633z M16.566,11.232c-1.976,0-3.755,1.097-4.645,2.863c-1.01,2.008-0.621,4.426,0.968,6.014c0.982,0.981,2.289,1.522,3.679,1.522c0.806,0,1.614-0.19,2.334-0.556c2.01-1.012,3.138-3.186,2.808-5.407c-0.338-2.281-2.099-4.042-4.382-4.382C17.077,11.25,16.821,11.232,16.566,11.232z"></path>
-                                            </svg></a><a href="https://www.instagram.com/karandash_eventagency" target="_blank"><svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 33 33">
-                                                <linearGradient id="SVGID_1_11" gradientUnits="userSpaceOnUse" x1="267.8604" y1="-357.1582" x2="296.4623" y2="-385.7602" gradientTransform="matrix(1 0 0 -1 -265.6602 -354.96)">
-                                                    <stop offset="0" style="stop-color:#F8E18B"></stop>
-                                                    <stop offset="1" style="stop-color:#67E1BA"></stop>
-                                                </linearGradient>
-                                                <path fill="url(#SVGID_1_11)" d="M25.5,33h-18C3.364,33,0,29.636,0,25.5v-18C0,3.364,3.364,0,7.5,0h18C29.637,0,33,3.364,33,7.5v18C33,29.636,29.637,33,25.5,33z M7.5,2C4.467,2,2,4.467,2,7.5v18C2,28.532,4.467,31,7.5,31h18c3.032,0,5.5-2.468,5.5-5.5v-18C31,4.467,28.532,2,25.5,2H7.5z"></path>
-                                                <linearGradient id="SVGID_2_11" gradientUnits="userSpaceOnUse" x1="275.1641" y1="-360.6528" x2="293.1226" y2="-378.6114" gradientTransform="matrix(1 0 0 -1 -265.6602 -354.96)">
-                                                    <stop offset="0" style="stop-color:#F8E18B"></stop>
-                                                    <stop offset="1" style="stop-color:#67E1BA"></stop>
-                                                </linearGradient>
-                                                <path fill="url(#SVGID_2_11)" d="M9.139,19.02c0.916,1.241,1.968,2.338,3.327,3.113c1.54,0.881,3.197,1.146,4.946,1.065c0.817-0.039,1.062-0.252,1.099-1.065c0.024-0.558,0.09-1.114,0.364-1.613c0.271-0.492,0.68-0.584,1.151-0.278c0.235,0.153,0.434,0.346,0.618,0.553c0.459,0.501,0.907,1.021,1.383,1.507c0.6,0.611,1.309,0.972,2.201,0.897h3.455c0.557-0.037,0.846-0.719,0.526-1.34c-0.224-0.435-0.521-0.82-0.832-1.196c-0.704-0.851-1.536-1.573-2.324-2.338c-0.709-0.691-0.754-1.095-0.185-1.893c0.623-0.873,1.293-1.71,1.923-2.579c0.584-0.811,1.185-1.619,1.493-2.589c0.196-0.618,0.022-0.892-0.61-1.001c-0.108-0.018-0.223-0.018-0.334-0.018l-3.76-0.005c-0.465-0.008-0.719,0.195-0.885,0.606c-0.219,0.554-0.448,1.109-0.711,1.644c-0.596,1.214-1.265,2.387-2.201,3.378c-0.207,0.22-0.437,0.496-0.778,0.383c-0.43-0.158-0.559-0.868-0.551-1.108l-0.002-4.339c-0.084-0.619-0.221-0.896-0.838-1.016H13.71c-0.52,0-0.782,0.203-1.061,0.527c-0.16,0.189-0.209,0.311,0.122,0.374c0.647,0.123,1.015,0.542,1.11,1.192c0.155,1.039,0.145,2.083,0.054,3.124c-0.025,0.304-0.078,0.607-0.199,0.893c-0.188,0.448-0.494,0.537-0.895,0.263c-0.361-0.25-0.616-0.601-0.867-0.952c-0.937-1.324-1.683-2.75-2.292-4.25c-0.174-0.434-0.478-0.697-0.937-0.704c-1.127-0.019-2.256-0.02-3.384,0.001c-0.677,0.012-0.88,0.342-0.602,0.959C5.986,13.944,7.354,16.598,9.139,19.02z"></path>
-                                            </svg></a></div>
-                                </div>
-                            </div>
+                    <div class="block-footer__logo"><a class="backtoptop" href="#" data-link="0"><svg role="img">
+                                <use xlink:href="svg/sprite.svg#pencil-footer-logo"></use>
+                            </svg></a></div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="row row__mobile__row">
+                            <div class="block-footer__info"><svg role="img">
+                                    <linearGradient id="SVGID_1_4" gradientUnits="userSpaceOnUse" x1="0.1719" y1="16.707" x2="32.4775" y2="16.707">
+                                        <stop offset="0.006" style="stop-color:#F8E18B"></stop>
+                                        <stop offset="1" style="stop-color:#65E1BB"></stop>
+                                    </linearGradient>
+                                    <path fill="url(#SVGID_1_4)" d="M28.43,32.891c-0.121,0-0.242-0.006-0.365-0.017c-4.84-0.526-9.539-2.197-13.604-4.835c-3.773-2.398-7.041-5.667-9.442-9.446c-2.644-4.079-4.315-8.799-4.83-13.641C0.085,3.808,0.464,2.68,1.228,1.843c0.765-0.838,1.854-1.319,2.987-1.319h4.571c2.034,0,3.756,1.496,4.038,3.48c0.184,1.394,0.524,2.761,1.013,4.073c0.553,1.471,0.196,3.147-0.912,4.268l-1.392,1.391c1.929,3.149,4.58,5.8,7.729,7.729l1.389-1.388c1.113-1.103,2.813-1.466,4.271-0.917c1.309,0.488,2.676,0.83,4.063,1.013c2.048,0.289,3.545,2.056,3.492,4.11v4.546c0.006,1.133-0.473,2.228-1.31,2.995C30.417,32.514,29.445,32.891,28.43,32.891z M8.817,2.524H4.215c-0.572,0-1.123,0.243-1.509,0.667C2.319,3.614,2.127,4.185,2.179,4.756c0.479,4.516,2.043,8.933,4.522,12.758c2.25,3.539,5.305,6.596,8.84,8.844c3.811,2.473,8.208,4.035,12.721,4.526c0.043,0.005,0.104,0.007,0.166,0.007c0.516,0,1.008-0.19,1.387-0.539c0.422-0.389,0.664-0.94,0.662-1.517v-4.576c0.025-1.063-0.731-1.958-1.764-2.104c-1.527-0.2-3.043-0.577-4.492-1.12c-0.74-0.275-1.601-0.093-2.16,0.462l-1.934,1.932c-0.318,0.318-0.813,0.383-1.201,0.162c-3.969-2.258-7.261-5.549-9.518-9.518C9.185,13.68,9.252,13.188,9.57,12.87l1.936-1.935c0.557-0.563,0.737-1.41,0.457-2.156c-0.542-1.456-0.919-2.97-1.121-4.503C10.702,3.281,9.83,2.524,8.817,2.524z"></path>
+                                </svg><span>Телефон:</span><span><a href="tel:84995530545">+7 499 553 05 45</a></span></div>
+                            <div class="block-footer__info"><svg role="img">
+                                    <linearGradient id="SVGID_1_5" gradientUnits="userSpaceOnUse" x1="11.6294" y1="11.2896" x2="21.7112" y2="21.3713">
+                                        <stop offset="0" style="stop-color:#F8E18B"></stop>
+                                        <stop offset="1" style="stop-color:#65E1BB"></stop>
+                                    </linearGradient>
+                                    <path fill="url(#SVGID_1_5)" d="M16.67,23.462c-3.933,0-7.132-3.198-7.132-7.132c0-3.933,3.199-7.132,7.132-7.132c3.934,0,7.132,3.199,7.132,7.132C23.802,20.264,20.604,23.462,16.67,23.462z M16.67,11.198c-2.83,0-5.132,2.302-5.132,5.132s2.302,5.132,5.132,5.132s5.132-2.302,5.132-5.132S19.5,11.198,16.67,11.198z"></path>
+                                    <linearGradient id="SVGID_2_5" gradientUnits="userSpaceOnUse" x1="5.1216" y1="4.77" x2="28.1295" y2="27.7779">
+                                        <stop offset="0" style="stop-color:#EFE18B"></stop>
+                                        <stop offset="1" style="stop-color:#65E1BB"></stop>
+                                    </linearGradient>
+                                    <path fill="url(#SVGID_2_5)" d="M16.668,32.678c-3.674,0-7.343-1.246-10.366-3.732C0.408,24.104-1.349,15.942,2.028,9.101c3.377-6.84,10.92-10.406,18.354-8.673C27.813,2.162,33,8.701,33,16.33v1.531c0,3.089-2.512,5.602-5.598,5.602c-3.088,0-5.603-2.512-5.603-5.6V16.33c0-0.552,0.447-1,1-1c0.554,0,1,0.448,1,1v1.533c0,1.984,1.615,3.6,3.603,3.6c1.981,0,3.598-1.615,3.598-3.602V16.33c0-6.694-4.555-12.433-11.073-13.955c-6.52-1.52-13.142,1.609-16.106,7.612C0.858,15.99,2.4,23.15,7.572,27.4c5.172,4.248,12.499,4.375,17.811,0.306c0.439-0.335,1.066-0.252,1.402,0.187s0.253,1.065-0.186,1.401C23.648,31.553,20.156,32.678,16.668,32.678z"></path>
+                                </svg><span>E-mail:</span><span><a href="mailto:info@a-pencil.ru">Info@a-pencil.ru</a></span></div>
                         </div>
-                        <div class="col">
-                            <div class="block-footer__info">
-                                <div class="text">Доверьте нам организацию любого вашего мероприятия, и мы не просто придумаем для вас его концепцию, сценарий и подробнейший план, но и идеально реализуем весь проект</div>
+                        <div class="row row__tablet__row">
+                            <div class="block-footer__info"><svg role="img">
+                                    <linearGradient id="SVGID_1_6" gradientUnits="userSpaceOnUse" x1="3.894" y1="4.9966" x2="26.1071" y2="27.2097">
+                                        <stop offset="0" style="stop-color:#F8E18B"></stop>
+                                        <stop offset="1" style="stop-color:#65E1BB"></stop>
+                                    </linearGradient>
+                                    <path fill="url(#SVGID_1_6)" d="M15,37c-0.197,0-0.394-0.059-0.563-0.174C13.847,36.424,0,26.85,0,15.318C0,6.872,6.729,0,15,0c8.271,0,15,6.872,15,15.318c0,11.532-13.848,21.106-14.438,21.508C15.394,36.941,15.197,37,15,37zM15,2C7.832,2,2,7.975,2,15.318c0,9.231,10.435,17.545,13,19.45c2.564-1.903,13-10.219,13-19.45C28,7.975,22.168,2,15,2z"></path>
+                                    <linearGradient id="SVGID_2_6" gradientUnits="userSpaceOnUse" x1="10.957" y1="11.2754" x2="19.0432" y2="19.3615">
+                                        <stop offset="0" style="stop-color:#EFE18B"></stop>
+                                        <stop offset="1" style="stop-color:#A1E1BB"></stop>
+                                    </linearGradient>
+                                    <path fill="url(#SVGID_2_6)" d="M15,21.091c-3.125,0-5.667-2.59-5.667-5.773S11.875,9.545,15,9.545s5.667,2.59,5.667,5.773S18.125,21.091,15,21.091zM15,11.545c-2.022,0-3.667,1.692-3.667,3.773s1.645,3.773,3.667,3.773c2.021,0,3.667-1.692,3.667-3.773S17.021,11.545,15,11.545z"></path>
+                                </svg><span>Адрес:</span><span>Москва, Ленинградский пр.,</span><span>д. 26, стр.1, офис 5</span></div>
+                            <div class="block-footer__info block-footer__info__fullsize"><span>Следите за новостями:</span>
+                                <div class="block-footer__socials"><a href="https://www.facebook.com/aPencilMsc" target="_blank"><svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 33 33">
+                                            <linearGradient id="SVGID_1_8" gradientUnits="userSpaceOnUse" x1="537.2754" y1="807.5439" x2="558.3666" y2="841.2969" gradientTransform="matrix(1 0 0 1 -531.3203 -807.9199)">
+                                                <stop offset="0" style="stop-color:#F7D77A"></stop>
+                                                <stop offset="0.719" style="stop-color:#98DEA4"></stop>
+                                                <stop offset="0.997" style="stop-color:#CB5E89"></stop>
+                                            </linearGradient>
+                                            <path fill="url(#SVGID_1_8)" d="M25.5,33h-18C3.364,33,0,29.636,0,25.5v-18C0,3.364,3.364,0,7.5,0h18C29.637,0,33,3.364,33,7.5v18C33,29.636,29.637,33,25.5,33z M7.5,2C4.467,2,2,4.467,2,7.5v18C2,28.532,4.467,31,7.5,31h18c3.032,0,5.5-2.468,5.5-5.5v-18C31,4.467,28.532,2,25.5,2H7.5z"></path>
+                                            <linearGradient id="SVGID_2_8" gradientUnits="userSpaceOnUse" x1="544.5049" y1="819.1299" x2="553.8195" y2="828.4445" gradientTransform="matrix(1 0 0 1 -531.3203 -807.9199)">
+                                                <stop offset="0" style="stop-color:#F8E18B"></stop>
+                                                <stop offset="1" style="stop-color:#779437"></stop>
+                                            </linearGradient>
+                                            <path fill="url(#SVGID_2_8)" d="M21.172,13.424h-3.061v-2.233c0-0.685,0.709-0.844,1.039-0.844c0.328,0,1.978,0,1.978,0V7.335l-2.265-0.012c-3.09,0-3.796,2.247-3.796,3.687v2.415h-2.242v3.104h2.242c0,3.985,0,8.382,0,8.382h3.044c0,0,0-4.44,0-8.382h2.588L21.172,13.424z"></path>
+                                        </svg></a><a href="https://www.instagram.com/karandash_eventagency" target="_blank"><svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 33 33">
+                                            <linearGradient id="SVGID_1_9" gradientUnits="userSpaceOnUse" x1="267.6133" y1="-357.4111" x2="296.7074" y2="-385.507" gradientTransform="matrix(1 0 0 -1 -265.6602 -354.96)">
+                                                <stop offset="0" style="stop-color:#ACEBD7"></stop>
+                                                <stop offset="0.1205" style="stop-color:#ADE7D8"></stop>
+                                                <stop offset="0.2394" style="stop-color:#AFDBD9"></stop>
+                                                <stop offset="0.3578" style="stop-color:#B4C7DC"></stop>
+                                                <stop offset="0.4758" style="stop-color:#B9ACE0"></stop>
+                                                <stop offset="0.5926" style="stop-color:#C188E4"></stop>
+                                                <stop offset="0.6465" style="stop-color:#C575E7"></stop>
+                                                <stop offset="1" style="stop-color:#DD99CA"></stop>
+                                            </linearGradient>
+                                            <path fill="url(#SVGID_1_9)" d="M25.5,33h-18C3.364,33,0,29.636,0,25.5v-18C0,3.364,3.364,0,7.5,0h18C29.637,0,33,3.364,33,7.5v18C33,29.636,29.637,33,25.5,33z M7.5,2C4.467,2,2,4.467,2,7.5v18C2,28.532,4.467,31,7.5,31h18c3.032,0,5.5-2.468,5.5-5.5v-18C31,4.467,28.532,2,25.5,2H7.5z"></path>
+                                            <linearGradient id="SVGID_2_9" gradientUnits="userSpaceOnUse" x1="282.2266" y1="-364.1919" x2="282.2266" y2="-378.5933" gradientTransform="matrix(1 0 0 -1 -265.6602 -354.96)">
+                                                <stop offset="0" style="stop-color:#A1E6E3"></stop>
+                                                <stop offset="1" style="stop-color:#C3A7C6"></stop>
+                                            </linearGradient>
+                                            <path fill="url(#SVGID_2_9)" d="M16.569,23.633c-1.924,0-3.733-0.749-5.093-2.109c-2.201-2.198-2.739-5.545-1.341-8.328c1.231-2.445,3.696-3.964,6.431-3.964c0.352,0,0.708,0.026,1.057,0.078c3.161,0.471,5.6,2.909,6.066,6.067c0.457,3.079-1.105,6.087-3.889,7.488C18.805,23.366,17.686,23.633,16.569,23.633z M16.566,11.232c-1.976,0-3.755,1.097-4.645,2.863c-1.01,2.008-0.621,4.426,0.968,6.014c0.982,0.981,2.289,1.522,3.679,1.522c0.806,0,1.614-0.19,2.334-0.556c2.01-1.012,3.138-3.186,2.808-5.407c-0.338-2.281-2.099-4.042-4.382-4.382C17.077,11.25,16.821,11.232,16.566,11.232z"></path>
+                                        </svg></a><a href="https://www.instagram.com/karandash_eventagency" target="_blank"><svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 33 33">
+                                            <linearGradient id="SVGID_1_11" gradientUnits="userSpaceOnUse" x1="267.8604" y1="-357.1582" x2="296.4623" y2="-385.7602" gradientTransform="matrix(1 0 0 -1 -265.6602 -354.96)">
+                                                <stop offset="0" style="stop-color:#F8E18B"></stop>
+                                                <stop offset="1" style="stop-color:#67E1BA"></stop>
+                                            </linearGradient>
+                                            <path fill="url(#SVGID_1_11)" d="M25.5,33h-18C3.364,33,0,29.636,0,25.5v-18C0,3.364,3.364,0,7.5,0h18C29.637,0,33,3.364,33,7.5v18C33,29.636,29.637,33,25.5,33z M7.5,2C4.467,2,2,4.467,2,7.5v18C2,28.532,4.467,31,7.5,31h18c3.032,0,5.5-2.468,5.5-5.5v-18C31,4.467,28.532,2,25.5,2H7.5z"></path>
+                                            <linearGradient id="SVGID_2_11" gradientUnits="userSpaceOnUse" x1="275.1641" y1="-360.6528" x2="293.1226" y2="-378.6114" gradientTransform="matrix(1 0 0 -1 -265.6602 -354.96)">
+                                                <stop offset="0" style="stop-color:#F8E18B"></stop>
+                                                <stop offset="1" style="stop-color:#67E1BA"></stop>
+                                            </linearGradient>
+                                            <path fill="url(#SVGID_2_11)" d="M9.139,19.02c0.916,1.241,1.968,2.338,3.327,3.113c1.54,0.881,3.197,1.146,4.946,1.065c0.817-0.039,1.062-0.252,1.099-1.065c0.024-0.558,0.09-1.114,0.364-1.613c0.271-0.492,0.68-0.584,1.151-0.278c0.235,0.153,0.434,0.346,0.618,0.553c0.459,0.501,0.907,1.021,1.383,1.507c0.6,0.611,1.309,0.972,2.201,0.897h3.455c0.557-0.037,0.846-0.719,0.526-1.34c-0.224-0.435-0.521-0.82-0.832-1.196c-0.704-0.851-1.536-1.573-2.324-2.338c-0.709-0.691-0.754-1.095-0.185-1.893c0.623-0.873,1.293-1.71,1.923-2.579c0.584-0.811,1.185-1.619,1.493-2.589c0.196-0.618,0.022-0.892-0.61-1.001c-0.108-0.018-0.223-0.018-0.334-0.018l-3.76-0.005c-0.465-0.008-0.719,0.195-0.885,0.606c-0.219,0.554-0.448,1.109-0.711,1.644c-0.596,1.214-1.265,2.387-2.201,3.378c-0.207,0.22-0.437,0.496-0.778,0.383c-0.43-0.158-0.559-0.868-0.551-1.108l-0.002-4.339c-0.084-0.619-0.221-0.896-0.838-1.016H13.71c-0.52,0-0.782,0.203-1.061,0.527c-0.16,0.189-0.209,0.311,0.122,0.374c0.647,0.123,1.015,0.542,1.11,1.192c0.155,1.039,0.145,2.083,0.054,3.124c-0.025,0.304-0.078,0.607-0.199,0.893c-0.188,0.448-0.494,0.537-0.895,0.263c-0.361-0.25-0.616-0.601-0.867-0.952c-0.937-1.324-1.683-2.75-2.292-4.25c-0.174-0.434-0.478-0.697-0.937-0.704c-1.127-0.019-2.256-0.02-3.384,0.001c-0.677,0.012-0.88,0.342-0.602,0.959C5.986,13.944,7.354,16.598,9.139,19.02z"></path>
+                                        </svg></a></div>
                             </div>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="block-footer__info">&copy; 2019</div>
+                    <div class="col">
+                        <div class="block-footer__info">
+                            <div class="text">Доверьте нам организацию любого вашего мероприятия, и мы не просто придумаем для вас его концепцию, сценарий и подробнейший план, но и идеально реализуем весь проект</div>
+                        </div>
                     </div>
+                </div>
+                <div class="row">
+                    <div class="block-footer__info">&copy; 2019</div>
                 </div>
             </div>
         </div>
-        <div class="popups">
-            <div class="feedback-popup popup white-popup" id="feedback-popup">
-                <div class="popup-content">
-                    <div class="popup-content__title js-title">Связаться с нами</div>
-                    <div class="popup-content__text js-text">Здесь может быть большое описание попапа с большим количеством информации.</div>
-                    <form class="block-feedback" data-place="http://localhost:8080">
-                        <div class="row"><input class="form-text" type="text" name="email" required="required" placeholder="Ваш e-mail" /><input class="form-text" type="text" name="phone" required="required" placeholder="Ваш телефон" /></div>
-                        <div class="button__wrapper smallpadds"><button class="btn-wide btn-popup js-send-form">Отправить сообщение</button></div>
-                    </form>
-                </div>
-            </div>
-            <div class="success-popup popup white-popup" id="success-popup">
-                <div class="popup-content">
-                    <div class="popup-content__title js-title">Связаться с нами</div>
-                    <div class="popup-content__text js-text">Спасибо за обращение, в ближайшее время мы с Вами свяжемся.</div>
-                    <div class="button__wrapper smallpadds"><button class="btn-wide btn-popup js-success">Понял, принял</button></div>
-                </div>
+    </div>
+    <div class="popups">
+        <div class="feedback-popup popup white-popup" id="feedback-popup">
+            <div class="popup-content">
+                <div class="popup-content__title js-title">Связаться с нами</div>
+                <div class="popup-content__text js-text">Здесь может быть большое описание попапа с большим количеством информации.</div>
+                <form class="block-feedback" data-place="http://localhost:8080">
+                    <div class="row"><input class="form-text" type="text" name="email" required="required" placeholder="Ваш e-mail" /><input class="form-text" type="text" name="phone" required="required" placeholder="Ваш телефон" /></div>
+                    <div class="button__wrapper smallpadds"><button class="btn-wide btn-popup js-send-form">Отправить сообщение</button></div>
+                </form>
             </div>
         </div>
-    </section>
+        <div class="success-popup popup white-popup" id="success-popup">
+            <div class="popup-content">
+                <div class="popup-content__title js-title">Связаться с нами</div>
+                <div class="popup-content__text js-text">Спасибо за обращение, в ближайшее время мы с Вами свяжемся.</div>
+                <div class="button__wrapper smallpadds"><button class="btn-wide btn-popup js-success">Понял, принял</button></div>
+            </div>
+        </div>
+    </div>
     <script src="js/vendor.min.js"></script>
     <script src="js/right-nav.js"></script>
     <script src="js/common.js"></script>

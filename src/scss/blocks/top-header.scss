@@ -1,26 +1,29 @@
 .top-header {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  max-width: 1600px;
-  margin: 0 auto;
-  width: 100%;
 
-  @include screen($desktop, $desktop-wide) {
-    max-width: 1480px;
-  }
-  @include screen($desktop-1, $desktop) {
-    max-width: 1200px;
-  }
-  @include screen($tablet, $desktop-1) {
-    max-width: 1024px;
-    padding: 0px 0px 0px 36px;
-  }
-  @include screen($mobile-1, $tablet) {
-    padding: 32px 0px 32px 32px;
-  }
-  @include screen(0, $mobile-1) {
-    padding: 30px 0px 16px 30px;
+  &__container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    max-width: 1600px;
+    margin: 0 auto;
+    width: 100%;
+
+    @include screen($desktop, $desktop-wide) {
+      max-width: 1480px;
+    }
+    @include screen($desktop-1, $desktop) {
+      max-width: 1200px;
+    }
+    @include screen($tablet, $desktop-1) {
+      max-width: 1024px;
+      padding: 0px 0px 0px 36px;
+    }
+    @include screen($mobile-1, $tablet) {
+      padding: 32px 0px 32px 32px;
+    }
+    @include screen(0, $mobile-1) {
+      padding: 30px 0px 16px 30px;
+    }
   }
 
 

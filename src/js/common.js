@@ -56,10 +56,19 @@ function isNotMsie() {
   return true;
 }
 
+function fixStartMarkup() {
+  
+  $('.section').first().prepend($('#header'));
+
+  $('.section').last().append($('#footer'));
+}
+
 function commonReady() {
 
+  // Markup start
+  fixStartMarkup();
 
-
+  // Initials
   initMenuHover();
   svg4everybody();
   objectFitImages();
@@ -85,6 +94,7 @@ function commonReady() {
     });
   }
 
+  // Modal
   $(document).on('click', '.modal', function(e) {
 
     $('.form-text').val('');

@@ -12,10 +12,10 @@ block head
     - var pageTitle = 'Конференции';
 block content
 
+  // Хедер
+  +top-header()
 
   section.section.section__fullsize.section-portfolio.js-viewport-block-first
-    +b.section__wrapper-top.js-anim-block
-      +top-header()
     +b.section__wrapper.js-anim-block
       +breadcrumbs()
     +b.section__wrapper
@@ -127,8 +127,8 @@ block content
     // Обратная связь
     +feedback().js-viewport-block
 
-    // Футер с меню
-    +footer().js-viewport-block
+  // Футер с меню
+  +footer().js-viewport-block
 
       
 block footer
