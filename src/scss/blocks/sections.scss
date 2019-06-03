@@ -58,6 +58,7 @@
     margin: 0 auto;
     position: relative;
     z-index: 2;
+    //background-color: #ffffff;
 
     @include screen($desktop, $desktop-wide) {
       max-width: 1480px;
@@ -117,6 +118,7 @@
 
     &__splited {
       height: auto;
+      padding-bottom: 18px;
       @include screen(0, $mobile) {
         padding: 0px 32px;
       }
@@ -214,7 +216,7 @@
     .section-content {
       align-items: center;
       justify-content: center;
-      margin-top: 5%;
+      //margin-top: 5%;
       //justify-content: space-around;
       @include screen(0, $tablet) {
         margin-top: 0;
@@ -241,7 +243,7 @@
 
   &__fixed:not(.section-main) {
     .section__wrapper {
-      max-height: 760px;
+      //max-height: 760px;
 
       @include screen(0, $tablet) {
         height: auto;
@@ -312,6 +314,7 @@
   display: flex;
   position: relative;
   flex: 1;
+  background-color: inherit;
   
   height: 100%;
 

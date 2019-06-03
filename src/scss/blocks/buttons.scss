@@ -7,6 +7,10 @@
     align-self: center;
   }
 
+  &.white {
+    background-color: white;
+  }
+
   &.mobile-centered {
     @include screen(0, $mobile) {
       
