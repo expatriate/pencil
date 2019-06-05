@@ -101,24 +101,36 @@ function commonReady() {
   // Modal
   $(document).on('click', '.modal', function(e) {
 
+    var trigger = this;
+    if (!trigger.dataset.popup) {
+      trigger = $(trigger).parents('.modal')[0];
+    }
+
+    if (trigger.dataset.img) {
+      $('#js-docs-img').attr('src', trigger.dataset.img);
+
+      $('#js-docs-container').trigger('zoom.destroy');
+      $('#js-docs-container').zoom({url: trigger.dataset.img, on:'mouseover' });
+    }
+
     $('.form-text').val('');
     $('.form-text').removeClass('error');
 
-    if (this.dataset.buttontext) {
-      $(this.dataset.popup).find('.js-send-form').text(this.dataset.buttontext)
+    if (trigger.dataset.buttontext) {
+      $(trigger.dataset.popup).find('.js-send-form').text(trigger.dataset.buttontext)
     }
 
-    if (this.dataset.title) {
-      $(this.dataset.popup).find('.js-title').text(this.dataset.title)
+    if (trigger.dataset.title) {
+      $(trigger.dataset.popup).find('.js-title').text(trigger.dataset.title)
     }
 
-    if (this.dataset.text) {
-      $(this.dataset.popup).find('.js-text').text(this.dataset.text)
+    if (trigger.dataset.text) {
+      $(trigger.dataset.popup).find('.js-text').text(trigger.dataset.text)
     }
 
     $.magnificPopup.open({
       items: {
-        src: e.target.dataset.popup,
+        src: trigger.dataset.popup,
         type: 'inline',
       },
       callbacks: {

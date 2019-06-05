@@ -79,11 +79,13 @@
                     <div class="single-icon__wrapper"><svg class="single-icon__icon" role="img">
                             <use xlink:href="svg/sprite.svg#star"></use>
                         </svg></div>
-                </div><a class="single-icon__docs" id="project-docs-js" href="http://www.africau.edu/images/default/sample.pdf" target="_blank">
+                </div>
+                <div class="single-icon__docs modal" data-popup="#docs-popup" data-img="img/nikel.jpeg">
                     <div class="single-icon__wrapper"><svg class="single-icon__icon" role="img">
                             <use xlink:href="svg/sprite.svg#file"></use>
                         </svg></div>
-                </a></h1>
+                </div>
+            </h1>
         </div>
         <div class="section__wrapper-wide section-bg js-anim-block" style="background-image:url('img/singleprojmain0.jpg')">
             <div class="section__wrapper-bottom transparent section__wrapper-centered section__wrapper-absolute">
@@ -399,6 +401,9 @@
                 <div class="popup-content__text js-text">Спасибо за обращение, в ближайшее время мы с Вами свяжемся.</div>
                 <div class="button__wrapper smallpadds"><button class="btn-wide btn-popup js-success">Понял, принял</button></div>
             </div>
+        </div>
+        <div class="docs-popup popup white-popup" id="docs-popup">
+            <div class="popup-content" id="js-docs-container"><img id="js-docs-img" /></div>
         </div>
     </div>
     <script src="js/vendor.min.js"></script>
