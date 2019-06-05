@@ -175,7 +175,6 @@
   &__wrapper-bottom {
     display: flex;
     position: absolute;
-    background-color: #ffffff;
     bottom: 0;
     width: 100%;
     flex-direction: column;
@@ -255,6 +254,7 @@
     flex-direction: row;
     display: flex;
     align-items: center;
+    width: 100%;
 
     div {
       margin-right: 80px;

@@ -1,0 +1,47 @@
+.single-icon {
+
+  &__award, &__docs {
+    display: inline-block;
+    height: 100%;
+    position: relative;
+    width: 64px;
+    height: 64px;
+    border: 1px solid #e12125;
+    border-radius: 54px;
+    /* &:before {
+      position: absolute;
+      content: '';
+      top: 0;
+      left: 0;
+      width: 64px;
+      height: 64px;
+      border: 1px solid #e12125;
+      border-radius: 54px;
+    } */
+  }
+
+  &__wrapper {
+    width: 100%;
+    height: 100%;
+    /* &:before {
+      position: absolute;
+      content: '';
+      top: 0;
+      left: 0;
+      width: 64px;
+      height: 64px;
+      border: 1px solid #e12125;
+      border-radius: 54px;
+    } */
+  }
+
+  &__icon {
+    width: 32px;
+    height: 32px;
+    margin: 15px;
+    position: relative;
+    top: 0;
+    left: 0;
+    fill: #000000;
+  }
+}
