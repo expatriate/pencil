@@ -75,6 +75,7 @@ function commonReady() {
   initMenuHover();
   svg4everybody();
   objectFitImages();
+  initTippy();
 
   // Mobile menus
   var width = window.innerWidth;
@@ -183,7 +184,7 @@ function commonReady() {
       for(var i = 0; i < errors.length; i++) {
         $(errors[i].el).addClass('error');
       }
-    }    
+    }
   });
 
   $(document).on('focusin', '.form-text.error', function() {
@@ -191,3 +192,20 @@ function commonReady() {
   });
 
 };
+
+
+function initTippy() {
+
+  var imgsTippy = $('#project-award-js').data('img');
+  var tippyHtml = '';
+
+  if (imgsTippy) {
+    var tippyImgs = imgsTippy.split(',')
+    for (var i = 0; i < tippyImgs.length; i++) {
+      tippyHtml += '<img src="' + tippyImgs[i].replace(/\s/g, '') + '"></img>';
+    }
+    tippy('#project-award-js', {
+      content: '<div class="single-icon__award-list">' + tippyHtml + '</div>',
+    });
+  }
+}

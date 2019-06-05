@@ -35,6 +35,16 @@
     text-align: center;
   }
 
+  &__flex {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    span {
+      margin-right: 14px;
+    }
+  }
+
   &__fixed {
     position: fixed;
     top: 48px;
@@ -193,6 +203,7 @@
 
 .title-under {
   opacity: 0;
+  margin-bottom: 80px;
   span {
     font-size: 160px;
     line-height: 1.1;
@@ -202,7 +213,6 @@
     text-align: center;
   }
   position: relative;
-  margin-top: 160px;
   //width: 40px;
 
   @include screen($tablet, $desktop-1) {
@@ -220,6 +230,7 @@
 
   @include screen(0, $mobile) {
     //top: 28%;
+    margin-bottom: 0px;
     span {
       font-size: 48px;
     }

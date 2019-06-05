@@ -5,10 +5,9 @@
   flex-direction: row;
   position: relative;
   z-index: 3;
-  height: 45%;
+  height: 60%;
   align-items: flex-end;
-
-  margin-bottom: 32px;
+  background-color: inherit;
 
   @include screen(0, $mobile) {
     flex-direction: column;
@@ -30,6 +29,7 @@
 
   &__half {
     width: 50%;
+    background-color: inherit;
    //margin-top: 120px;
 
     @include screen($tablet, $desktop) {

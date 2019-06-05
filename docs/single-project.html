@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/sprite.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.2/TweenMax.min.js"></script>
+    <script src="https://unpkg.com/popper.js"></script>
     <script src="https://unpkg.com/tippy.js@4"></script>
 </head>
 
@@ -74,17 +75,15 @@
                 <div class="breadcrumbs__item"><a href="#">Элемент меню</a></div>
                 <div class="breadcrumbs__item"><a href="#">Элемент меню2</a></div>
             </div>
-            <h1 class="main-title js-anim-title"><span class="filled">Премия </span>«Золотое окно 2017»<div class="single-icon__award">
+            <h1 class="main-title main-title__flex js-anim-title"><span class="filled">Премия </span>«Золотое окно 2017»<div class="single-icon__award" id="project-award-js" tabindex="0" data-img="img/event1.png,img/event1.png">
                     <div class="single-icon__wrapper"><svg class="single-icon__icon" role="img">
                             <use xlink:href="svg/sprite.svg#star"></use>
                         </svg></div>
-                </div>
-                <div class="single-icon__docs">
+                </div><a class="single-icon__docs" id="project-docs-js" href="http://www.africau.edu/images/default/sample.pdf" target="_blank">
                     <div class="single-icon__wrapper"><svg class="single-icon__icon" role="img">
                             <use xlink:href="svg/sprite.svg#file"></use>
                         </svg></div>
-                </div>
-            </h1>
+                </a></h1>
         </div>
         <div class="section__wrapper-wide section-bg js-anim-block" style="background-image:url('img/singleprojmain0.jpg')">
             <div class="section__wrapper-bottom transparent section__wrapper-centered section__wrapper-absolute">

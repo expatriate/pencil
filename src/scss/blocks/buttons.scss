@@ -105,7 +105,8 @@
   margin: 36px 0px 16px 0px;
   position: relative;
   display:inline-block;
-  background-image: linear-gradient(16deg, #feb770, #e370b4);
+  border: 2px solid #e12125;
+  //background-image: linear-gradient(16deg, #feb770, #e370b4);
   padding:16px 64px;
   line-height:30px;
   text-align: center;
@@ -115,9 +116,7 @@
   overflow: hidden;
   font-size: 24px;
   z-index:0;
-  background-color: inherit;
-
-  border: 0;
+  background-color: transparent;
 
   @include screen(0, $mobile) {
     padding: 12px 32px;

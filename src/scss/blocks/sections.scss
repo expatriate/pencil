@@ -2,7 +2,6 @@
   display: flex;
   flex-direction: column;
   height: 100%;
-  background: #ffffff;
   //overflow: hidden;
   
   /* display: flex;
@@ -58,6 +57,7 @@
     margin: 0 auto;
     position: relative;
     z-index: 2;
+    background-color: inherit;
     //background-color: #ffffff;
 
     @include screen($desktop, $desktop-wide) {

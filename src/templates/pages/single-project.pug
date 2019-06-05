@@ -19,14 +19,14 @@ block content
   section.section.section__fixed.section__mobile__pad.section-main
     +b.section__wrapper.section__wrapper__splited.js-anim-block
       +breadcrumbs()
-      h1.main-title.js-anim-title
+      h1.main-title.main-title__flex.js-anim-title
         span.filled Премия 
         | «Золотое окно 2017»
-        +b.single-icon__award
+        +b.single-icon__award#project-award-js(tabindex='0', data-img='img/event1.png,img/event1.png')
           +b.single-icon__wrapper
             svg.single-icon__icon(role="img")
               use(xlink:href="svg/sprite.svg#star")
-        +b.single-icon__docs
+        a.single-icon__docs#project-docs-js(href="http://www.africau.edu/images/default/sample.pdf" target="_blank")
           +b.single-icon__wrapper
             svg.single-icon__icon(role="img")
               use(xlink:href="svg/sprite.svg#file")
