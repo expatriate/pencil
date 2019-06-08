@@ -94,6 +94,12 @@ body:not(.ie) {
     }
   }
 
+  &.dark-theme {
+    .masked-text:after {
+      background-color: #282828;
+    }
+  }
+
   .masked-text-1 {
     background-image: url('../img/maskbg.jpg');
     //background-size: cover;

@@ -9,9 +9,6 @@
   */
 
   transition: background 1.1s ease;
-  &.fading {
-    background: rgba(255,255,255,1);
-  }
 
   @include screen(0, $mobile) {
     height: auto;

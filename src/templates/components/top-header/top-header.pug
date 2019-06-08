@@ -1,6 +1,6 @@
 mixin top-header()
   +b.top-header#header
-    +b.section__wrapper-top
+    +b.section__wrapper-top&attributes(attributes)
       +b.top-header__container
         a.logo(href="/")
           svg.logo__img(role="img")
@@ -37,7 +37,7 @@ mixin top-header()
           a.top-menu__item 
             |Соц. проекты
             span
-          a.top-menu__item 
+          a.top-menu__item(href="production.html")
             |Продакшн
             span
           div.close

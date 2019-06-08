@@ -203,6 +203,18 @@ function commonReady() {
     $(this).removeClass('error');
   });
 
+
+
+
+
+
+
+
+  // PRODUCTION
+  if ($('#production').length) {
+    $('body').addClass('dark-theme')
+  }
+
 };
 
 

@@ -689,7 +689,7 @@
     &.active {
       //background: #e12125;
       transition: all linear 0.2s;
-      border: 2px solid #e12125;
+      border: 1px solid #e12125;
       padding: 6px;
       margin: 8px;
 
@@ -716,5 +716,33 @@
 
   @include screen(0, $tablet) {
     display: none;
+  }
+}
+
+.dark-theme {
+  .right-nav {
+    &__item {
+      border: 1px solid #fff;
+
+      &:hover {
+        background: #fff;
+      }
+
+      &.active {
+        border: 1px solid #e12125;
+
+        &:hover {
+          background: #e12125;
+        }
+      }
+
+      &.line {
+        background: #fff;
+
+        &.active {
+          background: #e12125;
+        }
+      }
+    }
   }
 }

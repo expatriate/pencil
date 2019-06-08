@@ -1,0 +1,198 @@
+extends ../components/layouts/default
+
+include ../components/top-header/top-header
+include ../components/feedback/feedback
+include ../components/simpleslider/simpleslider
+include ../components/footer/footer
+
+block head
+    - var pageTitle = 'Продакшн';
+block content
+
+  // Хедер
+  +top-header(id="production")
+
+  // Первый экран
+  section.section.section__fixed.section__mobile__pad.section-main
+    +b.section__wrapper.section__wrapper-centered.section__wrapper-main
+      h1.main-title.js-anim-title.mobile-centered
+        span.filled Бизнесс
+        |-production
+    +b.section__wrapper-bottom.section__wrapper-centered.section__wrapper-absolute.js-anim-flex
+      +b.button__wrapper.centered.white
+        button.btn-middle.js-anim-block.modal(data-popup="#feedback-popup" data-buttontext="Отправить сообщение" data-title="Связаться с нами" data-text="Здесь может быть большое описание попапа с большим количеством информации.") Оставить заявку
+      +b.scroller
+
+  // Второй экран
+  section.section.section__fixed.section-float.js-viewport-block(data-timeout="1100")
+    +b.section__wrapper
+      +b.section-content
+        +b.block.block--pad-left
+          +b.block__half--left
+            +b.title-under
+              span.masked-text.masked-text-1 design
+            +b.light-box.light-box__small
+              div.light1
+              div.light2
+              div.light3
+          +b.block__half
+            +b.sub-title.js-anim-title Дизайн
+            +b.opts-container
+              +e('ul').__text.js-anim-text
+                li Логотипы
+                li 3D макетирование
+                li Дизайн промо-формы
+                li Дизайн выставочных стендов
+                li Визитки, бейджи, ролл ап, баннеры
+                li Фотозоны
+        +b.button__wrapper.centered
+          button.btn-middle.js-anim-block.modal(data-popup="#feedback-popup" data-buttontext="Отправить сообщение" data-title="Узнать стоимость" data-text="Здесь может быть большое описание попапа с большим количеством информации.") Заказать
+
+  // Третий экран
+  section.section.section__fixed.section-float.js-viewport-block(data-timeout="1100")
+    +b.section__wrapper
+      +b.section-content
+        +b.block.block--pad-left
+          +b.block__half--left
+            +b.title-under
+              span.masked-text.masked-text-1 polygraphy
+            +b.light-box.light-box__small
+              div.light1
+              div.light2
+              div.light3
+          +b.block__half
+            +b.sub-title.js-anim-title Полиграфия широкоформатная
+            +b.opts-container
+              +e('ul').__text.js-anim-text
+                li Пресволлы, баннеры
+                li Холсты
+                li Турнирные таблицы
+            +b.button__wrapper.white
+              button.btn-middle.js-anim-block.modal(data-popup="#feedback-popup" data-buttontext="Отправить сообщение" data-title="Узнать стоимость" data-text="Здесь может быть большое описание попапа с большим количеством информации.") Заказать
+
+  // Четвертый экран
+  section.section.section__fixed.section-float.js-viewport-block(data-timeout="1100")
+    +b.section__wrapper
+      +b.section-content
+        +b.block.block--pad-left
+          +b.block__half--left
+            +b.title-under
+              span.masked-text.masked-text-1 scenes
+            +b.light-box.light-box__small
+              div.light1
+              div.light2
+              div.light3
+          +b.block__half
+            +b.sub-title.js-anim-title Сцены
+            +b.opts-container
+              +e.text.js-anim-text Техническое обеспечение:
+              +e('ul').text.js-anim-text
+                li концертов
+                li форумов
+                li семинаров
+                li конференций 
+                li фестивалей
+            +b.button__wrapper.white
+              button.btn-middle.js-anim-block.modal(data-popup="#feedback-popup" data-buttontext="Отправить сообщение" data-title="Узнать стоимость" data-text="Здесь может быть большое описание попапа с большим количеством информации.") Заказать
+
+  // Пятый экран
+  section.section.section__fixed.section-float.js-viewport-block(data-timeout="1100")
+    +b.section__wrapper
+      +b.section-content
+        +b.block.block--pad-left
+          +b.block__half--left
+            +b.title-under
+              span.masked-text.masked-text-1 objects
+            +b.light-box.light-box__small
+              div.light1
+              div.light2
+              div.light3
+          +b.block__half
+            +b.sub-title.js-anim-title Арт объекты
+            +b.opts-container
+              +e('ul').text.js-anim-text
+                li Создание арт-объектов из любых материалов под любую концепцию
+            +b.button__wrapper.white
+              button.btn-middle.js-anim-block.modal(data-popup="#feedback-popup" data-buttontext="Отправить сообщение" data-title="Узнать стоимость" data-text="Здесь может быть большое описание попапа с большим количеством информации.") Заказать
+
+  // Шестой экран
+  section.section.section__fixed.section-float.js-viewport-block(data-timeout="1100")
+    +b.section__wrapper
+      +b.section-content
+        +b.block.block--pad-left
+          +b.block__half--left
+            +b.title-under
+              span.masked-text.masked-text-1 zones
+            +b.light-box.light-box__small
+              div.light1
+              div.light2
+              div.light3
+          +b.block__half
+            +b.sub-title.js-anim-title Фотозоны
+            +b.opts-container
+              +e('ul').text.js-anim-text
+                li Создание уникальных фотозон, из любых материалов, флористики, с любым техническим обеспечением
+            +b.button__wrapper.white
+              button.btn-middle.js-anim-block.modal(data-popup="#feedback-popup" data-buttontext="Отправить сообщение" data-title="Узнать стоимость" data-text="Здесь может быть большое описание попапа с большим количеством информации.") Заказать
+
+  // Седьмой экран
+  section.section.section__fixed.section-float.js-viewport-block(data-timeout="1100")
+    +b.section__wrapper
+      +b.section-content
+        +b.block.block--pad-left
+          +b.block__half--left
+            +b.title-under
+              span.masked-text.masked-text-1 stands
+            +b.light-box.light-box__small
+              div.light1
+              div.light2
+              div.light3
+          +b.block__half
+            +b.sub-title.js-anim-title Рекламные конструкции и BTL стенды
+            +b.opts-container
+              +e('ul').text.js-anim-text
+                li Мобильные выставочные и рекламные стенды, конструкции
+            +b.button__wrapper.white
+              button.btn-middle.js-anim-block.modal(data-popup="#feedback-popup" data-buttontext="Отправить сообщение" data-title="Узнать стоимость" data-text="Здесь может быть большое описание попапа с большим количеством информации.") Заказать
+
+  // Восьмой экран
+  section.section.section__fixed.section-float.js-viewport-block(data-timeout="1100")
+    +b.section__wrapper
+      +b.section-content
+        +b.block.block--pad-left
+          +b.block__half--left
+            +b.title-under
+              span.masked-text.masked-text-1 production
+            +b.light-box.light-box__small
+              div.light1
+              div.light2
+              div.light3
+          +b.block__half
+            +b.sub-title.js-anim-title Фото-видео продакшн
+            +b.opts-container
+              +e('ul').text.js-anim-text
+                li Мобильные выставочные и рекламные стенды, конструкции
+                li Любые фото услуги (корпоративная фотосессия для сайта, рекламы. Фото-репортаж мероприятий)
+                li Создание мотивирующих роликов
+                li Видео съемка на мероприятиях
+                li Создание роликов для конференций, форумов (графика и т.д.)
+                li Съемка любого контента, в любых городах и странах
+            +b.button__wrapper.white
+              button.btn-middle.js-anim-block.modal(data-popup="#feedback-popup" data-buttontext="Отправить сообщение" data-title="Узнать стоимость" data-text="Здесь может быть большое описание попапа с большим количеством информации.") Заказать
+
+  // Девятый экран
+  section.section.section__fullsize.section-portfolio
+    // Обратная связь
+    +feedback()
+
+  // Футер с меню
+  +footer()
+
+      
+block footer
+    script(src='js/right-nav.js')
+    script(src='js/common.js')
+
+    script(src='js/simpleSlider.js')
+    script(src='js/secondaryPage.js')
+    

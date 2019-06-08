@@ -81,6 +81,24 @@
   }
 }
 
+.dark-theme {
+  .btn-wide {
+    border-image: none;
+    border: 2px solid #a2a2a2;
+    color: #a2a2a2;
+    transition: all 0.4s ease;
+
+    &:before {
+      opacity: 0;
+    }
+
+    &:hover {
+      color: #e4e4e4;
+      border-color: #e4e4e4;
+    }
+  }
+}
+
 .btn-popup {
   padding: 16px 64px;
   font-size: 32px;
@@ -147,9 +165,20 @@
     z-index: -1;
   }
 }
+.dark-theme {
+  .btn-middle {
+    color: #ffffff;
+  }
+}
 
 .ie .btn-middle {
   background-color: #fff;
+}
+
+.dark-theme {
+  .ie .btn-middle {
+    background-color: #282828;
+  }
 }
 
 
