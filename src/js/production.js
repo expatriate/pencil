@@ -1004,7 +1004,7 @@ easeInOutSine*/
 var ProductionView = function (container) {
 
   this.samples = [
-    '/img/sample-bg.jpg',
+    'img/sample-bg.jpg',
   ];
 
   var rnd = ~~(Math.random() * this.samples.length);
