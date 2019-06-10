@@ -366,6 +366,22 @@
     z-index: 1
   }
 
+  #production-mainview{
+    position: absolute;
+    left: 0;
+    top:0;
+    width: 100%;
+    height: 100%;
+    z-index: 1
+  }
+
+  .section__wrapper {
+    pointer-events: none;
+  }
+  .section__wrapper-bottom {
+    pointer-events: none;
+  }
+
   @include screen($desktop-1, 9999px) {
     .main-title {
       font-size: 74px;

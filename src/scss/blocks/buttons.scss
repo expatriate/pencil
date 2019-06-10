@@ -49,6 +49,7 @@
   color: #000000;
   border: 2px outset;
   opacity: 1;
+  pointer-events: auto;
   border-image: linear-gradient(45deg, #bddb9e, #e7ffc4, #71e1b7) 1;
   
   
@@ -134,6 +135,7 @@
   overflow: hidden;
   font-size: 24px;
   z-index:0;
+  pointer-events: auto;
   background-color: transparent;
 
   @include screen(0, $mobile) {

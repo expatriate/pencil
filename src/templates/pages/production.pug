@@ -2,7 +2,6 @@ extends ../components/layouts/default
 
 include ../components/top-header/top-header
 include ../components/feedback/feedback
-include ../components/simpleslider/simpleslider
 include ../components/footer/footer
 
 block head
@@ -14,12 +13,14 @@ block content
 
   // Первый экран
   section.section.section__fixed.section__mobile__pad.section-main
+    div#production-mainview
+
     +b.section__wrapper.section__wrapper-centered.section__wrapper-main
       h1.main-title.js-anim-title.mobile-centered
         span.filled Бизнес
         |-production
     +b.section__wrapper-bottom.section__wrapper-centered.section__wrapper-absolute.js-anim-flex
-      +b.button__wrapper.centered.white
+      +b.button__wrapper.centered
         button.btn-middle.js-anim-block.modal(data-popup="#feedback-popup" data-buttontext="Отправить сообщение" data-title="Связаться с нами" data-text="Здесь может быть большое описание попапа с большим количеством информации.") Оставить заявку
       +b.scroller
 
@@ -29,8 +30,7 @@ block content
       +b.section-content
         +b.block.block--pad-left
           +b.block__half--left
-            +b.title-under
-              span.masked-text.masked-text-1 design
+            +b#production-1
             +b.light-box.light-box__small
               div.light1
               div.light2
@@ -193,6 +193,5 @@ block footer
     script(src='js/right-nav.js')
     script(src='js/common.js')
 
-    script(src='js/simpleSlider.js')
     script(src='js/secondaryPage.js')
-    
+    script(src='js/production.js')

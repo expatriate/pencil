@@ -393,6 +393,7 @@ var Birds = function (container, width) {
     this.camera.position.z = 250;
 
     this.scene = new THREE.Scene();
+    window.scene = this.scene;
 
     this.scene.fog = new THREE.Fog(0xFFFFFF, 100, 1000);
 
