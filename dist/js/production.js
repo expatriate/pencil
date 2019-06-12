@@ -718,7 +718,7 @@ var ParticlesProd = function(webgl) {
     if (discard) {
       // discard pixels darker than threshold #22
       numVisible = 0;
-      threshold = 50;
+      threshold = 90;
 
       var img = this.texture.image;
       var canvas = document.createElement('canvas');
@@ -978,9 +978,9 @@ easeInOutSine*/
 
     var intensity = 1;
     if (point.age < this.maxAge * 0.3) {
-      intensity = easeOutSine(point.age / (this.maxAge * 0.3), 0, 1, 1);
+      intensity = easeInSine(point.age / (this.maxAge * 0.3), 0, 1, 1);
     } else {
-      intensity = easeOutSine(1 - (point.age - this.maxAge * 0.3) / (this.maxAge * 0.7), 0, 1, 1);
+      intensity = easeInSine(1 - (point.age - this.maxAge * 0.3) / (this.maxAge * 0.7), 0, 1, 1);
     }
 
     intensity *= point.force;
