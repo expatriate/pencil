@@ -718,7 +718,7 @@ var ParticlesProd = function(webgl) {
     if (discard) {
       // discard pixels darker than threshold #22
       numVisible = 0;
-      threshold = 90;
+      threshold = 82;
 
       var img = this.texture.image;
       var canvas = document.createElement('canvas');
@@ -908,9 +908,9 @@ var ParticlesProd = function(webgl) {
 var TouchTextureProd = function(parent) {
 
   this.parent = parent;
-  this.size = 60;
-  this.maxAge = 120; //120
-  this.radius = 0.3;
+  this.size = 50;
+  this.maxAge = 150; //120
+  this.radius = 0.15;
   this.trail = [];
 
   TouchTextureProd.prototype.initTexture = function() {
@@ -957,7 +957,7 @@ var TouchTextureProd = function(parent) {
       var dx = last.x - point.x;
       var dy = last.y - point.y;
       var dd = dx * dx + dy * dy;
-      force = Math.min(dd * 10000, 1); //10000
+      force = Math.min(dd * 25000, 1); //10000
     }
     this.trail.push({ x: point.x, y: point.y, age: 0, force });
   }
@@ -977,22 +977,22 @@ easeInOutSine*/
     };
 
     var intensity = 1;
-    if (point.age < this.maxAge * 0.3) {
-      intensity = easeInSine(point.age / (this.maxAge * 0.3), 0, 1, 1);
+    if (point.age < this.maxAge * 0.4) {
+      intensity = easeInQuad(point.age / (this.maxAge * 0.4), 0, 1, 1);
     } else {
-      intensity = easeInSine(1 - (point.age - this.maxAge * 0.3) / (this.maxAge * 0.7), 0, 1, 1);
+      intensity = easeInQuad(1 - (point.age - this.maxAge * 0.4) / (this.maxAge * 0.7), 0, 1, 1);
     }
 
     intensity *= point.force;
 
     var radius = this.size  * this.radius * intensity;
-    var grd = this.ctx.createRadialGradient(pos.x, pos.y, radius * 0.25, pos.x, pos.y, radius);
+    var grd = this.ctx.createRadialGradient(pos.x, pos.y, radius * 0.05, pos.x, pos.y, radius);
     grd.addColorStop(0, `rgba(255, 255, 255, 0.2)`);
     grd.addColorStop(1, 'rgba(0, 0, 0, 0.0)');
 
     this.ctx.beginPath();
     this.ctx.fillStyle = grd;
-    this.ctx.arc(pos.x, pos.y, radius, 0, Math.PI * 2);
+    this.ctx.arc(pos.x, pos.y, radius, -1, Math.PI * 2);
     this.ctx.fill();
 
   }
