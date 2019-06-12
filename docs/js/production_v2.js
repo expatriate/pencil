@@ -50,6 +50,31 @@ function browser() {
   return data
 }
 
+var shader = 
+'attribute float size;'+
+  'attribute float alpha;'+
+
+  'varying vec3 vColor;'+
+  'varying float vAlpha;'+
+  'void main() {'+
+    'vColor = color;'+
+    'vAlpha = alpha;'+
+    'vec4 mvPosition = modelViewMatrix * vec4( position, 1.0 );'+
+    'gl_PointSize = size;'+
+    'gl_Position = projectionMatrix * mvPosition;'+
+  '}';
+
+var fragShader = 
+'uniform sampler2D texture;'+
+  'uniform float maxAlpha;'+
+
+  'varying vec3 vColor;'+
+  'varying float vAlpha;'+
+  'void main() {'+
+    'gl_FragColor = vec4( vColor, vAlpha * maxAlpha);'+
+    'gl_FragColor = gl_FragColor * texture2D( texture, gl_PointCoord );'+
+  '}'
+
 var vert = 
 'precision highp float;'+
 
@@ -682,10 +707,116 @@ var InteractiveControls = function(camera, el) {
   this.enable();
 }
 
+function randDefault() {
+  if (Math.random() > .5)
+    return 1
+  else
+    return -1
+}
+
 var ParticlesProd = function(webgl) {
   
   this.webgl = webgl;
   this.container = new THREE.Object3D();
+  //this.renderer = new THREE.WebGLRenderer({ antialias: true , clearAlpha: 1});
+  //this.renderer.setClearColor(0xFFFFFF);
+  //this.renderer.setPixelRatio(window.devicePixelRatio);
+  //this.renderer.setSize($('#production-mainview').width(), window.innerHeight);
+  this.MAX_PARTICLE_SIZE = 5;
+  this.PARTICLE_SPACING = 40;
+  this.PARTICLE_Z_SPACING = 20;
+  this.PARTICLE_COUNT_X = 150;
+  this.PARTICLE_COUNT_Y = 150;
+  this.RAYTHRESHOLD = 1;
+  this.CAN_DRAG = !1;
+  this.CAN_INTERSECT = !1;
+  this.isTimeline = !1;
+  this.isImage = !1;
+  this.changingMaxAlpha = !1;
+  this.newMaxAlphaProgress = 0;
+  this.maxAlpha = .5;
+  this.sceneWidth = window.innerWidth;
+  this.sceneHeight = window.innerHeight;
+  this.newMaxAlpha = this.maxAlpha;
+  this.startingMaxAlpha = this.maxAlpha;
+  this.particles = [];
+  this.verticies;
+  this.origVertices;
+  this.toVertices;
+  this.fromVertices;
+  this.loadedImages = [];
+  this.imageCache = [];
+  this.particleImageData = null;
+  this.autoStart = 0;
+  this.raycaster = new THREE.Raycaster();
+  this.raycaster.params.Points.threshold = this.RAYTHRESHOLD;
+  this.updatingRaycaster = !1;
+  this.isRunning = !1;
+  this.updatingParticles = !1;
+  this.imageLoader = new THREE.ImageLoader();
+  this.last = 0;
+  this.mouseCoords = {
+      x: -9999,
+      y: 0
+  };
+  this.Colors = {
+    'midGrey': 'rgb(155, 155, 155)',
+  };
+  //this.cameraViewProjectionMatrix = this.camera.projectionMatrix;
+  ParticlesProd.prototype.createParticleSystem = function() {
+    var threeGeom = new THREE.Geometry;
+    
+    for (var i = 0; i < this.PARTICLE_COUNT_X; i++) {
+      for (var j = 0; j < this.PARTICLE_COUNT_Y; j++) {
+        var p = this.createParticle();
+        this.particles.push(p);
+        threeGeom.vertices.push(p.position);
+      }
+    }
+    this.verticies = threeGeom.vertices;
+    /** @type {!Float32Array} */
+    var colors = new Float32Array(3 * this.verticies.length);
+    /** @type {!Float32Array} */
+    var buffer = new Float32Array(3 * this.verticies.length);
+    /** @type {!Float32Array} */
+    var array = new Float32Array(this.verticies.length);
+    /** @type {!Float32Array} */
+    var sizes = new Float32Array(this.verticies.length);
+    this.particles.forEach(function(obj, i) {
+      obj.position.toArray(colors, 3 * i);
+      obj.color.toArray(buffer, 3 * i);
+      array[i] = obj.alpha;
+      sizes[i] = obj.size;
+    });
+    this.particleGeometry = new THREE.BufferGeometry;
+    var na = (new THREE.BufferAttribute(colors, 3)).setDynamic(true);
+    var attribute = new THREE.BufferAttribute(buffer, 3);
+    /** @type {boolean} */
+    attribute.normalized = true;
+    this.particleGeometry.addAttribute("position", na);
+    this.particleGeometry.addAttribute("color", attribute);
+    this.particleGeometry.addAttribute("alpha", (new THREE.BufferAttribute(array, 1)).setDynamic(true));
+    this.particleGeometry.addAttribute("size", (new THREE.BufferAttribute(sizes, 1)).setDynamic(true));
+    var command_module_id = (new THREE.TextureLoader).load(this.TEXTURE);
+    var pMaterial = new THREE.ShaderMaterial({
+      uniforms : {
+        texture : {
+          value : command_module_id
+        },
+        maxAlpha : {
+          value : this.maxAlpha
+        }
+      },
+      vertexShader : shader,
+      fragmentShader : fragShader,
+      depthTest : true,
+      depthWrite : false,
+      transparent : true,
+      vertexColors : true,
+      flatShading : true
+    });
+    return new THREE.Points(this.particleGeometry, pMaterial);
+  };
 
   ParticlesProd.prototype.init = function(src) {
     var loader = new THREE.TextureLoader();
@@ -700,12 +831,33 @@ var ParticlesProd = function(webgl) {
       t.width = texture.image.width;
       t.height = texture.image.height;
 
-      t.initPoints(true);
-      t.initHitArea();
-      t.initTouch();
-      t.resize();
-      t.show();
+      //t.initPoints(true);
+      //t.initHitArea();
+      //t.initTouch();
+      //t.resize();
+      //t.show();
+
+
+      t.particleSystem = t.createParticleSystem();
+      t.particles = [];
+      t.verticies = [];
+      t.maxAlpha = 0.5;
+      t.TEXTURE = "img/particle.png";
+      t.container.add(t.particleSystem);
     });
+  }
+
+
+  ParticlesProd.prototype.createParticle = function() {
+    var t = Math.random() * this.PARTICLE_SPACING
+      , e = Math.random() * this.PARTICLE_SPACING
+      , n = Math.random() * this.PARTICLE_Z_SPACING
+      , i = 2 * Math.random()
+      , a = Math.random() + 3
+      , s = new THREE.Color(this.Colors.midGrey)
+      , c = Math.random() * (this.MAX_PARTICLE_SIZE * (window.devicePixelRatio || 1) - 2) + 2;
+
+    return new Particle(new THREE.Vector3(t,e,n),i,a,s,c)
   }
 
   ParticlesProd.prototype.initPoints = function(discard) {
@@ -906,6 +1058,206 @@ var ParticlesProd = function(webgl) {
     var uv = e.intersectionData.uv;
     if (this.touch) this.touch.addTouch(uv);
   }
+
+  ParticlesProd.prototype.mapImage = function(t) {
+
+    function test(texture) {
+      var img = texture;
+      var canvas = document.createElement('canvas');
+      var ctx = canvas.getContext('2d');
+
+      canvas.width = texture.width;
+      canvas.height = texture.height;
+      ctx.scale(1, -1);
+      ctx.drawImage(img, 0, 0, texture.width, texture.height * -1);
+
+      return ctx.getImageData(0, 0, canvas.width, canvas.height);
+    }
+
+    var scope = this;
+    return this.isImage = true, new Promise(function(onstep) {
+
+      scope.imageLoader.load(t, function(ringNum) {
+        var r = test(ringNum);
+        scope.loadedImages.push(t);
+        scope.imageCache.push(r);
+        scope.particleImageData = r;
+        scope._convertImageToParticles();
+        onstep();
+      });
+    });
+  }
+
+  ParticlesProd.prototype._convertImageToParticles = function() {
+    if (null !== this.particleImageData)
+      for (var t = !0 === this.CAN_DRAG ? l.default.appState.getTimelineOffset() : 0, e = this.particleImageData.data, n = this.particleImageData.width / this.PARTICLE_COUNT_X, i = this.particleImageData.height / this.PARTICLE_COUNT_Y, r = Math.min(this.sceneWidth, this.sceneHeight), o = 0, s = 0, c = this.PARTICLE_COUNT_Y; s < c; s++)
+        for (var u = 0, h = this.PARTICLE_COUNT_X; u < h; u++) {
+          var f = this.particles[o]
+            , m = Math.floor(u * n)
+            , v = Math.floor(s * i) * (4 * this.particleImageData.width) + 4 * m
+            , g = e[v]
+            , y = e[v + 1]
+            , x = e[v + 2]
+            , w = e[v + 3];
+            console.log(f)
+            if (.2126 * g + .7152 * y + .0722 * x < 230 && w >= 254) {
+              var b = u * (r / h) + (-.1, .1) - r / 2
+                , _ = r / c * (c - s) + (-.1, .1) - r / 2
+                , E = .2126 * g + .7152 * y + .0722 * x
+                , M = 1 * E / 255 - .5;
+              (b += t),
+              //f.animDur = 2,
+              f.updateSize(.1 + this.MAX_PARTICLE_SIZE * (window.devicePixelRatio || 1) * (1 - E / 255)),
+              f.changePosition(b, _, M),
+              f.setSpeed(0),
+              f.setShouldFade(!1),
+              f.show()
+            } else
+                f.hide();
+          o++
+        }
+  }
+}
+
+var Particle = function(e, n, i, a, s) {
+  this.position = e,
+  this.origPosition = e.clone(),
+  this.startingPosition = e.clone(),
+  this.newPosition = e.clone(),
+  this.offsetPosition = new THREE.Vector3,
+  this.color = a,
+  this.angle = 90 + 180 * Math.random() * randDefault(),
+  this.speed = this.imageSpeed = this.origSpeed = n,
+  this.velocity = new THREE.Vector3(this.speed * Math.cos(THREE.Math.degToRad(this.angle)),-this.speed * Math.sin(THREE.Math.degToRad(this.angle)),this.speed / 2 * Math.sin(THREE.Math.degToRad(this.angle))),
+  this.life = this.originalLife = i,
+  this.size = this.nextSize = this.prevSize = s,
+  this.isUpdatingSize = !1,
+  this.sizeAnimDur = .3,
+  this.sizeAnimProgress = 0,
+  this.alpha = 0,
+  this.startingAlpha = 0,
+  this.newAlphaProgress = 0,
+  this.shouldFade = !0,
+  this.delay = Math.random() * (this.originalLife / 2),
+  this.hasStarted = !1,
+  this.changingPosition = !1,
+  this.changingColor = !1,
+  this.newColorProgress = 0,
+  this.newPosProgress = 0,
+  this.hideParticle = !1,
+  this.particleHidden = !1,
+  this.animDur = 1,
+  this.isIntersecting = !1
+
+  Particle.prototype.update = function(t) {
+    if (!(!1 === this.hasStarted && (this.delay -= t) > 0) && (this.hasStarted = !0,
+    !0 !== this.particleHidden)) {
+      this.life -= t;
+      var e = this.life / this.originalLife;
+      !0 === this.hideParticle && (this.newAlphaProgress = this.newAlphaProgress < 1 ? this.newAlphaProgress += t / this.animDur : 1,
+      this.alpha = r.Math.lerp(this.startingAlpha, 0, this.newAlphaProgress),
+      this.newAlphaProgress >= 1 && (this.alpha = 0,
+      this.particleHidden = !0)),
+      !1 === this.particleHidden && !1 === this.hideParticle && (!0 === this.shouldFade ? this.alpha = Math.sin(2 * Math.PI * (1 - (e + .25))) / 2 + .5 : this.alpha < 1 ? this.alpha += t : 1 !== this.alpha && (this.alpha = 1)),
+      !0 === this.isUpdatingSize && (this.sizeAnimProgress < this.sizeAnimDur ? (this.sizeAnimProgress += t,
+      this.size = r.Math.lerp(this.prevSize, this.nextSize, a.Easing.easeInOutQuad(this.sizeAnimProgress / this.sizeAnimDur))) : (this.size = this.nextSize,
+      this.isUpdatingSize = !1)),
+      !0 === this.changingPosition ? (this.newPosProgress = this.newPosProgress < 1 ? this.newPosProgress += t / s.Timings.particleImageOut : 1,
+      this.position.lerpVectors(this.startingPosition, this.newPosition, a.Easing.easeInOutCubic(this.newPosProgress)),
+      this.newPosProgress >= 1 && (this.changingPosition = !1,
+      this.position.set(this.newPosition.x, this.newPosition.y, this.newPosition.z),
+      this.startingPosition.set(this.newPosition.x, this.newPosition.y, this.newPosition.z),
+      this.offsetPosition.set(0, 0, 0))) : this.life > 0 ? (this.position.x += this.velocity.x * t,
+      this.position.y += this.velocity.y * t,
+      this.position.z += this.velocity.z * t) : (this.life = this.originalLife,
+      this.position.x = this.startingPosition.x,
+      this.position.y = this.startingPosition.y,
+      this.position.z = this.startingPosition.z,
+      this.angle = 90 + 180 * Math.random() * randDefault()),
+      1 == this.isIntersecting && (this.position.x += (this.offsetPosition.x *= .95) + .19 * (this.startingPosition.x - this.position.x),
+      this.position.y += (this.offsetPosition.y *= .95) + .19 * (this.startingPosition.y - this.position.y),
+      Math.abs(this.startingPosition.x - this.position.x) < .001 && Math.abs(this.startingPosition.y - this.position.y) < .001 && (this.isIntersecting = !1))
+    }
+  };
+
+  Particle.prototype.changePosition = function(t, e, n) {
+    this.newPosProgress = 0,
+    this.startingPosition.set(this.position.x, this.position.y, this.position.z),
+    this.newPosition.set(t, e, n),
+    this.offsetPosition.set(0, 0, 0),
+    this.changingPosition = !0
+  };
+
+  Particle.prototype.resetPosition = function(t, e, n) {
+    this.newPosProgress = 0,
+    this.offsetPosition.set(0, 0, 0),
+    this.startingPosition.set(this.position.x, this.position.y, this.position.z),
+    this.newPosition.set(this.origPosition.x, this.origPosition.y, this.origPosition.z),
+    this.changingPosition = !0
+  }
+
+  Particle.prototype.setSpeed = function(t) {
+    this.velocity.set(t * Math.cos(r.Math.degToRad(this.angle)), -t * Math.sin(r.Math.degToRad(this.angle)), t / 2 * Math.sin(r.Math.degToRad(this.angle)))
+  }
+
+  Particle.prototype.hide = function() {
+    if (!1 === this.hasStarted) {
+      this.alpha = 0;
+      this.particleHidden = !0
+    } else {
+      this.newAlphaProgress = 0;
+      this.startingAlpha = this.alpha;
+      this.hideParticle = !0
+    }
+  }
+
+  Particle.prototype.show = function() {
+    if (!0 === this.particleHidden) {
+      this.hasStarted = !1;
+      this.delay = Math.random() * (this.originalLife / 2);
+      this.life = this.originalLife;
+      this.newAlphaProgress = 0;
+      this.startingAlpha = this.alpha;
+      this.hideParticle = !1;
+      this.alpha = 0;
+      this.particleHidden = !1
+    }
+  }
+
+  Particle.prototype.setShouldFade = function(t) {
+    this.shouldFade !== t && (this.shouldFade = t)
+  }
+
+  Particle.prototype.updateSize = function(t) {
+    if (t === this.size)
+      return !1;
+    this.sizeAnimDur = .3,
+    this.nextSize = t,
+    this.prevSize = this.size,
+    this.sizeAnimProgress = 0,
+    this.isUpdatingSize = !0
+  }
+
+  Particle.prototype._updateColor = function(t) {
+    if (t < 1) {
+      this._updateColorVal("r", t);
+      this._updateColorVal("b", t);
+      this._updateColorVal("g", t);
+    } else {
+      this.color.setRGB(this.newColor.r, this.newColor.g, this.newColor.b)
+    }
+  }
+
+  Particle.prototype._updateColorVal = function(t, e) {
+    if (this.color[t] !== this.newColor[t]) {
+      var n = r.Math.lerp(this.startingColor[t], this.newColor[t], a.Easing.easeInOutQuad(e));
+      n !== this.color[t] && (this.color[t] = n)
+    }
+  }
+
+  Particle.prototype._springEase = function(t) {
+    return -7 * Math.pow(Math.E, -7 * t) * Math.sin(Math.sqrt(71) * t) / Math.sqrt(71) - Math.pow(Math.E, -7 * t) * Math.cos(Math.sqrt(71) * t) + 1
+  }
 }
 
 var TouchTextureProd = function(parent) {
@@ -1032,7 +1384,12 @@ var ProductionView = function (container) {
   }
 
   ProductionView.prototype.initParticles = function() {
+    var t = this;
     this.particles = new ParticlesProd(this);
+
+    this.particles.mapImage('img/sample-bg.jpg').then(function() {
+      t.particles.start()
+    });
     this.scene.add(this.particles.container);
   }
 

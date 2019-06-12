@@ -689,21 +689,22 @@ var ParticlesProd = function(webgl) {
 
   ParticlesProd.prototype.init = function(src) {
     var loader = new THREE.TextureLoader();
+    var t = this;
 
-    loader.load(src, (texture) => {
-      this.texture = texture;
-      this.texture.minFilter = THREE.LinearFilter;
-      this.texture.magFilter = THREE.LinearFilter;
-      this.texture.format = THREE.RGBFormat;
+    loader.load(src, function(texture) {
+      t.texture = texture;
+      t.texture.minFilter = THREE.LinearFilter;
+      t.texture.magFilter = THREE.LinearFilter;
+      t.texture.format = THREE.RGBFormat;
 
-      this.width = texture.image.width;
-      this.height = texture.image.height;
+      t.width = texture.image.width;
+      t.height = texture.image.height;
 
-      this.initPoints(true);
-      this.initHitArea();
-      this.initTouch();
-      this.resize();
-      this.show();
+      t.initPoints(true);
+      t.initHitArea();
+      t.initTouch();
+      t.resize();
+      t.show();
     });
   }
 
@@ -717,7 +718,7 @@ var ParticlesProd = function(webgl) {
     if (discard) {
       // discard pixels darker than threshold #22
       numVisible = 0;
-      threshold = 50;
+      threshold = 90;
 
       var img = this.texture.image;
       var canvas = document.createElement('canvas');
@@ -730,7 +731,7 @@ var ParticlesProd = function(webgl) {
 
       var imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
       originalColors = Float32Array.from(imgData.data);
-
+      console.log(originalColors)
       for (var i = 0; i < this.numPoints; i++) {
         if (originalColors[i * 4 + 0] > threshold) numVisible++;
       }
@@ -800,7 +801,6 @@ var ParticlesProd = function(webgl) {
     geometry.addAttribute('angle', new THREE.InstancedBufferAttribute(angles, 1, false));
 
     this.object3D = new THREE.Mesh(geometry, material);
-    console.log(this.object3D)
     this.container.add(this.object3D);
   }
 
@@ -978,9 +978,9 @@ easeInOutSine*/
 
     var intensity = 1;
     if (point.age < this.maxAge * 0.3) {
-      intensity = easeOutSine(point.age / (this.maxAge * 0.3), 0, 1, 1);
+      intensity = easeInSine(point.age / (this.maxAge * 0.3), 0, 1, 1);
     } else {
-      intensity = easeOutSine(1 - (point.age - this.maxAge * 0.3) / (this.maxAge * 0.7), 0, 1, 1);
+      intensity = easeInSine(1 - (point.age - this.maxAge * 0.3) / (this.maxAge * 0.7), 0, 1, 1);
     }
 
     intensity *= point.force;
