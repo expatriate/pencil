@@ -711,6 +711,9 @@ var ParticlesProd = function(webgl) {
   ParticlesProd.prototype.initPoints = function(discard) {
     this.numPoints = this.width * this.height;
 
+    this.numPointsX = 150;
+    this.numPointsY = 150;
+
     var numVisible = this.numPoints;
     var threshold = 0;
     var originalColors;
@@ -718,7 +721,7 @@ var ParticlesProd = function(webgl) {
     if (discard) {
       // discard pixels darker than threshold #22
       numVisible = 0;
-      threshold = 50;
+      threshold = 22;
 
       var img = this.texture.image;
       var canvas = document.createElement('canvas');
