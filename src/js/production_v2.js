@@ -228,6 +228,9 @@ var App = function() {
     this.handlerAnimate = this.animate.bind(this);
 
     window.addEventListener('resize', this.resize.bind(this));
+
+    var el = this.webgl.renderer.domElement;
+    el.addEventListener('click', this.click.bind(this));
   }
 
   App.prototype.animate = function() {

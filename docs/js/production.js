@@ -203,6 +203,9 @@ var App = function() {
     this.handlerAnimate = this.animate.bind(this);
 
     window.addEventListener('resize', this.resize.bind(this));
+
+    var el = this.webgl.renderer.domElement;
+    el.addEventListener('click', this.click.bind(this));
   }
 
   App.prototype.animate = function() {
@@ -718,7 +721,7 @@ var ParticlesProd = function(webgl) {
     if (discard) {
       // discard pixels darker than threshold #22
       numVisible = 0;
-      threshold = 82;
+      threshold = 32;
 
       var img = this.texture.image;
       var canvas = document.createElement('canvas');
@@ -908,9 +911,9 @@ var ParticlesProd = function(webgl) {
 var TouchTextureProd = function(parent) {
 
   this.parent = parent;
-  this.size = 50;
-  this.maxAge = 150; //120
-  this.radius = 0.15;
+  this.size = 60;
+  this.maxAge = 120; //120
+  this.radius = 0.3;
   this.trail = [];
 
   TouchTextureProd.prototype.initTexture = function() {
@@ -977,10 +980,10 @@ easeInOutSine*/
     };
 
     var intensity = 1;
-    if (point.age < this.maxAge * 0.4) {
-      intensity = easeInQuad(point.age / (this.maxAge * 0.4), 0, 1, 1);
+    if (point.age < this.maxAge * 0.3) {
+      intensity = easeInQuad(point.age / (this.maxAge * 0.3), 0, 1, 1);
     } else {
-      intensity = easeInQuad(1 - (point.age - this.maxAge * 0.4) / (this.maxAge * 0.7), 0, 1, 1);
+      intensity = easeInQuad(1 - (point.age - this.maxAge * 0.3) / (this.maxAge * 0.7), 0, 1, 1);
     }
 
     intensity *= point.force;
@@ -1004,7 +1007,15 @@ easeInOutSine*/
 var ProductionView = function (container) {
 
   this.samples = [
-    'img/sample-bg.jpg',
+    'img/sample-bg1.jpg',
+    'img/sample-bg2.jpg',
+    'img/sample-bg3.jpg',
+    'img/sample-bg4.jpg',
+    'img/sample-bg5.jpg',
+    'img/sample-bg6.jpg',
+    'img/sample-bg7.jpg',
+    'img/sample-bg8.jpg',
+    'img/sample-bg9.jpg',
   ];
 
   var rnd = ~~(Math.random() * this.samples.length);
