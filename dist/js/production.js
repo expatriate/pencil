@@ -721,7 +721,7 @@ var ParticlesProd = function(webgl) {
     if (discard) {
       // discard pixels darker than threshold #22
       numVisible = 0;
-      threshold = 32;
+      threshold = 72;
 
       var img = this.texture.image;
       var canvas = document.createElement('canvas');
@@ -1016,6 +1016,10 @@ var ProductionView = function (container) {
     'img/sample-bg7.jpg',
     'img/sample-bg8.jpg',
     'img/sample-bg9.jpg',
+    'img/sample-bg10.jpg',
+    'img/sample-bg11.jpg',
+    'img/sample-bg12.jpg',
+    'img/sample-bg13.jpg',
   ];
 
   var rnd = ~~(Math.random() * this.samples.length);
