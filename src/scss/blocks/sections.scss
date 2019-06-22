@@ -188,6 +188,8 @@
       text-decoration: none;
       border-bottom: 1px solid #666;
       line-height: 1.5;
+      z-index: 999;
+      pointer-events: auto;
 
       @include screen($tablet, $desktop-1) {
         font-size: 18px;

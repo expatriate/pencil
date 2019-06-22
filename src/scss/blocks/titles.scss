@@ -4,22 +4,83 @@
   width: 100%;
   margin: 0;
 
+  &.title-size-1 {
+    font-size: 76px;
+  }
+  &.title-size-2 {
+    font-size: 80px;
+  }
+  &.title-size-3 {
+    font-size: 96px;
+  }
+  &.title-size-4 {
+    font-size: 120px;
+  }
+
   @include screen($tablet, $desktop) {
     font-size: 48px;
+    &.title-size-1 {
+      font-size: 48px;
+    }
+    &.title-size-2 {
+      font-size: 52px;
+    }
+    &.title-size-3 {
+      font-size: 62px;
+    }
+    &.title-size-4 {
+      font-size: 78px;
+    }
   }
   @include screen($mobile, $tablet) {
     font-size: 36px;
     margin-bottom: 24px; 
+    &.title-size-1 {
+      font-size: 36px;
+    }
+    &.title-size-2 {
+      font-size: 40px;
+    }
+    &.title-size-3 {
+      font-size: 48px;
+    }
+    &.title-size-4 {
+      font-size: 60px;
+    }
   }
   @include screen($mobile-1, $mobile) {
     font-size: 42px;
     margin: 32px 0px 48px 0px;
     text-align: left;
+    &.title-size-1 {
+      font-size: 42px;
+    }
+    &.title-size-2 {
+      font-size: 44px;
+    }
+    &.title-size-3 {
+      font-size: 54px;
+    }
+    &.title-size-4 {
+      font-size: 66px;
+    }
   }
   @include screen(0, $mobile-1) {
     font-size: 28px;
     margin: 16px 0px 24px 0px;
     text-align: left;
+    &.title-size-1 {
+      font-size: 28px;
+    }
+    &.title-size-2 {
+      font-size: 30px;
+    }
+    &.title-size-3 {
+      font-size: 36px;
+    }
+    &.title-size-4 {
+      font-size: 44px;
+    }
   }
 
   &.mobile-centered {
