@@ -175,7 +175,7 @@ function commonReady() {
     if (!errors.length) {
       $.ajax({
         type: 'POST',
-        url: '/test.php',
+        url: form.dataset.place || '',
         data: fd,
         cache : false,
         processData: false,
