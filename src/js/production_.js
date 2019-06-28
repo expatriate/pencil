@@ -4,8 +4,10 @@ var prod;
 
 
 function productionReady() {
-  prod = new Production($('#production-mainview')[0]);
-  prod.startAnimation()
+  if (document.getElementById('production-mainview').length) {
+    prod = new Production($('#production-mainview')[0]);
+    prod.startAnimation()
+  }
 
   /*
   prod.init();
@@ -466,7 +468,7 @@ var Production = function (container) {
     this.render();
   }
 
-  this.init('/img/sample-bg.jpg');
+  this.init('/img/sample-bg13.jpg');
 }
 
 
@@ -475,7 +477,7 @@ var Production = function (container) {
 
 
 
-/*
+
 
 
 
@@ -1093,4 +1095,4 @@ var RoundParticle = function(e, n, i, r, a, s) {
     this.newColor.getHex() !== this.bgColor.getHex() && this.bgColor.lerp(this.newColor, t),
     this.newBgColorAlpha !== this.bgColorAlpha && (this.bgColorAlpha = o.Math.lerp(this.bgColorAlpha, this.newBgColorAlpha, t))
   }
-}*/
+}

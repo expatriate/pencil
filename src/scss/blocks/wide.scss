@@ -80,16 +80,43 @@
 
 
     .wide__item {
-      &:nth-child(even) {
+      /* &:nth-child(even) {
         margin-left: 5px;
         .wide__content {
           float: left;
         }
       }
-      &:nth-child(odd) {
+      &:nth-child(odd):not(:last-child) {
         margin-right: 5px;
         .wide__content {
           float: right;
+        }
+      } */
+
+      &:nth-child(1):last-child  {
+        .sub-title {
+          text-align: center;
+          min-height: 70px;
+
+          @include screen(0, $mobile) {
+            text-align: left;
+            min-height: auto;
+          }
+        }
+        .button {
+          text-align: center;
+        }
+
+        .button__wrapper {
+          justify-content: center;
+        }
+
+        .wide__image {
+          margin: 36px auto;
+
+          @include screen(0, $mobile) {
+            margin: 36px 0;
+          }
         }
       }
     }

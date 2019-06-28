@@ -281,11 +281,15 @@
 
     img {
       height: 100px;
+      width: 100px;
+      object-fit: contain;
       margin-right: 16px;
       margin-bottom: 18px;
 
       @include screen(0, $mobile) {
         height: 60px;
+        width: 100px;
+        object-fit: contain;
         margin: 0px 12px 12px 0px;
       }
     }

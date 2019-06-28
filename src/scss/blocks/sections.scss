@@ -378,18 +378,11 @@
   }
 
   .section__wrapper {
-    pointer-events: none;
+    //pointer-events: none;
   }
   .section__wrapper-bottom {
     pointer-events: none;
   }
-
-  @include screen($desktop-1, 9999px) {
-    .main-title {
-      font-size: 74px;
-    }
-  }
-
 }
 
 .section__mobile__pad {

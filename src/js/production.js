@@ -244,8 +244,10 @@ var App = function() {
 }
 
 function productionReady() {
-  window.app = new App();
-  window.app.init();
+  if (document.getElementById('production-mainview')) {
+    window.app = new App();
+    window.app.init();
+  }
 };
 
 
@@ -711,33 +713,38 @@ var ParticlesProd = function(webgl) {
     });
   }
 
-  ParticlesProd.prototype.initPoints = function() {
+  ParticlesProd.prototype.initPoints = function(discard) {
     this.numPoints = this.width * this.height;
 
     var numVisible = this.numPoints;
     var threshold = 0;
     var originalColors;
 
-    // discard pixels darker than threshold #22
-    numVisible = 0;
-    threshold = 72;
+    if (discard) {
+      // discard pixels darker than threshold #22
+      numVisible = 0;
+      threshold = 72;
 
-    var img = this.texture.image;
-    var canvas = document.createElement('canvas');
-    var ctx = canvas.getContext('2d');
+      var img = this.texture.image;
+      var canvas = document.createElement('canvas');
+      var ctx = canvas.getContext('2d');
 
-    canvas.width = this.width;
-    canvas.height = this.height;
-    ctx.scale(1, -1);
-    ctx.drawImage(img, 0, 0, this.width, this.height * -1);
+      canvas.width = this.width;
+      canvas.height = this.height;
+      ctx.scale(1, -1);
+      ctx.drawImage(img, 0, 0, this.width, this.height * -1);
 
-    var imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-    originalColors = Float32Array.from(imgData.data);
-    for (var i = 0; i < this.numPoints; i++) {
-      if (originalColors[i * 4 + 0] > threshold) numVisible++;
+      var imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+      originalColors = Float32Array.from(imgData.data);
+      console.log(originalColors)
+      for (var i = 0; i < this.numPoints; i++) {
+        if (originalColors[i * 4 + 0] > threshold) numVisible++;
+      }
+
+      // console.log('numVisible', numVisible, this.numPoints);
     }
 
-    /*var uniforms = {
+    var uniforms = {
       uTime: { value: 0 },
       uRandom: { value: 1.0 },
       uDepth: { value: 2.0 },
@@ -745,32 +752,15 @@ var ParticlesProd = function(webgl) {
       uTextureSize: { value: new THREE.Vector2(this.width, this.height) },
       uTexture: { value: this.texture },
       uTouch: { value: null },
-    };*/
-
+    };
 
     var material = new THREE.RawShaderMaterial({
-      uniforms : {
-        Stexture : {
-          value : this.texture
-        },
-        SmaxAlpha : {
-          value : this.maxAlpha
-        },
-        uTime: { value: 0 },
-        uRandom: { value: 1.0 },
-        uDepth: { value: 2.0 },
-        uSize: { value: 0.0 },
-        uTextureSize: { value: new THREE.Vector2(this.width, this.height) },
-        uTexture: { value: this.texture },
-        uTouch: { value: null },
-      },
+      uniforms,
       vertexShader: vert,
       fragmentShader: frag,
-      depthTest : true,
-      depthWrite : false,
-      transparent : true,
-      vertexColors : true,
-      flatShading : true
+      depthTest: false,
+      transparent: true,
+      // blending: THREE.AdditiveBlending
     });
 
     var geometry = new THREE.InstancedBufferGeometry();
@@ -799,7 +789,7 @@ var ParticlesProd = function(webgl) {
     var angles = new Float32Array(numVisible);
 
     for (let i = 0, j = 0; i < this.numPoints; i++) {
-      if (originalColors[i * 4 + 0] <= threshold) continue;
+      if (discard && originalColors[i * 4 + 0] <= threshold) continue;
 
       offsets[j * 3 + 0] = i % this.width;
       offsets[j * 3 + 1] = Math.floor(i / this.width);
@@ -1019,18 +1009,6 @@ easeInOutSine*/
 var ProductionView = function (container) {
 
   this.samples = [
-    'img/sample-bg1.jpg',
-    'img/sample-bg2.jpg',
-    'img/sample-bg3.jpg',
-    'img/sample-bg4.jpg',
-    'img/sample-bg5.jpg',
-    'img/sample-bg6.jpg',
-    'img/sample-bg7.jpg',
-    'img/sample-bg8.jpg',
-    'img/sample-bg9.jpg',
-    'img/sample-bg10.jpg',
-    'img/sample-bg11.jpg',
-    'img/sample-bg12.jpg',
     'img/sample-bg13.jpg',
   ];
 

@@ -19,6 +19,7 @@ function onSecondaryReady() {
       touchScroll: true,
       scrollSpeed: 1100,
       overflowScroll: true,
+      offset: 0,
       updateHash: false,
       easing: "easeOutExpo",
       standardScrollElements: false,
@@ -50,6 +51,7 @@ function onSecondaryReady() {
 
         // анимируем проявление фиксированного заголовка
         if (index < floatSections + 1 && index >= 1) {
+          console.log(index)
           var fixedtitle = $('.main-title__fixed');
           if (!fixedtitle.hasClass('animated')) {
             fixedtitle.animate({opacity: 1}, 600, function() {
@@ -181,10 +183,12 @@ function initAnimationBlocks() {
 
   viewportBlocks.viewportChecker({
     repeat: false,
-    offset: '10%',
+    offset: '0%',
     callbackFunction: function callbackFunction(elem, action) {
 
-      animateBlock(elem)
+      if (window.pageYOffset < ($(elem).offset().top + $('.section-float.visible').height()/2)) {
+        animateBlock(elem)
+      }
 
       var timeout = $(elem).data('timeout') || 0;
       if (window.innerWidth <= 1024) {

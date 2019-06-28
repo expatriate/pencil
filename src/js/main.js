@@ -69,6 +69,7 @@ function mainReady() {
 
         // анимируем проявление фиксированного заголовка
         if (index < floatSections + 2 && index >= 2) {
+          console.log(index)
           var fixedtitle = $('.main-title__fixed');
           if (!fixedtitle.hasClass('animated')) {
             fixedtitle.animate({opacity: 1}, 600, function() {
@@ -253,7 +254,9 @@ function initAnimationBlocks() {
     repeat: false,
     callbackFunction: function callbackFunction(elem, action) {
 
-      animateBlock(elem)
+      if (window.pageYOffset < ($(elem).offset().top + $('.section-float.visible').height()/2)) {
+        animateBlock(elem)
+      }
 
       var timeout = $(elem).data('timeout') || 0;
       if (window.innerWidth <= 1024) {

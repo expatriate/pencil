@@ -1,3 +1,4 @@
+
 document.addEventListener("DOMContentLoaded", productionReady);
 var prod;
 
@@ -403,7 +404,7 @@ var ParticlesProd = function(webgl) {
         }
   }
 
-  this.init('img/sample-bg.jpg');
+  this.init('img/sample-bg13.jpg');
 }
 
 var Particle = function(e, n, i, a, s) {

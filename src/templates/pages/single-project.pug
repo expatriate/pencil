@@ -22,14 +22,15 @@ block content
       h1.main-title.main-title__flex.js-anim-title
         span.filled Премия 
         | «Золотое окно 2017»
-        +b.single-icon__award#project-award-js(tabindex='0', data-img='img/event1.png,img/event1.png')
-          +b.single-icon__wrapper
-            svg.single-icon__icon(role="img")
-              use(xlink:href="svg/sprite.svg#star")
-        +b.single-icon__docs.modal(data-popup="#docs-popup" data-img="img/nikel.jpeg")
-          +b.single-icon__wrapper
-            svg.single-icon__icon(role="img")
-              use(xlink:href="svg/sprite.svg#file")
+        +b.single-icon
+          +b.single-icon__award#project-award-js(tabindex='0', data-img='img/event1.png,img/event1.png')
+            +b.single-icon__wrapper
+              svg.single-icon__icon(role="img")
+                use(xlink:href="svg/sprite.svg#star")
+          +b.single-icon__docs.modal(data-popup="#docs-popup" data-img="img/nikel.jpeg")
+            +b.single-icon__wrapper
+              svg.single-icon__icon(role="img")
+                use(xlink:href="svg/sprite.svg#file")
     +b.section__wrapper-wide.section-bg.js-anim-block(style="background-image:url('img/singleprojmain0.jpg')")
       +b.section__wrapper-bottom.transparent.section__wrapper-centered.section__wrapper-absolute
         +b.scroller.round

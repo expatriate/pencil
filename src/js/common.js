@@ -158,7 +158,11 @@ function commonReady() {
 
     var form = $(this).parents('form')[0];
     var inputs = $(this).parents('form').find('input');
-    var fd = [];
+    var fd = {
+      phone: '',
+      email: '',
+      page: ''
+    }
     var errors = [];
 
     inputs.each(function(index, item) {
@@ -166,9 +170,31 @@ function commonReady() {
         errors.push({
           el: item,
           message: 'Это поле обязательно для заполнения'
-        })
+        });
       } else {
-        fd[item.name] = item.value
+        if (item.name === 'phone') {
+          var re = /^[0-9]*$/;
+          if (!re.test(String(item.value).toLowerCase())) {
+              errors.push({
+                el: item,
+                message: 'Некорректный номер телефона'
+              });
+          }
+          fd.phone = item.value
+        }
+        if (item.name === 'email') {
+          var re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Zа-яА-ЯёЁ\-0-9]+\.)+[a-zA-Zа-яА-ЯёЁ]{2,}))$/;
+          if (!re.test(String(item.value).toLowerCase())) {
+              errors.push({
+                el: item,
+                message: 'Некорректный адрес'
+              });
+          }
+          fd.email = item.value
+        }
+        if (item.name === 'page') {
+          fd.page = item.value
+        }
       }
     });
 
@@ -176,9 +202,12 @@ function commonReady() {
       $.ajax({
         type: 'POST',
         url: form.dataset.place || '',
-        data: fd,
+        data: {
+          phone: fd.phone,
+          email: fd.email,
+          page: fd.page
+        },
         cache : false,
-        processData: false,
         success: function(data) {
           $.magnificPopup.close();
           $.magnificPopup.open({
