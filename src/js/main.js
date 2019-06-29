@@ -12,9 +12,6 @@ var viewportBlocks;
 document.addEventListener("DOMContentLoaded", mainReady);
 
 function mainReady() {
-
-  initAnimationBlocks();
-
   floatSections = $('.section-float').length;
 
   if (width > 1024) {
@@ -69,7 +66,6 @@ function mainReady() {
 
         // анимируем проявление фиксированного заголовка
         if (index < floatSections + 2 && index >= 2) {
-          console.log(index)
           var fixedtitle = $('.main-title__fixed');
           if (!fixedtitle.hasClass('animated')) {
             fixedtitle.animate({opacity: 1}, 600, function() {
@@ -78,11 +74,9 @@ function mainReady() {
           }
         } else {
           var fixedtitle = $('.main-title__fixed');
-          if (fixedtitle.hasClass('animated')) {
-            fixedtitle.animate({opacity: 0}, 200, function() {
-              fixedtitle.removeClass('animated')
-            });
-          }
+          fixedtitle.stop().animate({opacity: 0}, 200, function() {
+            fixedtitle.removeClass('animated')
+          });
         }
 
         // анимируем правое меню
@@ -108,6 +102,29 @@ function mainReady() {
         if (index == 0) {
           animateFirstBlock()
         }
+      },
+      afterRender: function (index, sections) {
+        if ($.scrollify.currentIndex() > 0) {
+          $('.right-nav').addClass('visible').animate({'opacity': 1}, 500);
+        } else if ($.scrollify.currentIndex() == 0){
+          $('.right-nav').removeClass('visible').animate({'opacity': 0}, 500);
+        }
+
+        $('.right-nav').find('.right-nav__item').removeClass('active');
+        $($('.right-nav').find('.right-nav__item')[$.scrollify.currentIndex()]).addClass('active');
+
+
+        var isFixed = $.scrollify.current() && $.scrollify.current().hasClass('section-float');
+
+        // анимируем проявление фиксированного заголовка
+        if (isFixed) {
+          var fixedtitle = $('.main-title__fixed');
+          if (!fixedtitle.hasClass('animated')) {
+            fixedtitle.animate({opacity: 1}, 600, function() {
+              fixedtitle.addClass('animated')
+            });
+          }
+        }
       }
     });
 
@@ -125,6 +142,7 @@ function mainReady() {
     stopBeforeScroll = $('body').find('.section:not(.section__fixed)').first().offset().top;
   }
 
+  initAnimationBlocks();
   animateFirstBlock();
 }
 
@@ -193,7 +211,7 @@ function animateFirstBlock() {
 
 function animateBlock(el) {
 
-  var isFixed = $(el).hasClass('section-float');
+  var isFixed = $(el).hasClass('section-float') && $.scrollify.current() && $.scrollify.current().hasClass('section-float');
   var isFirst = $(el) == $('.section').first();
   var isSecond = $(el).hasClass('section__full');
 
@@ -254,9 +272,7 @@ function initAnimationBlocks() {
     repeat: false,
     callbackFunction: function callbackFunction(elem, action) {
 
-      if (window.pageYOffset < ($(elem).offset().top + $('.section-float.visible').height()/2)) {
-        animateBlock(elem)
-      }
+      animateBlock(elem);
 
       var timeout = $(elem).data('timeout') || 0;
       if (window.innerWidth <= 1024) {
