@@ -47,7 +47,7 @@
     opacity: 0.7;
 
     span {
-      font-size: 180px;
+      font-size: 160px;
       text-transform: uppercase;
       font-weight: 300;
 
@@ -59,11 +59,15 @@
       }
       @include screen($mobile, $tablet) {
         width: 100%;
-        font-size: 100px;
+        font-size: 60px;
       }
-      @include screen($tablet, $desktop) {
+      @include screen($tablet, $desktop-1) {
         width: 100%;
-        font-size: 120px;
+        font-size: 80px;
+      }
+      @include screen($desktop-1, $desktop) {
+        width: 100%;
+        font-size: 90px;
       }
     }
 

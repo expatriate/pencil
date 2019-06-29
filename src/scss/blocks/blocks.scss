@@ -670,6 +670,9 @@
   @include screen($tablet, $desktop-1) {
     right: 30px
   }
+  @include screen($desktop-1, $desktop) {
+    right: 60px
+  }
 
   &__wrapper {
     justify-content: center;
