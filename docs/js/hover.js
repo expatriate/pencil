@@ -86,7 +86,6 @@ var hoverEffect = function(opts) {
         var elOffsetHeight = 700;
         if (ratio > 1) {
             elOffsetHeight = parent.offsetWidth/ratio
-            console.log(elOffsetHeight)
         }
         //renderer.setSize(parent.offsetWidth, elOffsetHeight);
         var geometry = new THREE.PlaneBufferGeometry(

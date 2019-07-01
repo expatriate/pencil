@@ -173,12 +173,18 @@ function commonReady() {
         });
       } else {
         if (item.name === 'phone') {
-          var re = /^[0-9]*$/;
+          /*var re = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]?[-\s\.]?[0-9]{2}?[-\s\.]?[0-9]{2}$/im;
           if (!re.test(String(item.value).toLowerCase())) {
               errors.push({
                 el: item,
                 message: 'Некорректный номер телефона'
               });
+          }*/
+          if (!item.value || item.value.length < 10) {
+            errors.push({
+              el: item,
+              message: 'Некорректный номер телефона'
+            });
           }
           fd.phone = item.value
         }
@@ -236,12 +242,17 @@ function commonReady() {
 
 
 
-
+  $('input[name=phone]').each(function(index, item) {
+    var maskOptions = {
+      mask: '+{7}(000)000-00-00'
+    };
+    var mask = IMask(item, maskOptions);
+  })
 
 
   // PRODUCTION
   if ($('#production').length) {
-    $('body').addClass('dark-theme')
+    $('body').addClass('dark-theme');
   }
 
 };

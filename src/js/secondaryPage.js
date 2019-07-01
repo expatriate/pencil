@@ -209,9 +209,7 @@ function initAnimationBlocks() {
     offset: '0%',
     callbackFunction: function callbackFunction(elem, action) {
 
-      if (window.pageYOffset < ($(elem).offset().top + $('.section-float.visible').height()/2)) {
-        animateBlock(elem)
-      }
+      animateBlock(elem)
 
       var timeout = $(elem).data('timeout') || 0;
       if (window.innerWidth <= 1024) {

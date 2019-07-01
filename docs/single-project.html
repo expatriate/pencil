@@ -14,6 +14,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.2/TweenMax.min.js"></script>
     <script src="https://unpkg.com/popper.js"></script>
     <script src="https://unpkg.com/tippy.js@4"></script>
+    <script src="https://unpkg.com/imask"></script>
 </head>
 
 <body>
@@ -75,15 +76,17 @@
                 <div class="breadcrumbs__item"><a href="#">Элемент меню</a></div>
                 <div class="breadcrumbs__item"><a href="#">Элемент меню2</a></div>
             </div>
-            <h1 class="main-title main-title__flex js-anim-title"><span class="filled">Премия </span>«Золотое окно 2017»<div class="single-icon__award" id="project-award-js" tabindex="0" data-img="img/event1.png,img/event1.png">
-                    <div class="single-icon__wrapper"><svg class="single-icon__icon" role="img">
-                            <use xlink:href="svg/sprite.svg#star"></use>
-                        </svg></div>
-                </div>
-                <div class="single-icon__docs modal" data-popup="#docs-popup" data-img="img/nikel.jpeg">
-                    <div class="single-icon__wrapper"><svg class="single-icon__icon" role="img">
-                            <use xlink:href="svg/sprite.svg#file"></use>
-                        </svg></div>
+            <h1 class="main-title main-title__flex js-anim-title"><span class="filled">Премия </span>«Золотое окно 2017»<div class="single-icon">
+                    <div class="single-icon__award" id="project-award-js" tabindex="0" data-img="img/event1.png,img/event1.png">
+                        <div class="single-icon__wrapper"><svg class="single-icon__icon" role="img">
+                                <use xlink:href="svg/sprite.svg#star"></use>
+                            </svg></div>
+                    </div>
+                    <div class="single-icon__docs modal" data-popup="#docs-popup" data-img="img/nikel.jpeg">
+                        <div class="single-icon__wrapper"><svg class="single-icon__icon" role="img">
+                                <use xlink:href="svg/sprite.svg#file"></use>
+                            </svg></div>
+                    </div>
                 </div>
             </h1>
         </div>
@@ -392,6 +395,7 @@
                 <form class="block-feedback" data-place="http://localhost:8080">
                     <div class="row"><input class="form-text" type="text" name="email" required="required" placeholder="Ваш e-mail" /><input class="form-text" type="text" name="phone" required="required" placeholder="Ваш телефон" /></div>
                     <div class="button__wrapper smallpadds"><button class="btn-wide btn-popup js-send-form">Отправить сообщение</button></div>
+                    <div class="button__wrapper smallpadds">Нажимая на кнопку , вы даете согласие на обработку персональных данных и соглашаетесь с&nbsp;политикой конфиденциальности</div>
                 </form>
             </div>
         </div>

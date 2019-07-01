@@ -9,7 +9,8 @@ mixin feedback-popup()
             input.form-text(type="text" name="phone" required placeholder="Ваш телефон")
           +b.button__wrapper.smallpadds
             button.btn-wide.btn-popup.js-send-form Отправить сообщение
-
+          +b.button__wrapper.smallpadds
+            |Нажимая на кнопку , вы даете согласие на обработку персональных данных и соглашаетесь с&nbsp;политикой конфиденциальности
     +b.success-popup.popup.white-popup#success-popup&attributes(attributes)
       +b.popup-content
         +e.title.js-title Связаться с нами

@@ -7,8 +7,6 @@ var floatSections;
 
 function onSecondaryReady() {
 
-  initAnimationBlocks();
-
   floatSections = $('.section-float').length;
 
   if (width > 1024) {
@@ -19,6 +17,7 @@ function onSecondaryReady() {
       touchScroll: true,
       scrollSpeed: 1100,
       overflowScroll: true,
+      offset: 0,
       updateHash: false,
       easing: "easeOutExpo",
       standardScrollElements: false,
@@ -50,6 +49,7 @@ function onSecondaryReady() {
 
         // анимируем проявление фиксированного заголовка
         if (index < floatSections + 1 && index >= 1) {
+          console.log(index)
           var fixedtitle = $('.main-title__fixed');
           if (!fixedtitle.hasClass('animated')) {
             fixedtitle.animate({opacity: 1}, 600, function() {
@@ -84,6 +84,29 @@ function onSecondaryReady() {
         if (index == 0) {
           animateFirstBlock()
         }
+      },
+      afterRender: function (index, sections) {
+        if ($.scrollify.currentIndex() > 0) {
+          $('.right-nav').addClass('visible').animate({'opacity': 1}, 500);
+        } else if ($.scrollify.currentIndex() == 0){
+          $('.right-nav').removeClass('visible').animate({'opacity': 0}, 500);
+        }
+
+        $('.right-nav').find('.right-nav__item').removeClass('active');
+        $($('.right-nav').find('.right-nav__item')[$.scrollify.currentIndex()]).addClass('active');
+
+
+        var isFixed = $.scrollify.current() && $.scrollify.current().hasClass('section-float');
+
+        // анимируем проявление фиксированного заголовка
+        if (isFixed) {
+          var fixedtitle = $('.main-title__fixed');
+          if (!fixedtitle.hasClass('animated')) {
+            fixedtitle.animate({opacity: 1}, 600, function() {
+              fixedtitle.addClass('animated')
+            });
+          }
+        }
       }
     });
 
@@ -102,6 +125,7 @@ function onSecondaryReady() {
   }
 
 
+  initAnimationBlocks();
   animateFirstBlock();
 
 };
@@ -124,8 +148,9 @@ function animateFirstBlock() {
 
 function animateBlock(el) {
 
-  var isFixed = $(el).hasClass('section-float');
+  var isFixed = $(el).hasClass('section-float') && $.scrollify.current() && $.scrollify.current().hasClass('section-float');
   var isFirst = $(el) == $('.section').first();
+  var isSecond = $(el).hasClass('section__full');
 
   // анимируем проявление фиксированного заголовка
   if (isFixed) {
@@ -181,7 +206,7 @@ function initAnimationBlocks() {
 
   viewportBlocks.viewportChecker({
     repeat: false,
-    offset: '10%',
+    offset: '0%',
     callbackFunction: function callbackFunction(elem, action) {
 
       animateBlock(elem)
@@ -205,6 +230,14 @@ function initAnimationBlocks() {
       }, timeout)
     }
   });
+
+
+  // анимируем правое меню
+  if (!$('.right-nav').hasClass('visible') && $.scrollify.currentIndex() > 0) {
+    $('.right-nav').addClass('visible').animate({'opacity': 1}, 500);
+  } else if ($.scrollify.currentIndex() == 0){
+    $('.right-nav').removeClass('visible').animate({'opacity': 0}, 500);
+  }
 }
 
 $(window).scroll(function(e) {

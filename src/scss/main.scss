@@ -33,3 +33,27 @@ svg {
 #production-mainview +.section__wrapper {
     pointer-events: none;
 }
+.privacy {
+  a {
+    color: #000;
+    transition: all 1.8s ease-out;
+
+    &:hover {
+      color: #333;
+    }
+  }
+}
+.dark-theme {
+  .privacy {
+
+    &.smallpadds {
+      color: #a2a2a2;
+    }
+    a {
+      color: #aaaaaa;
+      &:hover {
+        color: #ffffff;
+      }
+    }
+  }  
+}
