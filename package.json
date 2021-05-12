@@ -60,6 +60,6 @@
     "gulp-html-beautify": "^1.0.1",
     "gulp-pug": "^4.0.1",
     "node-sass": "^4.12.0",
-    "swiper": "^4.5.0"
+    "swiper": "^6.5.1"
   }
 }
